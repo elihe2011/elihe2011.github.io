@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Python 内置函数 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2015/01/03/Python%20%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/">
+        Python 内置函数
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2015-01-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-数值计算"><a href="#1-数值计算" class="headerlink" title="1. 数值计算"></a>1. 数值计算</h1><p><strong>abs(x)</strong></p>
+<p><strong>complex(real,[image])</strong></p>
+<p><strong>float(x)</strong></p>
+<p>*<em>long(x) *</em></p>
+<p><strong>int(x,base=10)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&#x27;3&#x27;</span>,base=<span class="number">10</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&#x27;a&#x27;</span>,base=<span class="number">16</span>)</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&#x27;10&#x27;</span>,base=<span class="number">2</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">0b1110</span>)		<span class="comment"># int(&#x27;1110&#x27;, 2)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">0o10</span>)		    <span class="comment"># int(&#x27;10&#x27;, 8)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">0x2a</span>)		    <span class="comment"># int(&#x27;2a&#x27;, 16)</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p><strong>round(x[,n]) 返回浮点数精确位</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; round(math.pi, 2)</span><br><span class="line">3.14</span><br></pre></td></tr></table></figure>
+
+<p>*<em>divmod(a,b) *</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; divmod(7, 4)</span><br><span class="line">(1, 3)</span><br></pre></td></tr></table></figure>
+
+<p><strong>pow(x,y[,z])</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">pow</span>(<span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line"><span class="number">1024</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">pow</span>(<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">pow</span>(<span class="number">2</span>, <span class="number">3</span>) % <span class="number">5</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>hex(x) <br>oct(x)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; hex(10)</span><br><span class="line">&#x27;0xa&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; oct(10)</span><br><span class="line">&#x27;0o12&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>coerce(x,y) 强制数值类型转换为相同类型，返回一个元组.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; coerce(1, 2.3)</span><br><span class="line">(1.0, 2.3)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; c = 1 + 1j</span><br><span class="line">&gt;&gt;&gt; d = 2</span><br><span class="line">&gt;&gt;&gt; coerce(c, d)</span><br><span class="line">((1+1j), (2+0j))</span><br></pre></td></tr></table></figure>
+
+<p><strong>format(value, format_spec)  =&gt; value.<strong>format</strong></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [12]: s = &#x27;abc&#x27;</span><br><span class="line"></span><br><span class="line">In [13]: format(s, &#x27;&gt;10&#x27;)</span><br><span class="line">Out[13]: &#x27;       abc&#x27;</span><br><span class="line"></span><br><span class="line">In [14]: format(s, &#x27;&lt;10&#x27;)</span><br><span class="line">Out[14]: &#x27;abc       &#x27;</span><br><span class="line"></span><br><span class="line">In [15]: format(s, &#x27;^10&#x27;)</span><br><span class="line">Out[15]: &#x27;   abc    &#x27;</span><br><span class="line"></span><br><span class="line">In [16]: format(12345, &#x27;,&#x27;)  # 货币格式</span><br><span class="line">Out[16]: &#x27;12,345&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-函数参数"><a href="#2-函数参数" class="headerlink" title="2. 函数参数"></a>2. 函数参数</h1><p><strong>filter(func,list)</strong> 根据func参数返回的结果来过滤list参数中的项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">&gt;&gt;&gt; filter(lambda x: x%2==0, a)  </span><br><span class="line">[0, 2, 4, 6, 8]</span><br></pre></td></tr></table></figure>
+
+<p><strong>map(func,list,…)</strong> 将func运用到list中的每一项上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; map(lambda x:pow(x,3), a)</span><br><span class="line">[1, 8, 27, 64]</span><br><span class="line">&gt;&gt;&gt; map(None, [1, 2, 3, 4], [5, 6, 7, 8])</span><br><span class="line">[(1, 5), (2, 6), (3, 7), (4, 8)]</span><br><span class="line">&gt;&gt;&gt; map(None, [1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12])</span><br><span class="line">[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]</span><br></pre></td></tr></table></figure>
+
+<p><strong>reduce(func,sequence[,initializer])</strong> 逐个使用sequence元素作为func的参数, 3.x itertools.reduce</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; reduce(lambda x,y:x*y, [1,2,3,4,5])</span><br><span class="line">120</span><br></pre></td></tr></table></figure>
+
+<p><strong>zip(seq1,…)</strong> 每个序列各取一个元素构成元组，再由元组构成新的序列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; b = [5, 6, 7, 8]</span><br><span class="line">&gt;&gt;&gt; zip(a, b)</span><br><span class="line">[(1, 5), (2, 6), (3, 7), (4, 8)]</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-序列操作"><a href="#3-序列操作" class="headerlink" title="3. 序列操作"></a>3. 序列操作</h1><p><strong>max(iterable[, key, default])</strong><br><br><strong>max(arg1, arg2, *args[, key])</strong><br><br><strong>min(s[,args…])</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; max(-1, 0, key=abs)</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
+
+<p><strong>len(s)</strong> 返回一序列（字符串、元组或列表）或字典对象的长度</p>
+<p><strong>tuple(object)</strong><br><br><strong>list(sequence)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(&#x27;abc&#x27;)</span><br><span class="line">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>range([start,]stop[,step])</strong> 返回数值列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; range(5, 25, 5)</span><br><span class="line">[5, 10, 15, 20]</span><br></pre></td></tr></table></figure>
+
+<p><strong>slice([start,]stop,[,step])</strong> 返回序列切片(slice)对象，该对象表示由range(start,stop,step)指定的索引集(本质上为序列号对象的索引集合)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = slice(1,10,2)</span><br><span class="line">&gt;&gt;&gt; a = range(-5,10)</span><br><span class="line">&gt;&gt;&gt; a[s]</span><br><span class="line">[-4, -2, 0, 2, 4]</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-字符串操作"><a href="#4-字符串操作" class="headerlink" title="4. 字符串操作"></a>4. 字符串操作</h1><p><strong>cmp(x,y)</strong> 比较x和y这两个对象，返回一个整数(-1, 0, 1)</p>
+<p><strong>chr(i)</strong>  返回ASCII码对应的符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; chr(72)</span><br><span class="line">&#x27;H&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ord(c)</strong> 返回字符的ASCII或Unicode码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ord(&#x27;a&#x27;)</span><br><span class="line">97</span><br></pre></td></tr></table></figure>
+
+<p><strong>str(object)</strong>   返回表示对象的可打印字符串，该字符串不与eval()函数兼容<br><br><strong>repr(object)</strong> 返回对象的字符串表达式。等效于反引号操作(``)，与eval(object)函数产生的值一样</p>
+<h1 id="5-对象操作"><a href="#5-对象操作" class="headerlink" title="5. 对象操作"></a>5. 对象操作</h1><p><strong>callable(object)</strong> object对象可调用，返回true，否则false, 3.x hasattr(obj, ‘<strong>call</strong>‘)</p>
+<p><strong>dir([object])</strong> 返回对象具有的属性</p>
+<p><strong>globals()</strong> 返回全局命名空间，可修改<br><br><strong>locals()</strong>  返回局部命名空间的拷贝，不可修改<br><br><strong>vars([object])</strong><br>不带参数，返回值和locals()一致<br>带参数，返回对象的<strong>dict</strong></p>
+<p><strong>id(object)</strong> 返回对象唯一标识整数值<br><br><strong>hash(object)</strong> 返回对象的整数散列值</p>
+<p><strong>setattr(object,name,value) =&gt; object.name=value</strong><br><br><strong>getattr(object,name[,default])  =&gt; object.name</strong><br><br><strong>hasattr(object,name)</strong><br><br><strong>delattr(object, name)  =&gt; del object.name</strong></p>
+<p><br><strong>isinstance(object ,class)</strong><br><br><strong>issubclass(class1,class2)</strong></p>
+<p><strong>type(object) 返回object参数的类型。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; type(lambda x:x)</span><br><span class="line">&lt;type &#x27;function&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>编译执行</li>
+</ol>
+<p><strong>eval(expression[,global[,locals]])</strong> 计算字符串表达式值<br><br><strong>exec(segment)</strong> 执行字符串代码片段<br><br><strong>execfile(file[,globals[,locals]])</strong> 执行python脚本文件  3.x 已删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">compile(source, filename, mode) 编译source为代码对象</span><br><span class="line">filename: 编译时错误标记，无关输出和存储</span><br><span class="line">mode:</span><br><span class="line">single: 单条语句</span><br><span class="line">exec: 多条语句</span><br><span class="line">eval: 表达式</span><br><span class="line"></span><br><span class="line">exec(&#x27;n=2*3&#x27;)</span><br><span class="line">print n</span><br><span class="line"></span><br><span class="line">eval(&#x27;x*3 + y*4&#x27;, &#123;&#x27;x&#x27;:1, &#x27;y&#x27;:2&#125;)</span><br><span class="line"></span><br><span class="line">a = compile(&#x27;print &quot;Hello World!&quot;&#x27;, &#x27;single&#x27;)</span><br><span class="line">b = compile(&#x27;for i in range(5): print i&#x27;, &#x27;exec&#x27;)</span><br><span class="line">c = compile(&#x27;x*3 + y*4, &#x27;eval&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-其他函数"><a href="#7-其他函数" class="headerlink" title="7. 其他函数"></a>7. 其他函数</h1><p><strong>intern(string)</strong> 将string加入到保留字符串的表，返回值为保留的版本号。“保留字符串”通过指针可用，而不是一个纯的字符串；因此允许利用指针比较代替字符串比较来进行字典关键字的查找，这比通常的字符串比较方法功能有所改善。<br><br>在python名称空间表和用于保留模块、类或实力属性的字典中使用的名字通常被保留用以加速脚本执行。<br><br>保留字符串定义后不能被作为无用单元收集，所以必须注意在大字典关键字集上使用保留字符串将大大增加内存需求，即使字典关键字应急超出了作用域。<br><br>3.x sys.intern</p>
+<p><strong>reload(module)</strong> 将以前导入过的模块再加载一次。重新加载(reload)包括最初导入模块是应用的分析过程和初始化过程。这样就允许在不退出解释器的情况重新加载已更改的python模块。</p>
+<p><strong>buffer(object[,offset[,size]])</strong>  为支持缓存调用接口的object对象创建一个新缓存。这样的对象包括字符串、数组和缓存。该新缓存通过使用从offset参数值开始知道该对象末尾的存储片段或从offset参数值开始直到size参数给出的尺寸为长度的存储片段来引用object对象。如果没给出任何选项参数，缓存区域就覆盖整个序列，最终得到的缓存对象是object对象数据的只读拷贝。<br><br>缓存对象用于给某个对象类型创建一个更友好的接口。比如，字符串对象类型通用缓存对象而变得可用，允许逐个字节地访问字符串中的信息。</p>
+<p><strong>open(filename[,mode[,bufsize]])</strong> <br>通过使用mode和缓存bufsize类型来打开filename标识的文件<br>|模式                      |含义|<br>|————|————|<br>|r           |  readonly  |<br>|w           |  writeonly |<br>|a           |  append  打开用于附加(打开期间，文件位置自动移到文件末尾)|<br>|r+          |  打开用于更新(读和写)|<br>|w+          |  截断(或清空)文件，接着打开文件用于读写|<br>|a+          |  打开文件用于读和写，并自动改变当前为止到文件尾|<br>|b           |  仅对windows，dos和其他一些操作系统有效，对Unix、MacOS和BeOS则不管选项为何值，以二进制模式对待所有文件|</p>
+<table>
+<thead>
+<tr>
+<th>bufsize值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;1</td>
+<td>使用大小近似为bufsize字符长度的缓存</td>
+</tr>
+<tr>
+<td>&lt;0</td>
+<td>使用系统默认</td>
+</tr>
+</tbody></table>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2015/01/04/Python%20%E5%88%97%E8%A1%A8%E6%89%81%E5%B9%B3%E5%8C%96/" rel="prev" title="Python 列表扁平化">
+                                
+                                    Python 列表扁平化
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2015/01/02/Python%20%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="prev" title="Python 异常处理">
+                                  
+                                      Python 异常处理
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Python 内置函数',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-text">1. 数值计算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-text">2. 函数参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C"><span class="toc-text">3. 序列操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-text">4. 字符串操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">5. 对象操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-text">7. 其他函数</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

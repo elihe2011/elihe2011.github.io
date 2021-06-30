@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>RabbitMQ | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/14/RabbitMQ/">
+        RabbitMQ
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-14</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/RabbitMQ/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>RabbitMQ</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-RabbitMQ介绍"><a href="#1-RabbitMQ介绍" class="headerlink" title="1. RabbitMQ介绍"></a>1. RabbitMQ介绍</h1><ul>
+<li>面向消息的中间件，用于组件之间的解藕，主要体现在消息的发送者和消费者之间无强依赖关系</li>
+</ul>
+<h2 id="1-1-消息中间件"><a href="#1-1-消息中间件" class="headerlink" title="1.1 消息中间件"></a>1.1 消息中间件</h2><p>消息中间件：在消息传输过程中保存消息的容器。主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用，消息队列会保留消息，直到可以成功地传递它为止。当然，消息队列保存消息也是有期限的。</p>
+<h3 id="1-1-1-消息中间传递模型："><a href="#1-1-1-消息中间传递模型：" class="headerlink" title="1.1.1 消息中间传递模型："></a>1.1.1 消息中间传递模型：</h3><ul>
+<li>点对点 (PTP)</li>
+<li>发布订阅 (Pub/Sub)</li>
+</ul>
+<h3 id="1-1-2-AMQP-Advanced-Message-Queue-Protocol"><a href="#1-1-2-AMQP-Advanced-Message-Queue-Protocol" class="headerlink" title="1.1.2 AMQP: Advanced Message Queue Protocol"></a>1.1.2 AMQP: Advanced Message Queue Protocol</h3><span id="more"></span>
+
+<h2 id="1-2-RabbitMQ核心组件："><a href="#1-2-RabbitMQ核心组件：" class="headerlink" title="1.2 RabbitMQ核心组件："></a>1.2 RabbitMQ核心组件：</h2><ul>
+<li>Exchange</li>
+<li>Queue</li>
+</ul>
+<h2 id="1-3-RabbitMQ术语："><a href="#1-3-RabbitMQ术语：" class="headerlink" title="1.3 RabbitMQ术语："></a>1.3 RabbitMQ术语：</h2><ul>
+<li>Server(broker): 接受客户端连接，实现AMQP消息队列和路由功能的进程</li>
+<li>Virtual Host: 并不真实存在，类似权限控制组，一个Virtual Host里面可以有若干个Exchange和Queue，但权限控制的最小粒度为Virtual Host</li>
+<li>Exchange: 接收生产者发送的消息，并根据Binding规则将消息苦雨给服务器中的队列。ExchangeType决定于Exchange路由消息的行为。在RabbitMQ中，ExchangeType有direct、Fanout和Topic三种，不同类型的Exchange路由行为不一样</li>
+<li>Message Queue：消息队列，用于存储还未被消费者消费的消息</li>
+<li>Message：由Header和Body组成，Header是生产者添加的各种属性的集合，包含Message是否被持久化、由那个Message Queue接受，优先级是多少等。而Body则是真正需要传输的APP数据</li>
+<li>BindingKey: 绑定关键字。绑定就是将一个特定的Exchange和一个特定的Queue绑定起来。</li>
+</ul>
+<h2 id="1-4-Exchange分类："><a href="#1-4-Exchange分类：" class="headerlink" title="1.4 Exchange分类："></a>1.4 Exchange分类：</h2><ul>
+<li>Direct Exchange：直接交互式路由键。需要将一个队列绑定到交换机上，要求该消息一一个特定的路由<strong>完全匹配</strong>。例如一个队列绑定到该交换机上要求路由键为”dog”，只有被标记为”dog”的消息能够被转发。</li>
+<li>Fanout Exchange: 广播式路由键。一个发送到交换机的消息都会被转发到与该交换机绑定的所有队列上。</li>
+<li>Topic Exchange：主题式交换器。通过消息的路由关键字和绑定的关键字的<strong>模糊匹配</strong>，将消息路由到被绑定的队列中。支持通配符：<code>*</code>匹配一个词组，<code>#</code>零个或多个词组。<code>*.stock.#</code>匹配路由关键字<code>usd.stock</code>和<code>eur.stock.db</code>，但不匹配<code>stock.nasdaq</code></li>
+</ul>
+<h1 id="2-安装RabbitMQ"><a href="#2-安装RabbitMQ" class="headerlink" title="2. 安装RabbitMQ"></a>2. 安装RabbitMQ</h1><p>RabbitMQ 3.7.19:   Upgrading to Erlang 21.x or Later Versions</p>
+<h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum repolist </span><br><span class="line">yum clean all</span><br><span class="line">yum makecache </span><br><span class="line">yum list erlang</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line"><span class="comment"># erlang</span></span><br><span class="line">curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash</span><br><span class="line"></span><br><span class="line">yum install  erlang</span><br><span class="line"></span><br><span class="line"><span class="comment"># rabbitmq</span></span><br><span class="line">curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash</span><br><span class="line"></span><br><span class="line">yum install rabbitmq-server-3.7.19-1.el7</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-RabbitMQ配置文件-默认没有"><a href="#2-2-RabbitMQ配置文件-默认没有" class="headerlink" title="2.2 RabbitMQ配置文件(默认没有)"></a>2.2 RabbitMQ配置文件(默认没有)</h2><p>1) <code>/etc/rabbitmq/rabbitmq-env.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RABBITMQ_NODE_IP_ADDRESS: 127.0.0.1</span><br><span class="line">RABBITMQ_NODE_PORT: 5672</span><br><span class="line">RABBITMQ_NODE_CONFIG_FILE: *.config</span><br><span class="line">RABBITMQ_NODE_LOG_BASE: </span><br></pre></td></tr></table></figure>
+
+<p>2) <code>/etc/rabbitmq/rabbitmq.config</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcp_listeners             5672</span><br><span class="line">disk_free_limit</span><br><span class="line">vm_memory_high_watermark  0.4</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-启动"><a href="#2-3-启动" class="headerlink" title="2.3 启动"></a>2.3 启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> rabbitmq-server</span><br><span class="line"></span><br><span class="line">systemctl start rabbitmq-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Mac安装RabbitMQ"><a href="#2-4-Mac安装RabbitMQ" class="headerlink" title="2.4 Mac安装RabbitMQ"></a>2.4 Mac安装RabbitMQ</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">brew install rabbitmq</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置环境变量</span></span><br><span class="line"><span class="built_in">export</span> RABBIT_HOME=/usr/<span class="built_in">local</span>/Cellar/rabbitmq/3.8.0</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$RABBIT_HOME</span>/sbin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">sudo rabbitmq-server</span><br><span class="line">sudo rabbitmq-server -detached  <span class="comment"># 后台运行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止服务</span></span><br><span class="line">rabbitmqctl stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置文件位置</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/rabbitmq</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-rabbitmq控制命令"><a href="#3-rabbitmq控制命令" class="headerlink" title="3. rabbitmq控制命令"></a>3. rabbitmq控制命令</h1><h2 id="3-1-插件命令"><a href="#3-1-插件命令" class="headerlink" title="3.1 插件命令"></a>3.1 插件命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插件列表</span></span><br><span class="line">rabbitmq-plugins list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启管理工具 （支持http://localhost:15672/）</span></span><br><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-操作命令"><a href="#3-2-操作命令" class="headerlink" title="3.2 操作命令"></a>3.2 操作命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 虚拟主机</span></span><br><span class="line">rabbitmqctl add_vhost ut_vhost</span><br><span class="line">rabbitmqctl list_vhosts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增账号</span></span><br><span class="line">rabbitmqctl add_user utime welovetime</span><br><span class="line">rabbitmqctl list_users</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改密码</span></span><br><span class="line">rabbitmqctl change_password utime utime@celery123</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置tag</span></span><br><span class="line">sudo rabbitmqctl set_user_tags utime administrator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置权限</span></span><br><span class="line">rabbitmqctl set_permissions -p ut_vhost utime <span class="string">&quot;.*&quot;</span> <span class="string">&quot;.*&quot;</span> <span class="string">&quot;.*&quot;</span></span><br><span class="line">rabbitmqctl list_permissions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 队列状态</span></span><br><span class="line">rabbitmqctl list_queues </span><br><span class="line">rabbitmqctl list_queues name messages messages_ready messages_unacknowledged </span><br><span class="line">rabbitmqctl list_queues name consumers</span><br><span class="line">rabbitmqctl list_queues name memory</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-RabbitMQ核心概念"><a href="#4-RabbitMQ核心概念" class="headerlink" title="4. RabbitMQ核心概念"></a>4. RabbitMQ核心概念</h1><ul>
+<li>Virtual Host: 数据隔离</li>
+<li>Connection: </li>
+<li>Exchange: 交换机，中转消息</li>
+<li>Channel: 通信</li>
+<li>Queue: 队列，绑定交换机；临时存储消息</li>
+<li>Binding: 绑定队列到交换机</li>
+</ul>
+<h1 id="5-RabbitMQ的工作模式"><a href="#5-RabbitMQ的工作模式" class="headerlink" title="5. RabbitMQ的工作模式"></a>5. RabbitMQ的工作模式</h1><h2 id="5-1-Simple模式"><a href="#5-1-Simple模式" class="headerlink" title="5.1 Simple模式"></a>5.1 Simple模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/streadway/amqp</span><br></pre></td></tr></table></figure>
+
+<p>最简单常用的模式</p>
+<p>P -&gt; Queue -&gt; C</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewRabbitMQ</span><span class="params">(queueName, exchange, key <span class="keyword">string</span>)</span> *<span class="title">RabbitMQ</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;RabbitMQ&#123;</span><br><span class="line">		QueueName: queueName,</span><br><span class="line">		Exchange:  exchange,</span><br><span class="line">		Key:       key,</span><br><span class="line">		Mqurl:     MQURL,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置queueName</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewRabbitMQPubSub</span><span class="params">(queueName <span class="keyword">string</span>)</span> *<span class="title">RabbitMQ</span></span> &#123;</span><br><span class="line">	rabbitmq := NewRabbitMQ(queueName, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> err error</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建连接</span></span><br><span class="line">	rabbitmq.conn, err = amqp.Dial(rabbitmq.Mqurl)</span><br><span class="line">	rabbitmq.failOnErr(err, <span class="string">&quot;创建连接失败&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建channel</span></span><br><span class="line">	rabbitmq.channel, err = rabbitmq.conn.Channel()</span><br><span class="line">	rabbitmq.failOnErr(err, <span class="string">&quot;获取channel失败&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> rabbitmq</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2-Work-工作模式"><a href="#5-2-Work-工作模式" class="headerlink" title="5.2 Work, 工作模式"></a>5.2 Work, 工作模式</h2><p>一个消息只能被一个消费者获取。与Simple模式的区别，只在于开启了多个消费者端，负载均衡。</p>
+<p>P -&gt; Queue –&gt; C1, C2, …</p>
+<h2 id="5-3-Publish-Subscribe-订阅模式"><a href="#5-3-Publish-Subscribe-订阅模式" class="headerlink" title="5.3 Publish/Subscribe, 订阅模式"></a>5.3 Publish/Subscribe, 订阅模式</h2><p>消息被路由投递给多个队列，一个消息被多个消费者获取</p>
+<p>P -&gt; X -&gt; Queue -&gt; C1<br>     |<br>     Queue -&gt; C2</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewRabbitMQ</span><span class="params">(queueName, exchange, key <span class="keyword">string</span>)</span> *<span class="title">RabbitMQ</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;RabbitMQ&#123;</span><br><span class="line">		QueueName: queueName,</span><br><span class="line">		Exchange:  exchange,</span><br><span class="line">		Key:       key,</span><br><span class="line">		Mqurl:     MQURL,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置exchangeName</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewRabbitMQPubSub</span><span class="params">(exchangeName <span class="keyword">string</span>)</span> *<span class="title">RabbitMQ</span></span> &#123;</span><br><span class="line">	rabbitmq := NewRabbitMQ(<span class="string">&quot;&quot;</span>, exchangeName, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> err error</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建连接</span></span><br><span class="line">	rabbitmq.conn, err = amqp.Dial(rabbitmq.Mqurl)</span><br><span class="line">	rabbitmq.failOnErr(err, <span class="string">&quot;创建连接失败&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建channel</span></span><br><span class="line">	rabbitmq.channel, err = rabbitmq.conn.Channel()</span><br><span class="line">	rabbitmq.failOnErr(err, <span class="string">&quot;获取channel失败&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> rabbitmq</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-4-Routing-路由模式"><a href="#5-4-Routing-路由模式" class="headerlink" title="5.4 Routing, 路由模式"></a>5.4 Routing, 路由模式</h2><p>一个消息被多个消费者获取，并且消息的目标队列可被生产者指定</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/rabbitmq/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>rabbitmq</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/10/14/Celery/" rel="prev" title="Celery">
+                                
+                                    Celery
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/celery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> celery</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/12/%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5/" rel="prev" title="远程端口检查">
+                                  
+                                      远程端口检查
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'RabbitMQ',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-RabbitMQ%E4%BB%8B%E7%BB%8D"><span class="toc-text">1. RabbitMQ介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">1.1 消息中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BC%A0%E9%80%92%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="toc-text">1.1.1 消息中间传递模型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-AMQP-Advanced-Message-Queue-Protocol"><span class="toc-text">1.1.2 AMQP: Advanced Message Queue Protocol</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-RabbitMQ%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="toc-text">1.2 RabbitMQ核心组件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-RabbitMQ%E6%9C%AF%E8%AF%AD%EF%BC%9A"><span class="toc-text">1.3 RabbitMQ术语：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Exchange%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-text">1.4 Exchange分类：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85RabbitMQ"><span class="toc-text">2. 安装RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%AE%89%E8%A3%85"><span class="toc-text">2.1 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-RabbitMQ%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E9%BB%98%E8%AE%A4%E6%B2%A1%E6%9C%89"><span class="toc-text">2.2 RabbitMQ配置文件(默认没有)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%90%AF%E5%8A%A8"><span class="toc-text">2.3 启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Mac%E5%AE%89%E8%A3%85RabbitMQ"><span class="toc-text">2.4 Mac安装RabbitMQ</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-rabbitmq%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="toc-text">3. rabbitmq控制命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%8F%92%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="toc-text">3.1 插件命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">3.2 操作命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-RabbitMQ%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">4. RabbitMQ核心概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-RabbitMQ%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. RabbitMQ的工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Simple%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.1 Simple模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Work-%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.2 Work, 工作模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Publish-Subscribe-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.3 Publish&#x2F;Subscribe, 订阅模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-Routing-%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.4 Routing, 路由模式</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Python 类和实例 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2015/01/13/Python%20%E7%B1%BB%E5%92%8C%E5%AE%9E%E4%BE%8B/">
+        Python 类和实例
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2015-01-13</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="1-创建和初始化"><a href="#1-创建和初始化" class="headerlink" title="1. 创建和初始化"></a>1. 创建和初始化</h2><p><strong>类实例相关方法：</strong></p>
+<ul>
+<li><code>__init__(self, *args, **kwargs)</code>:  初始化对象，在创建新对象时调用</li>
+<li><code>__del__(self)</code>: 释放对象，在删除对象时调用</li>
+<li><code>__new__(cls, *args, **kwargs)</code>: 生成实例，先于<code>__init__()</code>前操作<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.1 单例</span><br><span class="line">```python</span><br><span class="line">class Singleton:</span><br><span class="line">    def __new__(cls, *args, **kwargs):</span><br><span class="line">        if not hasattr(cls, &#x27;instance&#x27;):</span><br><span class="line">            cls.instance = super(Singleton, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        return cls.instance</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    a = Singleton()</span><br><span class="line">    b = Singleton()</span><br><span class="line"></span><br><span class="line">    a.x = 1</span><br><span class="line">    print(b.x)</span><br><span class="line"></span><br><span class="line">    print(a is b)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="1-1-1-单例应用实例"><a href="#1-1-1-单例应用实例" class="headerlink" title="1.1.1 单例应用实例"></a>1.1.1 单例应用实例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>:</span></span><br><span class="line">    __instance = <span class="literal">None</span></span><br><span class="line">    __lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_instance</span>():</span></span><br><span class="line">        <span class="keyword">if</span> Singleton.__instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Singleton.__lock.acquire()</span><br><span class="line">            <span class="keyword">if</span> Singleton.__instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                Singleton.__instance = <span class="built_in">object</span>.__new__(Singleton)</span><br><span class="line">                <span class="built_in">object</span>.__init__(Singleton.__instance)</span><br><span class="line">            Singleton.__lock.release()</span><br><span class="line">        <span class="keyword">return</span> Singleton.__instance</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    a = Singleton.get_instance()</span><br><span class="line">    b = Singleton.get_instance()</span><br><span class="line"></span><br><span class="line">    a.x = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(b.x)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(a <span class="keyword">is</span> b)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-类属性和方法"><a href="#2-类属性和方法" class="headerlink" title="2. 类属性和方法"></a>2. 类属性和方法</h2><h3 id="2-1-使用property属性"><a href="#2-1-使用property属性" class="headerlink" title="2.1 使用property属性"></a>2.1 使用property属性</h3><p>1）使用方法     <code>x = property(fget, fset, fdel, doc)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__x = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setx</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        self.__x = x</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getx</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__x</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delx</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__x = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    x = <span class="built_in">property</span>(getx, setx, delx, <span class="string">&#x27;x property doc&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line">c.x = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span> c.x</span><br><span class="line"><span class="keyword">del</span> c.x</span><br><span class="line"><span class="built_in">print</span> c.x</span><br></pre></td></tr></table></figure>
+
+<p>2) 使用装饰器 <code>@property, @x.setter, @x.deleter</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__x = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__x</span><br><span class="line"></span><br><span class="line"><span class="meta">    @x.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.__x = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @x.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__x = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line">c.x = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span> c.x</span><br><span class="line"><span class="keyword">del</span> c.x</span><br><span class="line"><span class="built_in">print</span> c.x</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-类方法和静态方法"><a href="#2-2-类方法和静态方法" class="headerlink" title="2.2 类方法和静态方法"></a>2.2 类方法和静态方法</h3><ul>
+<li>相同点：都可以通过类直接调用</li>
+<li>不同点：类方法需要将类作为参数传入，静态方法不需要传入类参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    name = <span class="string">&#x27;C&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;call instance method&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_method</span>():</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;call static method&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_method</span>(<span class="params">cls</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;call class method&#x27;</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;class name:&#x27;</span>, cls.name</span><br><span class="line">        cls.static_method()</span><br><span class="line">        instance = cls()</span><br><span class="line">        instance.foo()</span><br><span class="line"></span><br><span class="line">C.static_method()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;x&#x27;</span> * <span class="number">20</span></span><br><span class="line">C.class_method()</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Descriptor-将某种特殊类型的类的实例指派给另一个类的属性"><a href="#2-3-Descriptor-将某种特殊类型的类的实例指派给另一个类的属性" class="headerlink" title="2.3 Descriptor: 将某种特殊类型的类的实例指派给另一个类的属性"></a>2.3 Descriptor: 将某种特殊类型的类的实例指派给另一个类的属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__get__(self, <span class="built_in">object</span>, <span class="built_in">type</span>=<span class="literal">None</span>)</span><br><span class="line">__set__(self, obj, value)</span><br><span class="line">__delete__(self, obj)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Descriptor</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span>(<span class="params">self, obj, <span class="built_in">type</span></span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;get&#x27;</span>, self, obj, <span class="built_in">type</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span>(<span class="params">self, obj, value</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;set&#x27;</span>, self, obj, value</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    desc = Descriptor()</span><br><span class="line"></span><br><span class="line">demo = Demo()</span><br><span class="line">demo.desc = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="built_in">print</span> demo.desc</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(demo)</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span>(demo).__dict__[<span class="string">&#x27;desc&#x27;</span>].__get__(demo, <span class="built_in">type</span>(demo))</span><br><span class="line"><span class="built_in">type</span>(demo).__dict__[<span class="string">&#x27;desc&#x27;</span>].__get__(demo, <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-实例的属性"><a href="#3-实例的属性" class="headerlink" title="3. 实例的属性"></a>3. 实例的属性</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">__setattr__(self, name, value)</span><br><span class="line">__delattr__(self, name)</span><br><span class="line">__getattr__(self, name)  仅对未定义的属性有效，动态返回一个属性</span><br><span class="line">__getattribute__(self, name) 对所有属性都有效</span><br><span class="line"></span><br><span class="line">同时存在，__getattr__不会被调用。除非显示调用它，或者__getattribute__触发AttributeError错误</span><br><span class="line"></span><br><span class="line">def __getattribute__(self, name):</span><br><span class="line">    return self.name			    # 错误，自我无限循环</span><br><span class="line">    return object.__getattribute__(self, name)  # 正确</span><br><span class="line"></span><br><span class="line">获取对象属性的顺序：</span><br><span class="line">先从self.__dict__(通过__getattribute__)搜索，找不到再通过__getattr__获取</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 属性找不到再找我</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&#x27;age&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">20</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&#x27;name&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;eli&#x27;</span></span><br><span class="line">        <span class="keyword">raise</span> AttributeError</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 不允许修改私有属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span>(<span class="params">self, name, value</span>):</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&#x27;id&#x27;</span>:</span><br><span class="line">            <span class="keyword">raise</span> AttributeError</span><br><span class="line">        <span class="comment"># self.name = value         # 死循环</span></span><br><span class="line">        <span class="built_in">super</span>(Student, self).__setattr__(name, value)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    s = Student(<span class="string">&#x27;alex&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(s.name)   <span class="comment"># alex</span></span><br><span class="line">    <span class="built_in">print</span>(s.age)    <span class="comment"># 20</span></span><br><span class="line"></span><br><span class="line">    s.score = <span class="number">90</span></span><br><span class="line">    <span class="built_in">print</span>(s.score)</span><br><span class="line"></span><br><span class="line">    s.<span class="built_in">id</span> = <span class="number">2</span>        <span class="comment"># AttributeError</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chain</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, path</span>):</span></span><br><span class="line">        self._path = path</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span>(<span class="params">self, path</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Chain(<span class="string">&#x27;&#123;&#125;/&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(self._path, path))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._path</span><br><span class="line"></span><br><span class="line">    __repr__ = __str__</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    c = Chain(<span class="string">&#x27;/users/status&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(c.timeline.<span class="built_in">list</span>)      <span class="comment"># /users/status/timeline/list</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-序列化类"><a href="#4-序列化类" class="headerlink" title="4. 序列化类"></a>4. 序列化类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__getitem__</span><br><span class="line">__setitem__</span><br><span class="line">__delitem__</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(n, (<span class="built_in">int</span>,)):</span><br><span class="line">            a, b = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                a, b = b, a + b</span><br><span class="line">            <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> <span class="built_in">isinstance</span>(n, <span class="built_in">slice</span>):</span><br><span class="line">            start = n.start</span><br><span class="line">            stop = n.stop</span><br><span class="line">            <span class="keyword">if</span> start <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                start = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            a, b = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">            L = []</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(stop):</span><br><span class="line">                <span class="keyword">if</span> x &gt;= start:</span><br><span class="line">                    L.append(a)</span><br><span class="line">                a, b = b, a + b</span><br><span class="line">            <span class="keyword">return</span> L</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    f = Fib()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        <span class="built_in">print</span>(f[i], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    <span class="built_in">print</span>(f[<span class="number">2</span>:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sequence</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, start=<span class="number">0</span>, step=<span class="number">1</span></span>):</span></span><br><span class="line">        self.start = start</span><br><span class="line">        self.step = step</span><br><span class="line">        self._res = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        self._res[key] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, key</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self._res[key]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> self.start + self.step * key</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delitem__</span>(<span class="params">self, key</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">del</span> self._res[key]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self._res)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    s = <span class="type">Sequence</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(s[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">    s[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line">    <span class="built_in">print</span>(s[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">del</span> s[<span class="number">3</span>]</span><br><span class="line">    <span class="built_in">print</span>(s[<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-可调用类"><a href="#5-可调用类" class="headerlink" title="5. 可调用类"></a>5. 可调用类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__call__</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;i am &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(self.name))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    s = Student(<span class="string">&#x27;alex&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">callable</span>(s):</span><br><span class="line">        s()</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-可迭代类"><a href="#6-可迭代类" class="headerlink" title="6. 可迭代类"></a>6. 可迭代类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.a, self.b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.a, self.b = self.b, self.a + self.b</span><br><span class="line">        <span class="keyword">if</span> self.a &gt; <span class="number">1000</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line">        <span class="keyword">return</span> self.a</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> Fib():</span><br><span class="line">        <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-类私有属性"><a href="#7-类私有属性" class="headerlink" title="7. 类私有属性"></a>7. 类私有属性</h2><ul>
+<li><code>_xx</code>: protected，只允许类本身，子类和类的实例访问。</li>
+<li><code>__xx</code>: private，只允许类本身访问。子类和实例均不能访问。 (private name mangling) 但可以通过<code>obj._ClassName__xx</code>方式访问。</li>
+<li><code>__xx__</code>: magic method</li>
+</ul>
+<h2 id="8-可比较类"><a href="#8-可比较类" class="headerlink" title="8. 可比较类"></a>8. 可比较类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__eq__</span><br><span class="line">__lt__</span><br><span class="line">__gt__</span><br></pre></td></tr></table></figure>
+
+<p>简化操作：functools.total_ordering，使用total_ordering装饰类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from functools import total_ordering</span><br><span class="line"></span><br><span class="line">@total_ordering</span><br><span class="line">class Rectangle(object):</span><br><span class="line">    def __init__(self, w, h):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">        </span><br><span class="line">    @property</span><br><span class="line">    def area(self):</span><br><span class="line">        return self.w * self.h</span><br><span class="line">        </span><br><span class="line">    def __eq__(self, obj):</span><br><span class="line">        return self.area == obj.area</span><br><span class="line">    </span><br><span class="line">    def __lt__(self, obj):</span><br><span class="line">        return self.area &lt; obj.area</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">a = Rectangle(3, 6)</span><br><span class="line">b = Rectangle(4, 5)</span><br><span class="line">print(a &gt; b)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from functools import total_ordering</span><br><span class="line">from abc import abstractmethod</span><br><span class="line"></span><br><span class="line">@total_ordering</span><br><span class="line">class Shape(object):</span><br><span class="line">    def __lt__(self, obj):</span><br><span class="line">        return self.area &lt; obj.area</span><br><span class="line">        </span><br><span class="line">    def __eq__(self, obj):</span><br><span class="line">        return self.area == obj.area</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    @abstractmethod</span><br><span class="line">    def area(self):</span><br><span class="line">        pass</span><br><span class="line">        </span><br><span class="line"> </span><br><span class="line">class Rectangle(Shape):</span><br><span class="line">    def __init__(self, w, h):</span><br><span class="line">        self.w = w</span><br><span class="line">        self.h = h</span><br><span class="line">    </span><br><span class="line">    @property</span><br><span class="line">    def area(self):</span><br><span class="line">        return self.w  * self.h</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">class Circle(Shape):</span><br><span class="line">    def __init__(self, r):</span><br><span class="line">        self.r =r</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def area(self):</span><br><span class="line">        return self.r  * self.r * 3.14</span><br><span class="line"></span><br><span class="line">a = Rectangle(3, 4)</span><br><span class="line">b = Circle(2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-实现上下文管理"><a href="#9-实现上下文管理" class="headerlink" title="9. 实现上下文管理"></a>9. 实现上下文管理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- __enter__</span><br><span class="line">- __exit__: 即使出现异常, 它也会被执行。如果希望屏蔽异常，让该方法返回True</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> telnetlib <span class="keyword">import</span> Telnet</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdin, stdout</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TelnetClient</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, addr, port=<span class="number">23</span></span>):</span></span><br><span class="line">        self.addr = addr</span><br><span class="line">        self.port = port</span><br><span class="line">        self.tn = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># user</span></span><br><span class="line">        t = self.tn.read_until(<span class="string">&#x27;login: &#x27;</span>)</span><br><span class="line">        stdout.write(t)</span><br><span class="line">        user = stdin.readline()</span><br><span class="line">        self.tn.write(user)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># password</span></span><br><span class="line">        t = self.tn.read_until(<span class="string">&#x27;Password: &#x27;</span>)</span><br><span class="line">        stdout.write(t)</span><br><span class="line">        password = stdin.readline()</span><br><span class="line">        self.tn.write(password)</span><br><span class="line">        </span><br><span class="line">        t = self.tn.read_until(<span class="string">&#x27;$ &#x27;</span>)</span><br><span class="line">        stdout.write(t)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            uinput = stdin.readline()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> uinput:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            self.history.append(uinput)</span><br><span class="line">            self.tn.write(uinput)</span><br><span class="line">            t = self.tn.read_until(<span class="string">&#x27;$ &#x27;</span>)</span><br><span class="line">            stdout.write(t[<span class="built_in">len</span>(uinput) + <span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.tn = Telnet(self.addr, self.port)</span><br><span class="line">        self.history = deque()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        self.tn.close()</span><br><span class="line">        self.tn = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(self.addr + <span class="string">&#x27;_history.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.writelines(self.history)</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TelnetClient(<span class="string">&#x27;192.168.1.8&#x27;</span>) <span class="keyword">as</span> client:</span><br><span class="line">    client.start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-类的继承"><a href="#10-类的继承" class="headerlink" title="10. 类的继承"></a>10. 类的继承</h2><h3 id="10-1-类和对象在内存中的如何存储？"><a href="#10-1-类和对象在内存中的如何存储？" class="headerlink" title="10.1 类和对象在内存中的如何存储？"></a>10.1 类和对象在内存中的如何存储？</h3><p>1) 类及类中的方法只保留一份<br>2) 类的实例，除了封装自己的特有属性外，还保留一个类对象指针，指向类的存储地址</p>
+<h3 id="10-2-python2-多重继承的搜寻方式"><a href="#10-2-python2-多重继承的搜寻方式" class="headerlink" title="10.2 python2 多重继承的搜寻方式"></a>10.2 python2 多重继承的搜寻方式</h3><p>经典类：深度优先。沿着一个继承向上查找<br>新式类: 广度优先。逐个检查父类的siblings<br>上述查找，一旦找到，立即返回</p>
+<h3 id="10-3-继承和多态"><a href="#10-3-继承和多态" class="headerlink" title="10.3 继承和多态"></a>10.3 继承和多态</h3><p>polymorphism：多态，允许子类类型的指针赋值给父类类型(父类对象执行子类)</p>
+<ul>
+<li>继承：代码重用</li>
+<li>多态：接口重用。为了类在继承和派生时，保证使用“家谱”中任意一个类的实例的某一属性时正确调用</li>
+</ul>
+<p>Python不支持多态，也用不到多态。使用一种叫鸭子型的实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">talk</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">&#x27;SubClass must implement abstract method&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>(<span class="params">Animal</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">talk</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;I eat fish.&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>(<span class="params">Animal</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">talk</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;I gnaw on a bone.&#x27;</span></span><br><span class="line"></span><br><span class="line">animals = [Cat(<span class="string">&#x27;kitty&#x27;</span>), Dog(<span class="string">&#x27;bonny&#x27;</span>)]</span><br><span class="line"><span class="keyword">for</span> animal <span class="keyword">in</span> animals:</span><br><span class="line">    animal.talk()</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-如何在创建大量实例时，节省内存？"><a href="#11-如何在创建大量实例时，节省内存？" class="headerlink" title="11.  如何在创建大量实例时，节省内存？"></a>11.  如何在创建大量实例时，节省内存？</h2><p>定义类的<strong>slots</strong>属性，用它来声明实例属性名字的列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, uid, name, status=<span class="number">0</span>, level=<span class="number">1</span></span>):</span></span><br><span class="line">        self.uid = uid</span><br><span class="line">        self.name = name</span><br><span class="line">        self.status = status</span><br><span class="line">        self.level = level</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player2</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    __slots__ = [<span class="string">&#x27;uid&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;level&#x27;</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, uid, name, status=<span class="number">0</span>, level=<span class="number">1</span></span>):</span></span><br><span class="line">        self.uid = uid</span><br><span class="line">        self.name = name</span><br><span class="line">        self.status = status</span><br><span class="line">        self.level = level</span><br><span class="line">        </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">r&#x27;c:\users\administrator\desktop&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> test2 <span class="keyword">import</span> Player, Player2</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1 = Player(<span class="number">1</span>, <span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p2 = Player2(<span class="number">1</span>, <span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">set</span>(<span class="built_in">dir</span>(p1)) - <span class="built_in">set</span>(<span class="built_in">dir</span>(p2))</span><br><span class="line"><span class="built_in">set</span>([<span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__weakref__&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;status&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;level&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Jack&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1.x = <span class="number">123</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;status&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">123</span>, <span class="string">&#x27;level&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Jack&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1.__dict__[<span class="string">&#x27;y&#x27;</span>] = <span class="number">321</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;status&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;uid&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;level&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;y&#x27;</span>: <span class="number">321</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">123</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Jack&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> p1.x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getsizeof(p1.__dict__)</span><br><span class="line"><span class="number">524</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p2.x = <span class="number">10</span>           <span class="comment"># 无__dict__, 动态属性不能被添加</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    p2.x = <span class="number">10</span></span><br><span class="line">AttributeError: <span class="string">&#x27;Player2&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;x&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-使用不可变对象"><a href="#12-使用不可变对象" class="headerlink" title="12. 使用不可变对象"></a>12. 使用不可变对象</h2><p>修改不可变对象：定义一个不可变类型子类，重写<strong>new</strong>方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入：[1, -1, &#x27;abc&#x27;, 6, [&#x27;x&#x27;, &#x27;y&#x27;], 3]</span><br><span class="line">输出：(1, 6, 3)</span><br><span class="line"></span><br><span class="line">class IntTuple(tuple):</span><br><span class="line">    def __new__(cls, iterable):</span><br><span class="line">        g = (x for x in iterable if isinstance(x, int) and x &gt; 0)</span><br><span class="line">        #return super(IntTuple, cls).__new__(cls, g)     </span><br><span class="line">        return super().__new__(cls, g)                 # 3.x</span><br><span class="line">        </span><br><span class="line">a = [1, -1, &#x27;abc&#x27;, 6, [&#x27;x&#x27;, &#x27;y&#x27;], 3] </span><br><span class="line">b = IntTuple(a)</span><br><span class="line">print(b)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="13-元类"><a href="#13-元类" class="headerlink" title="13. 元类"></a>13. 元类</h2><p>metaclass作用：改变类创建的行为</p>
+<p>python中，类本身也是一个对象，简称类对象，有如下特性：可被赋值、复制、作为参数传递、任意增加属性</p>
+<h3 id="13-1-类也是对象"><a href="#13-1-类也是对象" class="headerlink" title="13.1 类也是对象"></a>13.1 类也是对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">A = C</span><br><span class="line">obj = A()</span><br><span class="line"><span class="built_in">print</span> obj.__class__</span><br><span class="line">obj.name = <span class="string">&#x27;jack&#x27;</span></span><br><span class="line"><span class="built_in">print</span> <span class="built_in">hasattr</span>(obj, <span class="string">&#x27;name&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-2-动态创建类"><a href="#13-2-动态创建类" class="headerlink" title="13. 2 动态创建类"></a>13. 2 动态创建类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type(object) -&gt; the object&#x27;s type</span><br><span class="line">type(name, bases, dict) -&gt; a new type</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C = <span class="built_in">type</span>(<span class="string">&#x27;MyClass&#x27;</span>, (<span class="built_in">object</span>,), &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="built_in">print</span> C.__dict__</span><br><span class="line">obj = C()</span><br><span class="line"><span class="built_in">print</span> obj.x</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-3-元类-Meta-Class-：类的类，函数type本质就是一个元类"><a href="#13-3-元类-Meta-Class-：类的类，函数type本质就是一个元类" class="headerlink" title="13.3 元类(Meta Class)：类的类，函数type本质就是一个元类"></a>13.3 元类(Meta Class)：类的类，函数type本质就是一个元类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MyClass = MetaClass()</span><br><span class="line">MyObject = MyClass()</span><br><span class="line"></span><br><span class="line">name = <span class="string">&#x27;Jack&#x27;</span></span><br><span class="line"><span class="built_in">print</span> name.__class__</span><br><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> name.__class__.__class__</span><br><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(<span class="built_in">type</span>(name))</span><br></pre></td></tr></table></figure>
+
+<p>元类的本质：就是能够创建类的东西，type即为一个metaclass</p>
+<h3 id="13-4-自定义metaclass-在类定义中使用-metaclass-属性"><a href="#13-4-自定义metaclass-在类定义中使用-metaclass-属性" class="headerlink" title="13.4 自定义metaclass: 在类定义中使用__metaclass__属性"></a>13.4 自定义metaclass: 在类定义中使用<code>__metaclass__</code>属性</h3><p>先找本地<em>`</em>metaclass__<code>，找不到再向上找父类的</code><strong>metaclass</strong>`,还找不到，则使用type来创建类对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpperAttrMetaclass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, attrs</span>):</span></span><br><span class="line">        uppercase_attrs = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> attrs.items():</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> key.startswith(<span class="string">&#x27;__&#x27;</span>):</span><br><span class="line">                uppercase_attrs[key.upper()] = value</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                uppercase_attrs[key] = value</span><br><span class="line">        <span class="comment">#return super(UpperAttrMetaclass, cls).__new__(cls, name, bases, uppercase_attrs)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">type</span>.__new__(cls, name, bases, uppercase_attrs)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params">metaclass=UpperAttrMetaclass</span>):</span></span><br><span class="line">    bar = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    f = Foo()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">hasattr</span>(f, <span class="string">&#x27;bar&#x27;</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;--bar:&#x27;</span>, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(f.bar)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">hasattr</span>(f, <span class="string">&#x27;BAR&#x27;</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;--BAR:&#x27;</span>, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(f.BAR)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListMetaclass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, attrs</span>):</span></span><br><span class="line">        attrs[<span class="string">&#x27;add&#x27;</span>] = <span class="keyword">lambda</span> self, value: self.append(value)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">type</span>.__new__(cls, name, bases, attrs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyList</span>(<span class="params"><span class="built_in">list</span>, metaclass=ListMetaclass</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    mylist = MyList()</span><br><span class="line">    mylist.append(<span class="number">1</span>)</span><br><span class="line">    mylist.add(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(mylist)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Field</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, column_type</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.column_type = column_type</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&lt;%s:%s&gt;&#x27;</span> % (self.__class__.__name__, self.name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringField</span>(<span class="params">Field</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(StringField, self).__init__(name, <span class="string">&#x27;varchar(100)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerField</span>(<span class="params">Field</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(IntegerField, self).__init__(name, <span class="string">&#x27;bigint&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelClassmeta</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, attrs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&#x27;Model&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">type</span>.__new__(cls, name, bases, attrs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Found model %s&#x27;</span> % name)</span><br><span class="line">        mappings = <span class="built_in">dict</span>()</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> attrs.items():</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">isinstance</span>(v, Field):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;Found mapping: %s ==&gt; %s&#x27;</span> % (k, v))</span><br><span class="line">                mappings[k] = v</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> mappings.keys():</span><br><span class="line">            attrs.pop(k)</span><br><span class="line"></span><br><span class="line">        attrs[<span class="string">&#x27;__mappings__&#x27;</span>] = mappings</span><br><span class="line">        attrs[<span class="string">&#x27;__table__&#x27;</span>] = name.lower()</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">type</span>.__new__(cls, name, bases, attrs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span>(<span class="params"><span class="built_in">dict</span>, metaclass=ModelClassmeta</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Model, self).__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span>(<span class="params">self, key</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self[key]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">raise</span> AttributeError(<span class="string">&#x27;Model has no atribute %s&#x27;</span> % key)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        self[key] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save</span>(<span class="params">self</span>):</span></span><br><span class="line">        fields = []</span><br><span class="line">        params = []</span><br><span class="line">        args = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> self.__mappings__.items():</span><br><span class="line">            fields.append(k)</span><br><span class="line">            params.append(<span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            args.append(<span class="built_in">getattr</span>(self, k, <span class="literal">None</span>))</span><br><span class="line"></span><br><span class="line">        sql = <span class="string">&#x27;insert into %s (%s) values (%s)&#x27;</span> % (self.__table__, <span class="string">&#x27;,&#x27;</span>.join(fields), <span class="string">&#x27;,&#x27;</span>.join(params))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;SQL: %s&#x27;</span> % sql)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Args: %s&#x27;</span> % <span class="built_in">str</span>(args))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">Model</span>):</span></span><br><span class="line">    <span class="built_in">id</span> = IntegerField(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line">    name = StringField(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    email = StringField(<span class="string">&#x27;email&#x27;</span>)</span><br><span class="line">    password = StringField(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    u = User(<span class="built_in">id</span>=<span class="number">1</span>, name=<span class="string">&#x27;alex&#x27;</span>, email=<span class="string">&#x27;alex@sina.com&#x27;</span>, password=<span class="string">&#x27;asjaass&#x27;</span>)</span><br><span class="line">    u.save()</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2015/01/14/Python%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="prev" title="Python 内存管理">
+                                
+                                    Python 内存管理
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2015/01/12/Python%20%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" rel="prev" title="Python 字符操作技巧">
+                                  
+                                      Python 字符操作技巧
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Python 类和实例',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1. 创建和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E5%8D%95%E4%BE%8B%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-text">1.1.1 单例应用实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%B1%BB%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">2. 类属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BD%BF%E7%94%A8property%E5%B1%9E%E6%80%A7"><span class="toc-text">2.1 使用property属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%B1%BB%E6%96%B9%E6%B3%95%E5%92%8C%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-text">2.2 类方法和静态方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Descriptor-%E5%B0%86%E6%9F%90%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E6%8C%87%E6%B4%BE%E7%BB%99%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">2.3 Descriptor: 将某种特殊类型的类的实例指派给另一个类的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">3. 实例的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E7%B1%BB"><span class="toc-text">4. 序列化类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%AF%E8%B0%83%E7%94%A8%E7%B1%BB"><span class="toc-text">5. 可调用类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E7%B1%BB"><span class="toc-text">6. 可迭代类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%B1%BB%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="toc-text">7. 类私有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%AF%E6%AF%94%E8%BE%83%E7%B1%BB"><span class="toc-text">8. 可比较类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%AE%9E%E7%8E%B0%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86"><span class="toc-text">9. 实现上下文管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">10. 类的继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="toc-text">10.1 类和对象在内存中的如何存储？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-python2-%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%E7%9A%84%E6%90%9C%E5%AF%BB%E6%96%B9%E5%BC%8F"><span class="toc-text">10.2 python2 多重继承的搜寻方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="toc-text">10.3 继承和多态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%A6%82%E4%BD%95%E5%9C%A8%E5%88%9B%E5%BB%BA%E5%A4%A7%E9%87%8F%E5%AE%9E%E4%BE%8B%E6%97%B6%EF%BC%8C%E8%8A%82%E7%9C%81%E5%86%85%E5%AD%98%EF%BC%9F"><span class="toc-text">11.  如何在创建大量实例时，节省内存？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1"><span class="toc-text">12. 使用不可变对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%85%83%E7%B1%BB"><span class="toc-text">13. 元类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-%E7%B1%BB%E4%B9%9F%E6%98%AF%E5%AF%B9%E8%B1%A1"><span class="toc-text">13.1 类也是对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB"><span class="toc-text">13. 2 动态创建类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-%E5%85%83%E7%B1%BB-Meta-Class-%EF%BC%9A%E7%B1%BB%E7%9A%84%E7%B1%BB%EF%BC%8C%E5%87%BD%E6%95%B0type%E6%9C%AC%E8%B4%A8%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%85%83%E7%B1%BB"><span class="toc-text">13.3 元类(Meta Class)：类的类，函数type本质就是一个元类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-%E8%87%AA%E5%AE%9A%E4%B9%89metaclass-%E5%9C%A8%E7%B1%BB%E5%AE%9A%E4%B9%89%E4%B8%AD%E4%BD%BF%E7%94%A8-metaclass-%E5%B1%9E%E6%80%A7"><span class="toc-text">13.4 自定义metaclass: 在类定义中使用__metaclass__属性</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

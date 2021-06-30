@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Python 并发编程 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/03/17/Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
+        Python 并发编程
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-17</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="1-多线程"><a href="#1-多线程" class="headerlink" title="1. 多线程"></a>1. 多线程</h2><h3 id="1-1-创建线程"><a href="#1-1-创建线程" class="headerlink" title="1.1 创建线程"></a>1.1 创建线程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;This is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(x))</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">thread_list = [Thread(target=test, args=(i,)) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> thread <span class="keyword">in</span> thread_list:</span><br><span class="line">    thread.start()</span><br><span class="line">    <span class="comment">#thread.join()</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(threading.<span class="built_in">enumerate</span>()))   <span class="comment"># MainThread + 5-Thread</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Thread类实例化参数</span><br><span class="line">target	目标代码</span><br><span class="line">name	Thread名</span><br><span class="line">args	参数</span><br><span class="line">kwargs	参数</span><br><span class="line">daemon=False </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 方法</span><br><span class="line">start()	启动子线程</span><br><span class="line">join(timeout=10)  主线程阻塞，直到子线程结束</span><br><span class="line">ident() 线程标识</span><br><span class="line">is_alive()</span><br><span class="line">daemon</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-锁"><a href="#1-2-锁" class="headerlink" title="1.2 锁"></a>1.2 锁</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, Lock</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">lock = Lock()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span>(<span class="params">Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">global</span> count</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>):</span><br><span class="line">            <span class="keyword">if</span> lock.acquire():</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                lock.release()</span><br><span class="line">        <span class="built_in">print</span>(count)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">thread_list = (MyThread() <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line"><span class="keyword">for</span> thread <span class="keyword">in</span> thread_list:</span><br><span class="line">    thread.start()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建锁</span></span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 锁定</span></span><br><span class="line">lock.acquire(blocking=<span class="literal">True</span>)   <span class="comment"># blocking=False, 不等待</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 释放锁</span></span><br><span class="line">lock.release()</span><br></pre></td></tr></table></figure>
+
+<p>死锁：不同线程持有不同的锁并相互等待的话，就会造成死锁</p>
+<p>解决死锁的办法：尽量不使用多个锁，或设计程序时避免死锁，或为锁添加超时等待。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, Lock</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">lock1 = Lock()</span><br><span class="line">lock2 = Lock()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread1</span>(<span class="params">Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">global</span> count</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>):</span><br><span class="line">            <span class="keyword">if</span> lock1.acquire():</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> lock2.acquire():</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">&#x27;this is lock 2&#x27;</span>)</span><br><span class="line">                    lock2.release()</span><br><span class="line">                lock1.release()</span><br><span class="line">        <span class="built_in">print</span>(count)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread2</span>(<span class="params">Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">global</span> count</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>):</span><br><span class="line">            <span class="keyword">if</span> lock2.acquire():</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> lock1.acquire():</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">&#x27;this is lock 1&#x27;</span>)</span><br><span class="line">                    lock1.release()</span><br><span class="line">                lock2.release()</span><br><span class="line">        <span class="built_in">print</span>(count)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">thread_list = (MyThread1(), MyThread2())</span><br><span class="line"><span class="keyword">for</span> thread <span class="keyword">in</span> thread_list:</span><br><span class="line">    thread.start()</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-Condition"><a href="#1-3-Condition" class="headerlink" title="1.3 Condition"></a>1.3 Condition</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">product = <span class="literal">None</span></span><br><span class="line">con = threading.Condition()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span>():</span></span><br><span class="line">    <span class="keyword">global</span> product</span><br><span class="line">    <span class="keyword">if</span> con.acquire():</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">if</span> product <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="built_in">print</span> <span class="string">&#x27;producing&#x27;</span></span><br><span class="line">                product = <span class="string">&#x27;anything&#x27;</span></span><br><span class="line">                con.notify()</span><br><span class="line">            con.wait()</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line">            </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consume</span>():</span></span><br><span class="line">    <span class="keyword">global</span> product</span><br><span class="line">    <span class="keyword">if</span> con.acquire():</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">if</span> product <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="built_in">print</span> <span class="string">&#x27;consuming&#x27;</span></span><br><span class="line">                product = <span class="literal">None</span></span><br><span class="line">                con.notify()</span><br><span class="line">            con.wait()</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line">            </span><br><span class="line">t1 = threading.Thread(target=produce)</span><br><span class="line">t2 = threading.Thread(target=consume)</span><br><span class="line">t1.start()</span><br><span class="line">t2.start()</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-GIL"><a href="#1-4-GIL" class="headerlink" title="1.4 GIL"></a>1.4 GIL</h3><p>GIL: 解释器全局锁</p>
+<ol>
+<li>全局锁的存在是为了保护多线程对数据的安全访问；</li>
+<li>对于任何Python程序，不管有多少的处理器内核，任何时候都总是只有一个线程在执行；</li>
+<li>全局锁的存在使得一般情况下多线程比单线程的执行速度慢；</li>
+<li>python程序只有在io密集时多线程代码效率有所提高，所以不推荐使用多线程而是多进程；更好的替代方案为协程</li>
+</ol>
+<h2 id="2-多进程"><a href="#2-多进程" class="headerlink" title="2. 多进程"></a>2. 多进程</h2><h3 id="2-1-os-fork"><a href="#2-1-os-fork" class="headerlink" title="2.1 os.fork()"></a>2.1 os.fork()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">pid = os.fork()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;child process&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;PID: %s, PPID: %s&#x27;</span> % (os.getpid(), os.getppid()))</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;parent process&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;PID: %s&#x27;</span> % os.getpid())</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    os.wait()   <span class="comment"># 等待子进程结束释放资源</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>fork缺点:</strong></p>
+<ul>
+<li>兼容性差，只支持POSIX系统</li>
+<li>扩展性差，多进程下，进程管理变得很复杂</li>
+<li>会产生“孤儿”和“僵尸”进程</li>
+</ul>
+<p><strong>fork优点:</strong> 系统自带最接近底层的创建方式运行效率高</p>
+<p><strong>补充知识点:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># os._exit() &amp; sys.exit()</span></span><br><span class="line">os._exit(): 不执行任何的清除工作(例如刷新缓冲区)。适用于退出子进程。参数必须是进程的退出状态，<span class="number">0</span>正常终止。</span><br><span class="line">sys.exit(): 操作系统会回收父进程或其它子进程可能仍然需要的资源。传给os._exit()函数的。</span><br><span class="line">    </span><br><span class="line"><span class="comment"># os.walk()</span></span><br><span class="line">os.walk(top, topdown=<span class="literal">True</span>, onerror=<span class="literal">None</span>, followlinks=<span class="literal">False</span>) 遍历目录树，对根目录top（包括根目录top本身）中的每个目录，它都会<span class="keyword">yield</span>一个<span class="number">3</span>元元组(dirpath, dirnames, filenames)。</span><br><span class="line">dirpath是一个字符串，为目录路径</span><br><span class="line">dirnames是dirpath中子目录的名称列表（不包括<span class="string">&#x27;.&#x27;</span>和<span class="string">&#x27;..&#x27;</span>)。</span><br><span class="line">filenames 是dirpath中非目录文件的名称列表。</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(top_dir, <span class="literal">False</span>):</span><br><span class="line">	<span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">		file_path=os.path.join(dirpath, filename)</span><br><span class="line">        os.remove(file_path)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># os.path.walk(top, func, arg) 不适合对遍历的目录做修改操作，Python 3.x 已去除</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_file</span>(<span class="params">arg, dirpath, filenames</span>):</span></span><br><span class="line">	<span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">		file_path = os.path.join(dirpath, filename)</span><br><span class="line">		<span class="keyword">if</span> os.path.isfile(file_path):</span><br><span class="line">			<span class="built_in">print</span>(file_path)</span><br><span class="line"></span><br><span class="line">os.path.walk(<span class="string">&#x27;/Users/eli/utime&#x27;</span>, find_file, ())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-创建进程"><a href="#2-2-创建进程" class="headerlink" title="2.2 创建进程"></a>2.2 创建进程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;this is process &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    p = Process(target=test)</span><br><span class="line">    p.start()</span><br><span class="line">    p.join()    <span class="comment"># 等待子进程结束</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>join() 主进程阻塞等待子进程结束</li>
+<li>windows系统在子进程结束后立即自动清理子进程。Linux系统，如果没有join()，会在主进程结束后统一清理</li>
+</ul>
+<p><strong>Process分析:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Process</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, group=<span class="literal">None</span>, target=<span class="literal">None</span>, name=<span class="literal">None</span>, args=(<span class="params"></span>), kwargs=&#123;&#125;</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>参数:</p>
+<ul>
+<li>target: 进程执行的目标函数</li>
+<li>name: 进程名</li>
+<li>args: 目标函数参数</li>
+<li>kwargs: 目标函数参数</li>
+</ul>
+<p>方法:</p>
+<ul>
+<li>start(): 启动子进程，每个Process实例只能执行一次，其会创建一个进程执行该类的run方法。</li>
+<li>run(): 子进程需要执行的代码；</li>
+<li>join(): 主进程阻塞等待子进程直到子进程结束才继续执行，可以设置等待超时时间timeout.</li>
+<li>terminate(): 使活着的进程终止；</li>
+<li>is_alive(): 判断子进程是否还活着。</li>
+</ul>
+<h3 id="2-3-进程池Pool"><a href="#2-3-进程池Pool" class="headerlink" title="2.3 进程池Pool"></a>2.3 进程池Pool</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;this is process &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    pool = Pool(<span class="number">5</span>)  <span class="comment"># 设置进程池中进程数</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        pool.apply_async(test)</span><br><span class="line">    pool.close()    <span class="comment"># 关闭进程池</span></span><br><span class="line">    pool.join()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Done&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Pool分析:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pool</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, processes=<span class="literal">None</span>, initializer=<span class="literal">None</span>, initargs=(<span class="params"></span>),</span></span></span><br><span class="line"><span class="params"><span class="function">                 maxtasksperchild=<span class="literal">None</span>, context=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>参数:</p>
+<ul>
+<li>processes：进程池的大小，默认为CPU内核数量</li>
+<li>initializer：创建进程执行的目标函数，其会按照进程池的大小创建相应个数的进程</li>
+<li>initargs：目标函数的参数</li>
+<li>context：代码的上下文</li>
+</ul>
+<p>方法:</p>
+<ul>
+<li>apply(): 使用阻塞方式调用func</li>
+<li>apply_async(): 使用非阻塞方式条用func</li>
+<li>close()：关闭Pool，不再接受新的任务</li>
+<li>terminate()：不管任务是否完成，立即终止</li>
+<li>join()：主进程阻塞，等待子进程的退出，必须在close()后面使用</li>
+<li>map(self, func, iterable, chunksize=None)：多进程执行一个函数，传入不同的参数</li>
+<li>map_async(self, func, iterable, chunksize=None, callback=None,error_callback=None):异步方式的map</li>
+<li>starmap(self, func, iterable, chunksize=None)：和map类似，但iterable参数可解压缩</li>
+<li>starmap_async(self, func, iterable, chunksize=None, callback=None, error_callback=None): 使用异步的方式的- starmap，callback为返回后的处理函数</li>
+</ul>
+<h3 id="2-4-进程锁"><a href="#2-4-进程锁" class="headerlink" title="2.4 进程锁"></a>2.4 进程锁</h3><p>进程不像线程一个共享内存，每个进程都有独立的内存空间。但进程可共享文件系统，例如磁盘，当同时操作文件时，需要锁来确保文件的一致性</p>
+<p>multiprocess.Lock(): 由于进程不共享内存，Lock无法用来同步数据，唯一的用途：当多进程在同一个屏幕上打印数据时，需要它来控制打印顺序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool, Lock</span><br><span class="line"></span><br><span class="line">lock = Lock()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    <span class="keyword">if</span> lock.acquire():</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./test.txt&#x27;</span>, mode=<span class="string">&#x27;r+&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            x = f.read()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x:</span><br><span class="line">                f.write(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                f.seek(<span class="number">0</span>)</span><br><span class="line">                f.write(<span class="built_in">str</span>(<span class="built_in">int</span>(x) + <span class="number">1</span>))</span><br><span class="line">            f.flush()</span><br><span class="line">            f.close()</span><br><span class="line">            lock.release()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    pool = Pool(<span class="number">5</span>)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        pool.apply_async(test)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./test.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="built_in">print</span>(f.read())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-5-Queue"><a href="#2-5-Queue" class="headerlink" title="2.5 Queue"></a>2.5 Queue</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Queue, Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">task_write</span>(<span class="params">queue</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">50</span>):</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Put %s to Queue&#x27;</span> % i</span><br><span class="line">        queue.put(i)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">task_read</span>(<span class="params">queue</span>):</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        result = queue.get()</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Get %s from Queue&#x27;</span> % result</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    queue = Queue()</span><br><span class="line">    pw = Process(target=task_write, args=(queue,))</span><br><span class="line">    pr = Process(target=task_read, args=(queue,))</span><br><span class="line">    pw.start()</span><br><span class="line">    pr.start()</span><br><span class="line">    </span><br><span class="line">    pw.join()</span><br><span class="line">    pr.terminate()      <span class="comment"># 死循环，只能把它terminate掉</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-多进程内存共享："><a href="#2-6-多进程内存共享：" class="headerlink" title="2.6 多进程内存共享："></a>2.6 多进程内存共享：</h3><p>1) multiprocess.Queue</p>
+<p>2) Array, Value (Shared Memory)</p>
+<p>3) Manager (slower than Array/Value)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">manager = Manager()</span><br><span class="line"></span><br><span class="line">d = manager.<span class="built_in">dict</span>()</span><br><span class="line">l = manager.<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">p = Process(target=f, args=(d, l))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-asyncio协程"><a href="#3-asyncio协程" class="headerlink" title="3. asyncio协程"></a>3. asyncio协程</h2><p>协程实现了在单线程下的并发，每个协程共享线程的几乎所有的资源，除了协程自己私有的上下文栈；协程的切换属于程序级别的切换，对于操作系统来说是无感知的，因此切换速度更快、开销更小、效率更高，在有多IO操作的业务中能极大提高效率。</p>
+<h3 id="3-1-创建协程"><a href="#3-1-创建协程" class="headerlink" title="3.1 创建协程"></a>3.1 创建协程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">target_func</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start the func&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(os.getpid())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;end the func&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    coroutine = target_func()</span><br><span class="line">    loop = asyncio.get_event_loop()   <span class="comment"># 创建一个事件循环</span></span><br><span class="line">    loop.run_until_complete(coroutine)</span><br><span class="line">    <span class="built_in">print</span>(os.getpid())</span><br><span class="line">    loop.close()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">func1</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start func 1&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(os.getpid())</span><br><span class="line">    <span class="keyword">await</span> func2()           <span class="comment"># 当前协程挂起</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;end func 1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start func 2&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(os.getpid())</span><br><span class="line">    asyncio.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;end func 2&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    coroutine = func1()</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    loop.run_until_complete(coroutine)</span><br><span class="line">    <span class="built_in">print</span>(os.getpid())</span><br><span class="line">    loop.close()</span><br></pre></td></tr></table></figure>
+
+<p>主要方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">asyncio.get_event_loop(): 创建一个事件循环，所有异步函数都需要在事件循环中运行</span><br><span class="line">asyncio.ensure_future(): 创建一个任务</span><br><span class="line">asyncio.gather(*fs): 添加并行任务</span><br><span class="line">asyncio.wait(fs): 添加并行任务，可以是列表</span><br><span class="line">loop.run_until_complete(func): 添加协程函数同时启动阻塞直到结束</span><br><span class="line">loop.run_forever(): 运行事件无限循环，直到stop被调用</span><br><span class="line">loop.create_task(): 创建一个任务并添加到循环</span><br><span class="line">loop.close(): 关闭循环</span><br><span class="line">loop.time(): 循环开始后到当下的时间</span><br><span class="line">loop.stop(): 停止循环</span><br><span class="line">loop.is_closed(): 判断循环是否关闭</span><br><span class="line">loop.create_future(): 创建一个future对象，推荐使用这个函数而不要直接创建future实例</span><br><span class="line">loop.call_soon(): 设置回调函数，不能接受返回的参数，需要用到future对象，立即回调</span><br><span class="line">loop.call_soon_threadsafe(): 线程安全的对象</span><br><span class="line">loop.call_later(): 异步返回后开始算起，延迟回调</span><br><span class="line">loop.call_at(): 循环开始多少s回调</span><br><span class="line">loop.call_exception_handler(): 错误处理</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>主要的类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Future: 主要用来保存任务的状态</span></span><br><span class="line">future = Future()</span><br><span class="line">future.result() <span class="comment"># 获取任务的结果</span></span><br><span class="line">future.remove_done_callback(fn) <span class="comment"># 删除所有的回调函数并返回个数</span></span><br><span class="line">future.set_result(<span class="string">&#x27;result&#x27;</span>) <span class="comment"># 设置任务的结果，必须在result()之前执行，否则报错</span></span><br><span class="line">future.exception() <span class="comment"># 获取任务的错误信息</span></span><br><span class="line">future.set_exception(<span class="string">&#x27;bad&#x27;</span>) <span class="comment"># 设置任务的错误信息</span></span><br><span class="line">future.add_done_callback(<span class="string">&#x27;fn&#x27;</span>) <span class="comment"># 添加回调函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Task: Future的子类，扩展了Future的功能</span></span><br><span class="line">current_task() <span class="comment"># 返回循环当前的任务，类方法</span></span><br><span class="line">all_tasks() <span class="comment"># 返回事件循环所有的任务</span></span><br><span class="line">get_stack()	<span class="comment"># 获取其他协程的堆栈列表</span></span><br><span class="line">print_stack	<span class="comment"># 输出其他协程的堆栈列表</span></span><br><span class="line">cancel		<span class="comment"># 取消任务</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-多任务"><a href="#3-2-多任务" class="headerlink" title="3.2 多任务"></a>3.2 多任务</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">target_func</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    x = loop.run_until_complete(asyncio.gather(*(target_func(i) <span class="keyword">for</span> i <span class="keyword">in</span> (<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>))))</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-使用Future类来作为第三方保存结果"><a href="#3-3-使用Future类来作为第三方保存结果" class="headerlink" title="3.3 使用Future类来作为第三方保存结果"></a>3.3 使用Future类来作为第三方保存结果</h3><p>run_forever()不能直接得到异步函数的返回结果，需要使用Future类来作为第三方保存结果,同时设置回调函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">target_func</span>(<span class="params">name, future</span>):</span></span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">    future.set_result(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_result</span>(<span class="params">loop, future</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(future.result())</span><br><span class="line">    loop.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    future = asyncio.Future(loop=loop)</span><br><span class="line">    res = asyncio.ensure_future(target_func(<span class="string">&#x27;A&#x27;</span>, future))</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line">    future.add_done_callback(partial(get_result, loop))</span><br><span class="line"></span><br><span class="line">    loop.run_forever()</span><br><span class="line">    loop.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-回调"><a href="#3-4-回调" class="headerlink" title="3.4 回调"></a>3.4 回调</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">target_func</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;the func end&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_result</span>(<span class="params">loop</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;xxxxx&#x27;</span>)</span><br><span class="line">    loop.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    loop.create_task(target_func())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># loop.call_soon(partial(get_result, loop)) # 设置回掉函数，不能接受返回的参数，需要用到future对象</span></span><br><span class="line">    <span class="comment"># loop.call_soon_threadsafe(partial(get_result, loop))    # 线程安全</span></span><br><span class="line">    <span class="comment"># loop.call_later(delay=5, callback=partial(get_result, loop))    # 延迟5s后回掉</span></span><br><span class="line">    <span class="comment"># loop.call_at(when=8000, callback=partial(get_result, loop))       # 循环开始第8秒回调</span></span><br><span class="line">    loop.call_exception_handler()       <span class="comment"># 错误处理</span></span><br><span class="line"></span><br><span class="line">    loop.run_forever()</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-异步网络IO"><a href="#3-5-异步网络IO" class="headerlink" title="3.5 异步网络IO"></a>3.5 异步网络IO</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> aiohttp <span class="keyword">import</span> ClientSession</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">func</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start func&#x27;</span>)</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(url=<span class="string">&#x27;http://www.baidu.com&#x27;</span>) <span class="keyword">as</span> resp:</span><br><span class="line">            data = <span class="keyword">await</span> resp.read()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;end func&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    tasks = [func() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line">    ts = asyncio.gather(*tasks)</span><br><span class="line">    t = time.time()</span><br><span class="line">    loop.run_until_complete(ts)</span><br><span class="line">    <span class="built_in">print</span>(time.time() - t)</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-协程Queue"><a href="#3-6-协程Queue" class="headerlink" title="3.6 协程Queue"></a>3.6 协程Queue</h3><p>asyncio模块也有自己的queue实现生产消费模式，只要有三种队列：Queue(先进先出),PriorityQueue(优先级队列),LifoQueue(栈)，但是Queue不是线程安全的类，在多进程或多线程的情况下不要使用这个队列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> asyncio <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">producer</span>(<span class="params">q: Queue</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="keyword">await</span> q.put(i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">consumer</span>(<span class="params">q: Queue</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        x = <span class="keyword">await</span> q.get()</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    q = Queue(<span class="number">100</span>)</span><br><span class="line">    task = asyncio.gather(producer(q), consumer(q))</span><br><span class="line">    loop.run_until_complete(task)</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-gevent协程"><a href="#4-gevent协程" class="headerlink" title="4. gevent协程"></a>4. gevent协程</h2><h3 id="4-1-greenlet协程"><a href="#4-1-greenlet协程" class="headerlink" title="4.1 greenlet协程"></a>4.1 greenlet协程</h3><p>greenlet模块，程序显性主动控制协程切换，但是对原生做了一定的封装使得切换变得简单一些。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> greenlet <span class="keyword">import</span> greenlet</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>(<span class="params">g1: greenlet, g2: greenlet</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;----A----&#x27;</span>)</span><br><span class="line">        g1.switch(g2, g1)</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span>(<span class="params">g1: greenlet, g2: greenlet</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;----B----&#x27;</span>)</span><br><span class="line">        g1.switch(g2, g1)</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    t = time.time()</span><br><span class="line">    g1 = greenlet(func1)</span><br><span class="line">    g2 = greenlet(func2)</span><br><span class="line"></span><br><span class="line">    g1.switch(g2, g1)</span><br><span class="line">    <span class="built_in">print</span>(time.time() - t)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>greenlet类的主要方法：</p>
+<ul>
+<li>switch()：用来切换协程</li>
+<li>throw()：用来抛出异常同时终止程序</li>
+</ul>
+<h3 id="4-2-gevent协程"><a href="#4-2-gevent协程" class="headerlink" title="4.2 gevent协程"></a>4.2 gevent协程</h3><ul>
+<li>gevent是对greenlet的封装，使其变得更加的易用</li>
+<li>gevent采用了隐式启动事件循环，即在需要阻塞的时候开启一个专门的协程来启动事件循环</li>
+<li>如果一个任务没有io操作，那么他会一直执行直到完成；其他协程没有执行的机会</li>
+<li>自动识别io事件，放弃CPU控制时间</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey; monkey.patch_all()</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;---start---&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(n))</span><br><span class="line">    resp = requests.get(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(resp)</span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    jobs = [gevent.spawn(func, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">4</span>)]</span><br><span class="line">    gevent.joinall(jobs)</span><br><span class="line">    <span class="built_in">print</span>([job.value <span class="keyword">for</span> job <span class="keyword">in</span> jobs])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>gevent模块分析</strong></p>
+<p>1) gevent顶层方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gevent.spawn():创建一个普通的Greenlet对象并切换；</span><br><span class="line">gevent.spawn_later(seconds=<span class="number">3</span>) <span class="comment"># 延时创建一个普通的Greenlet对象并切换</span></span><br><span class="line">gevent.spawn_raw() <span class="comment"># 创建的协程对象属于一个组</span></span><br><span class="line">gevent.getcurrent() <span class="comment"># 返回当前正在执行的greenlet</span></span><br><span class="line">gevent.joinall(jobs)：将协程任务添加到事件循环，接收一个任务列表</span><br><span class="line">gevent.wait() <span class="comment"># 可以替代join函数等待循环结束，也可以传入协程对象列表</span></span><br><span class="line">gevent.kill() <span class="comment"># 杀死一个协程</span></span><br><span class="line">gevent.killall() <span class="comment"># 杀死一个协程列表里的所有协程</span></span><br><span class="line">monkey.patch_all()：非常重要，会自动将python的一些标准模块替换成gevent框架</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2) 设置强制切换时间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 手动设置CPU密集型最大执行时间，如果是单线程的协程不需要关注这个</span></span><br><span class="line">sys.setcheckinterval(n):每n条执行尝试进行线程切换,n必须是<span class="built_in">int</span></span><br><span class="line">sys.getswitchinterval() <span class="comment"># 默认5ms切换</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3) greenlet对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Greenlet对象</span></span><br><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> Greenlet</span><br><span class="line"></span><br><span class="line"><span class="comment"># Greenlet对象创建</span></span><br><span class="line">job = Greenlet(target0, <span class="number">3</span>)</span><br><span class="line">Greenlet.spawn() <span class="comment"># 创建一个协程并启动</span></span><br><span class="line">Greenlet.spawn_later(seconds=<span class="number">3</span>) <span class="comment"># 延时启动</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 协程启动</span></span><br><span class="line">job.start() <span class="comment"># 将协程加入循环并启动协程</span></span><br><span class="line">job.start_later(<span class="number">3</span>) <span class="comment"># 延时启动</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待任务完成</span></span><br><span class="line">job.join() <span class="comment"># 等待任务完成</span></span><br><span class="line">job.get() <span class="comment"># 获取协程返回的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 任务中断和判断任务状态</span></span><br><span class="line">job.dead() <span class="comment"># 判断协程是否死亡</span></span><br><span class="line">job.kill() <span class="comment"># 杀死正在运行的协程并唤醒其他的协程，这个协程将不会再执行，可以</span></span><br><span class="line">job.ready() <span class="comment"># 任务完成返回一个真值</span></span><br><span class="line">job.successful() <span class="comment"># 任务成功完成返回真值，否则抛出错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取属性</span></span><br><span class="line">job.loop <span class="comment"># 时间循环对象</span></span><br><span class="line">job.value <span class="comment"># 获取返回的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 捕捉异常</span></span><br><span class="line">job.exception <span class="comment"># 如果运行有错误，获取它</span></span><br><span class="line">job.exc_info <span class="comment"># 错误的详细信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置回调函数</span></span><br><span class="line">job.rawlink(back) <span class="comment"># 普通回调，将job对象作为回调函数的参数</span></span><br><span class="line">job.unlink() <span class="comment"># 删除回调函数</span></span><br><span class="line"><span class="comment"># 执行成功的回调函数</span></span><br><span class="line">job.link_value(back)</span><br><span class="line"><span class="comment"># 执行失败的回调函数</span></span><br><span class="line">job.link_exception(back)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-协程池Pool，限制并发"><a href="#4-3-协程池Pool，限制并发" class="headerlink" title="4.3 协程池Pool，限制并发"></a>4.3 协程池Pool，限制并发</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;----start----&#x27;</span>)</span><br><span class="line">    resp = requests.get(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(resp)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;----end----&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">from</span> gevent.pool <span class="keyword">import</span> Pool</span><br><span class="line">    pool = Pool(<span class="number">5</span>)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        pool.apply_async(func)</span><br><span class="line">    pool.join()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>gevent.Pool的特殊方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pool.wait_available():等待直到有一个协程有结果</span><br><span class="line">pool.dd(greenlet):向进程池添加一个方法并跟踪，非阻塞</span><br><span class="line">pool.discard(greenlet):停止跟踪某个协程</span><br><span class="line">pool.start(greenlet):加入并启动协程</span><br><span class="line">pool.join():阻塞等待结束</span><br><span class="line">pool.kill():杀死所有跟踪的协程</span><br><span class="line">pool.killone(greenlet):杀死一个协程</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Queue"><a href="#5-Queue" class="headerlink" title="5. Queue"></a>5. Queue</h2><p>单线程、多线程之间、进程之间、协程之间很多时候需要协同完成工作，这个时候它们需要进行通讯。或者说为了解耦，普遍采用Queue，生产消费模式。</p>
+<h3 id="5-1-deque"><a href="#5-1-deque" class="headerlink" title="5.1 deque"></a>5.1 deque</h3><p>deque一般用在定长队列，多余的数据会被丢弃，这个队列是线程非安全的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">q = deque(iterable=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], maxlen=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尾部添加和弹出</span></span><br><span class="line">q.append(<span class="number">3</span>)</span><br><span class="line">q.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 头部添加和弹出</span></span><br><span class="line">q.appendleft(<span class="number">5</span>)</span><br><span class="line">q.popleft()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扩展队列</span></span><br><span class="line">q.extend([<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br><span class="line">q.extendleft([<span class="number">0</span>, <span class="number">9</span>, <span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入, 队列达到最大，抛出异常</span></span><br><span class="line">q.pop()</span><br><span class="line">q.insert(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除元素，所有为3的元素</span></span><br><span class="line">q.remove(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制, q修改，q2不变</span></span><br><span class="line">q2 = q.copy()</span><br><span class="line">q.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 变换</span></span><br><span class="line">q.reverse()</span><br><span class="line">q.rotate(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计</span></span><br><span class="line">n = q.count(<span class="number">0</span>)</span><br><span class="line">x = q.index(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空队列</span></span><br><span class="line">q.clear()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-Queue"><a href="#5-2-Queue" class="headerlink" title="5.2 Queue"></a>5.2 Queue</h3><p>Queue提供更加完整成熟的队列操作，相对于deque来说偏重型，他是线程安全的队列。</p>
+<p><strong>方法和属性:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue, deque</span><br><span class="line"></span><br><span class="line">q = Queue(maxsize=<span class="number">5</span>) <span class="comment">#maxsize&lt;=0，队列长度没有限制，这个Queue是线程安全的，通过锁机制保证</span></span><br><span class="line"><span class="built_in">print</span>(q.queue) <span class="comment"># 一个deque队列</span></span><br><span class="line"><span class="built_in">print</span>(q.mutex) <span class="comment"># 队列的线程锁</span></span><br><span class="line"><span class="built_in">print</span>(q.not_empty) <span class="comment"># 非空通知，用在多线程</span></span><br><span class="line"><span class="built_in">print</span>(q.not_full) <span class="comment"># 非满通知，用在多线程</span></span><br><span class="line"><span class="built_in">print</span>(q.all_tasks_done) <span class="comment"># 完成的任务</span></span><br><span class="line"><span class="built_in">print</span>(q.maxsize)</span><br><span class="line"><span class="built_in">print</span>(q.unfinished_tasks) <span class="comment"># 队列未完成的任务数量，即队列目前的数目</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据存取</span></span><br><span class="line">q.put(<span class="number">3</span>, block=<span class="literal">True</span>, timeout=<span class="number">3</span>) <span class="comment"># 向队列左边添加数据，block为True队列满了阻塞等待，block为false则直接抛出异常</span></span><br><span class="line">q.get(block=<span class="literal">True</span>, timeout=<span class="number">3</span>) <span class="comment"># 队列取出数据，超时抛出异常，block为false忽略timeout</span></span><br><span class="line"><span class="comment"># q.get_nowait() # 立即获取，没有抛出异常</span></span><br><span class="line">q.put_nowait(<span class="number">4</span>) <span class="comment"># 立即插入，已满抛出异常</span></span><br><span class="line"><span class="comment"># 判断</span></span><br><span class="line">q.full() <span class="comment"># 判断当前队列是否已满，满了返回True</span></span><br><span class="line">q.empty() <span class="comment"># 判断当前队列是否为空，空返回True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计</span></span><br><span class="line">q.task_done() <span class="comment"># 用来通知队列任务完成</span></span><br><span class="line">q.qsize() <span class="comment"># 当前队列的任务数量，不绝对可靠</span></span><br><span class="line"></span><br><span class="line">q.join() <span class="comment"># 阻塞直到所有的任务完成，即q.unfinished_tasks降为0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-1-线程间通信："><a href="#5-2-1-线程间通信：" class="headerlink" title="5.2.1 线程间通信："></a>5.2.1 线程间通信：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span>(<span class="params">queue: Queue</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> queue.full():</span><br><span class="line">            queue.put_nowait(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span>(<span class="params">queue: Queue</span>):</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> queue.empty():</span><br><span class="line">            <span class="built_in">print</span>(queue.get_nowait())</span><br><span class="line">            queue.task_done()   <span class="comment"># 完成任务</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    q = Queue(<span class="number">5</span>)</span><br><span class="line">    t1 = Thread(target=consumer, args=(q,))</span><br><span class="line">    t2 = Thread(target=producer, args=(q,))</span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-2-进程间通信："><a href="#5-2-2-进程间通信：" class="headerlink" title="5.2.2 进程间通信："></a>5.2.2 进程间通信：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span>(<span class="params">queue: Queue</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> queue.full():</span><br><span class="line">            queue.put_nowait(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span>(<span class="params">queue: Queue</span>):</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> queue.empty():</span><br><span class="line">            <span class="built_in">print</span>(queue.get_nowait())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    q = Queue(<span class="number">5</span>)</span><br><span class="line">    t1 = Process(target=consumer, args=(q,))</span><br><span class="line">    t2 = Process(target=producer, args=(q,))</span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line">    t1.join()</span><br><span class="line">    t2.join()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-3-gevent协程间通信"><a href="#5-2-3-gevent协程间通信" class="headerlink" title="5.2.3 gevent协程间通信"></a>5.2.3 gevent协程间通信</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gevent.queue <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span>(<span class="params">queue: Queue, n</span>):</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start--put--&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(n))</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        queue.put(i)</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">str</span>(i) + <span class="string">&#x27; put &#x27;</span> + <span class="built_in">str</span>(n))</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">100</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span>(<span class="params">queue: Queue, n</span>):</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;start--get--&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(n))</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">str</span>(queue.get()) + <span class="string">&#x27; get &#x27;</span> + <span class="built_in">str</span>(n))</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">100</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    q = Queue(<span class="number">5</span>)</span><br><span class="line">    job1 = [gevent.spawn(producer, q, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line">    job2 = [gevent.spawn(consumer, q, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line">    job1.extend(job2)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(job1))</span><br><span class="line">    gevent.joinall(job1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><h3 id="6-1-进程、线程和协程的资源比较"><a href="#6-1-进程、线程和协程的资源比较" class="headerlink" title="6.1 进程、线程和协程的资源比较"></a>6.1 进程、线程和协程的资源比较</h3><p>1) 进程：</p>
+<p>创建一个进程后，每个进程拥有自己独立的内存地址空间，代码段，数据段，BSS段，堆，栈等所有用户空间的信息；</p>
+<p>多进程中，子进程复制主进程的几乎所有信息，除了pid等特殊信息；</p>
+<p>2) 线程：</p>
+<p>一个进程下多个线程，多个线程共享进程的进程代码段，进程的公有数据（堆），进程的所拥有其他辅助资源；</p>
+<p>各个线程独立拥有的资源包括：线程id，程序计数器，一个栈，计数器寄存器和栈用来保存线程的执行历史和执行状态。</p>
+<p>3) 协程：</p>
+<p>协程可以看做轻量级的线程，即协程是在线程下开启，多协程在单线程下实现并发，而操作系统最多只能感知到线程，也就是说协程的切换对于操作系统来说是无感知的，属于程序级别的切换；</p>
+<p>多个协程共享单线程的代码段、公有数据（堆）等；</p>
+<p>每个协程拥有自己的栈来保存上下文状态，协程的切换开销更小，对操作系统来说，会认为一个开启了多协程的线程一直在计算；</p>
+<p>协程的优势在于切换的代价更小，因此CPU的有效利用率得到了提高。</p>
+<p>python的协程主流通过gevent和asyncio模块实现，它们的核心原理都是底层用代码创建事件循环来对多个协程的上下文进行调度；</p>
+<h3 id="6-2-进程、线程和协程的应用场景"><a href="#6-2-进程、线程和协程的应用场景" class="headerlink" title="6.2 进程、线程和协程的应用场景"></a>6.2 进程、线程和协程的应用场景</h3><ul>
+<li>python的代码尽量避免使用多线程；</li>
+<li>如果上下文有一段代码可以分成相对独立的两个部分，如果独立的两个部分是CPU密集型，那么使用多进程；如果是IO密集型，那么使用协程；如果两者都涉及，可以考虑使用子进程中运行协程。</li>
+<li>业务代码为了快速创建协程或进程，同时增强代码的可读性，推荐使用匿名函数。</li>
+</ul>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/04/12/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%92%8C%E5%BC%82%E6%AD%A5/" rel="prev" title="select、poll和epoll">
+                                
+                                    select、poll和epoll
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/01/29/Redis/" rel="prev" title="Redis">
+                                  
+                                      Redis
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/redis/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> redis</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Python 并发编程',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">1. 多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-text">1.1 创建线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%94%81"><span class="toc-text">1.2 锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Condition"><span class="toc-text">1.3 Condition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-GIL"><span class="toc-text">1.4 GIL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">2. 多进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-os-fork"><span class="toc-text">2.1 os.fork()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.2 创建进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%BF%9B%E7%A8%8B%E6%B1%A0Pool"><span class="toc-text">2.3 进程池Pool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%BF%9B%E7%A8%8B%E9%94%81"><span class="toc-text">2.4 进程锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Queue"><span class="toc-text">2.5 Queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%86%85%E5%AD%98%E5%85%B1%E4%BA%AB%EF%BC%9A"><span class="toc-text">2.6 多进程内存共享：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-asyncio%E5%8D%8F%E7%A8%8B"><span class="toc-text">3. asyncio协程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%88%9B%E5%BB%BA%E5%8D%8F%E7%A8%8B"><span class="toc-text">3.1 创建协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%A4%9A%E4%BB%BB%E5%8A%A1"><span class="toc-text">3.2 多任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BD%BF%E7%94%A8Future%E7%B1%BB%E6%9D%A5%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BF%9D%E5%AD%98%E7%BB%93%E6%9E%9C"><span class="toc-text">3.3 使用Future类来作为第三方保存结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%9B%9E%E8%B0%83"><span class="toc-text">3.4 回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9CIO"><span class="toc-text">3.5 异步网络IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%8D%8F%E7%A8%8BQueue"><span class="toc-text">3.6 协程Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-gevent%E5%8D%8F%E7%A8%8B"><span class="toc-text">4. gevent协程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-greenlet%E5%8D%8F%E7%A8%8B"><span class="toc-text">4.1 greenlet协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-gevent%E5%8D%8F%E7%A8%8B"><span class="toc-text">4.2 gevent协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%8D%8F%E7%A8%8B%E6%B1%A0Pool%EF%BC%8C%E9%99%90%E5%88%B6%E5%B9%B6%E5%8F%91"><span class="toc-text">4.3 协程池Pool，限制并发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Queue"><span class="toc-text">5. Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-deque"><span class="toc-text">5.1 deque</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Queue"><span class="toc-text">5.2 Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%9A"><span class="toc-text">5.2.1 线程间通信：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%9A"><span class="toc-text">5.2.2 进程间通信：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-3-gevent%E5%8D%8F%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">5.2.3 gevent协程间通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93"><span class="toc-text">6. 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%AF%94%E8%BE%83"><span class="toc-text">6.1 进程、线程和协程的资源比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">6.2 进程、线程和协程的应用场景</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

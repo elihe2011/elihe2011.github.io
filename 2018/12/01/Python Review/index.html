@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Python Review | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2018/12/01/Python%20Review/">
+        Python Review
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-12-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h1><h2 id="1-1-函数参数"><a href="#1-1-函数参数" class="headerlink" title="1.1 函数参数"></a>1.1 函数参数</h2><ul>
+<li>If you pass a <em>mutable</em> object into a method, the method gets a reference to that same object and you can mutate it to your heart’s delight, but if you rebind the reference in the method, the outer scope will know nothing about it, and after you’re done, the outer reference will still point at the original object.</li>
+<li>If you pass an <em>immutable</em> object to a method, you still can’t rebind the outer reference, and you can’t even mutate the object.</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="1-2-元类"><a href="#1-2-元类" class="headerlink" title="1.2 元类"></a>1.2 元类</h2><p>A metaclass is the class of a class. Like a class defines how an instance of the class behaves, a metaclass defines how a class behaves. A class is an instance of a metaclass.</p>
+<p><code>type</code> is the usual metaclass in Python. To create your own metaclass in Python you really just want to subclass <code>type</code>.</p>
+<p>Combined with the normal <code>__init__</code> and <code>__new__</code> methods, metaclasses therefore allow you to do ‘extra things’ when creating a class, like registering the new class with some registry, or even replace the class with something else entirely.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_hook</span>(<span class="params">f</span>):</span></span><br><span class="line">    f.is_hook = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyType</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, attrs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> name.startswith(<span class="string">&#x27;None&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        newattrs = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> attrname, attrvalue <span class="keyword">in</span> attrs.iteritems():</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">getattr</span>(attrvalue, <span class="string">&#x27;is_hook&#x27;</span>, <span class="number">0</span>):</span><br><span class="line">                newattrs[<span class="string">&#x27;__%s__&#x27;</span> % attrname] = attrvalue</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                newattrs[attrname] = attrvalue</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>(MyType, cls).__new__(cls, name, bases, newattrs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, bases, attrs</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MyType, self).__init__(name, bases, attrs)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># classregistry.registry(self, self.interfaces)</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Would register class %s now.&quot;</span> % self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span>(<span class="params">self, other</span>):</span></span><br><span class="line">        <span class="comment"># Alternatively, to autogenerate the classname as well as the class:</span></span><br><span class="line">        <span class="comment"># return type(self.__name__ + other.__name__, (self, other), &#123;&#125;)</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">AutoClass</span>(<span class="params">self, other</span>):</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> AutoClass</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unregister</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># classregistry.unregister(self)</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Would unregister class %s now.&quot;</span> % self</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span>:</span></span><br><span class="line">    __metaclass__ = MyType</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoneSample</span>(<span class="params">MyObject</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Will print &quot;NoneType None&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(NoneSample), <span class="built_in">repr</span>(NoneSample)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span>(<span class="params">MyObject</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.value = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @make_hook</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, other</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__class__(self.value + other.value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Will unregister Example</span></span><br><span class="line">Example.unregister()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inst = Example(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span> inst + inst</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sibling</span>(<span class="params">MyObject</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ExampleSibling = Example + Sibling</span><br><span class="line"><span class="comment"># ExampleSibling is now a subclass of both Example and Sibling (with no</span></span><br><span class="line"><span class="comment"># content of its own) although it will believe it&#x27;s called &#x27;AutoClass&#x27;</span></span><br><span class="line"><span class="built_in">print</span> ExampleSibling</span><br><span class="line"><span class="built_in">print</span> ExampleSibling.__mro__</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>SQLAlchemy Model:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeclarativeMeta</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">cls, classname, bases, dict_</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;_decl_class_registry&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> cls.__dict__:</span><br><span class="line">            _as_declarative(cls, classname, cls.__dict__)</span><br><span class="line">        <span class="built_in">type</span>.__init__(cls, classname, bases, dict_)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span>(<span class="params">cls, key, value</span>):</span></span><br><span class="line">        _add_attribute(cls, key, value)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_BoundDeclarativeMeta</span>(<span class="params">DeclarativeMeta</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, d</span>):</span></span><br><span class="line">        <span class="comment"># if tablename is set explicitly, move it to the cache attribute so</span></span><br><span class="line">        <span class="comment"># that future subclasses still have auto behavior</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;__tablename__&#x27;</span> <span class="keyword">in</span> d:</span><br><span class="line">            d[<span class="string">&#x27;_cached_tablename&#x27;</span>] = d.pop(<span class="string">&#x27;__tablename__&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> DeclarativeMeta.__new__(cls, name, bases, d)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, bases, d</span>):</span></span><br><span class="line">        bind_key = d.pop(<span class="string">&#x27;__bind_key__&#x27;</span>, <span class="literal">None</span>) <span class="keyword">or</span> <span class="built_in">getattr</span>(self, <span class="string">&#x27;__bind_key__&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        DeclarativeMeta.__init__(self, name, bases, d)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> bind_key <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> <span class="built_in">hasattr</span>(self, <span class="string">&#x27;__table__&#x27;</span>):</span><br><span class="line">            self.__table__.info[<span class="string">&#x27;bind_key&#x27;</span>] = bind_key</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_declarative_constructor</span>(<span class="params">self, **kwargs</span>):</span></span><br><span class="line">    cls_ = <span class="built_in">type</span>(self)</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> kwargs:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(cls_, k):</span><br><span class="line">            <span class="keyword">raise</span> TypeError(</span><br><span class="line">                <span class="string">&quot;%r is an invalid keyword argument for %s&quot;</span> %</span><br><span class="line">                (k, cls_.__name__))</span><br><span class="line">        <span class="built_in">setattr</span>(self, k, kwargs[k])</span><br><span class="line">_declarative_constructor.__name__ = <span class="string">&#x27;__init__&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">declarative_base</span>(<span class="params">bind=<span class="literal">None</span>, metadata=<span class="literal">None</span>, mapper=<span class="literal">None</span>, cls=<span class="built_in">object</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                     name=<span class="string">&#x27;Base&#x27;</span>, constructor=_declarative_constructor,</span></span></span><br><span class="line"><span class="params"><span class="function">                     class_registry=<span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                     metaclass=DeclarativeMeta</span>):</span></span><br><span class="line">    lcl_metadata = metadata <span class="keyword">or</span> MetaData()</span><br><span class="line">    <span class="keyword">if</span> bind:</span><br><span class="line">        lcl_metadata.bind = bind</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> class_registry <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        class_registry = weakref.WeakValueDictionary()</span><br><span class="line"></span><br><span class="line">    bases = <span class="keyword">not</span> <span class="built_in">isinstance</span>(cls, <span class="built_in">tuple</span>) <span class="keyword">and</span> (cls,) <span class="keyword">or</span> cls</span><br><span class="line">    class_dict = <span class="built_in">dict</span>(_decl_class_registry=class_registry,</span><br><span class="line">                      metadata=lcl_metadata)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(cls, <span class="built_in">type</span>):</span><br><span class="line">        class_dict[<span class="string">&#x27;__doc__&#x27;</span>] = cls.__doc__</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> constructor:</span><br><span class="line">        class_dict[<span class="string">&#x27;__init__&#x27;</span>] = constructor</span><br><span class="line">    <span class="keyword">if</span> mapper:</span><br><span class="line">        class_dict[<span class="string">&#x27;__mapper_cls__&#x27;</span>] = mapper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> metaclass(name, bases, class_dict)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_declarative_base</span>(<span class="params">self, model, metadata=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Creates the declarative base.&quot;&quot;&quot;</span></span><br><span class="line">    base = declarative_base(cls=model, name=<span class="string">&#x27;Model&#x27;</span>,</span><br><span class="line">                            metadata=metadata,</span><br><span class="line">                            metaclass=_BoundDeclarativeMeta)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">getattr</span>(base, <span class="string">&#x27;query_class&#x27;</span>, <span class="literal">None</span>):</span><br><span class="line">        base.query_class = self.Query</span><br><span class="line"></span><br><span class="line">    base.query = _QueryProperty(self)</span><br><span class="line">    <span class="keyword">return</span> base</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-Instance-Class-and-Static-Methods"><a href="#1-3-Instance-Class-and-Static-Methods" class="headerlink" title="1.3 Instance, Class, and Static Methods"></a>1.3 Instance, Class, and Static Methods</h2><p>Static methods can <u>neither access the object instance state nor the class state</u>. They work like regular functions but belong to the class’s (and every instance’s) <strong>namespace</strong>.</p>
+<h2 id="1-4-类变量和实例变量"><a href="#1-4-类变量和实例变量" class="headerlink" title="1.4 类变量和实例变量"></a>1.4 类变量和实例变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    x = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, y</span>):</span></span><br><span class="line">        self.y = y</span><br><span class="line">        </span><br><span class="line">A.__dict__</span><br><span class="line">&gt;&gt; mappingproxy(&#123;<span class="string">&#x27;__module__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;x&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">              <span class="string">&#x27;__init__&#x27;</span>: &lt;function __main__.A.__init__(self, y)&gt;,</span><br><span class="line">              <span class="string">&#x27;__dict__&#x27;</span>: &lt;attribute <span class="string">&#x27;__dict__&#x27;</span> of <span class="string">&#x27;A&#x27;</span> objects&gt;,</span><br><span class="line">              <span class="string">&#x27;__weakref__&#x27;</span>: &lt;attribute <span class="string">&#x27;__weakref__&#x27;</span> of <span class="string">&#x27;A&#x27;</span> objects&gt;,</span><br><span class="line">              <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>&#125;)</span><br><span class="line"></span><br><span class="line">a = A(<span class="number">2</span>)</span><br><span class="line">a.__dict__</span><br><span class="line">&gt;&gt; &#123;<span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">a.x</span><br><span class="line">&gt;&gt; <span class="number">1</span></span><br><span class="line"></span><br><span class="line">a.x = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">a.__dict__</span><br><span class="line">&gt;&gt; &#123;<span class="string">&#x27;y&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;x&#x27;</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-自省"><a href="#1-5-自省" class="headerlink" title="1.5 自省"></a>1.5 自省</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(obj)</span><br><span class="line"><span class="built_in">dir</span>(obj)</span><br><span class="line"><span class="built_in">isinstance</span>(obj, cls)</span><br><span class="line"><span class="built_in">hasattr</span>(obj, attr)</span><br><span class="line"><span class="built_in">getattr</span>(obj, attr)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-6-字典推导"><a href="#1-6-字典推导" class="headerlink" title="1.6 字典推导"></a>1.6 字典推导</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = [(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>), (<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line">&#123;x: y <span class="keyword">for</span> x, y <span class="keyword">in</span> m&#125;</span><br><span class="line">&gt;&gt; &#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-7-私有属性"><a href="#1-7-私有属性" class="headerlink" title="1.7 私有属性"></a>1.7 私有属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self._semiprivate = <span class="number">1</span></span><br><span class="line">        self.__superprivate = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">foo = Foo()</span><br><span class="line">foo._semiprivate        <span class="comment"># 1</span></span><br><span class="line">foo.__superprivate      <span class="comment"># AttributeError</span></span><br><span class="line">foo._Foo__superprivate  <span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># _foo: weak &quot;internal use&quot;, not work when from M import *</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># __spam, name mangling, is textually replaced with  _classname__spam</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-8-字符串格式化-和-format"><a href="#1-8-字符串格式化-和-format" class="headerlink" title="1.8 字符串格式化:%和.format"></a>1.8 字符串格式化:%和.format</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;%s&#x27;</span> % <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-9-迭代器和生成器"><a href="#1-9-迭代器和生成器" class="headerlink" title="1.9 迭代器和生成器"></a>1.9 迭代器和生成器</h2><p><strong>Iterables</strong>: Everything you can use “<code>for... in...</code>“ on is an iterable; <code>lists</code>, <code>strings</code>, files…</p>
+<p><strong>Generators</strong>: Generators are iterators, a kind of iterable <strong>you can only iterate over once</strong>. Generators do not store all the values in memory, <strong>they generate the values on the fly</strong></p>
+<h2 id="1-10-args-and-kwargs"><a href="#1-10-args-and-kwargs" class="headerlink" title="1.10 *args and **kwargs"></a>1.10 <code>*args</code> and <code>**kwargs</code></h2><ul>
+<li><code>*args</code> = list of arguments - as positional arguments</li>
+<li><code>**kwargs</code> = dictionary - whose keys become separate keyword arguments and the values become values of these arguments.</li>
+</ul>
+<h2 id="1-11-面向切面编程AOP和装饰器"><a href="#1-11-面向切面编程AOP和装饰器" class="headerlink" title="1.11 面向切面编程AOP和装饰器"></a>1.11 面向切面编程AOP和装饰器</h2><p>装饰器是一个很著名的设计模式，经常被用于有切面需求的场景，较为经典的有插入日志、性能测试、事务处理等。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量函数中与函数功能本身无关的雷同代码并继续重用。概括的讲，<strong>装饰器的作用就是为已经存在的对象添加额外的功能。</strong></p>
+<h2 id="1-12-鸭子类型"><a href="#1-12-鸭子类型" class="headerlink" title="1.12 鸭子类型"></a>1.12 鸭子类型</h2><p>“当看到一只鸟走起来像鸭子、游泳起来像鸭子、叫起来也像鸭子，那么这只鸟就可以被称为鸭子。”</p>
+<p>我们并不关心对象是什么类型，到底是不是鸭子，只关心行为。</p>
+<p>比如在python中，有很多file-like的东西，比如StringIO,GzipFile,socket。它们有很多相同的方法，我们把它们当作文件使用。</p>
+<p>又比如list.extend()方法中,我们并不关心它的参数是不是list,只要它是可迭代的,所以它的参数可以是list/tuple/dict/字符串/生成器等.</p>
+<p>鸭子类型在动态语言中经常使用，非常灵活，使得python不想java那样专门去弄一大堆的设计模式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Writer</span>:</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span>(<span class="params">output, content</span>):</span></span><br><span class="line">        output.write(content)</span><br><span class="line">        </span><br><span class="line">output = StringIO.StringIO()</span><br><span class="line">Writer.write(output, <span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br><span class="line">output = <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">Writer.write(output, <span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-13-Python中重载"><a href="#1-13-Python中重载" class="headerlink" title="1. 13 Python中重载"></a>1. 13 Python中重载</h2><p>函数重载主要是为了解决两个问题。</p>
+<ol>
+<li>可变参数类型。</li>
+<li>可变参数个数。</li>
+</ol>
+<p>另外，一个基本的设计原则是，仅仅当两个函数除了参数类型和参数个数不同以外，其功能是完全相同的，此时才使用函数重载，如果两个函数的功能其实不同，那么不应当使用重载，而应当使用一个名字不同的函数。</p>
+<p>好吧，那么对于情况 1 ，函数功能相同，但是参数类型不同，python 如何处理？答案是根本不需要处理，因为 python 可以接受任何类型的参数，如果函数的功能相同，那么不同的参数类型在 python 中很可能是相同的代码，没有必要做成两个不同函数。</p>
+<p>那么对于情况 2 ，函数功能相同，但参数个数不同，python 如何处理？大家知道，答案就是缺省参数。对那些缺少的参数设定为缺省参数即可解决问题。因为你假设函数功能相同，那么那些缺少的参数终归是需要用的。</p>
+<p>好了，鉴于情况 1 跟 情况 2 都有了解决方案，python 自然就不需要函数重载了。</p>
+<h2 id="1-14-新式类和旧式类"><a href="#1-14-新式类和旧式类" class="headerlink" title="1.14 新式类和旧式类"></a>1.14 新式类和旧式类</h2><p><strong>Important behavior changes between old and new style classes</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/576169/understanding-python-super-and-init-methods">super</a> added</li>
+<li>MRO changed (explained below)</li>
+<li><a target="_blank" rel="noopener" href="http://docs.python.org/2/howto/descriptor.html">descriptors</a> added</li>
+<li>new style class objects cannot be raised unless derived from <code>Exception</code> (example below)</li>
+<li><a target="_blank" rel="noopener" href="http://docs.python.org/2/reference/datamodel.html#slots"><code>__slots__</code></a> added</li>
+</ul>
+<p><strong>Classic classes</strong> do a depth first search from left to right. Stop on first match. They do not have the <code>__mro__</code> attribute.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span> i = <span class="number">0</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C1</span>(<span class="params">C</span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C2</span>(<span class="params">C</span>):</span> i = <span class="number">2</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C12</span>(<span class="params">C1, C2</span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C21</span>(<span class="params">C2, C1</span>):</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> C12().i == <span class="number">0</span></span><br><span class="line"><span class="keyword">assert</span> C21().i == <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    C12.__mro__</span><br><span class="line"><span class="keyword">except</span> AttributeError:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">assert</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>New-style classes</strong> MRO is more complicated to synthesize in a single English sentence. It is explained in detail <a target="_blank" rel="noopener" href="http://www.python.org/download/releases/2.3/mro/">here</a>. One of its properties is that a Base class is only searched for once all its Derived classes have been. They have the <code>__mro__</code> attribute which shows the search order.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span> i = <span class="number">0</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C1</span>(<span class="params">C</span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C2</span>(<span class="params">C</span>):</span> i = <span class="number">2</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C12</span>(<span class="params">C1, C2</span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C21</span>(<span class="params">C2, C1</span>):</span> <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> C12().i == <span class="number">2</span></span><br><span class="line"><span class="keyword">assert</span> C21().i == <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> C12.__mro__ == (C12, C1, C2, C, <span class="built_in">object</span>)</span><br><span class="line"><span class="keyword">assert</span> C21.__mro__ == (C21, C2, C1, C, <span class="built_in">object</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>New style class objects cannot be raised unless derived from <code>Exception</code></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># OK, old:</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Old</span>:</span> <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Old()</span><br><span class="line"><span class="keyword">except</span> Old:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">assert</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TypeError, new not derived from `Exception`.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">New</span>(<span class="params"><span class="built_in">object</span></span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> New()</span><br><span class="line"><span class="keyword">except</span> TypeError:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">assert</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># OK, derived from `Exception`.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">New</span>(<span class="params">Exception</span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> New()</span><br><span class="line"><span class="keyword">except</span> New:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">assert</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># `&#x27;str&#x27;` is a new style object, so you can&#x27;t raise it:</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> <span class="string">&#x27;str&#x27;</span></span><br><span class="line"><span class="keyword">except</span> TypeError:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">assert</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-15-new-和-init-的区别"><a href="#1-15-new-和-init-的区别" class="headerlink" title="1.15 __new__和__init__的区别"></a>1.15 <code>__new__</code>和<code>__init__</code>的区别</h2><ol>
+<li><code>__new__</code>是一个类方法,而<code>__init__</code>是一个实例方法.</li>
+<li><code>__new__</code>方法会返回一个创建的实例,而<code>__init__</code>什么都不返回.</li>
+<li>只有在<code>__new__</code>返回一个cls的实例时后面的<code>__init__</code>才能被调用.</li>
+<li>当创建一个新实例时调用<code>__new__</code>,初始化一个实例时用<code>__init__</code>.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    _<span class="built_in">dict</span> = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;key&#x27;</span> <span class="keyword">in</span> A._<span class="built_in">dict</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;EXISTS&quot;</span></span><br><span class="line">            <span class="keyword">return</span> A._<span class="built_in">dict</span>[<span class="string">&#x27;key&#x27;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;NEW&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">super</span>(A, cls).__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;INIT&quot;</span></span><br><span class="line">        A._<span class="built_in">dict</span>[<span class="string">&#x27;key&#x27;</span>] = self</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a1 = A()</span><br><span class="line">a2 = A()</span><br><span class="line">a3 = A()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>I’m just trying to streamline one of my classes and have introduced some functionality in the same style as the flyweight design pattern.</p>
+<p>However, I’m a bit confused as to why <strong>init</strong> is always called after <strong>new</strong>. I wasn’t expecting this. Can anyone tell me why this is happening and how I can implement this functionality otherwise? (Apart from putting the implementation into the <strong>new</strong> which feels quite hacky.)</p>
+<p>Here’s an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    _<span class="built_in">dict</span> = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;key&#x27;</span> <span class="keyword">in</span> A._<span class="built_in">dict</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;EXISTS&quot;</span></span><br><span class="line">            <span class="keyword">return</span> A._<span class="built_in">dict</span>[<span class="string">&#x27;key&#x27;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;NEW&quot;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">super</span>(A, cls).__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;INIT&quot;</span></span><br><span class="line">        A._<span class="built_in">dict</span>[<span class="string">&#x27;key&#x27;</span>] = self</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a1 = A()</span><br><span class="line">a2 = A()</span><br><span class="line">a3 = A()</span><br><span class="line"></span><br><span class="line"><span class="comment">## Outputs:</span></span><br><span class="line">NEW</span><br><span class="line">INIT</span><br><span class="line"></span><br><span class="line">EXISTS</span><br><span class="line">INIT</span><br><span class="line"></span><br><span class="line">EXISTS</span><br><span class="line">INIT</span><br></pre></td></tr></table></figure>
+
+<p><code>__metaclass__</code>是创建类时起作用.所以我们可以分别使用<code>__metaclass__</code>,<code>__new__</code>和<code>__init__</code>来分别在类创建,实例创建和实例初始化的时候做一些小手脚.</p>
+<h2 id="1-16-单例模式"><a href="#1-16-单例模式" class="headerlink" title="1.16 单例模式"></a>1.16 单例模式</h2><blockquote>
+<p>​    单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例类的特殊类。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，从而方便对实例个数的控制并节约系统资源。如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。</p>
+<p><code>__new__()</code>在<code>__init__()</code>之前被调用，用于生成实例对象。利用这个方法和类的属性的特点可以实现设计模式的单例模式。单例模式是指创建唯一对象，单例模式设计的类只能实例 <strong>这个绝对常考啊.绝对要记住1~2个方法,当时面试官是让手写的.</strong></p>
+</blockquote>
+<h3 id="1-16-1-使用-new-方法"><a href="#1-16-1-使用-new-方法" class="headerlink" title="1.16.1 使用__new__方法"></a>1.16.1 使用<code>__new__</code>方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(cls, <span class="string">&#x27;_instance&#x27;</span>):</span><br><span class="line">            cls._instance = <span class="built_in">super</span>(Singleton, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>(<span class="params">Singleton</span>):</span></span><br><span class="line">    a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-16-2-共享属性"><a href="#1-16-2-共享属性" class="headerlink" title="1.16.2 共享属性"></a>1.16.2 共享属性</h3><p>创建实例时把所有实例的<code>__dict__</code>指向同一个字典,这样它们具有相同的属性和方法.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Borg</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    _state = &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span></span><br><span class="line">        ob = <span class="built_in">super</span>(Borg, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        ob.__dict__ = cls._state</span><br><span class="line">        <span class="keyword">return</span> ob</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass2</span>(<span class="params">Borg</span>):</span></span><br><span class="line">    a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-16-3-装饰器版本"><a href="#1-16-3-装饰器版本" class="headerlink" title="1.16.3 装饰器版本"></a>1.16.3 装饰器版本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">singleton</span>(<span class="params">cls</span>):</span></span><br><span class="line">    instances = &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getinstance</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> instances:</span><br><span class="line">            instances[cls] = cls(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> instances[cls]</span><br><span class="line">    <span class="keyword">return</span> getinstance</span><br><span class="line"></span><br><span class="line"><span class="meta">@singleton</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-16-4-import方法"><a href="#1-16-4-import方法" class="headerlink" title="1.16.4 import方法"></a>1.16.4 import方法</h3><p>作为python的模块是天然的单例模式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysingleton.py</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">My_Singleton</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">my_singleton = My_Singleton()</span><br><span class="line"></span><br><span class="line"><span class="comment"># to use</span></span><br><span class="line"><span class="keyword">from</span> mysingleton <span class="keyword">import</span> my_singleton</span><br><span class="line"></span><br><span class="line">my_singleton.foo()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-17-Python中的作用域"><a href="#1-17-Python中的作用域" class="headerlink" title="1.17 Python中的作用域"></a>1.17 Python中的作用域</h2><p>Python 中，一个变量的作用域总是由在代码中被赋值的地方所决定的。</p>
+<p>当 Python 遇到一个变量的话他会按照这样的顺序进行搜索：</p>
+<p>本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing locals）→全局/模块作用域（Global）→内置作用域（Built-in）</p>
+<h2 id="1-18-GIL线程全局锁"><a href="#1-18-GIL线程全局锁" class="headerlink" title="1.18 GIL线程全局锁"></a>1.18 GIL线程全局锁</h2><p>线程全局锁(Global Interpreter Lock),即Python为了保证线程安全而采取的独立线程运行的限制,说白了就是一个核只能在同一时间运行一个线程.<strong>对于io密集型任务，python的多线程起到作用，但对于cpu密集型任务，python的多线程几乎占不到任何优势，还有可能因为争夺资源而变慢。</strong></p>
+<p>解决办法就是多进程和下面的协程(协程也只是单CPU,但是能减小切换代价提升性能).</p>
+<h2 id="1-19-协程"><a href="#1-19-协程" class="headerlink" title="1.19 协程"></a>1.19 协程</h2><p>简单点说协程是进程和线程的升级版,进程和线程都面临着内核态和用户态的切换问题而耗费许多切换时间,而协程就是用户自己控制切换的时机,不再需要陷入系统的内核态.</p>
+<p>Python里最常见的yield就是协程的思想!</p>
+<h2 id="1-20-闭包"><a href="#1-20-闭包" class="headerlink" title="1.20 闭包"></a>1.20 闭包</h2><p>闭包(closure)是函数式编程的重要的语法结构。闭包也是一种组织代码的结构，它同样提高了代码的可重复使用性。</p>
+<p>当一个内嵌函数引用其外部作作用域的变量,我们就会得到一个闭包. 总结一下,创建一个闭包必须满足以下几点:</p>
+<ol>
+<li>必须有一个内嵌函数</li>
+<li>内嵌函数必须引用外部函数中的变量</li>
+<li>外部函数的返回值必须是内嵌函数</li>
+</ol>
+<p>感觉闭包还是有难度的,几句话是说不明白的,还是查查相关资料.</p>
+<p>重点是函数运行后并不会被撤销,就像16题的instance字典一样,当函数运行完后,instance并不被销毁,而是继续留在内存空间里.这个功能类似类里的类变量,只不过迁移到了函数上.</p>
+<p>闭包就像个空心球一样,你知道外面和里面,但你不知道中间是什么样.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: x + n</span><br><span class="line"></span><br><span class="line">add_2 = func(<span class="number">2</span>)</span><br><span class="line">add_2(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-21-lambda函数"><a href="#1-21-lambda函数" class="headerlink" title="1.21 lambda函数"></a>1.21 lambda函数</h2><p>其实就是一个匿名函数,为什么叫lambda?因为和后面的函数式编程有关.</p>
+<h2 id="1-22-Python函数式编程"><a href="#1-22-Python函数式编程" class="headerlink" title="1.22 Python函数式编程"></a>1.22 Python函数式编程</h2><p><strong>不依赖于外部的数据，而且也不改变外部数据的值，而是返回一个新的值给你</strong>。</p>
+<p>python中函数式编程支持:</p>
+<p>filter 函数的功能相当于过滤器。调用一个布尔函数<code>bool_func</code>来迭代遍历每个seq中的元素；返回一个使<code>bool_seq</code>返回值为true的元素的序列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1,2,3,4,5,6,7]</span><br><span class="line">&gt;&gt;&gt;b = filter(lambda x: x &gt; 5, a)</span><br><span class="line">&gt;&gt;&gt;print b</span><br><span class="line">&gt;&gt;&gt;[6,7]</span><br></pre></td></tr></table></figure>
+
+<p>map函数是对一个序列的每个项依次执行函数，下面是对一个序列每个项都乘以2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = map(lambda x:x*2,[1,2,3])</span><br><span class="line">&gt;&gt;&gt; list(a)</span><br><span class="line">[2, 4, 6]</span><br></pre></td></tr></table></figure>
+
+<p>reduce函数是对一个序列的每个项迭代调用函数，下面是求3的阶乘：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; reduce(lambda x,y:x*y,range(1,4))</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-23-Python里的拷贝"><a href="#1-23-Python里的拷贝" class="headerlink" title="1.23 Python里的拷贝"></a>1.23 Python里的拷贝</h2><p>引用和copy(),deepcopy()的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import copy</span><br><span class="line">a = [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;]]  #原始对象</span><br><span class="line"></span><br><span class="line">b = a  #赋值，传对象的引用</span><br><span class="line">c = copy.copy(a)  #对象拷贝，浅拷贝</span><br><span class="line">d = copy.deepcopy(a)  #对象拷贝，深拷贝</span><br><span class="line"></span><br><span class="line">a.append(5)  #修改对象a</span><br><span class="line">a[4].append(&#x27;c&#x27;)  #修改对象a中的[&#x27;a&#x27;, &#x27;b&#x27;]数组对象</span><br><span class="line"></span><br><span class="line">print &#x27;a = &#x27;, a</span><br><span class="line">print &#x27;b = &#x27;, b</span><br><span class="line">print &#x27;c = &#x27;, c</span><br><span class="line">print &#x27;d = &#x27;, d</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a =  [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5]</span><br><span class="line">b =  [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], 5]</span><br><span class="line">c =  [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]]</span><br><span class="line">d =  [1, 2, 3, 4, [&#x27;a&#x27;, &#x27;b&#x27;]]</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-24-Python垃圾回收机制"><a href="#1-24-Python垃圾回收机制" class="headerlink" title="1.24 Python垃圾回收机制"></a>1.24 Python垃圾回收机制</h2><p>Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。</p>
+<h3 id="1-24-1-引用计数"><a href="#1-24-1-引用计数" class="headerlink" title="1.24.1 引用计数"></a>1.24.1 引用计数</h3><p>PyObject是每个对象必有的内容，其中<code>ob_refcnt</code>就是做为<strong>引用计数</strong>。当一个对象有新的引用时，它的<code>ob_refcnt</code>就会增加，当引用它的对象被删除，它的<code>ob_refcnt</code>就会减少.引用计数为0时，该对象生命就结束了。</p>
+<p>优点:</p>
+<ol>
+<li>简单</li>
+<li>实时性</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>维护引用计数消耗资源</li>
+<li>循环引用</li>
+</ol>
+<h3 id="1-24-2-标记-清除机制"><a href="#1-24-2-标记-清除机制" class="headerlink" title="1.24.2 标记-清除机制"></a>1.24.2 标记-清除机制</h3><p>基本思路是先按需分配，等到没有空闲内存的时候从寄存器和程序栈上的引用出发，遍历以对象为节点、以引用为边构成的图，把所有可以访问到的对象打上标记，然后清扫一遍内存空间，把所有没标记的对象释放。</p>
+<h3 id="1-24-3-分代技术"><a href="#1-24-3-分代技术" class="headerlink" title="1.24.3 分代技术"></a>1.24.3 分代技术</h3><p>分代回收的整体思想是：将系统中的所有内存块根据其存活时间划分为不同的集合，每个集合就成为一个“代”，垃圾收集频率随着“代”的存活时间的增大而减小，存活时间通常利用经过几次垃圾回收来度量。</p>
+<p>Python默认定义了三代对象集合，索引数越大，对象存活时间越长。</p>
+<p>举例： 当某些内存块M经过了3次垃圾收集的清洗之后还存活时，我们就将内存块M划到一个集合A中去，而新分配的内存都划分到集合B中去。当垃圾收集开始工作时，大多数情况都只对集合B进行垃圾回收，而对集合A进行垃圾回收要隔相当长一段时间后才进行，这就使得垃圾收集机制需要处理的内存少了，效率自然就提高了。在这个过程中，集合B中的某些内存块由于存活时间长而会被转移到集合A中，当然，集合A中实际上也存在一些垃圾，这些垃圾的回收会因为这种分代的机制而被延迟。</p>
+<h2 id="1-25-Python的List"><a href="#1-25-Python的List" class="headerlink" title="1.25 Python的List"></a>1.25 Python的List</h2><p>推荐: <a target="_blank" rel="noopener" href="http://www.jianshu.com/p/J4U6rR">http://www.jianshu.com/p/J4U6rR</a></p>
+<h2 id="1-26-Python的is"><a href="#1-26-Python的is" class="headerlink" title="1.26 Python的is"></a>1.26 Python的is</h2><p>is是对比地址,==是对比值</p>
+<h2 id="1-27-read-readline和readlines"><a href="#1-27-read-readline和readlines" class="headerlink" title="1.27 read,readline和readlines"></a>1.27 read,readline和readlines</h2><ul>
+<li>read 读取整个文件</li>
+<li>readline 读取下一行,使用生成器方法</li>
+<li>readlines 读取整个文件到一个迭代器以供我们遍历</li>
+</ul>
+<h2 id="1-28-Python2和3的区别"><a href="#1-28-Python2和3的区别" class="headerlink" title="1.28 Python2和3的区别"></a>1.28 Python2和3的区别</h2><h3 id="1-28-1-future-模块"><a href="#1-28-1-future-模块" class="headerlink" title="1.28.1 __future__模块"></a>1.28.1 <code>__future__</code>模块</h3><p>Py2.x导入3.x中侧特性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import</span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-28-2-print函数"><a href="#1-28-2-print函数" class="headerlink" title="1.28.2 print函数"></a>1.28.2 <code>print</code>函数</h3><p>Py2.x中，print为声明，不是函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Hello&#x27;</span>,; <span class="built_in">print</span> <span class="string">&#x27;World!&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>, end=<span class="string">&#x27; &#x27;</span>); <span class="built_in">print</span>(<span class="string">&#x27;World!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-28-3-整除"><a href="#1-28-3-整除" class="headerlink" title="1.28.3 整除"></a>1.28.3 整除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.x</span></span><br><span class="line"><span class="keyword">assert</span> <span class="number">3</span> / <span class="number">2</span> == <span class="number">1</span></span><br><span class="line"><span class="keyword">assert</span> <span class="number">3</span> // <span class="number">2</span> == <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.x</span></span><br><span class="line"><span class="keyword">assert</span> <span class="number">3</span> / <span class="number">2</span> == <span class="number">1.5</span></span><br><span class="line"><span class="keyword">assert</span> <span class="number">3</span> // <span class="number">2</span> == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-28-4-Unicode"><a href="#1-28-4-Unicode" class="headerlink" title="1.28.4 Unicode"></a>1.28.4 Unicode</h3><p><strong>2.x</strong>: string is byte</p>
+<p><strong>3.x</strong>: string is unicode</p>
+<h3 id="1-28-5-xrange"><a href="#1-28-5-xrange" class="headerlink" title="1.28.5 xrange"></a>1.28.5 xrange</h3><p><strong>2.x</strong>: range(列表), xrange(惰性求值)</p>
+<p><strong>3.x</strong>: range(惰性求值), xrange(取消)，特别地，支持<code>range.__contains__</code>, in 操作较快</p>
+<h3 id="1-28-6-Exceptions"><a href="#1-28-6-Exceptions" class="headerlink" title="1.28.6 Exceptions"></a>1.28.6 Exceptions</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.x</span></span><br><span class="line"><span class="keyword">raise</span> IOError, <span class="string">&#x27;file error&#x27;</span></span><br><span class="line">catch IOError, e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.x, 3.x</span></span><br><span class="line"><span class="keyword">raise</span> IOError(<span class="string">&#x27;file error&#x27;</span>)</span><br><span class="line">catch IOError <span class="keyword">as</span> e</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-28-6-next-函数和-next-方法"><a href="#1-28-6-next-函数和-next-方法" class="headerlink" title="1.28.6 next()函数和.next()方法"></a>1.28.6 next()函数和.next()方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.x</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">a = A()</span><br><span class="line">a.<span class="built_in">next</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.x</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">a = A()</span><br><span class="line"><span class="built_in">next</span>(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-28-7-For循环变量和全局命名空间泄漏"><a href="#1-28-7-For循环变量和全局命名空间泄漏" class="headerlink" title="1.28.7 For循环变量和全局命名空间泄漏"></a>1.28.7 For循环变量和全局命名空间泄漏</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.x</span></span><br><span class="line">[... <span class="keyword">for</span> var <span class="keyword">in</span> item1, item2, ...]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.x, 3.x</span></span><br><span class="line">[... <span class="keyword">for</span> var <span class="keyword">in</span> (item1, item2, ...)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.x</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"><span class="keyword">assert</span> i == <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.x</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"><span class="keyword">assert</span> i == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-29-super-init"><a href="#1-29-super-init" class="headerlink" title="1.29 super init"></a>1.29 super init</h2><p><code>super()</code> lets you avoid referring to the base class explicitly, which can be nice. But the main advantage comes with multiple inheritance, where all sorts of fun stuff can happen. See the standard docs on super if you haven’t already.</p>
+<p>Note that the syntax changed in Python 3.0: you can just say super().<code>__init__</code>() instead of super(ChildB, self).<code>__init__</code>() which IMO is quite a bit nicer.</p>
+<h2 id="1-30-访问私有属性"><a href="#1-30-访问私有属性" class="headerlink" title="1.30 访问私有属性"></a>1.30 访问私有属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="params">Person</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__gender = <span class="string">&#x27;male&#x27;</span></span><br><span class="line"> </span><br><span class="line">stu = Student()</span><br><span class="line"><span class="built_in">print</span>(stu._Student__gender)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-31-unicode"><a href="#1-31-unicode" class="headerlink" title="1.31 unicode"></a>1.31 unicode</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unicode.encode()  --&gt;  <span class="built_in">bytes</span></span><br><span class="line"><span class="built_in">bytes</span>.decode()    --&gt;  unicode</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="2-系统相关"><a href="#2-系统相关" class="headerlink" title="2. 系统相关"></a>2. 系统相关</h1><h2 id="2-1-selec-poll和epoll区别总结"><a href="#2-1-selec-poll和epoll区别总结" class="headerlink" title="2.1 selec,poll和epoll区别总结"></a>2.1 selec,poll和epoll区别总结</h2><p>基本上select有3个缺点:</p>
+<ol>
+<li>连接数受限</li>
+<li>查找配对速度慢</li>
+<li>数据由内核拷贝到用户态</li>
+</ol>
+<p>poll改善了第一个缺点</p>
+<p>epoll改了三个缺点.</p>
+<p>epoll是<a target="_blank" rel="noopener" href="http://www.cppfans.org/tag/linux">Linux</a>下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率，因为它会复用文件描述符集 合来传递结果而不用迫使开发者每次等待事件之前都必须重新准备要被侦听的文件描述符集合，另一点原因就是获取事件的时候，它无须遍历整个被侦听的描述符 集，只要遍历那些被内核IO事件异步唤醒而加入Ready队列的描述符集合就行了。epoll除了提供select/poll那种IO事件的电平触发 （Level Triggered）外，还提供了边沿触发（Edge Triggered），这就使得用户空间程序有可能缓存IO状态，减少epoll_wait/epoll_pwait的调用，提高应用程序效率。<a target="_blank" rel="noopener" href="http://www.cppfans.org/tag/linux">Linux</a>2.6内核中对/dev/epoll设备的访问的封装（system epoll）。</p>
+<!-- more -->
+
+<h2 id="2-2-Redis数据库"><a href="#2-2-Redis数据库" class="headerlink" title="2.2 Redis数据库"></a>2.2 Redis数据库</h2><blockquote>
+<p>​    通常局限点来说，Redis也以消息队列的形式存在，作为内嵌的List存在，满足实时的高并发需求。在使用缓存的时候，redis比memcached具有更多的优势，并且支持更多的数据类型，把redis当作一个中间存储系统，用来处理高并发的数据库操作</p>
+</blockquote>
+<ul>
+<li>速度快：使用标准C写，所有数据都在内存中完成，读写速度分别达到10万/20万</li>
+<li>持久化：对数据的更新采用Copy-on-write技术，可以异步地保存到磁盘上，主要有两种策略，一是根据时间，更新次数的快照（save 300 10 ）二是基于语句追加方式(Append-only file，aof)</li>
+<li>自动操作：对不同数据类型的操作都是自动的，很安全</li>
+<li>快速的主–从复制，官方提供了一个数据，Slave在21秒即完成了对Amazon网站10G key set的复制。</li>
+<li>Sharding技术： 很容易将数据分布到多个Redis实例中，数据库的扩展是个永恒的话题，在关系型数据库中，主要是以添加硬件、以分区为主要技术形式的纵向扩展解决了很多的应用场景，但随着web2.0、移动互联网、云计算等应用的兴起，这种扩展模式已经不太适合了，所以近年来，像采用主从配置、数据库复制形式的，Sharding这种技术把负载分布到多个特理节点上去的横向扩展方式用处越来越多。</li>
+</ul>
+<h3 id="Redis缺点"><a href="#Redis缺点" class="headerlink" title="Redis缺点"></a>Redis缺点</h3><ul>
+<li>是数据库容量受到物理内存的限制,不能用作海量数据的高性能读写,因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。</li>
+<li>Redis较难支持在线扩容，在集群容量达到上限时在线扩容会变得很复杂。为避免这一问题，运维人员在系统上线时必须确保有足够的空间，这对资源造成了很大的浪费。</li>
+</ul>
+<h2 id="2-3-MyISAM和InnoDB"><a href="#2-3-MyISAM和InnoDB" class="headerlink" title="2.3 MyISAM和InnoDB"></a>2.3 MyISAM和InnoDB</h2><p>MyISAM：大量写性能差，大量读性能高；不支持事务。</p>
+<p>InnoDB： 支持“行锁” ，于是在写操作比较多的时候，会更优秀。还支持事务。</p>
+<h2 id="2-4-网络"><a href="#2-4-网络" class="headerlink" title="2.4 网络"></a>2.4 网络</h2><h3 id="2-4-1-三次握手"><a href="#2-4-1-三次握手" class="headerlink" title="2.4.1 三次握手"></a>2.4.1 三次握手</h3><ol>
+<li><p>SYN</p>
+</li>
+<li><p>SYN+ACK</p>
+</li>
+<li><p>ACK</p>
+<p>SYN_SENT –syn–&gt; SYN_RECV –syn+ack–&gt; ESTABLISHED –ack–&gt; ESTABLISHED </p>
+<p>a</p>
+<p><img src="https://img1.tuicool.com/iiAZJz3.png!web" alt="a"></p>
+</li>
+</ol>
+<h3 id="2-4-2-四次挥手"><a href="#2-4-2-四次挥手" class="headerlink" title="2.4.2 四次挥手"></a>2.4.2 四次挥手</h3><ol>
+<li>FIN+ACK</li>
+<li>ACK</li>
+<li>FIN</li>
+<li>ACK</li>
+</ol>
+<p>FIN_WAIT_1 –fin+ack–&gt; CLOSE_WAIT –ack–&gt; FIN_WAIT_2</p>
+<p>​                       LAST_ACK –fin–&gt; TIME_WAIT –ack–&gt; CLOSED</p>
+<p><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2542109889,3945684809&fm=26&gp=0.jpg" alt="a"></p>
+<h2 id="2-5-urllib和urllib2"><a href="#2-5-urllib和urllib2" class="headerlink" title="2.5 urllib和urllib2"></a>2.5 urllib和urllib2</h2><p>urllib2: 可以接受一个Request对象，可以用来设置Headers</p>
+<p>urllib：提供urlencode方法，用来生成GET查询字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">resp = urllib2.urlopen(<span class="string">&#x27;http://python.org&#x27;</span>)</span><br><span class="line">html = resp.read()</span><br><span class="line"></span><br><span class="line">req = urllib2.Request(<span class="string">&#x27;http://python.org&#x27;</span>)</span><br><span class="line">resp = urllib2.urlopen(req)</span><br><span class="line">html = resp.read()</span><br><span class="line"></span><br><span class="line">form = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;alex&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">21</span>&#125;</span><br><span class="line">data = urllib.urlencode(form)</span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>&#125;</span><br><span class="line">req = urllib2.Request(url, data, headers)</span><br><span class="line">resp = urllib2.urlopen(req)</span><br><span class="line">html = resp.read()</span><br><span class="line"></span><br><span class="line">req = urllib2.Request(<span class="string">&#x27;http://python.org&#x27;</span>)</span><br><span class="line">req.add_header(<span class="string">&#x27;User-Agent&#x27;</span>, <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>)</span><br><span class="line">resp = urllib2.urlopen(req)</span><br><span class="line">html = resp.read()</span><br><span class="line"></span><br><span class="line">opener = urllib2.build_opener()</span><br><span class="line">opener.addheaders([(<span class="string">&#x27;User-Agent&#x27;</span>, <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>)])</span><br><span class="line">opener.<span class="built_in">open</span>(url)</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;id=1&amp;title=test&#x27;</span></span><br><span class="line">data = urllib.quote(s)</span><br><span class="line"></span><br><span class="line">form = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;alex&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">12</span>&#125;</span><br><span class="line">data = urllib.urlencode(form)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-XSRF和XSS"><a href="#2-6-XSRF和XSS" class="headerlink" title="2.6 XSRF和XSS"></a>2.6 XSRF和XSS</h2><ul>
+<li>CSRF(Cross-site request forgery)跨站请求伪造</li>
+<li>XSS(Cross Site Scripting)跨站脚本攻击</li>
+</ul>
+<p>CSRF重点在请求,XSS重点在脚本</p>
+<p><strong>CSRF攻击</strong>：攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账……造成的问题包括：个人隐私泄露以及财产安全。</p>
+<p><strong>CSRF防御</strong>: 客户端页面增加伪随机数</p>
+<p><strong>XSS</strong>: 跨站脚本的重点不在‘跨站’上，而在于‘脚本’上。大多数XSS攻击的主要方式是嵌入一段远程或者第三方域上的JS代码。实际上是在目标网站的作用域下执行了这段js代码。</p>
+<h2 id="2-7-CGI和WSGI"><a href="#2-7-CGI和WSGI" class="headerlink" title="2.7 CGI和WSGI"></a>2.7 CGI和WSGI</h2><p>CGI是通用网关接口，是连接web服务器和应用程序的接口，用户通过CGI来获取动态数据或文件等。 CGI程序是一个独立的程序，它可以用几乎所有语言来写，包括perl，c，lua，python等等。</p>
+<p>WSGI, Web Server Gateway Interface，是Python应用程序或框架和Web服务器之间的一种接口，WSGI的其中一个目的就是让用户可以用统一的语言(Python)编写前后端。</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2018/12/11/Python%20%E7%B1%BB%E7%BB%A7%E6%89%BF%E7%9A%84MRO/" rel="prev" title="Python 类继承的MRO">
+                                
+                                    Python 类继承的MRO
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2018/09/20/Python%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="prev" title="Python 内存管理和垃圾回收">
+                                  
+                                      Python 内存管理和垃圾回收
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Python Review',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80"><span class="toc-text">1. 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-text">1.1 函数参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%83%E7%B1%BB"><span class="toc-text">1.2 元类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Instance-Class-and-Static-Methods"><span class="toc-text">1.3 Instance, Class, and Static Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E7%B1%BB%E5%8F%98%E9%87%8F%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="toc-text">1.4 类变量和实例变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E8%87%AA%E7%9C%81"><span class="toc-text">1.5 自省</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E5%AD%97%E5%85%B8%E6%8E%A8%E5%AF%BC"><span class="toc-text">1.6 字典推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="toc-text">1.7 私有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%BC%E5%BC%8F%E5%8C%96-%E5%92%8C-format"><span class="toc-text">1.8 字符串格式化:%和.format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text">1.9 迭代器和生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-10-args-and-kwargs"><span class="toc-text">1.10 *args and **kwargs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-11-%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP%E5%92%8C%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">1.11 面向切面编程AOP和装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-12-%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.12 鸭子类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-13-Python%E4%B8%AD%E9%87%8D%E8%BD%BD"><span class="toc-text">1. 13 Python中重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-14-%E6%96%B0%E5%BC%8F%E7%B1%BB%E5%92%8C%E6%97%A7%E5%BC%8F%E7%B1%BB"><span class="toc-text">1.14 新式类和旧式类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-15-new-%E5%92%8C-init-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">1.15 __new__和__init__的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-16-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">1.16 单例模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-1-%E4%BD%BF%E7%94%A8-new-%E6%96%B9%E6%B3%95"><span class="toc-text">1.16.1 使用__new__方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-2-%E5%85%B1%E4%BA%AB%E5%B1%9E%E6%80%A7"><span class="toc-text">1.16.2 共享属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-3-%E8%A3%85%E9%A5%B0%E5%99%A8%E7%89%88%E6%9C%AC"><span class="toc-text">1.16.3 装饰器版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-4-import%E6%96%B9%E6%B3%95"><span class="toc-text">1.16.4 import方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-17-Python%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">1.17 Python中的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-18-GIL%E7%BA%BF%E7%A8%8B%E5%85%A8%E5%B1%80%E9%94%81"><span class="toc-text">1.18 GIL线程全局锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-19-%E5%8D%8F%E7%A8%8B"><span class="toc-text">1.19 协程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-20-%E9%97%AD%E5%8C%85"><span class="toc-text">1.20 闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-21-lambda%E5%87%BD%E6%95%B0"><span class="toc-text">1.21 lambda函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-22-Python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">1.22 Python函数式编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-23-Python%E9%87%8C%E7%9A%84%E6%8B%B7%E8%B4%9D"><span class="toc-text">1.23 Python里的拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-24-Python%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">1.24 Python垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24-1-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0"><span class="toc-text">1.24.1 引用计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24-2-%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E6%9C%BA%E5%88%B6"><span class="toc-text">1.24.2 标记-清除机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24-3-%E5%88%86%E4%BB%A3%E6%8A%80%E6%9C%AF"><span class="toc-text">1.24.3 分代技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-25-Python%E7%9A%84List"><span class="toc-text">1.25 Python的List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-26-Python%E7%9A%84is"><span class="toc-text">1.26 Python的is</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-27-read-readline%E5%92%8Creadlines"><span class="toc-text">1.27 read,readline和readlines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-28-Python2%E5%92%8C3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">1.28 Python2和3的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-1-future-%E6%A8%A1%E5%9D%97"><span class="toc-text">1.28.1 __future__模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-2-print%E5%87%BD%E6%95%B0"><span class="toc-text">1.28.2 print函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-3-%E6%95%B4%E9%99%A4"><span class="toc-text">1.28.3 整除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-4-Unicode"><span class="toc-text">1.28.4 Unicode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-5-xrange"><span class="toc-text">1.28.5 xrange</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-6-Exceptions"><span class="toc-text">1.28.6 Exceptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-6-next-%E5%87%BD%E6%95%B0%E5%92%8C-next-%E6%96%B9%E6%B3%95"><span class="toc-text">1.28.6 next()函数和.next()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-28-7-For%E5%BE%AA%E7%8E%AF%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%A8%E5%B1%80%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E6%B3%84%E6%BC%8F"><span class="toc-text">1.28.7 For循环变量和全局命名空间泄漏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-29-super-init"><span class="toc-text">1.29 super init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-30-%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="toc-text">1.30 访问私有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-31-unicode"><span class="toc-text">1.31 unicode</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3"><span class="toc-text">2. 系统相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-selec-poll%E5%92%8Cepoll%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="toc-text">2.1 selec,poll和epoll区别总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Redis%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2.2 Redis数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%BC%BA%E7%82%B9"><span class="toc-text">Redis缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-MyISAM%E5%92%8CInnoDB"><span class="toc-text">2.3 MyISAM和InnoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E7%BD%91%E7%BB%9C"><span class="toc-text">2.4 网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">2.4.1 三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-text">2.4.2 四次挥手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-urllib%E5%92%8Curllib2"><span class="toc-text">2.5 urllib和urllib2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-XSRF%E5%92%8CXSS"><span class="toc-text">2.6 XSRF和XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-CGI%E5%92%8CWSGI"><span class="toc-text">2.7 CGI和WSGI</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

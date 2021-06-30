@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Redis | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/01/29/Redis/">
+        Redis
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-29</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NoSQL/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>NoSQL</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="1-NoSQL"><a href="#1-NoSQL" class="headerlink" title="1. NoSQL"></a>1. NoSQL</h2><p>NoSQL追求的目标：</p>
+<ul>
+<li>High performance  对数据库高并发读写的需求</li>
+<li>Huge Storage 海量数据的高效率存储和访问需求</li>
+<li>High Scalability &amp;&amp; High Availabiity 高可扩展性和高可用性需求</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="2-Redis相关概念"><a href="#2-Redis相关概念" class="headerlink" title="2. Redis相关概念"></a>2. Redis相关概念</h2><p>Redis：Remote Dictionary Server</p>
+<p>Redis的特点：</p>
+<ul>
+<li>key-value 存储</li>
+<li>支持数据可靠性存储及落地</li>
+<li>单进程但线程高性能服务器</li>
+<li>crash safe &amp; recovery slow</li>
+<li>单机qps可达10W</li>
+<li>适合小数据量高速读写访问</li>
+</ul>
+<p>Redis优点：</p>
+<ul>
+<li>支持持久化</li>
+<li>高性能，每秒读写频率超过10W</li>
+<li>数据类型丰富。string, list, hash, set, sorted set等</li>
+<li>所有操作原子性</li>
+<li>还支持publish/subscribe、通知、key过期等</li>
+<li>支持异机主从复制</li>
+</ul>
+<p>Redis缺陷和陷阱：</p>
+<ul>
+<li>内存管理开销大（低于物理内存的60%）</li>
+<li>buffer io造成系统OOM</li>
+</ul>
+<p>Redis持久化：</p>
+<ul>
+<li><p>Snapshot: 快照方式，将内存中的数据不断写入磁盘</p>
+<ul>
+<li>save 900 1</li>
+<li>save 300 10</li>
+<li>save 60 10000</li>
+</ul>
+</li>
+<li><p>AOF: 类似MySQL的binlog日志方式，记录每次更新的日志(aof不用于主从同步)</p>
+<ul>
+<li>appendfsync always</li>
+<li>appendfsync everysec  // 在性能和持久化方面折中</li>
+<li>appendfsync no</li>
+</ul>
+</li>
+</ul>
+<p>  Snapshot性能更高，但可能会引起一定程度的数据丢失</p>
+<p>  建议：</p>
+<ul>
+<li>更新频繁，一致性要求较高，AOF策略为主</li>
+<li>更新不频繁，可以容忍少量数据丢失或错误，Snapshot为主</li>
+</ul>
+<h3 id="2-1-Redis应用场景："><a href="#2-1-Redis应用场景：" class="headerlink" title="2.1 Redis应用场景："></a>2.1 Redis应用场景：</h3><ul>
+<li>计数</li>
+<li>cache服务</li>
+<li>展示最近、最热、点击率最高、活跃度最高等条件的top list</li>
+<li>用户最近访问记录</li>
+<li>Relation List/Message Queue</li>
+<li>粉丝列表</li>
+</ul>
+<h3 id="2-2-Redis-使用经验："><a href="#2-2-Redis-使用经验：" class="headerlink" title="2.2 Redis 使用经验："></a>2.2 Redis 使用经验：</h3><ul>
+<li>进行master-slave主从同步配置，在出现服务故障时可切换</li>
+<li>在master禁用数据持久化，在slave上配置数据持久化</li>
+<li>Memory+swap不足。此时dump会挂死，最终会导致机器挡掉。64-128GB内存， SSD硬盘。</li>
+<li>当使用的Memory超过60%，会使用swap，内存碎片大</li>
+<li>当达到最大内存时，会清空带过期时间的key，即使该key未过期</li>
+<li>redis和DB同步，先写DB，后写redis，内存写速度快</li>
+</ul>
+<h3 id="2-3-Redis部署："><a href="#2-3-Redis部署：" class="headerlink" title="2.3 Redis部署："></a>2.3 Redis部署：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line">redis-benchmark	   <span class="comment"># 测试Redis在当前系统、当前配置下的性能</span></span><br><span class="line">redis-check-aof    <span class="comment"># 检查更新日志appendonly.aof</span></span><br><span class="line">redis-check-dump   <span class="comment"># 检查本地数据库rdb文件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Redis启动："><a href="#2-4-Redis启动：" class="headerlink" title="2.4 Redis启动："></a>2.4 Redis启动：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br><span class="line">redis-server --port 6479</span><br><span class="line">redis-server --port 6479 --slaveof 127.0.0.1 6579</span><br><span class="line"></span><br><span class="line">redis-server /etc/redis/redis.conf</span><br><span class="line">redis-server /etc/redis/redis.conf --loglevel verbose</span><br><span class="line">redis-server /etc/redis/redis.conf --sentinel</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-客户端操作：redis库-select-0-15"><a href="#2-5-客户端操作：redis库-select-0-15" class="headerlink" title="2.5 客户端操作：redis库(select 0~15)"></a>2.5 客户端操作：redis库(select 0~15)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.1.100 6379</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;set name abc&quot;</span> | nc 127.0.0.1 6379</span><br><span class="line"></span><br><span class="line">redis-cli -h 192.168.1.100 -p 6379 -n 5</span><br><span class="line">&gt; <span class="built_in">help</span> <span class="built_in">set</span></span><br><span class="line">&gt; <span class="built_in">help</span> @string    <span class="comment"># 字符串操作相关的所有命令</span></span><br><span class="line"></span><br><span class="line">&gt; ping   =&gt; pong</span><br><span class="line">&gt; keys *</span><br><span class="line">&gt; ttl KEY</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-Redis设置客户端连接密码："><a href="#2-6-Redis设置客户端连接密码：" class="headerlink" title="2.6 Redis设置客户端连接密码："></a>2.6 Redis设置客户端连接密码：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/redis/redis.conf</span><br><span class="line">requirepass New_Pass</span><br><span class="line"></span><br><span class="line">redis-cli shutdown</span><br><span class="line">redis-server /etc/redis/redis.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line">redis-cli</span><br><span class="line">&gt; auth New_Pass</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">redis-cli -a New_Pass</span><br></pre></td></tr></table></figure>
+
+<p>不安全的命令改名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/redis/redis.conf</span><br><span class="line">rename-command keys <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-Redis配置文件说明："><a href="#2-8-Redis配置文件说明：" class="headerlink" title="2.8 Redis配置文件说明："></a>2.8 Redis配置文件说明：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">daemonize no</span><br><span class="line"></span><br><span class="line">pidfile /var/run/redis.pid</span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="built_in">bind</span> 127.0.0.1</span><br><span class="line"></span><br><span class="line">timeout 0   <span class="comment"># 0 client永不超时</span></span><br><span class="line"></span><br><span class="line">loglevel notice    </span><br><span class="line"></span><br><span class="line">logfile <span class="string">&quot;/var/log/redis.log&quot;</span></span><br><span class="line"></span><br><span class="line">databases 16</span><br><span class="line"></span><br><span class="line"><span class="comment"># snapchat</span></span><br><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000   <span class="comment"># after 60 sec if at least 10000 keys changed</span></span><br><span class="line"></span><br><span class="line">save <span class="string">&quot;&quot;</span>   <span class="comment"># 读写频繁时，不使用Snapchat</span></span><br><span class="line"></span><br><span class="line">rdbchecksum yes</span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"></span><br><span class="line">maxmemory bytes?</span><br><span class="line"></span><br><span class="line">appendonly no</span><br><span class="line">appendfilename <span class="string">&quot;appendonly.aof&quot;</span></span><br><span class="line">appendfsync everysec</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-Redis使用建议："><a href="#2-9-Redis使用建议：" class="headerlink" title="2.9 Redis使用建议："></a>2.9 Redis使用建议：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">key:</span><br><span class="line">    object-type:id:field</span><br><span class="line">    length 10~20</span><br><span class="line">    </span><br><span class="line">value:</span><br><span class="line">    string 不超过2K</span><br><span class="line">    set, sortedset 元素个数不超过5000</span><br></pre></td></tr></table></figure>
+
+<p>各数据类型使用场景：</p>
+<ul>
+<li>List：实时聊天系统、不同进程间传递消息队列、列表类的东西</li>
+<li>Set: </li>
+</ul>
+<h3 id="2-10-Redis主从同步："><a href="#2-10-Redis主从同步：" class="headerlink" title="2.10 Redis主从同步："></a>2.10 Redis主从同步：</h3><p>1) 主从同步特点</p>
+<ul>
+<li>一个master可拥有多个slave</li>
+<li>slave还可连接到其他slave</li>
+<li>主从复制不会阻塞master，数据同步时，master可继续处理client请求</li>
+</ul>
+<p>2) 配置</p>
+<p>salve:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br><span class="line">masterauth &lt;master-password&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; info</span><br><span class="line">&gt; monitor</span><br><span class="line">&gt; info replication</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-Redis发布和订阅："><a href="#2-11-Redis发布和订阅：" class="headerlink" title="2.11 Redis发布和订阅："></a>2.11 Redis发布和订阅：</h3><p>1) Client</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; subscribe channel00</span><br></pre></td></tr></table></figure>
+
+<p>2) Server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; publish channel00 hello</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-Redis设置过期时间："><a href="#2-12-Redis设置过期时间：" class="headerlink" title="2.12 Redis设置过期时间："></a>2.12 Redis设置过期时间：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; flushdb</span><br><span class="line">&gt; keys *</span><br><span class="line">&gt; exists name</span><br><span class="line">&gt; <span class="built_in">set</span> name tom</span><br><span class="line">&gt; ttl name        <span class="comment"># -1, 永不过期</span></span><br><span class="line">&gt; expire name 5   <span class="comment"># 5s后过期</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="built_in">set</span> age 20</span><br><span class="line">&gt; expireat age 1555506769</span><br></pre></td></tr></table></figure>
+
+<p>​    过期机制：redis采用lazy expriation方式，即在访问key时判断是否过期，如果过期，则进行过期处理。其次，每秒对volation keys进行抽样测试，如果有过期键，那对所有过期key处理。</p>
+<h2 id="3-Redis持久化"><a href="#3-Redis持久化" class="headerlink" title="3. Redis持久化"></a>3. Redis持久化</h2><h3 id="3-1-支持数据持久化"><a href="#3-1-支持数据持久化" class="headerlink" title="3.1 支持数据持久化"></a>3.1 支持数据持久化</h3><ul>
+<li>两种存储方式：<ul>
+<li>snapshot: 快照，定时将内存快照持久化到磁盘，crash会丢失数据</li>
+<li>aof(append only mode): 写数据的同时，将操作命令保存日志，不会丢失数据，但维护成本高</li>
+</ul>
+</li>
+<li>redis是单线程的，memcached多线程</li>
+<li>redis修改libevent库实现小的epoll，memcached完全依赖libevent，影响性能</li>
+<li>redis支持事务</li>
+</ul>
+<h3 id="3-2-持久化类型"><a href="#3-2-持久化类型" class="headerlink" title="3.2 持久化类型"></a>3.2 持久化类型</h3><ul>
+<li>RDB: 在指定的时间间隔内，将内存中的数据快照写入磁盘</li>
+<li>AOF: 以日志形式记录服务器每个写操作。服务器启动时，根据日志文件重构数据库，保证数据库的完整性</li>
+<li>无持久化：只在内存中存储，加强版的memcached</li>
+<li>RDB&amp;AOF: </li>
+</ul>
+<h3 id="3-3-RDB"><a href="#3-3-RDB" class="headerlink" title="3.3 RDB"></a>3.3 RDB</h3><p>snapshot: 默认方式，将内存中的数据以快照方式写入二进制文件中(dump.rdb)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure>
+
+<p>快照保存过程：</p>
+<ul>
+<li>redis调用fork，产生一个子进程</li>
+<li>父进程继续处理client请求，子进程负责将fork时刻整个内存数据库快照写入临时文件。</li>
+<li>子进程完成写入临时文件后，用临时文件替换原来的快照文件，然后子进程退出。</li>
+</ul>
+<p>问题：每次快照持久化都是将内存数据完整写入到磁盘，如果数据量较大，读写操作较多，必然会引起磁盘IO问题。</p>
+<p>优点：</p>
+<ul>
+<li>1) 整个数据库只有一个文件，备份简单</li>
+<li>2) 性能最大化，在持久化时，fork出子进程，由子进程完成持久化操作</li>
+<li>3) 大数据量时，RDB启动效率更高</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>1) 宕机时，来不及持久化的数据丢失</li>
+<li>2) 大数据量时，持久化fork的子进程，可能导致服务器暂停服务100ms甚至更长</li>
+</ul>
+<h3 id="3-4-AOF-append-only-file"><a href="#3-4-AOF-append-only-file" class="headerlink" title="3.4 AOF (append only file)"></a>3.4 AOF (append only file)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br><span class="line"></span><br><span class="line">appendfsync always</span><br><span class="line">appendfsync everysec</span><br><span class="line">appendfsync no   # 完全依赖操作系统，性能最好，但持久化可能丢数据</span><br></pre></td></tr></table></figure>
+
+<p>aof的问题：持久化文件会越来越大。为了压缩aof的持久化文件，redis提供命令bgrewriteaof命令。收到此命令，将使用和快照类似的处理方式，将内存以命令的方式保存到临时文件，最后替换原来的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 自动bgrewriteaof</span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">auto-aof-rewrite-size 64mb</span><br></pre></td></tr></table></figure>
+
+<p>优点：</p>
+<ul>
+<li>1) 更高的数据安全性</li>
+<li>2) 对日志文件采取append写入，即使宕机，也不会破坏日志文件已存在的内容，出现数据不一致问题时，使用redis-check-aof修复</li>
+<li>3) 日志文件过大时，启用rewrite机制，保证日志文件切换不丢失</li>
+<li>4) 日志文件清晰，有助数据库重建</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>1) 数据文件比RDB大</li>
+<li>2) 根据同步策略的不同，AOF运行效率比RDB差</li>
+</ul>
+<h2 id="4-其他常用命令："><a href="#4-其他常用命令：" class="headerlink" title="4. 其他常用命令："></a>4. 其他常用命令：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; auth PASS</span><br><span class="line">&gt; config get appendonly</span><br><span class="line">&gt; config <span class="built_in">set</span> appendonly yes    <span class="comment"># 临时改参数</span></span><br><span class="line">&gt; config get *</span><br><span class="line">&gt; config reset</span><br><span class="line">&gt; info</span><br><span class="line">&gt; flushall</span><br><span class="line">&gt; monitor</span><br><span class="line">&gt; shutdown</span><br></pre></td></tr></table></figure>
+
+<p>Redis-benchmark: 服务器性能测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100个并发，100000次</span></span><br><span class="line">redis-benchmark -h localhost -p 6379 -c 100 -n 100000</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Redis优化："><a href="#5-Redis优化：" class="headerlink" title="5. Redis优化："></a>5. Redis优化：</h2><p>1) 内存管理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># HashMap成员数量，小于配置，按紧凑格式存储，内存开销少，任意一个超过，就使用真实的HashMap存储，内存占用大</span><br><span class="line">hash-max-zipmap-entries 64   # 成员数量少</span><br><span class="line">hash-max-zipmap-value 512    # 成员长度小</span><br><span class="line"></span><br><span class="line"># List</span><br><span class="line">list-max-ziplist-value 64</span><br><span class="line">list-max-ziplist-entries 512</span><br></pre></td></tr></table></figure>
+
+<p>2) 持久化</p>
+<p>选择aof，每个实例不要超过2G</p>
+<h2 id="6-哈希槽"><a href="#6-哈希槽" class="headerlink" title="6. 哈希槽"></a>6. 哈希槽</h2><p>redis 在数据和节点之间又加入了一层，把这层称为槽（slot），因该槽主要和哈希有关，又叫哈希槽。<br>最后变成了，节点上放的是槽，槽里放的是数据。槽解决的是粒度问题，相当于把粒度变大了，这样便于数据移动。哈希解决的是映射问题，使用 key 的哈希值来计算所在的槽，便于数据分配。</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/redis/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>redis</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/03/17/Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="prev" title="Python 并发编程">
+                                
+                                    Python 并发编程
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/01/03/HTTP%E5%92%8CWebSocket/" rel="prev" title="HTTP和WebSocket">
+                                  
+                                      HTTP和WebSocket
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/websocket/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> websocket</a> <a class="tag" href="/tags/http/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> http</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Redis',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-NoSQL"><span class="toc-text">1. NoSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Redis%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">2. Redis相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-text">2.1 Redis应用场景：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Redis-%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C%EF%BC%9A"><span class="toc-text">2.2 Redis 使用经验：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Redis%E9%83%A8%E7%BD%B2%EF%BC%9A"><span class="toc-text">2.3 Redis部署：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Redis%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="toc-text">2.4 Redis启动：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C%EF%BC%9Aredis%E5%BA%93-select-0-15"><span class="toc-text">2.5 客户端操作：redis库(select 0~15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Redis%E8%AE%BE%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="toc-text">2.6 Redis设置客户端连接密码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="toc-text">2.8 Redis配置文件说明：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-Redis%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE%EF%BC%9A"><span class="toc-text">2.9 Redis使用建议：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-Redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%EF%BC%9A"><span class="toc-text">2.10 Redis主从同步：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-Redis%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85%EF%BC%9A"><span class="toc-text">2.11 Redis发布和订阅：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-12-Redis%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%9A"><span class="toc-text">2.12 Redis设置过期时间：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">3. Redis持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%94%AF%E6%8C%81%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">3.1 支持数据持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8C%81%E4%B9%85%E5%8C%96%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.2 持久化类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-RDB"><span class="toc-text">3.3 RDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-AOF-append-only-file"><span class="toc-text">3.4 AOF (append only file)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">4. 其他常用命令：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Redis%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-text">5. Redis优化：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%93%88%E5%B8%8C%E6%A7%BD"><span class="toc-text">6. 哈希槽</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

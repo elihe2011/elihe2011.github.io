@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>文本处理命令 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/12/19/Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/">
+        文本处理命令
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-12-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="1-find"><a href="#1-find" class="headerlink" title="1. find"></a>1. find</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find PATH -option [-print] [-exec|-ok cmd] &#123;&#125; \;</span><br><span class="line">-print 	\n</span><br><span class="line">-print0 	\0, NULL</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-time"><a href="#1-1-time" class="headerlink" title="1.1 time"></a>1.1 time</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-atime N</span><br><span class="line">-ctime N</span><br><span class="line">-mtime N</span><br><span class="line">-newer FILE</span><br><span class="line">-amin M</span><br><span class="line">-mmin M..</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . -amin -10 			<span class="comment"># 10分钟内访问的文件</span></span><br><span class="line">find . -mtime -2 			<span class="comment"># 2天内修改的文件</span></span><br><span class="line">find . -mmin +60 		<span class="comment"># 60分钟前被修改的文件</span></span><br><span class="line">find /etc -mmin -120   	<span class="comment"># 两小时内被修改的文件</span></span><br><span class="line">find / -mtime 0   		<span class="comment"># 将过去24 小时内有改变过内容的文件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-user-amp-group"><a href="#1-2-user-amp-group" class="headerlink" title="1.2 user &amp; group"></a>1.2 user &amp; group</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-uid n</span><br><span class="line">-gid n</span><br><span class="line">-user name</span><br><span class="line">-group name</span><br><span class="line">-nouser</span><br><span class="line">-nogroup</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find /var -uid +1048 	<span class="comment"># uid大于等于1048</span></span><br><span class="line">find /home -user <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-file"><a href="#1-3-file" class="headerlink" title="1.3 file"></a>1.3 file</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">-name FILENAME</span><br><span class="line">-type TYPE （f，b，c，d，l，s，p）</span><br><span class="line"></span><br><span class="line">-size SIZE</span><br><span class="line">-empty</span><br><span class="line"></span><br><span class="line">-inum n</span><br><span class="line">-links NUM</span><br><span class="line"></span><br><span class="line">-depth 			sub-diectory first</span><br><span class="line">-maxdepth level		Decend at most [level] levels of directories below the command</span><br><span class="line">-mindepth level		Don&#x27;t apply tests or actions at levels less than [level]</span><br><span class="line"></span><br><span class="line">-xdev				不跨越filesystem   </span><br><span class="line">-mount 			unix不支持</span><br><span class="line">-fstype TYPE（ext3，proc）</span><br><span class="line"></span><br><span class="line">-follow   			dereference symbolic links</span><br><span class="line">-L</span><br><span class="line"></span><br><span class="line">-prune			Ignore directory or file</span><br><span class="line"></span><br><span class="line">-perm MODE   		许可位正好是MODE</span><br><span class="line">-perm -MODE 		许可位完全符合MODE</span><br><span class="line">-perm +MODE 		许可位部分符合MODE， 老式写法/MODE</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">实例：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">find . -maxdepth 1  	</span><br><span class="line">find . -maxdepth 2  	</span><br><span class="line">find . -mindepth 4  </span><br><span class="line">find . -mindepth 2 -maxdepth 3</span><br><span class="line"></span><br><span class="line">find . -path ./.svn</span><br><span class="line"></span><br><span class="line">find . -path /var/log -prune -o -print	</span><br><span class="line">find . \(-path /var/log -o -path /var/spool \) -prune -o -print </span><br><span class="line"></span><br><span class="line">find . -size 1000  			# 1000 blocks, 1Block=512Bytes</span><br><span class="line">find . -size +70M</span><br><span class="line">find . -size 20c  				# 20 bytes</span><br><span class="line">find . -size +10M -a -size -20M</span><br><span class="line"></span><br><span class="line">find . -empty  		# 空文件或空目录</span><br><span class="line">find . -links +2  		# 链接数超过2</span><br><span class="line"></span><br><span class="line">find /mnt -name a.txt -fstype vfat</span><br><span class="line">find / ！-fstype proc &#x27;(&#x27; -name &#x27;.??*&#x27; -o -name &#x27;.[^.]&#x27; &#x27;)&#x27;</span><br><span class="line"></span><br><span class="line">find / -perm 664 	# 权限精确等于664</span><br><span class="line">find / -perm -664 	# 权限完全满足664，但可包含额外权限，665，777</span><br><span class="line">find / -perm +664 	# 权限部分满足664，例如660和600</span><br><span class="line"></span><br><span class="line">find . -perm -007  	# others用户具有rwx权限</span><br><span class="line">find . -perm -100 	# 属主至少具有x权限</span><br><span class="line"></span><br><span class="line">特殊权限SGID，SUID，SBIT(---s--s--t)</span><br><span class="line">find . -perm +7000  	# 至少具有一个特殊权限位</span><br><span class="line">find . -perm -7000	#  具有全部特殊权位</span><br><span class="line"></span><br><span class="line"># 删除7天内未被读取的core文件，只涉及/所在的文件系统(-xdev)</span><br><span class="line">find / -xdev -type f  &#x27;(&#x27;  -name core -o name &#x27;core.[0-9]*&#x27;  &#x27;)&#x27; -atime +7 -exec rm -f &#123;&#125; &#x27;;&#x27; </span><br><span class="line"></span><br><span class="line"># 删除那些用#, .#或.nfs开头，或者以~及。CKP结尾且3天内都未被访问过的文件</span><br><span class="line">find / -xdev -atime +3  &#x27;(&#x27;  -name &#x27;#*&#x27; -o -name &#x27;.#*&#x27; -o -name &#x27;*.CKP&#x27;, -o -name &#x27;*~&#x27;, -o -name &#x27;.nfs*&#x27;  &#x27;)&#x27; -exec rm -f &#123; &#125; &#x27;;&#x27;</span><br><span class="line"></span><br><span class="line"># 删除/tmp下载72小时内未被修的所有子目录</span><br><span class="line">cd /tmp; find . ! -name . ! -name lost+found -type d -mtime +3 -exec /bin/rm -rf &#123;&#125; \;</span><br><span class="line"></span><br><span class="line"># 嵌入时间</span><br><span class="line">BACKUPFILE=backup-$(date +%m-%d-%Y)</span><br><span class="line"></span><br><span class="line"># 备份一天前的文件, 缺陷：发现太多的文件或文件名包含空格，执行失败</span><br><span class="line">tar cvf - `find . -mtime -1 -type f -print` &gt; $archive.tar</span><br><span class="line"></span><br><span class="line"># 改进型，GNU版本的find, this one is more better</span><br><span class="line">find . -mtime -1 -type f -print0 | xargs -0 tar rvf &quot;$archive.tar&quot;</span><br><span class="line"></span><br><span class="line"># 改进型，Unix风格的find，较慢</span><br><span class="line">find . -mtime -1 -type f -exec tar rvf &quot;$archive.tar&quot; &#123;&#125; \; </span><br><span class="line"></span><br><span class="line"># remove file or directory it contains special characters</span><br><span class="line">ls -il</span><br><span class="line">find . -inum inode_num -exec rm -rf &#123;&#125; \;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-xargs"><a href="#2-xargs" class="headerlink" title="2. xargs"></a>2. xargs</h2><p>可读入stdin的数据，并且以空格或换行符做分割，将stdin分割成arguments</p>
+<h3 id="1-1-选项说明"><a href="#1-1-选项说明" class="headerlink" title="1.1 选项说明"></a>1.1 选项说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">1) terminated  by a null character, every character is taken literally, (`, \, whitespace)</span><br><span class="line">--null</span><br><span class="line">-0 </span><br><span class="line"></span><br><span class="line">2) terminated by the specified character</span><br><span class="line">--delimiter=delim					</span><br><span class="line">-d delim	</span><br><span class="line"></span><br><span class="line">3) use at most max-lines nonblank input lines per command line</span><br><span class="line">--max-lines[=max-lines]</span><br><span class="line">-l[max-lines]	</span><br><span class="line"></span><br><span class="line">4) use at most max-args arguments per command line.</span><br><span class="line">--max-args=max-args</span><br><span class="line">-n max-args					</span><br><span class="line"></span><br><span class="line">5) replace occurrences of replace-str(&#123;&#125; by default) in the initial-arguments with names read from standard input</span><br><span class="line">-I replace-str</span><br><span class="line">--replace[=replace-str]</span><br><span class="line">-i[replace-str]				.</span><br><span class="line"></span><br><span class="line">6) a placeholder for output text</span><br><span class="line">&#123;&#125;							</span><br><span class="line"></span><br><span class="line">7) run up to max-procs processes at a time; 1 by default; 0: run as many as possible</span><br><span class="line">--max-procs=max-procs</span><br><span class="line">-P max-procs</span><br><span class="line"></span><br><span class="line">8) set the end of file string to EOF</span><br><span class="line">--eof=[EOF]</span><br><span class="line">-e[EOF]						</span><br><span class="line"></span><br><span class="line">9) prompt</span><br><span class="line">--interactive</span><br><span class="line">-p</span><br><span class="line"></span><br><span class="line">10) print the command line on the standard error output before executing it.</span><br><span class="line">--verbose</span><br><span class="line">-t							</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-实例"><a href="#2-2-实例" class="headerlink" title="2.2 实例"></a>2.2 实例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">find -print0 | xargs -0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单行输出</span></span><br><span class="line">cat a.txt | xargs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每行3个参数</span></span><br><span class="line">cat a.txt | xargs -n3 	</span><br><span class="line"></span><br><span class="line"><span class="comment"># list files in 8 column</span></span><br><span class="line">ls | xargs -n 8 <span class="built_in">echo</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前3个用户活动情况</span></span><br><span class="line">cut -d<span class="string">&quot;:&quot;</span> -f1 /etc/passwd | head -n 3 | xargs -p finger</span><br><span class="line">cut -d<span class="string">&quot;:&quot;</span> -f1 /etc/passwd | xargs -p -e<span class="string">&quot;lp&quot;</span> finger</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件名含空格等</span></span><br><span class="line">find /home -size +1M -print0 | xargs -0 ls -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># core文件列表</span></span><br><span class="line">find / -name <span class="string">&quot;core&quot;</span> -<span class="built_in">print</span> | xargs <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; core.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除other组的可执行权限</span></span><br><span class="line">find .  -perm -7 -<span class="built_in">print</span> | xargs chmod o-x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多文件过滤</span></span><br><span class="line">find . -name \* -<span class="built_in">type</span> f | xargs grep <span class="string">&quot;abc&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定界符</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;aXbXc&quot;</span> | xargs -dX</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拷贝整个目录</span></span><br><span class="line">ls | xargs -i -t cp ./&#123;&#125;  /tmp/eli</span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀掉所有mysql进程</span></span><br><span class="line">ps ax | grep mysql | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> | xargs -i <span class="built_in">kill</span>  &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数-I和-i</span></span><br><span class="line">cat a.sh</span><br><span class="line"><span class="built_in">echo</span> $*</span><br><span class="line"></span><br><span class="line">cat args.txt</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line"></span><br><span class="line">cat args.txt | xargs -I &#123;&#125; ./a.sh -p &#123;&#125; -l</span><br><span class="line">-p aaa -l</span><br><span class="line">-p bbb -l</span><br><span class="line">-p ccc -l</span><br><span class="line"></span><br><span class="line">cat args.txt | xargs -i ./a.sh -p &#123;&#125; -l</span><br><span class="line"></span><br><span class="line">cat args.txt | xargs -I % ./a.sh -p % -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 逐一拷贝图片</span></span><br><span class="line">ls *.jpg | xargs -n 1 -i cp &#123;&#125; /home/images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩文件，每次一个</span></span><br><span class="line">ls | xargs -p -l gzip</span><br><span class="line"></span><br><span class="line"><span class="comment"># to handle arguments containing whitespace or quotes</span></span><br><span class="line">find / -<span class="built_in">type</span> f -print0 | xargs -0 grep -liwZ GUI | xargs -0 rm -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启两个处理进程，每次压缩一个文件</span></span><br><span class="line">ls *.txt | xargs -t -n1 -P2 gzip</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep输出的文件名以\0结尾</span></span><br><span class="line">grep  -lZ <span class="string">&#x27;abc&#x27;</span> <span class="string">&quot;*.txt&quot;</span> | xargs -0</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-sed"><a href="#3-sed" class="headerlink" title="3. sed"></a>3. sed</h2><p>sed, stream editor , 按顺序逐行方式工作</p>
+<ul>
+<li><p>i. 从输入读取一行数据存入临时缓冲区，即模式空间(pattern space)</p>
+</li>
+<li><p>ii. 按指定的sed编辑命令处理缓冲区中的内容</p>
+</li>
+<li><p>iii. 把模式空间的内容送往屏幕，并将此行内容从模式空间中删除</p>
+</li>
+<li><p>iv. 读取下一行，重复上述过程直至全部处理</p>
+</li>
+<li><p>模式空间(pattern space)</p>
+</li>
+<li><p>保留空间(hold space)</p>
+</li>
+</ul>
+<h3 id="3-1-参数说明"><a href="#3-1-参数说明" class="headerlink" title="3.1 参数说明"></a>3.1 参数说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sed [OPTION] [-e] cmd1 [[-e cmd2] [-e cmd3] ... [-e cmdn]] [input-file]</span><br><span class="line">sed [OPTION] -f script-file [input-file]</span><br><span class="line"></span><br><span class="line">-n		不打印模式空间</span><br><span class="line">-r      	使用E-REGEX</span><br><span class="line">-i		直接修改文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Address"><a href="#3-2-Address" class="headerlink" title="3.2 Address"></a>3.2 Address</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1,100</span><br><span class="line">1,+5		&lt;=&gt; 1,6</span><br><span class="line">5,10!</span><br><span class="line">1~2		&lt;=&gt;1,3,5</span><br><span class="line"></span><br><span class="line">/pattern/</span><br><span class="line">/pattern1/,/pattern2/</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-Command"><a href="#3-3-Command" class="headerlink" title="3.3 Command"></a>3.3 Command</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">d  	从pattern space删除所有行</span><br><span class="line">D	从pattern space删除第一行</span><br><span class="line"></span><br><span class="line">p  	打印pattern space中所有行</span><br><span class="line">P	打印pattern space中的第一行</span><br><span class="line"></span><br><span class="line">sed &#x27;3,$d&#x27; </span><br><span class="line">sed &#x27;/line/&#x27;d </span><br><span class="line">sed -n &#x27;$p&#x27;</span><br><span class="line"></span><br><span class="line"># delete spaces in front of each row</span><br><span class="line">sed &#x27;s/^[ ]*/g&#x27; </span><br><span class="line">sed &#x27;s/^ */g&#x27; </span><br><span class="line">sed &#x27;s/^[[:space:]]*//g </span><br><span class="line"></span><br><span class="line"># grep &#x27;pattern&#x27;</span><br><span class="line">sed -n &#x27;/pattern/p&#x27;</span><br><span class="line">sed &#x27;/pattern/!d&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">r file 	读取文件，将文件内容追加到匹配行</span><br><span class="line">w file  将匹配行写入文件</span><br><span class="line"></span><br><span class="line">a\string 	行后面追加一行文本</span><br><span class="line">i\string 	行前面插入一行文本</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s/pattern/string/  用string替换pattern</span><br><span class="line">	sed &#x27;s/abc/123/g&#x27;</span><br><span class="line">	sed &#x27;s#\(abc\)defg#\1#&#x27;</span><br><span class="line"></span><br><span class="line">   sed &#x27;s/2/*/8&#x27;	# 第8个&quot;2&quot;替换为&quot;*&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">h  	cat pattern-space &gt; hold-space</span><br><span class="line">H  	cat &quot;\n&quot;pattern-space &gt;&gt; hold-space</span><br><span class="line"></span><br><span class="line">g  	cat hold-space &gt; pattern-space</span><br><span class="line">G  	cat &quot;\n&quot;hold-space &gt;&gt; pattern-space</span><br><span class="line"></span><br><span class="line">x	exchange hold-space with pattern-space</span><br><span class="line"></span><br><span class="line">!   	no actions</span><br><span class="line">	</span><br><span class="line">  # tac</span><br><span class="line">  sed &#x27;1!G;h;$!d&#x27; </span><br><span class="line"></span><br><span class="line">	# 新增空行</span><br><span class="line">  sed G</span><br><span class="line"></span><br><span class="line">  # 多个空行变一个</span><br><span class="line">  sed &#x27;/^$/d;G&#x27;</span><br><span class="line"></span><br><span class="line">       # add a blank line before the matching one</span><br><span class="line">  sed &#x27;/python/&#123;x;p;x&#125;&#x27;</span><br><span class="line"></span><br><span class="line">  # add a blank line after the matching one</span><br><span class="line">  sed &#x27;/python/G&#x27;</span><br><span class="line"></span><br><span class="line">  # add a blank line before and after the matching one</span><br><span class="line">  sed &#x27;/python/&#123;x;p;x;G&#125;&#x27;</span><br><span class="line">	</span><br><span class="line">  # 匹配行的前一行</span><br><span class="line">  sed -n &#x27;/python/&#123;g;1!p&#125;;h&#x27;	# 先h, 将ps保存至hs; 当匹配时，g使用hs替换ps, 如果不是第一行，则打印</span><br><span class="line"></span><br><span class="line">  # 匹配行的后一行</span><br><span class="line">   sed -n &#x27;/python/&#123;n;p&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n  	读取下一行至pattern space，此时pattern space有2行，后续命令，只操作n读入的行</span><br><span class="line">N	读取下一行至pattern space，但将当前读入行和N命令读入的下一行看成“一行&quot;</span><br><span class="line"></span><br><span class="line">   # 匹配行的后一行，做替换操作</span><br><span class="line">   sed &#x27;/python/&#123;n;s/job/task/&#125;&#x27;</span><br><span class="line"></span><br><span class="line">   # 删除偶数行</span><br><span class="line">   sed &#x27;n;d&#x27;</span><br><span class="line">  sed -n &#x27;1~2p&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y	与tr类似，字符替换</span><br><span class="line">	sed &#x27;1y/abcdef/ABCDEF/&#x27; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=  	打印行号</span><br><span class="line">	sed -n &#x27;/python/=&#x27;</span><br><span class="line">	sed -n &#x27;$=&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">q	退出</span><br><span class="line">  # head -2</span><br><span class="line">  sed 2q</span><br><span class="line">  </span><br><span class="line">  # tail -2</span><br><span class="line">	sed &#x27;$!N;$!D&#x27;	</span><br><span class="line">	</span><br><span class="line">  # tail -1</span><br><span class="line">  sed -e :a -e &#x27;$q;N;2,$D;ba&#x27;</span><br><span class="line">  sed &#x27;$!d&#x27;	</span><br><span class="line">	sed  -n &#x27;$p&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>3.4 实例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># replace Unix to Unix/Linux</span></span><br><span class="line">sed -e <span class="string">&#x27;s#Unix#&amp;/Linux#g&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># squeeze continuous c to single c</span></span><br><span class="line">sed <span class="string">&#x27;s/cc*/c/g&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delete space at head of line</span></span><br><span class="line">sed <span class="string">&#x27;s/^[ \t]*//&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delete dot at end of line</span></span><br><span class="line">sed <span class="string">&#x27;s/\.$//g&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># delete first character each line</span></span><br><span class="line">sed <span class="string">&#x27;s/.//g&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># delete space at end of line</span></span><br><span class="line">sed <span class="string">&#x27;s/ *$//g&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># insert two space before head each line</span></span><br><span class="line">sed <span class="string">&#x27;s/^/  /g&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># remove punctuation(. , ? !)</span></span><br><span class="line">sed <span class="string">&#x27;s/\.//g&#x27;</span> -e <span class="string">&#x27;s/\,//g&#x27;</span> -e <span class="string">&#x27;s/\?//g&#x27;</span> -e <span class="string">&#x27;s/\!//g&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># more effective</span></span><br><span class="line">sed <span class="string">&#x27;s/foo/bar/g&#x27;</span> </span><br><span class="line">sed <span class="string">&#x27;/foo/ s/foo/bar/g&#x27;</span> </span><br><span class="line">sed <span class="string">&#x27;/foo/ s//bar/g&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># only replacement once, use &#x27;q&#x27;</span></span><br><span class="line">sed <span class="string">&#x27;s/foo/ s/foo/bar/;q&#125;&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># delete blank lines</span></span><br><span class="line">sed <span class="string">&#x27;/^$/d&#x27;</span> </span><br><span class="line">sed <span class="string">&#x27;/./!d&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="4-awk"><a href="#4-awk" class="headerlink" title="4. awk"></a>4. awk</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">awk [options] &#x27;BEGIN&#123;action&#125;pattern&#123;action&#125;...END&#123;action&#125;&#x27; file</span><br><span class="line">awk [options] -f program.awk file</span><br><span class="line"></span><br><span class="line">options:</span><br><span class="line">-F fs                     use fs for the input field separator</span><br><span class="line">-v val=val           assign the value to the variable var, before execution of the program begins.</span><br><span class="line"></span><br><span class="line">pattern:</span><br><span class="line">/regex/: extended regular expression</span><br><span class="line">relational expression: if..else..</span><br><span class="line">    pattern1, pattern2: pattern range</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-Built-in-Variables"><a href="#4-1-Built-in-Variables" class="headerlink" title="4.1 Built-in Variables:"></a>4.1 Built-in Variables:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">1. NF, NR</span><br><span class="line">NF              The number of fields</span><br><span class="line">NR              The total number of input records seen so far</span><br><span class="line"></span><br><span class="line">2. FS, RS, OFS, ORS</span><br><span class="line">FS              The input field separator, a space by default</span><br><span class="line">RS             The input record separator, by default a newline</span><br><span class="line">OFS             The output field separator, a space by default</span><br><span class="line">ORS             The output record separator, by default a newline</span><br><span class="line"></span><br><span class="line">3. IGNORECASE      Not case-sensitivity</span><br><span class="line"></span><br><span class="line">4. ENVIRON</span><br><span class="line"># awk &#x27;BEGIN&#123;for(i in ENVIRON) print i, ENVIRON[i]&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;print ENVIRON[&quot;JAVA_HOME&quot;]&#125;&#x27;</span><br><span class="line"></span><br><span class="line">5. ARGC, ARGV, ARGIND</span><br><span class="line">ARGC: the number of arguments</span><br><span class="line">ARGIND: the index in ARGV of the current file being processed</span><br><span class="line">ARGV: Array of arguments</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;print &quot;ARGC=&quot;ARGC; for(i in ARGV) print i&quot;=&quot;ARGV[i]&#125;&#x27; /etc/passwd</span><br><span class="line">ARGC=2, 0=awk, 1=/etc/passwd</span><br><span class="line"> </span><br><span class="line">6. FILENAME : the name of the current input file</span><br><span class="line"># awk &#x27;BEGIN&#123;print FILENAME&#125;&#123;print FILENAME; exit&#125;&#x27;</span><br><span class="line"></span><br><span class="line">7. OFMT : number output format &quot;.6g&quot;</span><br><span class="line"># awk &#x27;BEGIN&#123;printf(&quot;%.2f %.2f\n&quot;, 1/6, 3.1415926)&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;OFMT=&quot;%.2f&quot;; print 1/6, 3.1415926)&#125;&#x27;</span><br><span class="line"></span><br><span class="line">8. FIELDWIDTH : set fields by fixed width</span><br><span class="line"># date +&quot;%Y%m%d%H%M%S&quot; | awk &#x27;BEGIN&#123;FIELDWIDTH=&quot;4 2 2 2 2 2&quot;&#125;&#123;print $1&quot;-&quot;$2&quot;-&quot;$3, $4&quot;:&quot;$5&quot;:&quot;$6&#125;&#x27;</span><br><span class="line"></span><br><span class="line">9. RSTART, RLENGTH</span><br><span class="line">RSTART: the index of the first character matched by match(), 0</span><br><span class="line">RLENGTH: the length of the string matched by matched by match(), -1</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;start=match(&quot;this is match test&quot;, /m[a-z]+/); print start, RSTART, RLENGTH&#125;&#x27;</span><br><span class="line">9 9 5</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Built-in-Functions"><a href="#4-2-Built-in-Functions" class="headerlink" title="4.2 Built-in Functions:"></a>4.2 Built-in Functions:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">1. Numeric</span><br><span class="line">int(x)</span><br><span class="line">sqrt(x)</span><br><span class="line">rand(): return a random number, [0-1)</span><br><span class="line">srand([expr]): use expr as a seed for random generator, if not provided, use system current time</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;print int(2.3), int(012), int(0xFF), int(3a), int(a3)&#125;&#x27;   </span><br><span class="line">2 10 255 3 0</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;print rand(), 10*rand()&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;srand(); print rand(), 10*rand()&#125;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2. String</span><br><span class="line">sub(regex, replacement[, target]): use the replacement to replace the regex matched in string target(by default $0)</span><br><span class="line">gsub(regex, replacement[, target]): global sub</span><br><span class="line"></span><br><span class="line">gensub(regex, replacement, how[, target]): gawk</span><br><span class="line">gensub(regex, replacement, &quot;g|G&quot; target)    =&gt; gsub</span><br><span class="line">gensub(regex, replacement, 0, target)       =&gt; gsub, but with warning</span><br><span class="line">gensub(regex, replacement, N, target)       =&gt; N is a digit from 1 to 9, index of the matched sub-expression</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;info=&quot;this is a test2010test!&quot;; gsub(/[0-9]+/,info); print info&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># gawk &#x27;BEGIN&#123;a=&quot;abc def&quot;; b=gensub(/(.+) (.+)/, &quot;\\2 \\1&quot;, &quot;g&quot;, a); print b&#125;&#x27; </span><br><span class="line">def abc</span><br><span class="line"></span><br><span class="line"># echo &quot;a b c a b c&quot; | gawk &#x27;&#123;print gensub(/a/,&quot;AA&quot;,2)&#125;&#x27; </span><br><span class="line">a b c AA b c</span><br><span class="line"></span><br><span class="line">index(string, find): index of the find in the string, or 0 if not present</span><br><span class="line">match(string, regex[, array]): position of the regex occurring in the string</span><br><span class="line"></span><br><span class="line">length([string])</span><br><span class="line">substr(string, position[, len])</span><br><span class="line">split(string, array[, regexp]): split the string into the array on the regex</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a test&quot;; print index(s, &quot;a&quot;)&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a test&quot;; print index(s, &quot;a&quot;) ? &quot;ok&quot; : :no found&quot;&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a match test&quot;; pos=match(s, /m[a-z]+/, array); print pos; for(i in array) print i, array[i]&#125;&#x27;</span><br><span class="line">11</span><br><span class="line">0start 11</span><br><span class="line">0length 5</span><br><span class="line">0 match</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a test&quot;; print substr(s, 9, 1)&#125;&#x27;</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a test&quot;; print substr(s, 9)&#125;&#x27;</span><br><span class="line">a test</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=&quot;this is a split test&quot;; len=split(s,array); print len; for(i in array) print i, array[i]&#125;&#x27;</span><br><span class="line">5</span><br><span class="line">4 split</span><br><span class="line">5 test</span><br><span class="line">1 this</span><br><span class="line">2 is</span><br><span class="line">3 a</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;FS=&quot;:&quot;&#125;/^root/&#123;split($0,array); for(i in array) print i, array[i]&#125;&#x27; /etc/passwd</span><br><span class="line"># awk &#x27;/^root/&#123;split($0,array,/:/); for(i in array) print i, array[i]&#125;&#x27; /etc/passwd</span><br><span class="line">4 0</span><br><span class="line">5 root</span><br><span class="line">6 /root</span><br><span class="line">7 /bin/bash</span><br><span class="line">1 root</span><br><span class="line">2 x</span><br><span class="line">3 0</span><br><span class="line"></span><br><span class="line">Associative Arrays</span><br><span class="line">a. sorting by values</span><br><span class="line">len = asort(s)      # s: changed, the indexes are replaced with sequential integers</span><br><span class="line">len = asort(s, d)   # s: unchanged; d: a sorted duplicate array of s</span><br><span class="line"></span><br><span class="line">b. sorting by indexes</span><br><span class="line">len = asorti(s)     # s: changed, restorted by indexes</span><br><span class="line">len = asorti(s, d)  # s: unchanged; d: a new array of sorted indexes</span><br><span class="line"></span><br><span class="line"># awk &#x27;&#123;a[$1]=$2&#125;END&#123;for(i in a) print i, a[i]&#125;&#x27; abc.txt</span><br><span class="line">10 35</span><br><span class="line">12 30</span><br><span class="line">22 13</span><br><span class="line">24 20</span><br><span class="line"></span><br><span class="line"># awk &#x27;&#123;a[$1]=$2&#125;END&#123;for(i=1;i&lt;=asort(a,b);i++) print i, b[i]&#125;&#x27; abc.txt</span><br><span class="line">1 13</span><br><span class="line">2 20</span><br><span class="line">3 30</span><br><span class="line">4 40</span><br><span class="line"></span><br><span class="line"># awk &#x27;&#123;a[$1]=$2&#125;END&#123;for(i=1;i&lt;=asorti(a,b);i++) print i, b[i]&#125;&#x27; abc.txt</span><br><span class="line">1 10</span><br><span class="line">2 12</span><br><span class="line">3 22</span><br><span class="line">4 24</span><br><span class="line"></span><br><span class="line">sprintf(format, expr): return the printed expr according to the format</span><br><span class="line">tolower(string)</span><br><span class="line">toupper(string)</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;s=sprintf(&quot;%.2g %s %d&quot;, 3.1415926, 3.1415926, 3.1415926); print s&#125;&#x27;</span><br><span class="line">3.1 3.14159 3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. Time</span><br><span class="line">mktime(&quot;YYYY MM DD HH MM SS[ DST]&quot;): return a time stamp</span><br><span class="line">systime(): return current time stmap</span><br><span class="line">strftime([format[, ts])</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;print mktime(&quot;2014 12 20 14 25 32&quot;)&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;print systime()&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;print strftime()&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;print strftime(&quot;%c&quot;, systime())&#125;&#x27;   # date +%c</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4. IO</span><br><span class="line">close(file[, how]): close file, pipe or co-process; how is either &quot;from&quot; or &quot;to&quot;</span><br><span class="line"></span><br><span class="line">getline              set $0 from next input record, set NF, NR, FNR</span><br><span class="line">getline &lt;file       set $0 from next record of file, set NF</span><br><span class="line">getline var         set var from next input record, set NR, FNR</span><br><span class="line">getline var &lt;file   set vat from next record of file</span><br><span class="line"></span><br><span class="line">command | getline [var]     run command piping the output either into $0 or var</span><br><span class="line">command | &amp; getline [var]   run command as a co-process piping the output either into $0 or var. co-processes are a gawk extension</span><br><span class="line"></span><br><span class="line">next: stop processing the current input record</span><br><span class="line"></span><br><span class="line">print [expr-list [&gt;file] ]</span><br><span class="line">printf [format, expr-list [&gt;file] ]</span><br><span class="line"></span><br><span class="line">system(&quot;cmd&quot;)   execute the command, and return the exit status</span><br><span class="line"></span><br><span class="line">fflush([file])  flush any buffers</span><br><span class="line"></span><br><span class="line">print ... | command     write on a pipe</span><br><span class="line">print ... |&amp; command    write on a co-process</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;while(&quot;cat /etc/passwd&quot; | getline) print; close(&quot;/etc/passwd&quot;)&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;while(getline &lt;&quot;/etc/passwd&quot;) print; close(&quot;/etc/passwd&quot;)&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;&quot;date&quot; | getline d; print d&#125;&#x27;</span><br><span class="line"># awk &#x27;BEGIN&#123;&quot;date&quot; | getline d; split(d,mon); print mon[2]&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;while(&quot;ls&quot; | getline) print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># awk &#x27;BEGIN&#123;printf(&quot;Enter your account: &quot;); getline name; print name&#125;&#x27;</span><br><span class="line">awk &#x27;BEGIN&#123;l=system(&quot;ls -l&quot;); print l&#125;&#x27;</span><br><span class="line"></span><br><span class="line">// prompting, wait for input</span><br><span class="line"># awk &#x27;BEGIN&#123;printf &quot;What is your name? &quot;; getline name &lt;&quot;/dev/tty&quot;&#125; $1~name &#123;print &quot;Found&quot; name &quot;on line &quot;, NR&quot;.&#125; END&#123;print &quot;See you,&quot; name &quot;.&quot;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line">// count number of file</span><br><span class="line"># awk &#x27;BEGIN&#123;while(getline &lt;&quot;/etc/passwd&quot; &gt;0) lc++; print lc&#125;</span><br><span class="line"></span><br><span class="line">// sort</span><br><span class="line"># awk &#x27;&#123;print $1, $2 | &quot;sort&quot;&#125; END&#123;close(&quot;sort)&#125;&#x27; abc.txt</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-3-FILE-SPACING"><a href="#4-3-FILE-SPACING" class="headerlink" title="4.3 FILE SPACING:"></a>4.3 FILE SPACING:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"># insert a blank line</span><br><span class="line">awk &#x27;1; &#123;print &quot;&quot;&#125;&#x27;</span><br><span class="line">awk &#x27;BEGIN&#123;ORS=&quot;\n\n&quot;&#125;; 1&#x27;</span><br><span class="line"></span><br><span class="line"># insert two blank lines</span><br><span class="line">awk &#x27;1;&#123;print &quot;\n&quot;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">NUMBERING AND CALCULATIONS:</span><br><span class="line"></span><br><span class="line"># using a TAB instead of space will perserve margins</span><br><span class="line">awk &#x27;&#123;print FNR &quot;\t&quot; $0&#125;&#x27;</span><br><span class="line">awk &#x27;&#123;print NR &quot;\t&quot; $0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># number each line of a file</span><br><span class="line">awk &#x27;&#123;printf(&quot;%5d : %s\n, NR, $0)&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># number each line of a file, but only print numbers if line is not blank</span><br><span class="line">awk &#x27;NF&#123;$0=++a &quot;:&quot; $0&#125;;&#123;print&#125;&#x27;</span><br><span class="line">awk &#x27;&#123;print (NF ? ++a &quot;:&quot; : &quot;&quot;) $0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># wc -l</span><br><span class="line">awk &#x27;END&#123;print NR&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># wc -w</span><br><span class="line">awk &#x27;&#123;total=total+NF&#125;END&#123;print total&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the sum of the fields of every line</span><br><span class="line">awk &#x27;&#123;s=0; for(i=1;i&lt;=NF;i++) s=s+$i; print s&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># add all fields in all lines and print the sum</span><br><span class="line">awk &#x27;&#123;for(i=1;i&lt;=NF;i++) s=s+$i&#125;END&#123;print s&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print absolute value of fields</span><br><span class="line">awk &#x27;&#123;for(i=1;i&lt;=NF;i++) if($i&lt;0) $i=-$i; print&#125;&#x27;</span><br><span class="line">awk &#x27;(for(i=1;i&lt;=NF;i++) $i = ($i&lt;0) ? -$i : $i; print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the total number of lines that contains &quot;Beth&quot;</span><br><span class="line">awk &#x27;/Beth/&#123;n++&#125;; END&#123;print n+0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the largest first field</span><br><span class="line">awk &#x27;$1&gt;max&#123;max=$1; maxline=$0&#125;; END&#123;print max, maxline&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the last field</span><br><span class="line">awk &#x27;&#123;print $NF&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the last field of the last line</span><br><span class="line">awk &#x27;&#123;field=$NF&#125;; END&#123;print feild&#125;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">TEXT CONVERSION AND SUBSTITUTION:</span><br><span class="line"></span><br><span class="line"># dos2unix</span><br><span class="line">awk &#x27;&#123;sub(/\r$/,&quot;&quot;); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># unix2dos</span><br><span class="line">awk &#x27;&#123;sub(/$/,&quot;\r&quot;); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># delete leading whitespace</span><br><span class="line">awk &#x27;&#123;sub(/^[ \t]+/,&quot;&quot;); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># delete trailing whitespace</span><br><span class="line">awk &#x27;&#123;sub(/[ \t]+$/,&quot;&quot;); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># delete both leading and trailing whitespace</span><br><span class="line">awk &#x27;&#123;sub(/^[ \t]+|[ \t]+$/); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># insert 5 whitespace at the beginning of line</span><br><span class="line">awk &#x27;&#123;sub/^/, &quot;     &quot;); print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># align all text flush right in a 70-column width</span><br><span class="line">awk &#x27;&#123;printf &quot;%79s\n&quot;, $0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># center all text on a 79-character width</span><br><span class="line">awk &#x27;&#123;l=length(); s=int((79-l)/2); printf &quot;%&quot;(s+l&#125;&quot;s\n&quot;,$0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># substitute</span><br><span class="line">awk &#x27;&#123;sub(/foo/,&quot;bar&quot;); print&#125;&#x27;             # 1st</span><br><span class="line">awk &#x27;&#123;$0=gensub(/foo/,&quot;bar&quot;,4); print&#125;&#x27;     # 4st</span><br><span class="line">awk &#x27;&#123;gsub(/foo/,&quot;bar&quot;); print&#125;&#x27;            # all</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">awk &#x27;&#123;gsub(/scarlet|ruby|puce/, &quot;red&quot;); print&#125;</span><br><span class="line"></span><br><span class="line"># tac</span><br><span class="line">awk &#x27;&#123;a[i++]=$0&#125;END&#123;for(j=i-1;i&gt;=0;j--) print a[j]&#125;</span><br><span class="line"></span><br><span class="line"># append the next line, if line ends with a backslash.(fails to handle mutiple lines ending with backslash)</span><br><span class="line">awk &#x27;/\\$/&#123;sub(/\\$/,&quot;&quot;); getline t; print $0 t; next&#125;; 1&#x27;</span><br><span class="line"></span><br><span class="line"># sort</span><br><span class="line">awk -F&quot;:&quot; &#x27;&#123;print $1 | &quot;sort&quot;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"># delete the 2nd field</span><br><span class="line">awk &#x27;&#123;$2=&quot;&quot;; print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print in reverse order the fields</span><br><span class="line">awk &#x27;&#123;for(i=NF;i&gt;0;i--) printf(&quot;%s &quot;,i); print &quot;&quot;&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># remove duplicate, consecutive lines, uniq</span><br><span class="line">awk &#x27;a!~$0; &#123;a=$0&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># remove duplicate, nonconsecutive lines</span><br><span class="line">awk &#x27;!a[$0]++&#x27;</span><br><span class="line">awk &#x27;!($0 in a)&#123;a[$0]; print&#125;&#x27;  # most efficient</span><br><span class="line"></span><br><span class="line"># concatenate every 5 lines of input, using a comma separator</span><br><span class="line">awk &#x27;ORS=%NR%5 ? &quot;,&quot; : &quot;\n&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-SLECTIVE-PRINTING-OF-CERTAIN-LINES"><a href="#4-4-SLECTIVE-PRINTING-OF-CERTAIN-LINES" class="headerlink" title="4.4 SLECTIVE PRINTING OF CERTAIN LINES:"></a>4.4 SLECTIVE PRINTING OF CERTAIN LINES:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># head</span><br><span class="line">awk &#x27;NR&lt;11&#x27;</span><br><span class="line"></span><br><span class="line"># head -1</span><br><span class="line">awk &#x27;NR&gt;1&#123;exit&#125;;1&#x27;</span><br><span class="line"></span><br><span class="line"># tail -2</span><br><span class="line">awk &#x27;&#123;y=x &quot;\n&quot; $0; x=$0&#125; END&#123;print y&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># tail -1</span><br><span class="line">awk &#x27;END&#123;print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># grep</span><br><span class="line">awk &#x27;/regex/&#x27;</span><br><span class="line"></span><br><span class="line"># print the line immediately before a regex</span><br><span class="line">awk &#x27;/regex/&#123;print x&#125;;&#123;x=$0&#125;&#x27;   # grep &#x27;regex&#x27; -B1</span><br><span class="line"></span><br><span class="line"># print the line immediately after a regex</span><br><span class="line">awk &#x27;/regex/&#123;getline; print&#125;&#x27;   # grep &#x27;regex&#x27; -A1</span><br><span class="line"></span><br><span class="line"># grep -E &quot;AAA|BBB|CCC&quot;</span><br><span class="line">awk &#x27;/AAA/;/BBB/;/CCC/&#x27;</span><br><span class="line"></span><br><span class="line"># print only lines of 65 characters or longer</span><br><span class="line">awk &#x27;length&gt;64&#x27;</span><br><span class="line"></span><br><span class="line"># print section of file from regular expression to end of file</span><br><span class="line">awk &#x27;/regex/,0&#x27;</span><br><span class="line">awk &#x27;/regex/,EOF&#x27;</span><br><span class="line"></span><br><span class="line"># print section of file based on line numbers(lines 8-12)</span><br><span class="line">awk&#x27;NR==8,NR==12&#x27;</span><br><span class="line"></span><br><span class="line"># print line 8 &amp; 12</span><br><span class="line">awk &#x27;NR==8;NR==12&#x27;</span><br><span class="line"></span><br><span class="line"># print line number 52</span><br><span class="line">awk &#x27;NR==52&#x27;</span><br><span class="line">awk &#x27;NR==52&#123;print; exit&#125;&#x27;   # more efficient</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-SELECTIVE-DELETION-OF-CERTAIN-LINES"><a href="#4-5-SELECTIVE-DELETION-OF-CERTAIN-LINES" class="headerlink" title="4.5 SELECTIVE DELETION OF CERTAIN LINES:"></a>4.5 SELECTIVE DELETION OF CERTAIN LINES:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"># delete all blank lines</span><br><span class="line">awk NF</span><br><span class="line">awk &#x27;/./&#x27;</span><br><span class="line"></span><br><span class="line"># print x by 512 times</span><br><span class="line">awk &#x27;BEGIN&#123;while(++a&lt;512) s=s &quot;x&quot;; print s&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># merge file</span><br><span class="line">awk &#x27;NR==FNR&#123;a[$0]=1; print&#125; NR&gt;FNR&#123;if(!a[$0]) print&#125;&#x27;</span><br><span class="line">awk &#x27;&#123;a[$0]&#125;END&#123;for(i in a) print i&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># sort</span><br><span class="line">awk &#x27;&#123;a[j++]=$0&#125; END&#123;len=asort(a); for(i=1;i&lt;=len;i++) print a[i]&#125;&#x27;</span><br><span class="line"></span><br><span class="line">44. convert DEC to OTC</span><br><span class="line">echo 37 | awk &#x27;&#123;printf &quot;%o\n&quot;, $0&#125;&#x27;</span><br><span class="line"></span><br><span class="line">45. print single quota</span><br><span class="line">awk &#x27;BEGIN&#123;print &quot;\0472004-12-12\047&quot;&#125;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># obtain total memory</span><br><span class="line">cat /proc/meminfo | grep -i memtotal | awk -F&#x27;:&#x27; &#x27;&#123;print $2&#125;&#x27;</span><br><span class="line">cat /proc/meminfo | grep -i memtotal | awk -F\: &#x27;&#123;print $2&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># display all NICs exclude local</span><br><span class="line">ifconfig -a | grep &#x27;^\w&#x27; | awk &#x27;!/lo/&#123;print $1&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># obtain IP address of NIC eth0</span><br><span class="line">ifconfig eth0 | grep &#x27;inet &#x27;</span><br><span class="line">ifconfig eth0 | grep &#x27;inet &#x27; | awk -F&#x27;:&#x27; &#x27;&#123;print $2&#125;&#x27; | awk &#x27;&#123;print $1&#125;&#x27;</span><br><span class="line">ifconfig eth0 | grep &#x27;inet &#x27; | tr &#x27;:&#x27; &#x27; &#x27; | awk &#x27;&#123;print $3&#125;&#x27;</span><br><span class="line">ifconfig eth0 | awk -F&#x27;:&#x27; &#x27;/inet / &#123;print $2&#125;&#x27; | awk &#x27;&#123;print $1&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># $1 is a space, cause it begins with spaces</span><br><span class="line">ifconfig eth0 | grep &#x27;inet &#x27; | awk -F&#x27;[ :]+&#x27; &#x27;&#123;print $4&#125;&#x27;   </span><br><span class="line"></span><br><span class="line"># kill all process named foo</span><br><span class="line">kill `ps -ax | grep &#x27;foo&#x27; | grep -v &#x27;grep&#x27; | awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line"></span><br><span class="line"># print the result that executed command &quot;date&quot;</span><br><span class="line">awk &#x27;BEGIN&#123;&quot;date&quot; | getline d;print d&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print month</span><br><span class="line">awk &#x27;BEGIN&#123;&quot;date&quot; | getline d; split(d, mon); print mon[2]&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># print the result that executed comand &quot;ls&quot;</span><br><span class="line">awk &#x27;BEGIN&#123;while(&quot;ls&quot; | getline) print&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># prompting, wait for input</span><br><span class="line">awk &#x27;BEGIN&#123;printf &quot;What is your name? &quot;; getline name &lt;&quot;/dev/tty&quot; &#125; $1~name &#123;print &quot;Found &quot; name &quot; on line &quot;, NR&quot;.&quot;&#125; END&#123;print &quot;See you,&quot; name &quot;.&quot;&#125;&#x27; /etc/passwd</span><br><span class="line"></span><br><span class="line"># count number of linux users</span><br><span class="line">awk &#x27;BEGIN&#123;while(getline&lt;&quot;/etc/passwd&quot; &gt;0) lc++; print lc&#125;&#x27;   # must be contain quotations</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;print $1, $2 | &quot;sort&quot; &#125;END&#123;close(&quot;sort&quot;)&#125;&#x27; myfile</span><br><span class="line"></span><br><span class="line">awk &#x27;BEGIN&#123;system(&quot;clear&quot;)&#125;&#x27;</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;gsub(/test/, &quot;xxxx&quot;, $2); print&#125;&#x27; myfile</span><br><span class="line"></span><br><span class="line">awk &#x27;BEGIN&#123;print index(&quot;mytest&quot;, &quot;test&quot;)&#125;&#x27; # 3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 多维数组，array[index1,index2,……] ，SUBSEP是数组下标分割符，默认为 &quot;\034&quot;</span><br><span class="line">awk &#x27;BEGIN&#123;SUBSEP=&quot;:&quot;; array[&quot;a&quot;,&quot;b&quot;]=1; for(i in array) print i&#125;&#x27;</span><br><span class="line">awk &#x27;BEGIN&#123;array[&quot;a&quot;&quot;:&quot;&quot;b&quot;]=1;for(i in array) print i&#125;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># cat file1</span><br><span class="line">g1.1 2</span><br><span class="line">g2.2 4</span><br><span class="line">g2.1 5</span><br><span class="line">g4.1 3</span><br><span class="line"># cat file2</span><br><span class="line">g1.1 2</span><br><span class="line">g1.2 3</span><br><span class="line">g4.1 4</span><br><span class="line"># cat file3</span><br><span class="line">g1.2 3</span><br><span class="line">g5.1 3</span><br><span class="line"></span><br><span class="line"># awk &#x27;&#123;a[ARGIND&quot; &quot;$1]=$2; b[$1]&#125;</span><br><span class="line">    END &#123;</span><br><span class="line">    for(i in b) &#123;</span><br><span class="line">        printf i&quot; &quot;;</span><br><span class="line">        for(j=1;j&lt;=ARGIND;j++)</span><br><span class="line">            printf &quot;%s &quot;, a[j&quot; &quot;i] ? a[j&quot; &quot;i] : &quot;-&quot;;</span><br><span class="line">        print &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;&#x27; file1 file2 file3</span><br><span class="line">g2.2 4 - -</span><br><span class="line">g5.1 - - 3</span><br><span class="line">g1.1 2 2 -</span><br><span class="line">g1.2 - 3 3</span><br><span class="line">g4.1 3 4 -</span><br><span class="line">g2.1 5 - -</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">echo &quot;37&quot; |awk &#x27;&#123;printf &quot;%o\n&quot;,$0&#125;&#x27;</span><br><span class="line"></span><br><span class="line">/home/lee#awk &#x27;BEGIN&#123;print &quot;\0472004-12-12\047&quot;&#125;&#x27;</span><br><span class="line">&#x27;2004-12-12&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="5-chatrr"><a href="#5-chatrr" class="headerlink" title="5. chatrr"></a>5. chatrr</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chattr +i /etc/passwd</span><br><span class="line">chatrr +a /etc/passwd</span><br><span class="line">lsattr /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-grep"><a href="#6-grep" class="headerlink" title="6. grep"></a>6. grep</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 网卡信息</span></span><br><span class="line">dmesg | grep -n --color=auto eth</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示关键字前3行和后2行</span></span><br><span class="line">dmesg | grep -n -A2 -B3 --color=always eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扩展表达式</span></span><br><span class="line">egrep <span class="string">&#x27;^$|^#&#x27;</span>myfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 前面的字符出现1次以上</span></span><br><span class="line">egrep -n --color=auto <span class="string">&#x27;go+d&#x27;</span> myfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 前面的字符出现0~1次</span></span><br><span class="line">egrep -n --color=auto <span class="string">&#x27;go?d&#x27;</span> myfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># or方式匹配</span></span><br><span class="line">egrep -n --color=auto <span class="string">&#x27;gd|good|dog&#x27;</span> myfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组匹配</span></span><br><span class="line">egrep -n --color=auto <span class="string">&#x27;g(la|oo)d&#x27;</span> myfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多重复组匹配</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;AxyzxyzxyzxyzC&#x27;</span> | egrep <span class="string">&#x27;A(xyz)+C&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">man grep | col -c &gt; grep.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-sort"><a href="#7-sort" class="headerlink" title="7. sort"></a>7. sort</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># output sorted result</span></span><br><span class="line">sort -o result.out video.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># split the fields by &#x27;:&#x27;</span></span><br><span class="line">sort -t: -r video.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># test whether it has been sorted</span></span><br><span class="line">sort -c video.txt  </span><br><span class="line"></span><br><span class="line"><span class="comment"># sort by 2nd field</span></span><br><span class="line">sort -t: +1 video.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># sort 3rd field using ascii order</span></span><br><span class="line">sort -t: +2 video.txt </span><br><span class="line">sort -t: -k3 video.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort 3rd field using number order </span></span><br><span class="line">sort -t: +2n video.txt</span><br><span class="line">sort -t: -k3n video.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># uniq</span></span><br><span class="line">sort -u video.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort 4th field, then sort 1st field</span></span><br><span class="line">sort -t: -k4 -k1 video.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort +field_number.characters_in</span></span><br><span class="line"><span class="comment"># sort 2nd filed, begining with 3rd character</span></span><br><span class="line">sort -t: +1.2 video.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># list all unix users</span></span><br><span class="line">cat /etc/passwd | sort -t: +0 | awk -F<span class="string">&quot;:&quot;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># only not duplicate. here, sort is recommendable</span></span><br><span class="line">sort video.txt | uniq -u </span><br><span class="line"></span><br><span class="line"><span class="comment"># only duplicate</span></span><br><span class="line">sort video.txt | uniq -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># count dulicate times</span></span><br><span class="line">sort video.txt | uniq -c</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># sorting ignore case sensitive</span></span><br><span class="line">sort -f  </span><br></pre></td></tr></table></figure>
+
+<h2 id="8-join"><a href="#8-join" class="headerlink" title="8. join"></a>8. join</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># join, the files must have a common content; the fields must be splited by single tab or space</span><br><span class="line">join [options] input-file1 input-file2</span><br><span class="line">-an     n, the number of file. -a1, means joining files based on file 1</span><br><span class="line">-o n.m  n, the number of file; m, the number of field. -o 1.3, means display field 3 of file 1</span><br><span class="line">-jn m   n, the number of file; m, the number of field.</span><br><span class="line">-t      delimiter</span><br><span class="line"></span><br><span class="line"># join cross</span><br><span class="line">join names.txt town.txt</span><br><span class="line"></span><br><span class="line"># mismatch connections, join all</span><br><span class="line">join -a1 -a2 names.txt town.txt</span><br><span class="line"></span><br><span class="line"># base on file1, join all</span><br><span class="line">join -a1 names.txt town.txt</span><br><span class="line"></span><br><span class="line"># selective join</span><br><span class="line">join -o 1.1,2.2 names.txt town.txt</span><br><span class="line"></span><br><span class="line"># different field join</span><br><span class="line"># extract 3rd field of file 1, 2nd field of file 2, then join them together</span><br><span class="line">join -j1 3 -j2 2 file1 file2</span><br><span class="line"></span><br><span class="line">cat pers</span><br><span class="line">P.Jones Office Runner ID897</span><br><span class="line">S.Round UNIX admin ID666</span><br><span class="line">L.Clip Personl Chief ID982</span><br><span class="line"></span><br><span class="line">cat pers2</span><br><span class="line">Dept2C ID897 6 years</span><br><span class="line">Dept3S ID666 2 years</span><br><span class="line">Dept5Z ID982 1 year</span><br><span class="line"></span><br><span class="line">join -j1 4 -j2 2 pers pers2</span><br><span class="line">ID897 P.Jones Office Runner Dept2C 6 years</span><br><span class="line">ID666 S.Round UNIX admin Dept3S 2 years</span><br><span class="line">ID982 L.Clip Personl Chief Dept5Z 1 year</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-cut"><a href="#9-cut" class="headerlink" title="9. cut"></a>9. cut</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cut [options] file1 file2</span><br><span class="line">-c LIST, select only these characters</span><br><span class="line">-f LIST, select only these fields</span><br><span class="line">-d, delimiter</span><br><span class="line"></span><br><span class="line">cut -d: -f4 pers</span><br><span class="line">cut -d: -f1,3 pers</span><br><span class="line">cut -d: -f1-3 pers</span><br><span class="line"></span><br><span class="line">cut -d: -f1,6 /etc/passwd</span><br><span class="line"></span><br><span class="line"># file permision</span><br><span class="line">ls -l | cut -c1-10</span><br><span class="line"></span><br><span class="line">echo $PATH | tr &quot;:&quot; &quot;\n&quot; | nl</span><br><span class="line">echo $PATH | cut -d&quot;:&quot; -f3,5</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="10-paste"><a href="#10-paste" class="headerlink" title="10. paste"></a>10. paste</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">paste -d -s - file1 file2</span><br><span class="line">-d, delimiter</span><br><span class="line">-s, paste one file at a time instead of in parallel</span><br><span class="line"></span><br><span class="line">paste -d: pas1 pas2</span><br><span class="line"></span><br><span class="line"># list file name, 3 files each row</span><br><span class="line">ls | paste -d&quot; &quot; - - -</span><br><span class="line"></span><br><span class="line"># list file name, ls -l|awk &#x27;NF&gt;3&#123;print $8&#125;&#x27;</span><br><span class="line">ls | paste -d&quot;&quot; -</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-split"><a href="#11-split" class="headerlink" title="11. split"></a>11. split</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">split -output_file_size input-filename output-filename</span><br><span class="line">-output_file_size, default 1000 lines</span><br><span class="line">output-filename, default x[aa]-&gt;x[zz]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="12-dos2unix-M-ctrl-v-ctrl-enter"><a href="#12-dos2unix-M-ctrl-v-ctrl-enter" class="headerlink" title="12. dos2unix, ^M=ctrl+v ctrl ^ enter"></a>12. dos2unix, <code>^M=ctrl+v ctrl ^ enter</code></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dos2uninx dosfile</span><br><span class="line"></span><br><span class="line">sed -e &#x27;s/^M//&#x27; dosfile</span><br><span class="line"></span><br><span class="line">tr -s &quot;\r\n&quot; &quot;\n&quot; &lt; dosfile</span><br><span class="line">tr -d &quot;\015&quot; &lt; dosfile</span><br><span class="line"></span><br><span class="line">col -bx &lt; dosfile</span><br><span class="line"></span><br><span class="line"># delete ^M in vim</span><br><span class="line">:set ff=unix</span><br><span class="line">:%s/\r//g</span><br><span class="line">:%s/^M//gc</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="13-lsof-list-open-file"><a href="#13-lsof-list-open-file" class="headerlink" title="13. lsof, list open file"></a>13. lsof, list open file</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">lsof  filename 显示打开指定文件的所有进程 </span><br><span class="line">lsof -a 表示两个参数都必须满足时才显示结果 </span><br><span class="line">lsof -c string   显示COMMAND列中包含指定字符的进程所有打开的文件 </span><br><span class="line">lsof -u username  显示所属user进程打开的文件 </span><br><span class="line">lsof -g gid 显示归属gid的进程情况 </span><br><span class="line">lsof +d /DIR/ 显示目录下被进程打开的文件 </span><br><span class="line">lsof +D /DIR/ 同上，但是会搜索目录下的所有目录，时间相对较长 </span><br><span class="line">lsof -d FD 显示指定文件描述符的进程 </span><br><span class="line">lsof -n 不将IP转换为hostname，缺省是不加上-n参数 </span><br><span class="line">lsof -i 用以显示符合条件的进程情况 </span><br><span class="line">lsof -i[46] [protocol][@hostname|hostaddr][:service|port] </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lsof -i tcp:22</span><br><span class="line">lsof -i :22</span><br><span class="line">lsof -i @10.40.53.22</span><br><span class="line"></span><br><span class="line">lsof /etc/passwd</span><br><span class="line">lsof /etc/cdrom</span><br><span class="line"></span><br><span class="line">lsof `which httpd`</span><br><span class="line"></span><br><span class="line">lsof -c bash</span><br><span class="line"></span><br><span class="line">lsof -u apache</span><br><span class="line"></span><br><span class="line">lsof +D /tmp</span><br><span class="line"></span><br><span class="line">lsof -i  # port 80</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="14-echo"><a href="#14-echo" class="headerlink" title="14. echo"></a>14. echo</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">echo -n     取消行末换行</span><br><span class="line">echo -E     关闭反斜线控制字符转换</span><br><span class="line">echo -e     启用反斜线控制字符转换</span><br><span class="line"></span><br><span class="line">\c  取消行末换行符</span><br><span class="line">\n  newline     =&gt; \012</span><br><span class="line">\r  return</span><br><span class="line">\t  TAB         =&gt; \011</span><br><span class="line">\num    ASCII八进制编码</span><br><span class="line">\xnum   ASCII十六进制编码</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="15-删除空格"><a href="#15-删除空格" class="headerlink" title="15. 删除空格"></a>15. 删除空格</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sed &quot;/^\s*$/d&quot;</span><br><span class="line">sed &#x27;/^$/d&#x27;</span><br><span class="line">sed -i &#x27;/^$/d&#x27;</span><br><span class="line">awk &#x27;NF&gt;0&#x27;</span><br><span class="line">perl -i.backup -n -e &quot;print if /\S/&quot;</span><br><span class="line">grep -v &#x27;^$&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年6月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/01/03/Go%20Etcd/" rel="prev" title="Go Etcd">
+                                
+                                    Go Etcd
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/12/18/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="Linux知识点">
+                                  
+                                      Linux知识点
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '文本处理命令',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-find"><span class="toc-text">1. find</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-time"><span class="toc-text">1.1 time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-user-amp-group"><span class="toc-text">1.2 user &amp; group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-file"><span class="toc-text">1.3 file</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-xargs"><span class="toc-text">2. xargs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%80%89%E9%A1%B9%E8%AF%B4%E6%98%8E"><span class="toc-text">1.1 选项说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%9E%E4%BE%8B"><span class="toc-text">2.2 实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-sed"><span class="toc-text">3. sed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-text">3.1 参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Address"><span class="toc-text">3.2 Address</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Command"><span class="toc-text">3.3 Command</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-awk"><span class="toc-text">4. awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Built-in-Variables"><span class="toc-text">4.1 Built-in Variables:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Built-in-Functions"><span class="toc-text">4.2 Built-in Functions:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-FILE-SPACING"><span class="toc-text">4.3 FILE SPACING:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-SLECTIVE-PRINTING-OF-CERTAIN-LINES"><span class="toc-text">4.4 SLECTIVE PRINTING OF CERTAIN LINES:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-SELECTIVE-DELETION-OF-CERTAIN-LINES"><span class="toc-text">4.5 SELECTIVE DELETION OF CERTAIN LINES:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-chatrr"><span class="toc-text">5. chatrr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-grep"><span class="toc-text">6. grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-sort"><span class="toc-text">7. sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-join"><span class="toc-text">8. join</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-cut"><span class="toc-text">9. cut</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-paste"><span class="toc-text">10. paste</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-split"><span class="toc-text">11. split</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-dos2unix-M-ctrl-v-ctrl-enter"><span class="toc-text">12. dos2unix, ^M&#x3D;ctrl+v ctrl ^ enter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-lsof-list-open-file"><span class="toc-text">13. lsof, list open file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-echo"><span class="toc-text">14. echo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%88%A0%E9%99%A4%E7%A9%BA%E6%A0%BC"><span class="toc-text">15. 删除空格</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

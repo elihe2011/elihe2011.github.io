@@ -234,8 +234,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/09/10/Python%20GIL/">
-      Python GIL
+    <a href="/2018/02/07/Go%20%E7%BC%96%E8%AF%91%E5%92%8C%E9%83%A8%E7%BD%B2/">
+      Go 编译和部署
     </a>
   </h2>
 
@@ -265,7 +265,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-09-10</p>
+    <p>2018-02-07</p>
   </a>
 </div>
 
@@ -275,9 +275,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -299,19 +299,23 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-GIL是什么？"><a href="#1-GIL是什么？" class="headerlink" title="1. GIL是什么？"></a>1. GIL是什么？</h2><p>GIL全称Global Interpreter Lock，即全局解释器锁。 作用就是，限制多线程同时执行，保证同一时间内只有一个线程在执行。</p>
-<p>GIL并不是Python的特性，它是在实现Python解析器(CPython)时所引入的一个概念。python 与 python解释器是两个概念，切不可混为一谈，也就是说，GIL只存在于使用C语言编写的解释器CPython中。</p>
-<p>通俗地说，就是如果你不用Python官方推荐的CPython解释器，而使用其他语言编写的Python解释器（比如  JPython: 运行在Java上的解释器，直接把python代码编译成Java字节码执行 ），就不会有GIL问题。然而因为CPython是大部分环境下默认的Python执行环境。所以在很多人的概念里CPython就是Python，也就想当然的把GIL归结为Python语言的缺陷。所以这里要先明确一点：GIL并不是Python的特性，Python完全可以不依赖于GIL。</p>
-<p>虽然python支持多线程，但是由于GIL的限制，在实际运行时，程序运行后开启多个线程，但在通过GIL后同时也只能有一个线程被CPU执行。</p>
+      <h1 id="1-Go-程序编译"><a href="#1-Go-程序编译" class="headerlink" title="1. Go 程序编译"></a>1. Go 程序编译</h1><h2 id="1-1-交叉编译-Cross-Compiler"><a href="#1-1-交叉编译-Cross-Compiler" class="headerlink" title="1.1 交叉编译 (Cross Compiler)"></a>1.1 交叉编译 (Cross Compiler)</h2><p>在一个平台上，编译生成其他平台的可执行文件</p>
+<h2 id="1-2-Windows"><a href="#1-2-Windows" class="headerlink" title="1.2 Windows"></a>1.2 Windows</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SET GOS=darwin</span><br><span class="line">SET GOS=linux</span><br><span class="line">SET GOARCH=amd64</span><br><span class="line"></span><br><span class="line">go build main.go</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/09/10/Python%20GIL/" class="flat-box">
+          <a href="/2018/02/07/Go%20%E7%BC%96%E8%AF%91%E5%92%8C%E9%83%A8%E7%BD%B2/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
     
   </section>
 </article>
@@ -332,8 +336,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/09/07/Python%20Asyncio%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
-      Python Asyncio并发编程
+    <a href="/2018/02/03/Go%20%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9E%8B/">
+      Go 接口类型
     </a>
   </h2>
 
@@ -363,7 +367,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-09-07</p>
+    <p>2018-02-03</p>
   </a>
 </div>
 
@@ -373,9 +377,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -397,24 +401,26 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><h3 id="1-1-什么是-Asyncio"><a href="#1-1-什么是-Asyncio" class="headerlink" title="1.1 什么是 Asyncio"></a>1.1 什么是 Asyncio</h3><p>asyncio 是python3.4 引入的一个新的并发模块，主要通过使用coroutines 和 futures 来让我们更容易的去实现异步的功能，并且几乎和写同步代码一样的写代码，还没有烦人的回调。</p>
-<p>asyncio 是单线程的，它只有一个主线程，但可以进行多个不同的任务。这里的任务，指的就是特殊的 future 对象，我们可以把它类比成多线程版本里的多个线程。</p>
-<p>asyncio 用来干什么？</p>
-<ul>
-<li>异步网络操作</li>
-<li>并发</li>
-<li>协程</li>
+      <h1 id="1-静态类型和动态类型"><a href="#1-静态类型和动态类型" class="headerlink" title="1. 静态类型和动态类型"></a>1. 静态类型和动态类型</h1><ul>
+<li>静态类型： static type，即变量声明的时候的类型。</li>
+<li>动态类型： concrete type，具体类型，程序运行时系统才能看见的类型</li>
 </ul>
-<p>asyncio 缺陷：<br>目前asyncio相关的异步库并不完善，在github上有一些常用的库如：aiomysql, aiopika, aioredis等。 想要用asyncio异步的功能，那么你整个代码中其他的库也要是异步的而不能是阻塞的，要用aiomysql取代pymysql，aiohttp取代requests等</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i <span class="keyword">interface</span>&#123;&#125;   <span class="comment">// 静态类型为interface</span></span><br><span class="line"></span><br><span class="line">i = <span class="number">8</span>     <span class="comment">// 动态类型为int</span></span><br><span class="line">i = <span class="string">&quot;abc&quot;</span> <span class="comment">// 动态类型为string</span></span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/09/07/Python%20Asyncio%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="flat-box">
+          <a href="/2018/02/03/Go%20%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9E%8B/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
     
   </section>
 </article>
@@ -435,8 +441,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/09/05/Python%20Futures%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
-      Python Futures并发编程
+    <a href="/2018/02/02/Go%20GoConvey/">
+      Go GoConvey
     </a>
   </h2>
 
@@ -466,7 +472,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-09-05</p>
+    <p>2018-02-02</p>
   </a>
 </div>
 
@@ -476,9 +482,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -500,314 +506,26 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-concurrent-futures模块"><a href="#1-concurrent-futures模块" class="headerlink" title="1. concurrent.futures模块"></a>1. <code>concurrent.futures</code>模块</h2><p>　　Python标准库为我们提供了threading和multiprocessing模块编写相应的多线程/多进程代码，但是当项目达到一定的规模，频繁创建/销毁进程或者线程是非常消耗资源的，这个时候我们就要编写自己的线程池/进程池，以空间换时间。但从Python3.2开始，标准库为我们提供了concurrent.futures模块，它提供了ThreadPoolExecutor和ProcessPoolExecutor两个类，实现了对threading和multiprocessing的进一步抽象，对编写线程池/进程池提供了直接的支持。</p>
-      
-        <div class="readmore">
-          <a href="/2018/09/05/Python%20Futures%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/09/02/Python%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/">
-      Python 线程池和进程池
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-09-02</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-为何使用线程池"><a href="#1-为何使用线程池" class="headerlink" title="1. 为何使用线程池"></a>1. 为何使用线程池</h2><p>系统启动一个新线程的成本是比较高的，因为它涉及与操作系统的交互。在这种情形下，使用线程池可以很好地提升性能，尤其是当程序中需要创建大量生存期很短暂的线程时，更应该考虑使用线程池。</p>
-<p>线程池在系统启动时即创建大量空闲的线程，程序只要将一个函数提交给线程池，线程池就会启动一个空闲的线程来执行它。当该函数执行结束后，该线程并不会死亡，而是再次返回到线程池中变成空闲状态，等待执行下一个函数。</p>
-<p>此外，使用线程池可以有效地控制系统中并发线程的数量。当系统中包含有大量的并发线程时，会导致系统性能急剧下降，甚至导致 Python 解释器崩溃，而线程池的最大线程数参数可以控制系统中并发线程的数量不超过此数。</p>
-      
-        <div class="readmore">
-          <a href="/2018/09/02/Python%20%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%B1%A0/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/09/01/Python%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-      Python 多线程
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-09-01</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-线程和进程"><a href="#1-线程和进程" class="headerlink" title="1. 线程和进程"></a>1. 线程和进程</h2><p>每个线程必须有自己的父进程，且它可以拥有自己的堆栈、程序计数器和局部变量，但不拥有系统资源，因为它和父进程的其他线程共享该进程所拥有的全部资源。线程可以完成一定的任务，可以与其他线程共享父进程中的共享变量及部分环境，相互之间协同完成进程所要完成的任务。</p>
-<p>多个线程共享父进程里的全部资源，会使得编程更加方便，需要注意的是，要确保线程不会妨碍同一进程中的其他线程。</p>
-      
-        <div class="readmore">
-          <a href="/2018/09/01/Python%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/07/09/Kubernetes%20Helm/">
-      Kubernetes Helm
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-07-09</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/k8s/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>k8s</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-Helm"><a href="#1-Helm" class="headerlink" title="1. Helm"></a>1. Helm</h1><p>Helm：让应用管理（Deployment、Service等）可配置，能动态生成。通过动态生成的k8s资源清单文件 (deployment.yaml, service.yaml)，然后调用kubectl自动执行k8s资源部署。</p>
-<p>Helm 包管理工具，是部署环境的流程封装</p>
-<p>Helm 两个重要概念：</p>
-<ul>
-<li>chart: 创建一个<strong>应用的信息集合</strong>，包含各种kubernetes对象的配置模板、参数定义、依赖关系、文档说明等。chart是应用部署的自包含逻辑单元，即yum中的<strong>安装包</strong></li>
-<li>release: chart的<strong>运行实例</strong>。当chart被安装到kubernetes中，就生成一个release。chart能够多次安装到同一个集群，每次安装都是一个realease</li>
+      <h1 id="1-GoConvey简介"><a href="#1-GoConvey简介" class="headerlink" title="1. GoConvey简介"></a>1. GoConvey简介</h1><ul>
+<li>GoConvey是一款针对Go语言的测试辅助开发包，在兼容Go原生测试的基础上，又拓展出便利的语法和大量的内置判断条件，减轻开发人员负担。</li>
+<li>提供实时监控代码编译测试的程序，配以舒服的Web解码，能够让一个开发人员从此不再排斥写单元测试</li>
 </ul>
-<p>helm 包含两个组件：Helm 客户端 和 Tiller 服务器</p>
-<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/k8s/k8s_helm_client.png" alt="helm"></p>
-<p>Helm客户端: 负责chart和release的创建和管理、和Tiller的交互</p>
-<p>Tiller服务器：运行在kubernetes集群节点中，处理Helm客户端请求，与API Server交互</p>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/smartystreets/goconvey</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/07/09/Kubernetes%20Helm/" class="flat-box">
+          <a href="/2018/02/02/Go%20GoConvey/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
     
   </section>
 </article>
@@ -828,8 +546,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/07/08/Kubernetes%20%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/">
-      Kubernetes 安全机制
+    <a href="/2018/02/01/Go%20xorm/">
+      Go xorm
     </a>
   </h2>
 
@@ -859,7 +577,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-07-08</p>
+    <p>2018-02-01</p>
   </a>
 </div>
 
@@ -869,9 +587,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/k8s/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>k8s</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -893,24 +611,339 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-机制说明"><a href="#1-机制说明" class="headerlink" title="1. 机制说明"></a>1. 机制说明</h1><p>API Server 是集群内部各个组件通讯的中介，也是外部控制的入口。k8s 使用认证(Authentication)、鉴权(Authorization)、准入控制(Admission Control) 三步来确保API Server的安全。</p>
-<h1 id="2-认证-Authentication"><a href="#2-认证-Authentication" class="headerlink" title="2. 认证 (Authentication)"></a>2. 认证 (Authentication)</h1><ul>
-<li><p>HTTP Token：HTTP Request Header 的 Token字段</p>
+      <h1 id="1-xorm简介"><a href="#1-xorm简介" class="headerlink" title="1. xorm简介"></a>1. xorm简介</h1><h2 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/go-xorm/xorm</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-模型定义"><a href="#1-2-模型定义" class="headerlink" title="1.2 模型定义"></a>1.2 模型定义</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Account <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id      <span class="keyword">int64</span></span><br><span class="line">	Name    <span class="keyword">string</span> <span class="string">`xorm:&quot;unique&quot;`</span></span><br><span class="line">	Balance <span class="keyword">float64</span></span><br><span class="line">	Version <span class="keyword">int</span> <span class="string">`xorm:&quot;version&quot;`</span>    <span class="comment">// 乐观锁</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2018/02/01/Go%20xorm/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/orm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> orm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/01/22/Go%20%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/">
+      Go 常用工具函数
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-01-22</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Golang/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Golang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2018/01/22/Go%20%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/01/21/Go%20%E5%8C%85%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
+      Go 包安装问题
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-01-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Golang/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Golang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-使用gopm镜像安装"><a href="#1-使用gopm镜像安装" class="headerlink" title="1. 使用gopm镜像安装"></a>1. 使用gopm镜像安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go get -v github.com/gpmgo/gopm</span><br><span class="line"></span><br><span class="line">gopm get -v golang.org/x/tools/cmd/goimports</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2018/01/21/Go%20%E5%8C%85%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/01/20/Go%20RPC/">
+      Go RPC
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-01-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Golang/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Golang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-RPC"><a href="#1-RPC" class="headerlink" title="1. RPC"></a>1. RPC</h1><ul>
+<li>客户端(client): 服务调用的发起方</li>
+<li>客户端存根(client Stub): <ul>
+<li>运行在客户端机器上</li>
+<li>存储调用服务器地址</li>
+<li>将客户端请求数据信息打包</li>
+<li>通过网络发给服务端存根程序</li>
+<li>接收服务端响应的数据包，解析后给客户端</li>
+</ul>
 </li>
-<li><p>HTTP Base:  客户端通过<code>base64 USERNAME:PASSWORD</code>, 填充 HTTP Request Header 的 Authorization字段，服务端收到后解码获取用户名和密码</p>
-</li>
-<li><p>HTTPS: 基于CA根证书签名的客户端身份认证方式。（推荐）</p>
+<li>服务端(server): 服务提供者</li>
+<li>服务端存根(server Stub):<ul>
+<li>存在与服务端机器上</li>
+<li>接收客户端Stub程序发送来请求消息数据包</li>
+<li>调用服务端的程序方法</li>
+<li>将结果打包成数据包发给客户端Stub程序</li>
+</ul>
 </li>
 </ul>
       
         <div class="readmore">
-          <a href="/2018/07/08/Kubernetes%20%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/" class="flat-box">
+          <a href="/2018/01/20/Go%20RPC/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/rpc/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> rpc</a>
+        
+      </div>
     
   </section>
 </article>
@@ -931,8 +964,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/07/07/Kubernetes%20%E9%9B%86%E7%BE%A4%E8%B0%83%E5%BA%A6/">
-      Kubernetes 集群调度
+    <a href="/2018/01/19/Go%20%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+      Go 字符编码
     </a>
   </h2>
 
@@ -962,7 +995,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-07-07</p>
+    <p>2018-01-19</p>
   </a>
 </div>
 
@@ -972,9 +1005,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/k8s/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>k8s</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -996,23 +1029,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-调度说明"><a href="#1-调度说明" class="headerlink" title="1. 调度说明"></a>1. 调度说明</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>Scheduler 是 K8S 的调度器，主要任务是把定义的 pod 分配到集群节点上。它主要考虑如下问题：</p>
-<ul>
-<li>公平： 如何确保每个节点都被分配资源</li>
-<li>资源高利用率：集群所有资源最大化被使用</li>
-<li>效率：调度性能要好，能够尽快地对大批量的 pod 完成调度工作</li>
-<li>灵活：允许用户根据自己的需求控制调度的逻辑</li>
-</ul>
-<p>Scheduler 作为独立的进程允许，启动后会一直监听API Server，获取 <code>PodSpec.NodeName</code> 为空的pod，对每个 pod 都会创建一个 binding，表明该 pod 应该放到哪个节点上</p>
+      
       
         <div class="readmore">
-          <a href="/2018/07/07/Kubernetes%20%E9%9B%86%E7%BE%A4%E8%B0%83%E5%BA%A6/" class="flat-box">
+          <a href="/2018/01/19/Go%20%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
     
   </section>
 </article>
@@ -1033,8 +1065,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/07/06/Kubernetes%20%E5%AD%98%E5%82%A8/">
-      Kubernetes 存储
+    <a href="/2018/01/18/Go%20%E9%9B%86%E6%88%90ElasticSearch/">
+      Go 集成ElasticSearch
     </a>
   </h2>
 
@@ -1064,7 +1096,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-07-06</p>
+    <p>2018-01-18</p>
   </a>
 </div>
 
@@ -1074,9 +1106,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/k8s/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>k8s</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -1098,18 +1130,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-ConfigMap"><a href="#1-ConfigMap" class="headerlink" title="1. ConfigMap"></a>1. ConfigMap</h1><p>提供向容器注入配置信息的机制，可以用来保存单个属性，也可以用来保存整个配置文化或 JSON 二进制大对象</p>
-<h2 id="1-1-创建-ConfigMap"><a href="#1-1-创建-ConfigMap" class="headerlink" title="1.1 创建 ConfigMap"></a>1.1 创建 ConfigMap</h2><h3 id="1-1-1-文件"><a href="#1-1-1-文件" class="headerlink" title="1.1.1 文件"></a>1.1.1 文件</h3><p><code>--from-file</code>：指定文件或目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ cat &gt; ./ui.properties &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">color=red</span></span><br><span class="line"><span class="string">background=cyan</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">$ kubectl create configmap ui-config --from-file=./ui.properties </span><br><span class="line"></span><br><span class="line">$ kubectl get cm ui-config -o yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">data:</span><br><span class="line">  ui.properties: |    <span class="comment"># key 为文件名称</span></span><br><span class="line">    color=red</span><br><span class="line">    background=cyan</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+      
       
         <div class="readmore">
-          <a href="/2018/07/06/Kubernetes%20%E5%AD%98%E5%82%A8/" class="flat-box">
+          <a href="/2018/01/18/Go%20%E9%9B%86%E6%88%90ElasticSearch/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/elasticsearch/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> elasticsearch</a>
+        
+      </div>
     
   </section>
 </article>
@@ -1130,8 +1166,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/07/05/Kubernetes%20Service/">
-      Kubernetes Service
+    <a href="/2018/01/17/Go%20%E6%A0%87%E5%87%86%E5%BA%93http/">
+      Go标准库 http
     </a>
   </h2>
 
@@ -1161,7 +1197,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-07-05</p>
+    <p>2018-01-17</p>
   </a>
 </div>
 
@@ -1171,9 +1207,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/k8s/' rel="nofollow">
+    <a href='/categories/Golang/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>k8s</p>
+      <p>Golang</p>
     </a>
   </div>
 
@@ -1195,19 +1231,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-Service-的概念"><a href="#1-Service-的概念" class="headerlink" title="1. Service 的概念"></a>1. Service 的概念</h1><p>SVC：服务发现</p>
-<p>Service 定义了这样一种抽象：一个 Pod 的逻辑分组，一种可以访问它们的策略 – 通常称为微服务。这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector</p>
-<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/k8s/k8s_svc.png" alt="svc"></p>
-<p>Service 能够提供负载均衡能力，但只提供了 4 层，而没有 7 层。当需要更多的匹配规则来转发请求时，不支持。</p>
+      
       
         <div class="readmore">
-          <a href="/2018/07/05/Kubernetes%20Service/" class="flat-box">
+          <a href="/2018/01/17/Go%20%E6%A0%87%E5%87%86%E5%BA%93http/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
         </div>
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
+        
+      </div>
     
   </section>
 </article>
@@ -1230,7 +1269,7 @@
             </a>
           
           <p class="current">
-            6 / 15
+            6 / 8
           </p>
           
             <a class="next" rel="next" href="/page/7/">
@@ -1389,19 +1428,13 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
         
@@ -1411,9 +1444,9 @@
         
           <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
@@ -1465,7 +1498,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 17.33px; color: #828282">websocket</a>
     </div>
   </section>
 

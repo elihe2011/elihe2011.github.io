@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Linux基础知识 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/09/21/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+        Linux基础知识
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-09-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-负载均衡"><a href="#1-负载均衡" class="headerlink" title="1. 负载均衡"></a>1. 负载均衡</h1><h2 id="1-1-SLB"><a href="#1-1-SLB" class="headerlink" title="1.1 SLB"></a>1.1 SLB</h2><p>SLB: Server Load Balance</p>
+<ul>
+<li><p>通过设置虚拟服务地址（IP），将位于同一区域（Region）的多台云服务器（Elastic Compute Service，ECS）的资源虚拟成一个高性能、高可用的应用服务池；再根据应用指定的方式，将来自客户端的网络请求分发到云服务器池中</p>
+</li>
+<li><p>SLB服务会检查云服务器池中ECS的健康状态，自动隔离异常状态的ECS，从而解决了单台ECS的单点问题，同时提高了应用的整体服务能力</p>
+</li>
+</ul>
+<p>负载均衡算法：</p>
+<ul>
+<li><p>轮询 (Round Robin)</p>
+</li>
+<li><p>最小连接 (Leaster Connections): 优先选择连接数最小的服务器</p>
+</li>
+<li><p>Source: 根据请求源IP的hash值来选择要转发的服务器，保证特定用户连接到相同服务器</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="1-2-LVS"><a href="#1-2-LVS" class="headerlink" title="1.2 LVS"></a>1.2 LVS</h2><p>LVS：Linux Virtual Server</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/golang/LVS.jpg" alt="lvs"></p>
+<ol>
+<li><p>当用户向负载均衡调度器(Director Server)发起请求，调度器将请求发送至内核空间</p>
+</li>
+<li><p>PREROUTING链首先会接收到用户请求，判断目标IP是否本机IP，将数据包发往INPUT链</p>
+</li>
+<li><p>IPVS工作在INPUT上，当用户请求到达INPUT时，IPVS会将用户请求和定义好的集群服务进行比对，如果请求时集群服务，那么IPVS将强行修改数据包里的目标IP和端口，并将新数据包发往POSTROUTING链</p>
+</li>
+<li><p>POSTROUTING链接收数据包后发现目标IP地址刚好时自己的后端服务器，通过选路，将数据包最终发送给后端服务器</p>
+</li>
+</ol>
+<p>LVS 程序组成：</p>
+<ul>
+<li>ipvs: ip virtual server, 工作在内核空间的一段代码，实现负载均衡调度</li>
+<li>ipvsadm: 工作在用户空间，负责ipvs内核框架的编写规则</li>
+</ul>
+<p>iptables 内置的4个表:</p>
+<ul>
+<li><p>filter: 包过滤</p>
+</li>
+<li><p>nat: 网络地址转换</p>
+</li>
+<li><p>mangle: 包重构(修改)</p>
+</li>
+<li><p>raw: 数据跟踪处理</p>
+</li>
+</ul>
+<p>链（chains）: 数据包传播的路径，每一条链其实就是众多规则中的一个检查清单，每一条链中可以有一 条或数条规则</p>
+<p>默认包括5种规则链</p>
+<ul>
+<li><p>INPUT：处理入站数据包</p>
+</li>
+<li><p>OUTPUT：处理出站数据包</p>
+</li>
+<li><p>FORWARD：处理转发数据包</p>
+</li>
+<li><p>POSTROUTING链：在进行路由选择后处理数据包（对数据链进行源地址修改转换）</p>
+</li>
+<li><p>PREROUTING链：在进行路由选择前处理数据包（做目标地址转换）</p>
+</li>
+</ul>
+<h1 id="2-高可用软件"><a href="#2-高可用软件" class="headerlink" title="2. 高可用软件"></a>2. 高可用软件</h1><ul>
+<li>Heartbeat：可实现对服务器资源（IP即程序服务等资源）的监控和管理，并在出现故障的情况下，将资源集合从一台已经故障的计算机快速转移到另一台机器上继续提供服务</li>
+<li>Keepalived:<ul>
+<li>通过IP漂移，实现服务的高可用：服务器集群共享一个虚拟IP，同一时间只有一个服务器占有虚拟IP并对外提供服务，若该服务器不可用，则虚拟IP漂移到另一台服务器并对外提供服务</li>
+<li>对LVS应用服务器集群状态进行监控：若应用不可用，则keepalived将其从集群中摘除，若服务器恢复，将其加入集群中</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-弹性伸缩"><a href="#3-弹性伸缩" class="headerlink" title="3. 弹性伸缩"></a>3. 弹性伸缩</h1><p>弹性伸缩（Auto Scaling): 根据业务需求和伸缩策略，自动调整计算机资源。请求高峰时，自动增加业务实例数量，以保证性能不受影响；请求低谷时，自动释放业务实例数量以减低成本</p>
+<h1 id="4-孤儿进程-amp-僵尸进程"><a href="#4-孤儿进程-amp-僵尸进程" class="headerlink" title="4. 孤儿进程 &amp; 僵尸进程"></a>4. 孤儿进程 &amp; 僵尸进程</h1><p>孤儿进程：父进程退出，但它的子进程还在运行，那么这些进程即为孤儿进程。孤儿进程会被init进程（PID=1）接收，并由init进程堆它们完成状态收集工作</p>
+<p>僵尸进程：一个进程使用fork创建子进程，如果子进程退出，而父进程未调用wait或waitpid获取子进程状态，那么子进程描述符仍然保存在系统中，这种进程称之为僵尸进程。</p>
+<h1 id="5-epoll-amp-select"><a href="#5-epoll-amp-select" class="headerlink" title="5. epoll &amp; select"></a>5. epoll &amp; select</h1><ul>
+<li><p>epoll 和 select 都是I/O多路复用技术，都实现同时监听多个I/O事件的状态</p>
+</li>
+<li><p>epoll 比 select 高效，主要基于其操作系统支持的 I/O 事件通知机制，而select是基于轮询机制</p>
+</li>
+<li><p>epoll 支持水平触发和边缘触发两种模式</p>
+</li>
+</ul>
+<h1 id="6-ping-IP"><a href="#6-ping-IP" class="headerlink" title="6. ping IP"></a>6. ping IP</h1><ol>
+<li><p>根据目地IP和路由表决定走哪个网卡</p>
+</li>
+<li><p>根据网卡子网掩码判断目的IP是否在子网内</p>
+</li>
+<li><p>如果不在子网内，则通过arp缓存查询IP的网卡地址，不存在的话先通过广播询问目的IP的mac地址，该地址会缓存下来</p>
+</li>
+<li><p>根据获取的mac地址，然后发包</p>
+</li>
+</ol>
+<h1 id="7-解决hash冲突的办法"><a href="#7-解决hash冲突的办法" class="headerlink" title="7. 解决hash冲突的办法"></a>7. 解决hash冲突的办法</h1><h2 id="7-1-开放地址法"><a href="#7-1-开放地址法" class="headerlink" title="7.1 开放地址法"></a>7.1 开放地址法</h2><p>即 <strong>再散列法</strong>，基本思想：当关键字key的哈希地址p=H(key) 出现冲突时，以p为基础，产生另一个哈希地址p1，如果p1仍然冲突，再以p为基础，产生另一个哈希地址p2，…，直到找出一个不冲突的哈希地址pi ，将相应元素存入其中。</p>
+<ul>
+<li>线性探测再散列：冲突发生时，顺序查看表中下一单元，直到找出一个空单元或查遍全表。</li>
+<li>二次探测再散列：冲突发生时，在表的左右进行跳跃式探测，比较灵活 （1^2，-1^2， …)</li>
+<li>伪随机探测再散列: 建立一个伪随机数发生器，并给定一个随机数做起点</li>
+</ul>
+<h2 id="7-2-再哈希法"><a href="#7-2-再哈希法" class="headerlink" title="7.2 再哈希法"></a>7.2 再哈希法</h2><p>使用不同的哈希函数，直到冲突解决</p>
+<p>缺点：耗时较长</p>
+<h2 id="7-3-链地址法"><a href="#7-3-链地址法" class="headerlink" title="7.3 链地址法"></a>7.3 链地址法</h2><p>将哈希值相同的元素构成一个同义词的单链表，并将单链表的头指针存放在哈希表的第i个单元中，查找、插入和删除主要在同义词链表中进行。<strong>链表法适用于经常进行插入和删除的情况</strong>。</p>
+<h2 id="7-4-建立一个公共溢出区"><a href="#7-4-建立一个公共溢出区" class="headerlink" title="7.4 建立一个公共溢出区"></a>7.4 建立一个公共溢出区</h2><p>将哈希表分为公共表和溢出表，当溢出发生时，将所有溢出数据统一放到溢出区。</p>
+<h1 id="8-Git"><a href="#8-Git" class="headerlink" title="8. Git"></a>8. Git</h1><p>git rebase</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 合并多次提交记录</span></span><br><span class="line">git rebase -i HEAD~4    <span class="comment"># 最近四次</span></span><br><span class="line">git rebase --edit-todo  <span class="comment"># 异常退出vi时执行</span></span><br><span class="line">git rebase --<span class="built_in">continue</span>   <span class="comment"># 返回继续编辑</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 合并分支 </span></span><br><span class="line">git checkout master</span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line">git checkout dev</span><br><span class="line">git rebase master       <span class="comment"># 将master最新分支同步到当前分支</span></span><br><span class="line">git rebase --<span class="built_in">continue</span>   <span class="comment"># 有冲突，并解决冲突后执行</span></span><br><span class="line">git rebase --abort      <span class="comment"># 有冲突，放弃，回到rebase前的状态</span></span><br><span class="line"></span><br><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>git rebase master 做了哪些操作？</p>
+<ol>
+<li>先取消当前dev分支的提交记录</li>
+<li>将在当前dev中新开发的代码保存成patch文件，存入.git/rebase目录下</li>
+<li>当前dev分支合并最新的master分支</li>
+<li>将patch文件应用到当前dev分支</li>
+</ol>
+<p>在 dev 分支，使用 git rebase master，然后就会把 dev 接到 master 分支之上。Git 是这么做的：</p>
+<ul>
+<li>首先，找到这两条分支的最近公共祖先 LCA</li>
+<li>然后，从 master 节点开始，重演 LCA 到 dev 几个 commit 的修改，如果这些修改和 LCA 到 master 的 commit 有冲突，就会提示你手动解决冲突</li>
+<li>最后，把 dev 的分支完全接到 master 上面。</li>
+</ul>
+<h1 id="9-进程、线程、协程"><a href="#9-进程、线程、协程" class="headerlink" title="9. 进程、线程、协程"></a>9. 进程、线程、协程</h1><h2 id="9-1-进程"><a href="#9-1-进程" class="headerlink" title="9.1 进程"></a>9.1 进程</h2><p>进程：程序的执行过程，包括了动态创建、调度和消亡的整个过程，是程序资源管理的最小单位</p>
+<p>多进程模型：启动多个服务进程。由于多进程地址空间不同，数据不能共享，需要搭建各个进程间的通信桥梁，即IPC (InterProcess Communication)</p>
+<p>常见IPC类型</p>
+<ul>
+<li><p>管道 Pipe：一个内核缓冲区，以先进先出FIFO的方式从缓冲区存取数据；以半双工方式通信，数据只能单向流动，且只能在父子进程间通信</p>
+</li>
+<li><p>命名管道FIFO：以文件形式存于文件系统中 <code>/tmp/fifo</code>, 只要可以访问该文件的进程，均可通信</p>
+</li>
+<li><p>信号 Signal：用户空间进程和内核直接交互，内核可利用信号来通知用户空间进程发生哪些系统事件</p>
+</li>
+<li><p>消息队列 Message Queue：存放在内核中的消息链表，每个消息队列由消息队列标识符表示，只在内核重启或主动删除时，消息队列才会被删除</p>
+</li>
+<li><p>共享内存 Shared memory：多个进程可以直接读写同一块内存空间，是最快的IPC</p>
+</li>
+<li><p>套接字 Socket：通过网络接口将数据发送到本机的不同进程或远程计算机的进程</p>
+</li>
+</ul>
+<h2 id="9-2-线程"><a href="#9-2-线程" class="headerlink" title="9.2 线程"></a>9.2 线程</h2><p>线程：进程中，资源调度的最小单位</p>
+<p>多线程模型：</p>
+<ul>
+<li><p>线程同步：线程之间的一种直接制约关系，一个线程的执行依赖另一个线程的通知，当它没有得到另一个线程的通知时必须等待，直到消息到达时才被唤醒。</p>
+</li>
+<li><p>线程互斥：多线程对资源访问的排他性，即多个线程要使用某个共享资源时，任何时刻最多只允许一个线程获得该共享资源的使用权</p>
+</li>
+</ul>
+<p>多线程同步和互斥方法：</p>
+<ul>
+<li><p>互斥锁</p>
+</li>
+<li><p>条件变量</p>
+</li>
+<li><p>读写锁</p>
+</li>
+<li><p>自旋锁：线程反复去获取<strong>锁</strong>，但这个锁被其他线程占用，此线程将会等待，间隔一段时间后再次尝试获取。这种<strong>循环加锁的等待机制被称为自旋锁(spinlock)</strong></p>
+</li>
+<li><p>信号量</p>
+</li>
+</ul>
+<h2 id="9-3-协程"><a href="#9-3-协程" class="headerlink" title="9.3 协程"></a>9.3 协程</h2><p>协程：一种比线程更轻量化的微线程</p>
+<p>协程优势：</p>
+<ul>
+<li><p>协程在线程内实现，因此始终在一个线程中共享资源，不存在多线程抢占资源和资源同步问题</p>
+</li>
+<li><p>生产者协程和消费者协程，相互配合协作完成工作，而不是相互抢占</p>
+</li>
+<li><p>协程的创建和切换开销比线程小的多</p>
+</li>
+</ul>
+<h2 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4 总结"></a>9.4 总结</h2><p>进程、线程、协程的关系和区别：</p>
+<ul>
+<li>进程拥有独立的堆和栈，既不共享堆，也不共享栈，由操作系统负责调度。</li>
+<li>线程拥有独立的栈和共享的堆，由操作系统负责调度（内核线程）。</li>
+<li>协程拥有独立的栈和共享的堆，有 golang 的调度器负责调度。</li>
+</ul>
+<h2 id="9-5-实现自旋锁"><a href="#9-5-实现自旋锁" class="headerlink" title="9.5 实现自旋锁"></a>9.5 实现自旋锁</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> SpinLock <span class="keyword">uint32</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewSpinLock</span><span class="params">()</span> *<span class="title">SpinLock</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> lock SpinLock</span><br><span class="line">	<span class="keyword">return</span> &amp;lock</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sl *SpinLock)</span> <span class="title">Lock</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> !atomic.CompareAndSwapUint32((*<span class="keyword">uint32</span>)(sl), <span class="number">0</span>, <span class="number">1</span>) &#123;</span><br><span class="line">		runtime.Gosched()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sl *SpinLock)</span> <span class="title">Unlock</span><span class="params">()</span></span> &#123;</span><br><span class="line">	atomic.StoreUint32((*<span class="keyword">uint32</span>)(sl), <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="10-函数递归问题"><a href="#10-函数递归问题" class="headerlink" title="10. 函数递归问题"></a>10. 函数递归问题</h1><p><strong>为什么递归“效率低”？</strong> </p>
+<ul>
+<li><p>函数调用开销问题：函数调用前，需要做许多工作，比如准备函数内局部变量使用的空间、保存函数的参数，记录函数调用位置等，这些操作较为耗资源。</p>
+</li>
+<li><p>某些递归算法，本身存在低效问题。斐波那契中求某一项，子问题会大量重复出现，产生大量重复计算，效率低下</p>
+</li>
+<li><p>不断入栈出栈操作</p>
+</li>
+<li><p>栈容量的限制，可能导致stack overflow</p>
+</li>
+</ul>
+<h1 id="11-压测工具"><a href="#11-压测工具" class="headerlink" title="11. 压测工具"></a>11. 压测工具</h1><ol>
+<li>vegeta： 高性能http(s)负载测试工具。它是一个负载测试工具而不是基准测试工具。基准测试试图找到系统在峰值容量下所能承受的极限，而负载测试则倾向于讲述系统在不同的负载点和配置下的表现。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;GET http://10.137.8.40&quot;</span> | vegeta attack -rate=20000 -duration=60s | tee test.dat | vegeta report -ouput test-result.dat</span><br></pre></td></tr></table></figure>
+
+<p>​    QPS: query per second</p>
+<ol start="2">
+<li>goconvey: 集成go test, 支持Web-GUI</li>
+</ol>
+<p>关于goconvey，下面说法正确的是（ABC）<br>A. goconvey是一个支持golang的单元测试框架<br>B. goconvey能够自动监控文件修改并启动测试，并可以将测试结果实时输出到web界面<br>C. goconvey提供了丰富的断言简化测试用例的编写<br>D. goconvey无法与go test集成</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestStringSliceEqual</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">  Convey(<span class="string">&quot;TestStringSliceEqual should return true when a != nil &amp;&amp; b != nil&quot;</span>, t, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="keyword">string</span>&#123;<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;goconvey&quot;</span>&#125;</span><br><span class="line">    b := []<span class="keyword">string</span>&#123;<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;goconvey&quot;</span>&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>GoStub</li>
+</ol>
+<p>GoStub框架的使用场景如下：<br>A、为一个全局变量打桩<br>B、为一个函数打桩<br>C、为一个过程打桩<br>D、由任意相同或不同的基本场景组合而成</p>
+<h1 id="12-字符编码"><a href="#12-字符编码" class="headerlink" title="12. 字符编码"></a>12. 字符编码</h1><p>大端 (LitteEndian)：高位写左边，从左向右读</p>
+<p>小端 (LitteEndian)：高位写右边，从右向左读</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-13T11:15:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年7月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2021/01/09/HTTP/" rel="prev" title="HTTP">
+                                
+                                    HTTP
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/07/17/Go%20%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" rel="prev" title="Go 相关概念">
+                                  
+                                      Go 相关概念
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Linux基础知识',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">1. 负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-SLB"><span class="toc-text">1.1 SLB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-LVS"><span class="toc-text">1.2 LVS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%AB%98%E5%8F%AF%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="toc-text">2. 高可用软件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9"><span class="toc-text">3. 弹性伸缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B-amp-%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">4. 孤儿进程 &amp; 僵尸进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-epoll-amp-select"><span class="toc-text">5. epoll &amp; select</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-ping-IP"><span class="toc-text">6. ping IP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E8%A7%A3%E5%86%B3hash%E5%86%B2%E7%AA%81%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-text">7. 解决hash冲突的办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-text">7.1 开放地址法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E5%86%8D%E5%93%88%E5%B8%8C%E6%B3%95"><span class="toc-text">7.2 再哈希法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-text">7.3 链地址法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E6%BA%A2%E5%87%BA%E5%8C%BA"><span class="toc-text">7.4 建立一个公共溢出区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Git"><span class="toc-text">8. Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B"><span class="toc-text">9. 进程、线程、协程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E8%BF%9B%E7%A8%8B"><span class="toc-text">9.1 进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E7%BA%BF%E7%A8%8B"><span class="toc-text">9.2 线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E5%8D%8F%E7%A8%8B"><span class="toc-text">9.3 协程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-%E6%80%BB%E7%BB%93"><span class="toc-text">9.4 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-%E5%AE%9E%E7%8E%B0%E8%87%AA%E6%97%8B%E9%94%81"><span class="toc-text">9.5 实现自旋锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92%E9%97%AE%E9%A2%98"><span class="toc-text">10. 函数递归问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">11. 压测工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="toc-text">12. 字符编码</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 17.33px; color: #828282">websocket</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

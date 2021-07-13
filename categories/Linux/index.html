@@ -301,6 +301,10 @@
         
           
         
+          
+        
+          
+        
       
     
     
@@ -318,8 +322,331 @@
       
         
   <h2 class="title">
-    <a href="/2019/12/19/Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/">
-      文本处理命令
+    <a href="/2021/03/17/TCP/">
+      TCP
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-03-17</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-TCP"><a href="#1-TCP" class="headerlink" title="1. TCP"></a>1. TCP</h1><p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/network/tcp_transfer.png" alt="a"></p>
+<p>TCP 是<strong>面向连接、可靠的、基于字节流</strong>的<font color="blue">传输层</font>通信协议。</p>
+<ul>
+<li>面向连接：一对一的连接。不像 UDP 可以同时向多个主机发送消息。</li>
+<li>可靠的：网络链路中出现变化，TCP 可以保证一个报文一定能够到达指定端。</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2021/03/17/TCP/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2021/01/09/HTTP/">
+      HTTP
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-01-09</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-HTTP"><a href="#1-HTTP" class="headerlink" title="1. HTTP"></a>1. HTTP</h1><h2 id="1-1-特性"><a href="#1-1-特性" class="headerlink" title="1.1 特性"></a>1.1 特性</h2><ul>
+<li>构建在TCP上的应用层协议</li>
+<li>无连接无状态</li>
+</ul>
+<h2 id="1-2-状态码"><a href="#1-2-状态码" class="headerlink" title="1.2 状态码"></a>1.2 状态码</h2><ul>
+<li><code>200 OK</code> </li>
+<li><code>301 Moved Permanently</code> 永久重定向，后续请求直接发往新地址</li>
+<li><code>302 Moved Temporarily</code> 临时重定向</li>
+<li><code>304 Not Modified</code> 文件未修改，直接使用缓存文件</li>
+<li><code>400 Bad Request</code> 客户端请求有语法错误</li>
+<li><code>401 Unauthorized</code> 请求未经授权</li>
+<li><code>403 Forbidden</code> 认证通过，但无权限访问资源</li>
+<li><code>404 Not Found</code> 请求的资源不存在</li>
+<li><code>405 Method Not Allowed</code> </li>
+<li><code>500 Internal Server Error</code> </li>
+<li><code>502 Bad Gateway</code> 与upstream建立了连接，但响应超时。可能原因：后端代码执行超时、数据库响应慢等 (received an invalid response from the upstream server)</li>
+<li><code>503 Service Unavailable</code> 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常。(The server cannot handle the request, because it is overloaded or down for maintenance, generally this is temporary state.) </li>
+<li><code>504 Gateway Time-out</code> 完全无法与upstream建立连接，一般是nginx配置错误 (did not receive a timely response from the upstream server)</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2021/01/09/HTTP/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/09/21/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+      Linux基础知识
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-09-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-负载均衡"><a href="#1-负载均衡" class="headerlink" title="1. 负载均衡"></a>1. 负载均衡</h1><h2 id="1-1-SLB"><a href="#1-1-SLB" class="headerlink" title="1.1 SLB"></a>1.1 SLB</h2><p>SLB: Server Load Balance</p>
+<ul>
+<li><p>通过设置虚拟服务地址（IP），将位于同一区域（Region）的多台云服务器（Elastic Compute Service，ECS）的资源虚拟成一个高性能、高可用的应用服务池；再根据应用指定的方式，将来自客户端的网络请求分发到云服务器池中</p>
+</li>
+<li><p>SLB服务会检查云服务器池中ECS的健康状态，自动隔离异常状态的ECS，从而解决了单台ECS的单点问题，同时提高了应用的整体服务能力</p>
+</li>
+</ul>
+<p>负载均衡算法：</p>
+<ul>
+<li><p>轮询 (Round Robin)</p>
+</li>
+<li><p>最小连接 (Leaster Connections): 优先选择连接数最小的服务器</p>
+</li>
+<li><p>Source: 根据请求源IP的hash值来选择要转发的服务器，保证特定用户连接到相同服务器</p>
+</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2020/09/21/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/12/19/Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">
+      Linux文本处理
     </a>
   </h2>
 
@@ -386,7 +713,7 @@
       
       
         <div class="readmore">
-          <a href="/2019/12/19/Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/" class="flat-box">
+          <a href="/2019/12/19/Linux%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -413,8 +740,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/12/18/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/">
-      Linux知识点
+    <a href="/2019/12/18/Linux%E7%B3%BB%E7%BB%9F/">
+      Linux系统
     </a>
   </h2>
 
@@ -478,202 +805,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/12/18/Linux%E7%9F%A5%E8%AF%86%E7%82%B9/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
+      <h2 id="1-buffer和cache"><a href="#1-buffer和cache" class="headerlink" title="1. buffer和cache"></a>1. buffer和cache</h2><p>buffer强调写，cache强调读，读写都带的时候，几乎无差别。buffer另外也有排队等待被处理的意思，cache基本没有。</p>
+<h2 id="2-bash配置文件"><a href="#2-bash配置文件" class="headerlink" title="2. bash配置文件"></a>2. bash配置文件</h2><h3 id="2-1-全局配置"><a href="#2-1-全局配置" class="headerlink" title="2.1 全局配置"></a>2.1 全局配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile</span><br><span class="line">/etc/profile.d/*.sh	</span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/10/12/%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5/">
-      远程端口检查
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
+<h3 id="2-2-用户配置"><a href="#2-2-用户配置" class="headerlink" title="2.2 用户配置"></a>2.2 用户配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.bash_profile, ~/.bash_login, ~/.profile(同时存在时，依次读取)</span><br><span class="line">~/.bashrc</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/10/12/%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/10/10/sudo/">
-      sudo
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-10</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="1-sudo条目语法"><a href="#1-sudo条目语法" class="headerlink" title="1. sudo条目语法"></a>1. sudo条目语法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who host=(runas)  TAG:<span class="built_in">command</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-配置示例"><a href="#2-配置示例" class="headerlink" title="2. 配置示例"></a>2. 配置示例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">visudo</span><br><span class="line"></span><br><span class="line">oracle ALL=(root) NOPASSWD:/sbin/useradd, PASSWD:/sbin/userdel</span><br><span class="line"></span><br><span class="line">%admin ALL=(root) NOPASSWD:/sbin/shutdown</span><br><span class="line"></span><br><span class="line">web ALL=(operator) /etc/webhook/mytest.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span> ALL=(ALL) /bin/cat /var/<span class="built_in">log</span>/secure*, !/bin/cat /var/<span class="built_in">log</span>/secure* *</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2019/10/10/sudo/" class="flat-box">
+          <a href="/2019/12/18/Linux%E7%B3%BB%E7%BB%9F/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -781,6 +919,102 @@
           <a href="/tags/nginx/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> nginx</a>
         
       </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/04/30/Linux%20%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+      Linux 使用总结
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-04-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-Ubuntu"><a href="#1-Ubuntu" class="headerlink" title="1. Ubuntu"></a>1. Ubuntu</h1><h2 id="1-1-修改IP"><a href="#1-1-修改IP" class="headerlink" title="1.1 修改IP"></a>1.1 修改IP</h2><p>Ubuntu 16, 18:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/network/interfaces</span><br><span class="line">auto ens33</span><br><span class="line">iface ens33 inet static</span><br><span class="line">address 192.168.80.20</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.80.2</span><br><span class="line">dns-nameservers 8.8.8.8</span><br><span class="line"></span><br><span class="line">sudo ip addr flush ens33</span><br><span class="line">sudo systemctl restart networking</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/04/30/Linux%20%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
     
   </section>
 </article>
@@ -1037,19 +1271,13 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
         
@@ -1059,9 +1287,9 @@
         
           <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
@@ -1113,7 +1341,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 17.33px; color: #828282">websocket</a>
     </div>
   </section>
 

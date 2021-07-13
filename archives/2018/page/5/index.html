@@ -300,8 +300,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/19/Go%20%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
-      Go 字符编码
+    <a href="/2018/01/02/Go%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+      Go 基本数据类型
     </a>
   </h2>
 
@@ -331,7 +331,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-19</p>
+    <p>2018-01-02</p>
   </a>
 </div>
 
@@ -365,10 +365,145 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h1 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h1><h2 id="1-1-Go数据类型"><a href="#1-1-Go数据类型" class="headerlink" title="1.1 Go数据类型"></a>1.1 Go数据类型</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>长度</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bool</td>
+<td>1</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1</td>
+<td>0</td>
+<td>uint8的别名，相互不需要转换</td>
+</tr>
+<tr>
+<td>int, uint</td>
+<td>4, 8</td>
+<td>0</td>
+<td>默认整型，长度依平台而定，32或64</td>
+</tr>
+<tr>
+<td>int8, uint8</td>
+<td>1</td>
+<td>0</td>
+<td>-128 ~ 127, 0 ~ 255</td>
+</tr>
+<tr>
+<td>int16, uint16</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>int32, uint32</td>
+<td>4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>int64, uint64</td>
+<td>8</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>float32</td>
+<td>4</td>
+<td>0.0</td>
+<td></td>
+</tr>
+<tr>
+<td>float64</td>
+<td>8</td>
+<td>0.0</td>
+<td>默认</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>8</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>16</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rune</td>
+<td>4</td>
+<td>0</td>
+<td>Unicode Code Point, int32的别名</td>
+</tr>
+<tr>
+<td>uintptr</td>
+<td>4, 8</td>
+<td>0</td>
+<td>存储指针的uint</td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+<td>“”</td>
+<td>默认值空字符串，而非nil</td>
+</tr>
+<tr>
+<td>array</td>
+<td></td>
+<td></td>
+<td>数组</td>
+</tr>
+<tr>
+<td>struct</td>
+<td></td>
+<td></td>
+<td>结构体</td>
+</tr>
+<tr>
+<td>function</td>
+<td></td>
+<td>nil</td>
+<td></td>
+</tr>
+<tr>
+<td>interface</td>
+<td></td>
+<td>nil</td>
+<td></td>
+</tr>
+<tr>
+<td>map</td>
+<td></td>
+<td>nil</td>
+<td>字典，引用类型</td>
+</tr>
+<tr>
+<td>slice</td>
+<td></td>
+<td>nil</td>
+<td>切片，引用类型</td>
+</tr>
+<tr>
+<td>channel</td>
+<td></td>
+<td>nil</td>
+<td>通道，引用类型                     ｜</td>
+</tr>
+</tbody></table>
       
         <div class="readmore">
-          <a href="/2018/01/19/Go%20%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="flat-box">
+          <a href="/2018/01/02/Go%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -401,8 +536,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/18/Go%20%E9%9B%86%E6%88%90ElasticSearch/">
-      Go 集成ElasticSearch
+    <a href="/2018/01/01/Go%20%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+      Go 语言基础
     </a>
   </h2>
 
@@ -432,7 +567,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-18</p>
+    <p>2018-01-01</p>
   </a>
 </div>
 
@@ -466,834 +601,17 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2018/01/18/Go%20%E9%9B%86%E6%88%90ElasticSearch/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/elasticsearch/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> elasticsearch</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/17/Go%20%E6%A0%87%E5%87%86%E5%BA%93http/">
-      Go标准库 http
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-17</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2018/01/17/Go%20%E6%A0%87%E5%87%86%E5%BA%93http/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/16/Go%20%E6%A0%87%E5%87%86%E5%BA%93unsafe/">
-      Go 标准库unsafe
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-16</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-unsafe包"><a href="#1-unsafe包" class="headerlink" title="1. unsafe包"></a>1. unsafe包</h1><p>Go是强类型语言，不允许不同类型的指针互相转换。但它提供unsafe包作为中间媒介，快速实现类型转换，但该转换是不安全的。</p>
-<h2 id="1-1-Go指针和unsafe-Pointer的区别"><a href="#1-1-Go指针和unsafe-Pointer的区别" class="headerlink" title="1.1 Go指针和unsafe.Pointer的区别"></a>1.1 Go指针和unsafe.Pointer的区别</h2><p><strong>Go指针</strong>：</p>
-<ul>
-<li>不能进行数学运算</li>
-<li>不同类型的指针，不能相互转换</li>
-<li>不同类型的指针不能使用 == 或 != 比较</li>
-<li>不同类型的指针变量不能相互赋值</li>
-</ul>
-<p><strong>unsafe.Pointer</strong>:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ArbitraryType <span class="keyword">int</span></span><br><span class="line"><span class="keyword">type</span> Pointer *ArbitraryType</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/golang/unsafe_pointer.png" alt="unsafe_pointer"></p>
-      
-        <div class="readmore">
-          <a href="/2018/01/16/Go%20%E6%A0%87%E5%87%86%E5%BA%93unsafe/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/15/Go%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
-      Go 单元测试
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-15</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-基础测试"><a href="#1-基础测试" class="headerlink" title="1. 基础测试"></a>1. 基础测试</h1><h2 id="1-1-最简单的测试"><a href="#1-1-最简单的测试" class="headerlink" title="1.1 最简单的测试"></a>1.1 最简单的测试</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Add</span><span class="params">(x, y <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sub</span><span class="params">(x, y <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> x - y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2018/01/15/Go%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/12/Go%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-      Go 正则表达式
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-正则表达式"><a href="#1-正则表达式" class="headerlink" title="1. 正则表达式"></a>1. 正则表达式</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	str := <span class="string">`171.43.145.13 - - [10/Mar/2020:10:19:06 +0800] &quot;POST /api/user/detail HTTP/1.1&quot; 200 252 &quot;-&quot; &quot;LifePlanner/1.9.14 (com.njivtime.lifeplanner; build:1.9.14.9; iOS 13.3.1) Alamofire/4.8.2&quot; &quot;-&quot; 0.009 0.009`</span></span><br><span class="line"></span><br><span class="line">	re := regexp.MustCompile(<span class="string">`\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;\s`</span>)</span><br><span class="line"></span><br><span class="line">	arr := re.FindAllString(str, <span class="number">-1</span>)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2018/01/12/Go%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/11/Go%20%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C/">
-      Go 序列化操作
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-序列化"><a href="#1-序列化" class="headerlink" title="1. 序列化"></a>1. 序列化</h1><p><code>json.Marshal(v interface&#123;&#125;) ([]byte, error)</code></p>
-      
-        <div class="readmore">
-          <a href="/2018/01/11/Go%20%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/10/Go%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-      Go 网络编程
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-10</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-网络编程"><a href="#1-网络编程" class="headerlink" title="1. 网络编程"></a>1. 网络编程</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">net.Listen(network, address <span class="keyword">string</span>) (Listener, error)</span><br><span class="line">listener.Accept() (Conn, err)</span><br><span class="line">conn.Close()</span><br><span class="line">conn.Read([]<span class="keyword">byte</span>) (<span class="keyword">int</span>, err)</span><br><span class="line">conn.Write([]<span class="keyword">byte</span>)</span><br><span class="line"></span><br><span class="line">net.Dial(network, address <span class="keyword">string</span>) (Conn, error)</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2018/01/10/Go%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/09/Go%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/">
-      Go 命令行参数
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-09</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-命令行参数：os-Args-string"><a href="#1-命令行参数：os-Args-string" class="headerlink" title="1. 命令行参数：os.Args  []string"></a>1. 命令行参数：<code>os.Args  []string</code></h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	args := os.Args</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">&quot;接收到%v个参数\n&quot;</span>, <span class="built_in">len</span>(args))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;args[%v]=%v\n&quot;</span>, i, v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2018/01/09/Go%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/go/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> go</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/01/08/Go%20%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
-      Go 文件操作
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://elihe2011.github.io" rel="nofollow">
-        
-          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
-        
-        <p>Eli He</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-08</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Golang/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Golang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-读文件"><a href="#1-读文件" class="headerlink" title="1. 读文件"></a>1. 读文件</h1><ul>
-<li><p><code>os.Open(name string) (file *File, err error)</code></p>
-</li>
-<li><p><code>ioutil.ReadFile(name string) ([]byte, error)</code> 适合小文件一次性读取</p>
-</li>
+      <h1 id="1-Go语言相关知识点"><a href="#1-Go语言相关知识点" class="headerlink" title="1. Go语言相关知识点"></a>1. Go语言相关知识点</h1><h2 id="1-1-Go特点："><a href="#1-1-Go特点：" class="headerlink" title="1.1 Go特点："></a>1.1 Go特点：</h2><ul>
+<li>类型安全和内存安全</li>
+<li>以非常直观和极低的代价实现高并发</li>
+<li>高效的垃圾回收机制</li>
+<li>快速编译</li>
+<li>为多核计算机提供提升性能的方案</li>
+<li>默认UTF-8编码</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2018/01/08/Go%20%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="flat-box">
+          <a href="/2018/01/01/Go%20%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1328,14 +646,8 @@
             </a>
           
           <p class="current">
-            5 / 6
+            5 / 5
           </p>
-          
-            <a class="next" rel="next" href="/archives/2018/page/6/">
-              <section class="post next">
-                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-              </section>
-            </a>
           
         </div>
       </div>
@@ -1488,19 +800,13 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(8)</div></a></li>
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/EPay/" href="/categories/EPay/"><div class='name'>EPay</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Flask/" href="/categories/Flask/"><div class='name'>Flask</div><div class='badge'>(14)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(6)</div></a></li>
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
         
@@ -1510,9 +816,9 @@
         
           <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(46)</div></a></li>
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
@@ -1564,7 +870,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 16.5px; color: #888">algorithm</a> <a href="/tags/alipay/" style="font-size: 14px; color: #999">alipay</a> <a href="/tags/celery/" style="font-size: 14px; color: #999">celery</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/generator/" style="font-size: 14px; color: #999">generator</a> <a href="/tags/git/" style="font-size: 16.5px; color: #888">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/iter/" style="font-size: 14px; color: #999">iter</a> <a href="/tags/js/" style="font-size: 19px; color: #777">js</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/python/" style="font-size: 21.5px; color: #666">python</a> <a href="/tags/rabbitmq/" style="font-size: 16.5px; color: #888">rabbitmq</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/rpc/" style="font-size: 19px; color: #777">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/timezone/" style="font-size: 14px; color: #999">timezone</a> <a href="/tags/tornado/" style="font-size: 16.5px; color: #888">tornado</a> <a href="/tags/unicode/" style="font-size: 14px; color: #999">unicode</a> <a href="/tags/webhook/" style="font-size: 14px; color: #999">webhook</a> <a href="/tags/websocket/" style="font-size: 16.5px; color: #888">websocket</a> <a href="/tags/yum/" style="font-size: 14px; color: #999">yum</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 17.33px; color: #828282">websocket</a>
     </div>
   </section>
 

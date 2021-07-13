@@ -225,25 +225,6 @@
     
     
     <entry>
-      <title>C10K问题</title>
-      <link href="/2019/12/16/C10%E9%97%AE%E9%A2%98/"/>
-      <url>/2019/12/16/C10%E9%97%AE%E9%A2%98/</url>
-      
-        <content type="html"><![CDATA[<h2 id="1-C10K问题由来"><a href="#1-C10K问题由来" class="headerlink" title="1. C10K问题由来"></a>1. C10K问题由来</h2><p>随着互联网的普及，应用的用户群体几何倍增长，此时服务器性能问题就出现。最初的服务器是基于进程/线程模型。新到来一个TCP连接，就需要分配一个进程。假如有C10K，就需要创建1W个进程，可想而知单机是无法承受的。那么如何突破单机性能是高性能网络编程必须要面对的问题，进而这些局限和问题就统称为C10K问题，最早是由Dan Kegel进行归纳和总结的，并且他也系统的分析和提出解决方案。</p><h2 id="2-C10K问题的本质"><a href="#2-C10K问题的本质" class="headerlink" title="2. C10K问题的本质"></a>2. C10K问题的本质</h2><p>C10K问题的本质上是操作系统的问题。对于Web 1.0/2.0时代的操作系统，传统的同步阻塞I/O模型处理方式都是requests per second。当创建的进程或线程多了，数据拷贝频繁（缓存I/O、内核将数据拷贝到用户进程空间、阻塞，进程/线程上下文切换消耗大， 导致操作系统崩溃，这就是C10K问题的本质。</p><p>可见, 解决C10K问题的关键就是尽可能减少这些CPU资源消耗。</p><h2 id="3-C10K问题的解决方案"><a href="#3-C10K问题的解决方案" class="headerlink" title="3. C10K问题的解决方案"></a>3. C10K问题的解决方案</h2><p>从网络编程技术的角度来说，主要思路：</p><ul><li>每个连接分配一个独立的线程/进程</li><li>同一个线程/进程同时处理多个连接</li></ul><h3 id="3-1-每个进程-线程处理一个连接"><a href="#3-1-每个进程-线程处理一个连接" class="headerlink" title="3.1 每个进程/线程处理一个连接"></a>3.1 每个进程/线程处理一个连接</h3><p>该思路最为直接，但是申请进程/线程是需要系统资源的，且系统需要管理这些进程/线程，所以会使资源占用过多，可扩展性差</p><h3 id="3-2-每个进程-线程同时处理-多个连接-I-O多路复用"><a href="#3-2-每个进程-线程同时处理-多个连接-I-O多路复用" class="headerlink" title="3.2 每个进程/线程同时处理 多个连接(I/O多路复用)"></a>3.2 每个进程/线程同时处理 多个连接(I/O多路复用)</h3><ul><li>select方式：使用fd_set结构体告诉内核同时监控那些文件句柄，使用逐个排查方式去检查是否有文件句柄就绪或者超时。该方式有以下缺点：文件句柄数量是有上线的，逐个检查吞吐量低，每次调用都要重复初始化fd_set。</li><li>poll方式：该方式主要解决了select方式的2个缺点，文件句柄上限问题(链表方式存储)以及重复初始化问题(不同字段标注关注事件和发生事件)，但是逐个去检查文件句柄是否就绪的问题仍然没有解决。</li><li>epoll方式：该方式可以说是C10K问题的killer，他不去轮询监听所有文件句柄是否已经就绪。epoll只对发生变化的文件句柄感兴趣。其工作机制是，使用”事件”的就绪通知方式，通过epoll_ctl注册文件描述符fd，一旦该fd就绪，内核就会采用类似callback的回调机制来激活该fd, epoll_wait便可以收到通知, 并通知应用程序。而且epoll使用一个文件描述符管理多个描述符,将用户进程的文件描述符的事件存放到内核的一个事件表中, 这样数据只需要从内核缓存空间拷贝一次到用户进程地址空间。而且epoll是通过内核与用户空间共享内存方式来实现事件就绪消息传递的，其效率非常高。但是epoll是依赖系统的(Linux)。</li><li>异步I/O以及Windows，该方式在windows上支持很好。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Python </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>MongoDB</title>
       <link href="/2019/11/07/MongoDB/"/>
       <url>/2019/11/07/MongoDB/</url>
@@ -651,33 +632,6 @@
         <tags>
             
             <tag> redis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>HTTP和WebSocket</title>
-      <link href="/2019/01/03/HTTP%E5%92%8CWebSocket/"/>
-      <url>/2019/01/03/HTTP%E5%92%8CWebSocket/</url>
-      
-        <content type="html"><![CDATA[<h1 id="1-协议"><a href="#1-协议" class="headerlink" title="1. 协议"></a>1. 协议</h1><ul><li><p>HTTP 1.0: 在一次 TCP 连接中只能完成一个 HTTP 请求</p></li><li><p>HTTP 1.1: keep-alive，在一次 TCP 连接中完成多个 HTTP 请求</p></li><li><p>Websocket: 借用HTTP协议来完成握手</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Connection:</span> <span class="string">Upgrade</span></span><br><span class="line"><span class="attr">Sec-WebSocket-Extensions:</span> <span class="string">permessage-deflate;</span> <span class="string">client_max_window_bits</span></span><br><span class="line"><span class="attr">Sec-WebSocket-Key:</span> <span class="string">km9iqxp+3H2ndD5zXkAczA==</span></span><br><span class="line"><span class="attr">Sec-WebSocket-Version:</span> <span class="number">13</span></span><br><span class="line"><span class="attr">Upgrade:</span> <span class="string">websocket</span></span><br></pre></td></tr></table></figure></li></ul><span id="more"></span><h1 id="2-通信方式比较："><a href="#2-通信方式比较：" class="headerlink" title="2. 通信方式比较："></a>2. 通信方式比较：</h1><ul><li>ajax轮询：浏览器隔几秒向服务器发起一个请求，询问服务器是否有新信息。需要服务器有很快的处理速度和资源。（速度）</li><li>long poll：采用阻塞模式，客户端发起连接后，如果没消息，就一直不返回Response给客户端。直到有消息才返回，返回完之后，客户端再次建立连接，周而复始。需要有很高的并发，也就是说同时接待客户的能力。（场地大小）</li><li>WebSocket：一次HTTP握手后，整个通讯过程是建立在该连接状态中。服务器可主动推送消息给客户端。</li></ul><h1 id="3-WebSocket和HTTP最大不同是："><a href="#3-WebSocket和HTTP最大不同是：" class="headerlink" title="3. WebSocket和HTTP最大不同是："></a>3. WebSocket和HTTP最大不同是：</h1><ul><li>WebSocket是一种双向通信协议。在建立连接后，WebSocket服务器端和客户端都能主动向对方发送或接收数据，就像Socket一样；</li><li>WebSocket需要像TCP一样，先建立连接，连接成功后才能相互通信。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Network </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> websocket </tag>
-            
-            <tag> http </tag>
             
         </tags>
       

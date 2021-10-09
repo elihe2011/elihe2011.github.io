@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: Python | Eli&#39;s Blog</title>
+  <title>Archives: 2021/7 | Eli&#39;s Blog</title>
   
   
 
@@ -280,11 +280,9 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class='l_main'>
-  
-    
-      
+      <div class='l_main'>
+	
+		
   <section class="post-list">
     
       
@@ -308,8 +306,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/12/16/C10%E9%97%AE%E9%A2%98/">
-      C10K问题
+    <a href="/2021/07/13/Kubernetes%20%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/">
+      Kubernetes 核心组件
     </a>
   </h2>
 
@@ -339,7 +337,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-12-16</p>
+    <p>2021-07-13</p>
   </a>
 </div>
 
@@ -349,9 +347,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
+    <a href='/categories/kubernetes/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
+      <p>kubernetes</p>
     </a>
   </div>
 
@@ -373,10 +371,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h1 id="1-API-Server"><a href="#1-API-Server" class="headerlink" title="1. API-Server"></a>1. API-Server</h1><h2 id="1-1-工作原理"><a href="#1-1-工作原理" class="headerlink" title="1.1 工作原理"></a>1.1 工作原理</h2><p>核心功能：<strong>资源操作入口</strong></p>
+<ul>
+<li>提供集群管理的 <strong>REST API 接口</strong>，包括认证授权、准入控制、数据校验以及集群状态变更等</li>
+<li>提供其他模块之间的数据交互和通信的<strong>枢纽</strong>（其他模块通过 API Server 查询或修改数据，<strong>只有 API Server 能够直接操作 etcd</strong>）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/kubernetes/k8s-api-server.png" alt="img"> </p>
       
         <div class="readmore">
-          <a href="/2019/12/16/C10%E9%97%AE%E9%A2%98/" class="flat-box">
+          <a href="/2021/07/13/Kubernetes%20%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -401,9 +404,7 @@
   
 
 
-    
-  
-
+	
 </div>
 <aside class='l_side'>
   
@@ -553,19 +554,19 @@
         
           <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/Network/" href="/categories/Network/"><div class='name'>Network</div><div class='badge'>(1)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/kubernetes/" href="/categories/kubernetes/"><div class='name'>kubernetes</div><div class='badge'>(3)</div></a></li>
         
       </ul>
     </div>
@@ -613,7 +614,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 17.33px; color: #828282">websocket</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
     </div>
   </section>
 
@@ -686,6 +687,14 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
       <script>setLoadingBarProgress(60);</script>

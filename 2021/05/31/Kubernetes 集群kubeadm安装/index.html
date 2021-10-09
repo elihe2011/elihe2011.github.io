@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Kubernetes 集群kubeadmin安装 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2021/05/31/Kubernetes%20%E9%9B%86%E7%BE%A4kubeadm%E5%AE%89%E8%A3%85/">
+        Kubernetes 集群kubeadmin安装
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-05-31</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/kubernetes/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>kubernetes</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-Kubeadm原理"><a href="#1-Kubeadm原理" class="headerlink" title="1. Kubeadm原理"></a>1. Kubeadm原理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个 Master 节点</span></span><br><span class="line">$ kubeadm init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将一个 Node 节点加入到当前集群中</span></span><br><span class="line">$ kubeadm join &lt;Master 节点的 IP 和端口 &gt;</span><br></pre></td></tr></table></figure>
+
+<p>执行 kubeadm init：</p>
+<ul>
+<li>自动检查集群机器是否合规</li>
+<li>自动生成集群运行所需的各类证书及各类配置，并将Master节点信息保存在名为cluster-info的ConfigMap中。</li>
+<li>通过static Pod方式，运行API server, controller manager 、scheduler及etcd组件。</li>
+<li>生成Token以便其他节点加入集群</li>
+</ul>
+<p>执行 kubeadm join时：</p>
+<ul>
+<li>节点通过token访问kube-apiserver，获取cluster-info中信息，主要是apiserver的授权信息（节点信任集群）。</li>
+<li>通过授权信息，kubelet可执行TLS bootstrapping，与apiserver真正建立互信任关系（集群信任节点）。</li>
+</ul>
+<p><strong>kubeadm做的事就是把大部分组件都容器化，通过StaticPod方式运行，并自动化了大部分的集群配置及认证等工作，简单几步即可搭建一个可用Kubernetes的集群。</strong></p>
+<span id="more"></span>
+
+<h1 id="2-Haproxy"><a href="#2-Haproxy" class="headerlink" title="2. Haproxy"></a>2. Haproxy</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装haproxy</span></span><br><span class="line">yum install haproxy -y </span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改haproxy配置</span></span><br><span class="line">cat &lt;&lt; <span class="string">EOF &gt; /etc/haproxy/haproxy.cfg</span></span><br><span class="line"><span class="string">global</span></span><br><span class="line"><span class="string">    log         127.0.0.1 local2</span></span><br><span class="line"><span class="string">    chroot      /var/lib/haproxy</span></span><br><span class="line"><span class="string">    pidfile     /var/run/haproxy.pid</span></span><br><span class="line"><span class="string">    maxconn     4000</span></span><br><span class="line"><span class="string">    user        haproxy</span></span><br><span class="line"><span class="string">    group       haproxy</span></span><br><span class="line"><span class="string">    daemon</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">defaults</span></span><br><span class="line"><span class="string">    mode                    tcp</span></span><br><span class="line"><span class="string">    log                     global</span></span><br><span class="line"><span class="string">    retries                 3</span></span><br><span class="line"><span class="string">    timeout connect         10s</span></span><br><span class="line"><span class="string">    timeout client          1m</span></span><br><span class="line"><span class="string">    timeout server          1m</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">frontend kube-apiserver</span></span><br><span class="line"><span class="string">    bind *:6443 # 指定前端端口</span></span><br><span class="line"><span class="string">    mode tcp</span></span><br><span class="line"><span class="string">    default_backend master</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">backend master # 指定后端机器及端口，负载方式为轮询</span></span><br><span class="line"><span class="string">    balance roundrobin</span></span><br><span class="line"><span class="string">    server master-1  192.168.41.230:6443 check maxconn 2000</span></span><br><span class="line"><span class="string">    server master-2  192.168.41.231:6443 check maxconn 2000</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开机默认启动haproxy，开启服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> haproxy</span><br><span class="line">systemctl start haproxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查服务端口情况：</span></span><br><span class="line"><span class="comment"># netstat -lntup | grep 6443</span></span><br><span class="line">tcp        0      0 0.0.0.0:6443            0.0.0.0:*               LISTEN      3110/haproxy</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-集群安装"><a href="#3-集群安装" class="headerlink" title="3. 集群安装"></a>3. 集群安装</h1><table>
+<thead>
+<tr>
+<th><strong>角色</strong></th>
+<th><strong>IP</strong></th>
+<th><strong>组件</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>k8s-master</td>
+<td>192.168.80.40</td>
+<td>kube-apiserver，kube-controller-manager，kube-scheduler，docker, etcd</td>
+</tr>
+<tr>
+<td>k8s-node1</td>
+<td>192.168.80.41</td>
+<td>kubelet，kube-proxy，docker，etcd</td>
+</tr>
+<tr>
+<td>k8s-node2</td>
+<td>192.168.80.42</td>
+<td>kubelet，kube-proxy，docker，etcd</td>
+</tr>
+</tbody></table>
+<p>K8S 版本：1.19.11</p>
+<h2 id="3-1-准备工作"><a href="#3-1-准备工作" class="headerlink" title="3.1 准备工作"></a>3.1 准备工作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 修改主机名</span></span><br><span class="line">hostnamectl set-hostname k8s-master</span><br><span class="line">hostnamectl set-hostname k8s-node01</span><br><span class="line">hostnamectl set-hostname k8s-node02</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 主机名解析</span></span><br><span class="line">cat &gt;&gt; /etc/hosts &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">192.168.80.40  k8s-master</span></span><br><span class="line"><span class="string">192.168.80.41  k8s-node01</span></span><br><span class="line"><span class="string">192.168.80.42  k8s-node02</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 禁用 swap</span></span><br><span class="line">swapoff -a &amp;&amp; sed -i <span class="string">&#x27;/ swap / s/^\(.*\)$/#\1/g&#x27;</span> /etc/fstab</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 将桥接的IPv4流量传递到iptables的链 </span></span><br><span class="line">cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; <span class="string">EOF </span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-ip6tables = 1 </span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-iptables = 1 </span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">sysctl --system </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 5. 时间同步 </span></span><br><span class="line">apt install ntpdate -y </span><br><span class="line">ntpdate ntp1.aliyun.com</span><br><span class="line"></span><br><span class="line">crontab -e</span><br><span class="line">*/30 * * * * /usr/sbin/ntpdate-u ntp1.aliyun.com &gt;&gt; /var/<span class="built_in">log</span>/ntpdate.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-2-安装-kubeadm"><a href="#3-2-安装-kubeadm" class="headerlink" title="3.2 安装 kubeadm"></a>3.2 安装 kubeadm</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br><span class="line">cat &gt;/etc/apt/sources.list.d/kubernetes.list &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询可用版本</span></span><br><span class="line">apt-cache policy kubeadm</span><br><span class="line">1.19.11-00</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 docker 19.03.15~3-0~ubuntu-xenial</span></span><br><span class="line">apt-get install kubeadm=1.19.11-00~ubuntu-xenial -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># master</span></span><br><span class="line">apt-get install -y  kubeadm </span><br><span class="line">apt-get install -y kubeadm=1.19.11-00 kubelet=1.19.11-00 kubectl=1.19.11-00</span><br><span class="line"></span><br><span class="line"><span class="comment"># node</span></span><br><span class="line">apt-get install -y kubeadm=1.19.11-00 kubelet=1.19.11-00</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-3-Master-节点"><a href="#3-3-Master-节点" class="headerlink" title="3.3 Master 节点"></a>3.3 Master 节点</h2><p><strong>初始化：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init \</span><br><span class="line">  --apiserver-advertise-address=192.168.80.40 \</span><br><span class="line">  --image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">  --kubernetes-version v1.19.11 \</span><br><span class="line">  --service-cidr=10.96.0.0/12 \</span><br><span class="line">  --pod-network-cidr=10.244.0.0/16 \</span><br><span class="line">  --ignore-preflight-errors=all</span><br></pre></td></tr></table></figure>
+
+<p>输出结果，用于节点加入集群：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Your Kubernetes control-plane has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) <span class="variable">$HOME</span>/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run <span class="string">&quot;kubectl apply -f [podnetwork].yaml&quot;</span> with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">Then you can join any number of worker nodes by running the following on each as root:</span><br><span class="line"></span><br><span class="line">kubeadm join 192.168.80.40:6443 --token a6jcpy.a33lzoxwxs0zx0fr \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:986154509030b5a816cd6afc796d104c0f3fe24ff1e59bf769cb89b72f904112</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>kubectl 连接 k8s 认证：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不配置</span></span><br><span class="line">kubectl get node</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br><span class="line"></span><br><span class="line">mkdir -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-3-Node-节点"><a href="#3-3-Node-节点" class="headerlink" title="3.3 Node 节点"></a>3.3 Node 节点</h2><p><strong>加入集群:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubeadm join 192.168.80.40:6443 --token a6jcpy.a33lzoxwxs0zx0fr \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:986154509030b5a816cd6afc796d104c0f3fe24ff1e59bf769cb89b72f904112</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-4-安装网络插件"><a href="#3-4-安装网络插件" class="headerlink" title="3.4 安装网络插件"></a>3.4 安装网络插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点状态</span></span><br><span class="line">kubectl get node</span><br><span class="line">NAME         STATUS     ROLES    AGE    VERSION</span><br><span class="line">k8s-master   NotReady   master   7m4s   v1.19.11</span><br><span class="line">k8s-node01   NotReady   &lt;none&gt;   8s     v1.19.11</span><br><span class="line">k8s-node02   NotReady   &lt;none&gt;   4s     v1.19.11</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查日志，发现网络插件未安装</span></span><br><span class="line">journalctl -u kubelet -f</span><br><span class="line">Jun 02 14:24:29 k8s-master kubelet[75636]: W0602 14:24:29.172144   75636 cni.go:239] Unable to update cni config: no networks found <span class="keyword">in</span> /etc/cni/net.d</span><br><span class="line">Jun 02 14:24:32 k8s-master kubelet[75636]: E0602 14:24:32.958021   75636 kubelet.go:2129] Container runtime network not ready: NetworkReady=<span class="literal">false</span> reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized</span><br></pre></td></tr></table></figure>
+
+<p>安装 calico 网络插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$HOME</span>/k8s-install &amp;&amp; <span class="built_in">cd</span> <span class="variable">$HOME</span>/k8s-install</span><br><span class="line"></span><br><span class="line">wget https://docs.projectcalico.org/manifests/calico.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># CIDR的值，与 kubeadm中“--pod-network-cidr=10.244.0.0/16” 一致</span></span><br><span class="line">vi calico.yaml</span><br><span class="line">   3680             <span class="comment"># The default IPv4 pool to create on startup if none exists. Pod IPs will be</span></span><br><span class="line">   3681             <span class="comment"># chosen from this range. Changing this value after installation will have</span></span><br><span class="line">   3682             <span class="comment"># no effect. This should fall within `--cluster-cidr`.</span></span><br><span class="line">   3683             - name: CALICO_IPV4POOL_CIDR</span><br><span class="line">   3684               value: <span class="string">&quot;10.244.0.0/16&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装网络插件</span></span><br><span class="line">kubectl apply -f calico.yaml</span><br></pre></td></tr></table></figure>
+
+<p>检查 网络插件状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -n kube-system</span><br><span class="line">NAME                                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">calico-kube-controllers-7f4f5bf95d-22gcz   1/1     Running   0          88s</span><br><span class="line">calico-node-cj7fv                          1/1     Running   0          89s</span><br><span class="line">calico-node-n26cx                          1/1     Running   0          89s</span><br><span class="line">calico-node-rcqrf                          1/1     Running   0          89s</span><br><span class="line">coredns-6d56c8448f-hn5h4                   1/1     Running   0          21m</span><br><span class="line">coredns-6d56c8448f-wfwlf                   1/1     Running   0          21m</span><br><span class="line">etcd-k8s-master                            1/1     Running   0          21m</span><br><span class="line">kube-apiserver-k8s-master                  1/1     Running   0          21m</span><br><span class="line">kube-controller-manager-k8s-master         1/1     Running   0          21m</span><br><span class="line">kube-proxy-5pvd8                           1/1     Running   0          14m</span><br><span class="line">kube-proxy-bqfkf                           1/1     Running   0          21m</span><br><span class="line">kube-proxy-mdc4h                           1/1     Running   0          14m</span><br><span class="line">kube-scheduler-k8s-master                  1/1     Running   0          21m</span><br><span class="line"></span><br><span class="line">kubectl get node</span><br><span class="line">NAME         STATUS   ROLES    AGE   VERSION</span><br><span class="line">k8s-master   Ready    master   22m   v1.19.11</span><br><span class="line">k8s-node01   Ready    &lt;none&gt;   15m   v1.19.11</span><br><span class="line">k8s-node02   Ready    &lt;none&gt;   15m   v1.19.11</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-5-节点角色"><a href="#3-5-节点角色" class="headerlink" title="3.5 节点角色"></a>3.5 节点角色</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> kubectl get node --show-labels</span><br><span class="line">NAME         STATUS   ROLES    AGE   VERSION    LABELS</span><br><span class="line">k8s-master   Ready    master   25m   v1.19.11   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-master,kubernetes.io/os=linux,node-role.kubernetes.io/master=</span><br><span class="line">k8s-node01   Ready    &lt;none&gt;   18m   v1.19.11   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-node01,kubernetes.io/os=linux</span><br><span class="line">k8s-node02   Ready    &lt;none&gt;   18m   v1.19.11   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-node02,kubernetes.io/os=linux</span><br><span class="line"></span><br><span class="line">kubectl label node k8s-node01 node-role.kubernetes.io/node=</span><br><span class="line">kubectl label node k8s-node02 node-role.kubernetes.io/node=</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-6-token-过期"><a href="#3-6-token-过期" class="headerlink" title="3.6 token 过期"></a>3.6 token 过期</h2><p>kubeadm join 加入集群时，需要2个参数，–token与–discovery-token-ca-cert-hash。其中，token有限期一般是24小时，如果超过时间要新增节点，就需要重新生成token。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># token</span></span><br><span class="line">kubeadm token create</span><br><span class="line">s058gw.c5x6eeze2875sza1</span><br><span class="line"></span><br><span class="line"><span class="comment"># discovery-token-ca-cert-hash</span></span><br><span class="line">openssl x509 -pubkey -<span class="keyword">in</span> /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed <span class="string">&#x27;s/^.* //&#x27;</span></span><br><span class="line">986154509030b5a816cd6afc796d104c0f3fe24ff1e59bf769cb89b72f904112</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新节点加入</span></span><br><span class="line">kubeadm join api-serverip:port --token s058gw.c5x6eeze28**** --discovery-token-ca-cert-hash 9592464b295699696ce35e5d1dd155580ee29d9bd0884b*****</span><br><span class="line"></span><br><span class="line">kubeadm join 192.168.80.40:6443 --token s058gw.c5x6eeze2875sza1 \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:986154509030b5a816cd6afc796d104c0f3fe24ff1e59bf769cb89b72f904112</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="4-问题汇总"><a href="#4-问题汇总" class="headerlink" title="4. 问题汇总"></a>4. 问题汇总</h1><h2 id="4-1-kubelet-无法正常启动"><a href="#4-1-kubelet-无法正常启动" class="headerlink" title="4.1 kubelet 无法正常启动"></a>4.1 kubelet 无法正常启动</h2><p>kubelet无法正常启动，导致执行kubeadm时出现如下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[wait-control-plane] Waiting <span class="keyword">for</span> the kubelet to boot up the control plane as static Pods from directory <span class="string">&quot;/etc/kubernetes/manifests&quot;</span>. This can take up to 4m0s</span><br><span class="line">[kubelet-check] Initial timeout of 40s passed.</span><br><span class="line"></span><br><span class="line">        Unfortunately, an error has occurred:</span><br><span class="line">                timed out waiting <span class="keyword">for</span> the condition</span><br><span class="line"></span><br><span class="line">        This error is likely caused by:</span><br><span class="line">                - The kubelet is not running</span><br><span class="line">                - The kubelet is unhealthy due to a misconfiguration of the node <span class="keyword">in</span> some way (required cgroups disabled)</span><br><span class="line"></span><br><span class="line">        If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:</span><br><span class="line">                - <span class="string">&#x27;systemctl status kubelet&#x27;</span></span><br><span class="line">                - <span class="string">&#x27;journalctl -xeu kubelet&#x27;</span></span><br><span class="line"></span><br><span class="line">        Additionally, a control plane component may have crashed or exited when started by the container runtime.</span><br><span class="line">        To troubleshoot, list all containers using your preferred container runtimes CLI.</span><br><span class="line"></span><br><span class="line">        Here is one example how you may list all Kubernetes containers running <span class="keyword">in</span> docker:</span><br><span class="line">                - <span class="string">&#x27;docker ps -a | grep kube | grep -v pause&#x27;</span></span><br><span class="line">                Once you have found the failing container, you can inspect its logs with:</span><br><span class="line">                - <span class="string">&#x27;docker logs CONTAINERID&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决办法，修改 docker 的cgroupdriver:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/docker/daemon.json &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span></span><br><span class="line"><span class="string">  &quot;log-driver&quot;: &quot;json-file&quot;,</span></span><br><span class="line"><span class="string">  &quot;log-opts&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;max-size&quot;: &quot;100m&quot;</span></span><br><span class="line"><span class="string">  &#125;,</span></span><br><span class="line"><span class="string">  &quot;storage-driver&quot;: &quot;overlay2&quot;,</span></span><br><span class="line"><span class="string">  &quot;storage-opts&quot;: [</span></span><br><span class="line"><span class="string">    &quot;overlay2.override_kernel_check=true&quot;</span></span><br><span class="line"><span class="string">  ]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line"></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>重做初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubeadm reset</span><br><span class="line"></span><br><span class="line">kubeadm init xxx</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-2-ubuntu-16-默认内核"><a href="#4-2-ubuntu-16-默认内核" class="headerlink" title="4.2 ubuntu 16 默认内核"></a>4.2 ubuntu 16 默认内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">4.4.0-142-generic</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内核参数告警</span></span><br><span class="line">systemctl status docker</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Wed 2021-06-02 14:11:22 CST; 10s ago</span><br><span class="line">     Docs: https://docs.docker.com</span><br><span class="line"> Main PID: 52488 (dockerd)</span><br><span class="line">    Tasks: 10</span><br><span class="line">   Memory: 57.5M</span><br><span class="line">      CPU: 1.767s</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           └─52488 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line"></span><br><span class="line">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=<span class="string">&quot;2021-06-02T14:11:22.031860026+08:00&quot;</span> level=warning msg=<span class="string">&quot;Your kernel does not support swap memory limit&quot;</span></span><br><span class="line">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=<span class="string">&quot;2021-06-02T14:11:22.031910601+08:00&quot;</span> level=warning msg=<span class="string">&quot;Your kernel does not support cgroup rt period&quot;</span></span><br><span class="line">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=<span class="string">&quot;2021-06-02T14:11:22.031917871+08:00&quot;</span> level=warning msg=<span class="string">&quot;Your kernel does not support cgroup rt runtime&quot;</span></span><br><span class="line">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=<span class="string">&quot;2021-06-02T14:11:22.032178268+08:00&quot;</span> level=info msg=<span class="string">&quot;Loading containers: start.&quot;</span></span><br><span class="line">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=<span class="string">&quot;2021-06-02T14:11:22.118451062+08:00&quot;</span> level=info msg=<span class="string">&quot;Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip c</span></span><br><span class="line"><span class="string">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=&quot;</span>2021-06-02T14:11:22.146043534+08:00<span class="string">&quot; level=info msg=&quot;</span>Loading containers: <span class="keyword">done</span>.<span class="string">&quot;</span></span><br><span class="line"><span class="string">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=&quot;</span>2021-06-02T14:11:22.614147613+08:00<span class="string">&quot; level=info msg=&quot;</span>Docker daemon<span class="string">&quot; commit=99e3ed8919 graphdriver(s)=overlay2 version=19.03.15</span></span><br><span class="line"><span class="string">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=&quot;</span>2021-06-02T14:11:22.614842390+08:00<span class="string">&quot; level=info msg=&quot;</span>Daemon has completed initialization<span class="string">&quot;</span></span><br><span class="line"><span class="string">Jun 02 14:11:22 k8s-node01 dockerd[52488]: time=&quot;</span>2021-06-02T14:11:22.654911232+08:00<span class="string">&quot; level=info msg=&quot;</span>API listen on /var/run/docker.sock<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="5-结论"><a href="#5-结论" class="headerlink" title="5. 结论"></a>5. 结论</h1><ul>
+<li>ubuntu 16 安装k8s 不需要升级内核</li>
+<li>kubelet 启动，docker的 cgroupdriver 必须是 systemd, 否则无法正常启动</li>
+</ul>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-13T14:39:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年7月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2021/06/20/Kubernetes%20%E9%9B%86%E7%BE%A4%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E8%A3%85/" rel="prev" title="Kubernetes 集群二进制安装">
+                                
+                                    Kubernetes 集群二进制安装
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2021/03/17/TCP/" rel="prev" title="TCP">
+                                  
+                                      TCP
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Kubernetes 集群kubeadmin安装',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Kubeadm%E5%8E%9F%E7%90%86"><span class="toc-text">1. Kubeadm原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Haproxy"><span class="toc-text">2. Haproxy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85"><span class="toc-text">3. 集群安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">3.1 准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85-kubeadm"><span class="toc-text">3.2 安装 kubeadm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Master-%E8%8A%82%E7%82%B9"><span class="toc-text">3.3 Master 节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Node-%E8%8A%82%E7%82%B9"><span class="toc-text">3.3 Node 节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%AE%89%E8%A3%85%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6"><span class="toc-text">3.4 安装网络插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E8%8A%82%E7%82%B9%E8%A7%92%E8%89%B2"><span class="toc-text">3.5 节点角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-token-%E8%BF%87%E6%9C%9F"><span class="toc-text">3.6 token 过期</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-text">4. 问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-kubelet-%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8"><span class="toc-text">4.1 kubelet 无法正常启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-ubuntu-16-%E9%BB%98%E8%AE%A4%E5%86%85%E6%A0%B8"><span class="toc-text">4.2 ubuntu 16 默认内核</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E7%BB%93%E8%AE%BA"><span class="toc-text">5. 结论</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/kubernetes/" href="/categories/kubernetes/"><div class='name'>kubernetes</div><div class='badge'>(3)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

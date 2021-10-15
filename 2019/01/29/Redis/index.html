@@ -379,7 +379,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><h2 id="1-1-什么是Redis"><a href="#1-1-什么是Redis" class="headerlink" title="1.1 什么是Redis"></a>1.1 什么是Redis</h2><p>Redis：Remote Dictionary Server，高性能非关系型(NoSQL)键值对数据库</p>
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>Redis：Remote Dictionary Server，高性能非关系型(NoSQL)键值对数据库</p>
 <p>Redis特性：</p>
 <ul>
 <li>key-value 存储</li>
@@ -391,7 +391,39 @@
 </ul>
 <span id="more"></span>
 
-<h2 id="1-2-优缺点"><a href="#1-2-优缺点" class="headerlink" title="1.2 优缺点"></a>1.2 优缺点</h2><p>优点：</p>
+<h2 id="1-1-应用场景"><a href="#1-1-应用场景" class="headerlink" title="1.1 应用场景"></a>1.1 应用场景</h2><ul>
+<li><p>高速缓存</p>
+<ul>
+<li>高频次，热门数据，降低数据库IO</li>
+<li>分布式，做session共享</li>
+</ul>
+</li>
+<li><p>多样化数据结构</p>
+<ul>
+<li>最新N个数据：通过List实现按时间排序的数据</li>
+<li>排行榜，top N：zset有序集合</li>
+<li>时效性数据，验证码：Expire过期</li>
+<li>计算器，秒杀：原子性，INCR， DECR</li>
+<li>大数据量去重：set集合</li>
+<li>队列：list</li>
+<li>发布订阅：pub/sub</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-安装"><a href="#1-2-安装" class="headerlink" title="1.2 安装"></a>1.2 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 编译工具</span></span><br><span class="line">apt install -y build-essential pkg-config libssl-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 下载</span></span><br><span class="line">wget https://download.redis.io/releases/redis-6.2.5.tar.gz</span><br><span class="line">tar zxvf redis-6.2.5.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 编译</span></span><br><span class="line"><span class="built_in">cd</span> redis-6.2.5</span><br><span class="line">make MALLOC=libc BUILD_TLS=yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 创建redis系统用户</span></span><br><span class="line">adduser --system --group --no-create-home redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 拷贝编译后的命令</span></span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">cp redis-server redis-cli redis-benchmark redis-check-aof redis-check-rdb /usr/<span class="built_in">local</span>/bin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 创建数据目录</span></span><br><span class="line">mkdir /var/lib/redis</span><br><span class="line">chown -R redis:redis /var/lib/redis</span><br><span class="line">chmod 770 /var/lib/redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 创建日志目录</span></span><br><span class="line">mkdir /var/<span class="built_in">log</span>/redis</span><br><span class="line">chown -R redis:redis /var/<span class="built_in">log</span>/redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 运行PID目录</span></span><br><span class="line">mkdir /var/run/redis</span><br><span class="line">chown -R redis:redis /var/run/redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 9. 配置文件</span></span><br><span class="line">mkdir -p /etc/redis</span><br><span class="line">cp ../redis.conf /etc/redis</span><br><span class="line"></span><br><span class="line">vi /etc/redis/redis.conf</span><br><span class="line"><span class="built_in">bind</span> 0.0.0.0 ::</span><br><span class="line">daemonize yes</span><br><span class="line">supervised systemd</span><br><span class="line">pidfile /var/run/redis_6379.pid</span><br><span class="line">logfile <span class="string">&quot;/var/log/redis/redis.log&quot;</span></span><br><span class="line">dir /var/lib/redis/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 10. 开机启动</span></span><br><span class="line">cat &gt; /etc/systemd/system/redis.service &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description=Redis data structure server</span></span><br><span class="line"><span class="string">Documentation=https://redis.io/documentation</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Type=forking</span></span><br><span class="line"><span class="string">ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf</span></span><br><span class="line"><span class="string">ExecStop=/usr/local/bin/redis-cli shutdown</span></span><br><span class="line"><span class="string">ExecReload=/bin/kill -s HUP \$MAINPID</span></span><br><span class="line"><span class="string">PrivateTmp=true</span></span><br><span class="line"><span class="string">RestartSec=10</span></span><br><span class="line"><span class="string">User=redis</span></span><br><span class="line"><span class="string">Group=redis</span></span><br><span class="line"><span class="string">LimitCORE=infinity</span></span><br><span class="line"><span class="string">LimitNOFILE=10032</span></span><br><span class="line"><span class="string">LimitNPROC=10032</span></span><br><span class="line"><span class="string">Restart=always</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start redis</span><br><span class="line">systemctl status redis</span><br><span class="line">systemctl <span class="built_in">enable</span> redis</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-3-相关知识"><a href="#1-3-相关知识" class="headerlink" title="1.3 相关知识"></a>1.3 相关知识</h2><p>Redis: 单线程 + 多路 IO 复用</p>
+<p>多路复用：使用一个线程来检查多个文件描述符 (socket) 的就绪状态，比如调用select 和pol函数，传入多个文件描述符，如果有一个文件描述符就绪，则返回，否则阻塞直到超时。得到就绪状态后，进行真正的操作可以在同一个线程里执行，也可以启动线程执行（比如线程池）</p>
+<h2 id="1-4-管理命令"><a href="#1-4-管理命令" class="headerlink" title="1.4 管理命令"></a>1.4 管理命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">keys *</span><br><span class="line">exists KEY</span><br><span class="line"><span class="built_in">type</span> KEY</span><br><span class="line">del KEY</span><br><span class="line">unlink KEY  <span class="comment"># 非阻塞删除</span></span><br><span class="line"></span><br><span class="line">expire KEY 10  <span class="comment"># 10s后过期</span></span><br><span class="line">ttl KEY        <span class="comment"># 过期剩余时间 -1：永不过期 -2: 已过期 </span></span><br><span class="line"></span><br><span class="line">dbsize    <span class="comment"># key总数量</span></span><br><span class="line"></span><br><span class="line">flushdb   <span class="comment"># 清空当前库</span></span><br><span class="line">flushall  <span class="comment"># 清空所有库</span></span><br></pre></td></tr></table></figure>
+
+<p>Redis-benchmark: 服务器性能测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100个并发，100000次</span></span><br><span class="line">redis-benchmark -h localhost -p 6379 -c 100 -n 100000</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-5-优缺点"><a href="#1-5-优缺点" class="headerlink" title="1.5 优缺点"></a>1.5 优缺点</h2><p>优点：</p>
 <ul>
 <li>读写性能高</li>
 <li>支持持久化，RDB &amp; AOF</li>
@@ -413,7 +445,7 @@
 <li><p>buffer io造成系统OOM</p>
 </li>
 </ul>
-<h1 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2. 数据类型"></a>2. 数据类型</h1><h2 id="2-1-五种类型"><a href="#2-1-五种类型" class="headerlink" title="2.1 五种类型"></a>2.1 五种类型</h2><ul>
+<h1 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2. 数据类型"></a>2. 数据类型</h1><h2 id="2-1-基础类型"><a href="#2-1-基础类型" class="headerlink" title="2.1 基础类型"></a>2.1 基础类型</h2><ul>
 <li><p>string: 字符串操作、原子计数器等</p>
 </li>
 <li><p>hash: 以hashmap方式存储，可用来存储json对象。</p>
@@ -425,57 +457,150 @@
 <li><p>sorted-set: 排行榜，TOP N操作，带权重</p>
 </li>
 </ul>
-<p>其他：</p>
-<ul>
-<li>订阅-发布系统：群聊，广播等</li>
-<li>事务</li>
-</ul>
-<h2 id="2-2-应用场景"><a href="#2-2-应用场景" class="headerlink" title="2.2 应用场景"></a>2.2 应用场景</h2><ul>
-<li>计数器</li>
-<li>缓存服务</li>
-<li>展示最近、最热、点击率最高、活跃度最高等条件的top list</li>
-<li>用户最近访问记录</li>
-<li>消息队列</li>
-<li>粉丝列表</li>
-<li>分布式锁 （SETNX 互斥锁实现）</li>
-</ul>
-<h2 id="2-3-事务"><a href="#2-3-事务" class="headerlink" title="2.3 事务"></a>2.3 事务</h2><ul>
-<li><p>Redis事务就是一次性、顺序性、排他性的执行一盒队列中的一系列命令</p>
-</li>
-<li><p>没有事务隔离级别</p>
-</li>
-<li><p>不保证原子性</p>
-</li>
-</ul>
-<p>CAS: check-and-set, 操作乐观锁</p>
-<blockquote>
-<p>提供MULTI、EXEC、DISACRD、WATCH 四个命令实现事务</p>
-<p>提供redis-check-aof工具帮助定位数据不一致错误</p>
-</blockquote>
-<p>示例：</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; MULTI     <span class="comment"># 开始事务</span></span><br><span class="line">&gt; <span class="built_in">set</span> k1 v1</span><br><span class="line">&gt; <span class="built_in">set</span> k2 v2</span><br><span class="line">&gt; get k2</span><br><span class="line">&gt; EXEC      <span class="comment"># 执行事务 （批量执行命令）</span></span><br><span class="line">&gt; DISCARD   <span class="comment"># 放弃事务  (上述命令将不会被执行)</span></span><br></pre></td></tr></table></figure>
+<p>跳表：一种随机化的数据结构，实质就是一种可以进行二分查找的有序链表。Redis中的set类型低层使用跳表实现。</p>
+<h3 id="2-1-1-String"><a href="#2-1-1-String" class="headerlink" title="2.1.1 String"></a>2.1.1 String</h3><p>数据结构：简单动态字符串 (Simple Dynamic String, SDS)，是可以修改的，内部结构类似Golang的Slice，采用预先分配冗余空间方式来减少内存的频繁分配。扩容机制，长度小于1M，按两倍扩容；超过1M，扩容一次只新增1M。最大512M</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-string-sds.png" alt="img"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">get KEY</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> KEY VALUE</span><br><span class="line">setex KEY 10 VALUE</span><br><span class="line"></span><br><span class="line">append KEY VALUE</span><br><span class="line">strlen KEY</span><br><span class="line"></span><br><span class="line">setnx KEY VALUE  <span class="comment"># 不存在才设置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 原子性操作</span></span><br><span class="line">incr KEY</span><br><span class="line">decr KEY</span><br><span class="line">incrby KEY 5</span><br><span class="line">decrby KEY 3</span><br><span class="line"></span><br><span class="line">mset k1 v1 k2 v2 ...</span><br><span class="line">mget k1 k2 ...</span><br></pre></td></tr></table></figure>
 
+
+
+<h3 id="2-1-2-List"><a href="#2-1-2-List" class="headerlink" title="2.1.2 List"></a>2.1.2 List</h3><p>数据结构：快速链表 quickList.</p>
+<ul>
+<li>在元素较少的情况下，使用一块连续的内存存储，结构为ziplist，即压缩列表。</li>
+<li>数据量较大时。会改成quickList，即链表存储，结构上有二外的指针prev 和 next</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-list-quicklist.png" alt="img"></p>
+<p>Redis 将链表和ziplist 集合起来组成quicklist，即满了快速插入删除性能，又不会出现太大的冗余空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">lpush KEY e1 e2 ...</span><br><span class="line">rpush KEY e1 e2 ...</span><br><span class="line"></span><br><span class="line">lpop KEY</span><br><span class="line">rpop KEY</span><br><span class="line"></span><br><span class="line">rpoplpush KEY1 KEY2   <span class="comment"># KEY1列表右吐出一个附加到KEY左边</span></span><br><span class="line"></span><br><span class="line">lrange KEY 0 -1</span><br><span class="line"></span><br><span class="line">lindex KEY 2</span><br><span class="line"></span><br><span class="line">llen KEY</span><br><span class="line"></span><br><span class="line">linsert KEY before pivot element</span><br><span class="line">linsert KEY after pivot element</span><br><span class="line"></span><br><span class="line">lrem KEY count element  <span class="comment"># 从左边删除count个elment元素</span></span><br><span class="line"></span><br><span class="line">lset KEY index element  <span class="comment"># 替换</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-3-Set"><a href="#2-1-3-Set" class="headerlink" title="2.1.3 Set"></a>2.1.3 Set</h3><p>数据结构：string类型的无序集合，底层其实是一个value为null的hash表，所以添加、删除和查找的时间复杂度都是o(1)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-set-hashtable.png" alt="img"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sadd KEY member...</span><br><span class="line"></span><br><span class="line">smembers KEY</span><br><span class="line">sismember KEY member</span><br><span class="line"></span><br><span class="line">scard KEY   <span class="comment"># </span></span><br><span class="line"></span><br><span class="line">srem KEY member...</span><br><span class="line">spop KEY   <span class="comment"># 随机取出一个值</span></span><br><span class="line">srandmember KEY count  <span class="comment"># 随机取出多个值，注意：不删除</span></span><br><span class="line"></span><br><span class="line">smove <span class="built_in">source</span> destination member  <span class="comment"># 将source中的member移动到destination</span></span><br><span class="line"></span><br><span class="line">sinter k1 k2  <span class="comment"># 交集</span></span><br><span class="line">sunion k1 k2  <span class="comment"># 并集</span></span><br><span class="line">sdiff  k1 k2  <span class="comment"># 差集 </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-4-Hash"><a href="#2-1-4-Hash" class="headerlink" title="2.1.4 Hash"></a>2.1.4 Hash</h3><p>数据结构：ziplist(压缩列表)，hashtable(哈希表)。当field-value长度短且个数少时，使用ziplist，否则使用hashtable</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hset k f1 v1 f2 v2  <span class="comment"># hmset 效果一样</span></span><br><span class="line">hget k f1</span><br><span class="line">hmget k f1 f2 f3</span><br><span class="line"></span><br><span class="line">hexists k f1</span><br><span class="line"></span><br><span class="line">hkeys k</span><br><span class="line">kvals k</span><br><span class="line"></span><br><span class="line">hincrby k age 5</span><br><span class="line"></span><br><span class="line">hsetnx k addr LA  <span class="comment"># 不存在时才添加</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-5-ZSet"><a href="#2-1-5-ZSet" class="headerlink" title="2.1.5 ZSet"></a>2.1.5 ZSet</h3><p>数据结构：hashtable + skiplist</p>
+<ul>
+<li>hash：关联member和score，保证member的唯一性，可直接通过member找到相应的score值</li>
+<li>跳跃表：根据score值，为member排序</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-zset.png" alt="img"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zadd k 100 java 200 cpp 300 golang 400 python 500 php</span><br><span class="line"></span><br><span class="line">zrange k 0 -1  <span class="comment"># 按score从小到大排序</span></span><br><span class="line"></span><br><span class="line">zrangebyscore k 200 400</span><br><span class="line">zrevrangebyscore k 200 400</span><br><span class="line"></span><br><span class="line">zincrby k 200 golang</span><br><span class="line"></span><br><span class="line">zrem k php cpp</span><br><span class="line"></span><br><span class="line">zcount k 100 300</span><br><span class="line"></span><br><span class="line">zrank k golang   <span class="comment"># 排名</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-6-数据结构"><a href="#2-1-6-数据结构" class="headerlink" title="2.1.6 数据结构"></a>2.1.6 数据结构</h3><p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-basic-structure.png" alt="img"></p>
+<h4 id="2-1-6-1-hashTable"><a href="#2-1-6-1-hashTable" class="headerlink" title="2.1.6.1 hashTable"></a>2.1.6.1 hashTable</h4><p>哈希表：由<strong>数组 + 链表</strong>构成的二维数据结构，数组是第一维，链表是第二维。数组中的每个元素称为槽或者桶，存储着链表的第一个元素的指针。</p>
+<p>整体结构图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-hashtable-overall.png" alt="img"></p>
+<p>一维数组：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-hashtable.png" alt="img"></p>
+<p>二维链表：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-hashtable-linkedlist.png" alt="img"></p>
+<p>扩容和缩容：</p>
+<ul>
+<li>扩容：元素个数等于一维数组长度时，会对数组进行两倍扩容</li>
+<li>缩容：元素个数小于一维数组的10%</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-hashtable-rehash.png" alt="img"></p>
+<p>扩缩容时，需要重新申请一维数组，并对所有元素重新hash并挂载到元素链表。Redis采用rehash策略：所有的字典结构内部首层时一个数组，数组的两个元素分别指向一个hashtable，正常情况下只有一个hashtable，而在迁移过程中，保留新旧两个hashtable，元素可能会在两个表中任意一个中，因此同时尝试从两个hashtable中查找数据。当数据搬迁完毕，旧的hashtable会被自动删除。</p>
+<p><strong>哈希函数：</strong>将key值打散的越均匀越好，高随机性的元素分布能够提升整体的查找效率。Redis的hash函数为siphash。hash函数打散效率如果很差或有迹可循，就会存在hash攻击，攻击者利用模式偏向性产生大量数据，并将这些数据挂载在同一个链表上，这种不均匀会导致查找性能急剧下降，同时浪费大量内存空间，导致Redis性能低下</p>
+<h4 id="2-1-6-2-跳跃表"><a href="#2-1-6-2-跳跃表" class="headerlink" title="2.1.6.2 跳跃表"></a>2.1.6.2 跳跃表</h4><p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-zset-skiplist-insert.png" alt="img"></p>
+<p>根据score值插入紫色kv节点，首先从 kv-head 的最高层启动，判断指针的下一个元素的score值是否小于新元素的score，小于则继续向前遍历，否则从kv-head降一层，重新比较</p>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/redis/redis-zset-skiplist-search.png" alt="img"></p>
+<p>寻找51：</p>
+<ul>
+<li>从第2层开始，1节点比51小，向后比较、</li>
+<li>21节点比51小，继续向后，但后面是NULL，则从21节点下降到第1层</li>
+<li>41节点比51小，继续向后，61节点比51大，则从41节点下降到第0层</li>
+<li>51节点即为所要查找的节点，共查找了四次</li>
+</ul>
+<h2 id="2-2-发布订阅"><a href="#2-2-发布订阅" class="headerlink" title="2.2 发布订阅"></a>2.2 发布订阅</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 订阅</span></span><br><span class="line">subscribe mychannel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 发布消息</span></span><br><span class="line">publish mychannel hello</span><br><span class="line">publish mychannel world</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-新类型"><a href="#2-3-新类型" class="headerlink" title="2.3 新类型"></a>2.3 新类型</h2><h3 id="2-3-1-Bitmaps"><a href="#2-3-1-Bitmaps" class="headerlink" title="2.3.1 Bitmaps"></a>2.3.1 Bitmaps</h3><p>Bitmaps本身不是数据类型，实际它就是字符串，但可可以对字符串的位进行操作</p>
+<p>注意：初始化bitmaps时，如果offset过大，整个初始化过程会较慢，可能会造成redis的阻塞</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">setbit permission 2 1</span><br><span class="line">setbit permission 5 1</span><br><span class="line"></span><br><span class="line">getbit permission 5</span><br><span class="line"></span><br><span class="line">bitcount permission</span><br><span class="line">bitcount permission  0 -2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setbit k1 2 1</span><br><span class="line">setbit k1 3 1</span><br><span class="line">setbit k1 4 1</span><br><span class="line">setbit k1 5 1</span><br><span class="line"></span><br><span class="line">setbit k2 0 1</span><br><span class="line">setbit k2 1 1</span><br><span class="line">setbit k2 2 1</span><br><span class="line">setbit k2 3 1</span><br><span class="line"></span><br><span class="line">bitop and k3 k1 k2</span><br><span class="line">bitcount k3    <span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line">bitop xor k4 k1 k2</span><br><span class="line">bitcount k4   <span class="comment"># 4</span></span><br><span class="line"></span><br><span class="line">bitop or k5 k1 k2</span><br><span class="line">bitcount k5   <span class="comment"># 6</span></span><br><span class="line"></span><br><span class="line">bitop not k6 k1</span><br><span class="line">getbit k6 1  <span class="comment"># 1</span></span><br><span class="line">getbit k6 2  <span class="comment"># 0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-2-HyperLogLog-基数统计"><a href="#2-3-2-HyperLogLog-基数统计" class="headerlink" title="2.3.2 HyperLogLog (基数统计)"></a>2.3.2 HyperLogLog (基数统计)</h3><p>网站统计PV(PageView): 可使用 incr, incrby实现</p>
+<p>但独立访客UV(UniqueVistor)、独立IP、搜索记录数等需要去重和计数的问题。</p>
+<p>HyperLogLog 用来做基数统计，其优点是，在输入元素的数量或者体积非常大时，计算基数需要的空间是固定的，并且很小。</p>
+<p>每个 HyperLogLog 键只需要花费 12KB内存，就可以计算接近 2^64个不同元素的基数。</p>
+<p>HyperLogLog 只会根据输入的元素来计算基数，但不会存储输入元素，所以它不能像集合一样，返回输入的各个元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pfadd lang1 java</span><br><span class="line">pfadd lang1 php</span><br><span class="line">pfadd lang1 golang</span><br><span class="line">pfadd lang1 python</span><br><span class="line">pfadd lang1 golang</span><br><span class="line">pfadd lang1 php</span><br><span class="line">pfadd lang1 c++</span><br><span class="line"></span><br><span class="line">pfcount lang1  <span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line">pfadd lang2 swift</span><br><span class="line">pfadd lang2 js</span><br><span class="line">pfadd lang2 dart</span><br><span class="line"></span><br><span class="line">pfmerge lang lang1 lang2</span><br><span class="line">pfcount lang  <span class="comment"># 8</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-3-Geospatial"><a href="#2-3-3-Geospatial" class="headerlink" title="2.3.3 Geospatial"></a>2.3.3 Geospatial</h3><p>Geospatial 是一个2维坐标，即经纬度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">geoadd cities 121.47 31.23 Shanghai</span><br><span class="line">geoadd cities 106.50 29.53 Chongqing</span><br><span class="line">geoadd cities 114.05 22.52 Shenzhen</span><br><span class="line"></span><br><span class="line">geopos cities Shanghai</span><br><span class="line"></span><br><span class="line">geodist cities Shanghai Chongqing km</span><br><span class="line"></span><br><span class="line">georadius cities 110 30 1000 km</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-事务和锁"><a href="#3-事务和锁" class="headerlink" title="3. 事务和锁"></a>3. 事务和锁</h1><h2 id="3-1-事务"><a href="#3-1-事务" class="headerlink" title="3.1 事务"></a>3.1 事务</h2><p>Redis事务：是一个单独的隔离操作。事务中所有命令都会序列化，按顺序执行；在执行过程中，不会被其他客户端发送的命令请求打断。</p>
+<p>作用：串行执行多个命令，防止其他命令插队</p>
+<p>Redis事务特性：</p>
+<ul>
+<li>单独的隔离操作，一次性、顺序性、排他性的执行一个队列中的一系列命令</li>
+<li>没有隔离级别</li>
+<li>不保证原子性</li>
+</ul>
+<p>相关命令：</p>
+<ul>
+<li>Multi: 组队阶段</li>
+<li>Exec：执行阶段</li>
+<li>Discard: 放弃执行</li>
+</ul>
+<p>Queued失败，无法执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; MULTI</span><br><span class="line">&gt; <span class="built_in">set</span> k1 v1</span><br><span class="line">&gt; <span class="built_in">set</span> k2 v2</span><br><span class="line">&gt; getset k3 v3  <span class="comment"># 语法性错</span></span><br><span class="line">&gt; EXEC          <span class="comment"># 上述命令不会被执行</span></span><br></pre></td></tr></table></figure>
 
+<p>Queued成功，正常执行，跳过失败命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; MULTI</span><br><span class="line">&gt; <span class="built_in">set</span> k1 v1</span><br><span class="line">&gt; <span class="built_in">set</span> k2 v2</span><br><span class="line">&gt; incr k3       <span class="comment"># 运行时异常</span></span><br><span class="line">&gt; <span class="built_in">set</span> k4 v4</span><br><span class="line">&gt; EXEC          <span class="comment"># 上述命令被执行，执行incr时抛出错误，但不影响其他命令</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WATCH balance</span><br><span class="line">MULTI</span><br><span class="line">decrby balance 20</span><br><span class="line">incrby debt 20</span><br><span class="line">EXEC            <span class="comment"># 如果在另一个窗口对balance的值做了更新，那么事务将执行失败</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="2-4-发布和订阅"><a href="#2-4-发布和订阅" class="headerlink" title="2.4 发布和订阅"></a>2.4 发布和订阅</h2><p>1) Client</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; subscribe my_channel</span><br></pre></td></tr></table></figure>
-
-<p>2) Server</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; publish my_channel hello</span><br></pre></td></tr></table></figure>
 
 
+<h2 id="3-2-锁"><a href="#3-2-锁" class="headerlink" title="3.2 锁"></a>3.2 锁</h2><ul>
+<li>悲观锁：每次操作，都上锁，别人不能操作，等我释放锁后，才能操作。MySQL中的行锁、表锁；读锁、写锁即为该类锁。</li>
+<li>乐观锁：使用版本机制，在操作前，所有人均能获得当前的版本，在提交操作时，比对用户用户操作的版本是否和当前系统中的版本一致，只有在一致的情况下，操作才能成功，并生成新的版本号。乐观锁适用于多读的的应用类型，这样可提高吞吐量。</li>
+</ul>
+<p>Redis使用乐观锁，CAS: check-and-set 机制实现事务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">set</span> balance 10000</span><br><span class="line"></span><br><span class="line"><span class="comment"># session 1</span></span><br><span class="line">&gt; WATCH balance</span><br><span class="line">&gt; MULTI</span><br><span class="line">&gt; decrby balance 2000</span><br><span class="line">&gt; EXEC                 <span class="comment"># 事务失败</span></span><br><span class="line">&gt; UNWATCH</span><br><span class="line"></span><br><span class="line"><span class="comment"># session 2</span></span><br><span class="line">&gt; decrby blanace 5000  <span class="comment"># 在 session 1的 WATCH后，EXEC前操作</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="3-持久化"><a href="#3-持久化" class="headerlink" title="3. 持久化"></a>3. 持久化</h1><h2 id="3-1-RDB-snapshot"><a href="#3-1-RDB-snapshot" class="headerlink" title="3.1 RDB (snapshot)"></a>3.1 RDB (snapshot)</h2><ul>
-<li><p>将数据以快照形式保存在磁盘上 (dump.db)</p>
+
+
+<h2 id="3-3-Lua"><a href="#3-3-Lua" class="headerlink" title="3.3 Lua"></a>3.3 Lua</h2><p>Redis 的乐观锁，在多写的情况下，复杂的事务操作提交失败，导致与预想不一致的情况发生</p>
+<p>Lua脚本，很容易被 C/C++调用，也可反过来调用C/C++函数。解释器不超过200k，适合做嵌入式脚本语言。</p>
+<p>在Redis中，可将复杂、多步调用操作，写为一个Lua脚本，一次提交给Redis执行，减少连接Redis的次数，提升性能。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> uid=KEYS[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">local</span> pid=KEYS[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">local</span> stock=<span class="string">&quot;sk:&quot;</span>..pid..<span class="string">&quot;:stock&quot;</span>;</span><br><span class="line"><span class="keyword">local</span> users=<span class="string">&quot;sk:&quot;</span>..pid..<span class="string">&quot;:users&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> grabbed=redis.call(<span class="string">&quot;ismember&quot;</span>, users, uid);</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">tonumber</span>(grabbed) == <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> num=redis.call(<span class="string">&quot;get&quot;</span>, stock)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">tonumber</span>(num) &lt;= <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    redis.call(<span class="string">&quot;decr&quot;</span>, stock);</span><br><span class="line">    redis.call(<span class="string">&quot;sadd&quot;</span>, users, uid);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>相关命令：</p>
+<ul>
+<li>EVAL</li>
+<li>EVALSHA</li>
+<li>SCRIPT LOAD - SCRIPT EXISTS</li>
+<li>SCRIPT FLUSH</li>
+<li>SCRIPT KILL</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EVAL script numkeys key [key …] arg [arg …]</span><br><span class="line"></span><br><span class="line">EVAL <span class="string">&quot;return KEYS[1]&quot;</span> 1 key1    <span class="comment"># key：从eval的第三个参数开始算起</span></span><br><span class="line">EVAL <span class="string">&quot;return ARGV[1]&quot;</span> 0 value1  <span class="comment"># 附加参数</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="4-持久化"><a href="#4-持久化" class="headerlink" title="4. 持久化"></a>4. 持久化</h1><h2 id="4-1-RDB-Redis-Database"><a href="#4-1-RDB-Redis-Database" class="headerlink" title="4.1 RDB (Redis Database)"></a>4.1 RDB (Redis Database)</h2><ul>
+<li><p>将数据以快照(snapshot)形式保存在磁盘上 (dump.db)</p>
 </li>
 <li><p>触发数据快照的三种机制：</p>
 <ul>
-<li><p>save: 将阻塞当前Redis服务器，执行save期间，不能处理其他命令，直至RDB过程完毕</p>
+<li><p>save: 手动持久化，将阻塞服务器，save期间，不能处理其他命令，直到持久化完毕</p>
 </li>
 <li><p>bgsave: 后台异步进行快照操作。它会fork一个子进程负责处理</p>
 </li>
@@ -484,7 +609,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">save 900 1     <span class="comment"># 900s内至少有一个key的值变化才触发</span></span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br><span class="line"></span><br><span class="line">stop-writes-on-bgsave-error yes</span><br><span class="line">rdbcompression yes</span><br><span class="line">rdbchecksum yes</span><br><span class="line">dbfilename dump.db</span><br><span class="line">dir /data/redis/db</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">save 3600 1     <span class="comment"># 1h内，至少有一个key变化，触发持久化</span></span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br><span class="line"></span><br><span class="line">stop-writes-on-bgsave-error yes</span><br><span class="line">rdbcompression yes</span><br><span class="line">rdbchecksum yes</span><br><span class="line">dbfilename dump.db</span><br><span class="line">dir /data/redis/db</span><br></pre></td></tr></table></figure>
 
 <p>快照保存过程：</p>
 <ul>
@@ -499,42 +624,59 @@
 <li>生成RDB时，Redis主进程fork一个子进程来处理保存工作，主进程不需要进行任何磁盘IO操作</li>
 <li>RDB恢复比AOF快</li>
 </ul>
-<p>劣势：RDB数据保存子进程可能来不及保存数据，导致数据丢失</p>
-<h2 id="3-2-AOF-append-only-file"><a href="#3-2-AOF-append-only-file" class="headerlink" title="3.2 AOF (append only file)"></a>3.2 AOF (append only file)</h2><ul>
-<li>每一条命令都会通过write函数追加到文件中，即日志记录</li>
+<p><strong>劣势：</strong>RDB数据保存子进程可能来不及保存数据，导致数据丢失</p>
+<h2 id="4-2-AOF-append-only-file"><a href="#4-2-AOF-append-only-file" class="headerlink" title="4.2 AOF (append only file)"></a>4.2 AOF (append only file)</h2><ul>
+<li>以日志形式记录每个<strong>写操作(增量保存)</strong>，追加写，不修改原有记录</li>
 <li>aof的问题：aof文件会越来越大。可通过<strong>bgrewriteaof</strong>命令，将内存中的数据以命令方式保存到临时文件，同时fork一个子进程来重写aof文件，最后替换原来的文件。</li>
+<li>AOF和RDB同时开启，系统默认取AOF的数据</li>
 </ul>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br><span class="line">appendfilename &quot;appendonly.aof&quot;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 三选一</span></span><br><span class="line">appendsync always</span><br><span class="line">appendsync everysec</span><br><span class="line">appendsync no <span class="comment"># 完全依赖操作系统，性能最好，但持久化可能丢数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动bgrewriteaof</span></span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">auto-aof-rewrite-size 64mb</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br><span class="line">appendfilename &quot;appendonly.aof&quot;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 三选一</span></span><br><span class="line">appendsync always</span><br><span class="line">appendsync everysec</span><br><span class="line">appendsync no <span class="comment"># 完全依赖操作系统，性能最好，但持久化可能丢数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动bgrewriteaof</span></span><br><span class="line">auto-aof-rewrite-percentage 100  <span class="comment"># 大于64M到100%，即超过128M时开始重写</span></span><br><span class="line">auto-aof-rewrite-size 64mb</span><br></pre></td></tr></table></figure>
 
-<p>优势：  </p>
+<p><strong>优势：</strong>  </p>
 <ul>
 <li>数据不容易丢失</li>
 <li>日志文件过大时，会出现后台重写，不会影响客户端读写</li>
 <li>日志文件以命令可读方式记录，容易查找命令记录来恢复数据</li>
 </ul>
-<p>劣势：</p>
+<p><strong>劣势：</strong></p>
 <ul>
 <li>AOF日志文件比RDB文件大</li>
 <li>AOF开启后，写的QPS会降低</li>
 </ul>
-<h2 id="3-3-方案选择"><a href="#3-3-方案选择" class="headerlink" title="3.3 方案选择"></a>3.3 方案选择</h2><p>Snapchat性能更高，但可能会引起一定程度的数据丢失</p>
+<p><strong>重写压缩：</strong></p>
+<p>AOF文件持续增长过大时，会fork一个新的进程来重新日志文件。Redis4.0后的重写，就是把rdb快照，以二进制附加在新的aof头部，替换已有的历史数据。</p>
+<h2 id="4-3-方案选择"><a href="#4-3-方案选择" class="headerlink" title="4.3 方案选择"></a>4.3 方案选择</h2><p>Snapchat性能更高，但可能会引起一定程度的数据丢失</p>
 <p>建议：</p>
 <ul>
 <li>更新频繁，一致性要求较高，AOF策略为主</li>
 <li>更新不频繁，可以容忍少量数据丢失或错误，Snapshot为主</li>
 </ul>
-<h1 id="4-过期策略"><a href="#4-过期策略" class="headerlink" title="4. 过期策略"></a>4. 过期策略</h1><h2 id="4-1-过期键删除策略"><a href="#4-1-过期键删除策略" class="headerlink" title="4.1 过期键删除策略"></a>4.1 过期键删除策略</h2><ul>
+<h1 id="5-分布式锁"><a href="#5-分布式锁" class="headerlink" title="5. 分布式锁"></a>5. 分布式锁</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setnx lock 1</span><br><span class="line">del lock</span><br><span class="line"></span><br><span class="line">SET lock 1 NX 30 EX  <span class="comment"># 上锁 + 设置过期时间</span></span><br></pre></td></tr></table></figure>
+
+<p>锁释放问题：别人可以去释放你加的锁，你也亦然。</p>
+<p>解决方案：</p>
+<ul>
+<li><p>UUID：锁的值设置为uuid，只在获取到的锁的值等于你设置的uid时，才允许释放锁</p>
+</li>
+<li><p>Lua脚本：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&quot;get&quot;</span>, KEYS[<span class="number">1</span>]) == ARGV[<span class="number">1</span>] <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> redis.call(<span class="string">&quot;del&quot;</span>, KEYS[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="6-过期策略"><a href="#6-过期策略" class="headerlink" title="6. 过期策略"></a>6. 过期策略</h1><h2 id="6-1-过期键删除策略"><a href="#6-1-过期键删除策略" class="headerlink" title="6.1 过期键删除策略"></a>6.1 过期键删除策略</h2><ul>
 <li>定时过期：过期立即删除。对内存友好，但会占用大量CPU资源去处理过期的键，影响缓存的响应时间和吞吐量</li>
 <li>惰性过期：只有当访问一个key时，才会判断它是否过期，过期则清除。对内存不友好，无用key占用了大量内存。</li>
 <li>定期过期：每隔一定时间，扫描一定数量的数据库的expires字典中一定数量的key，并清除其中已过期的key。</li>
 </ul>
 <p>Redis 同时使用 <strong>惰性过期</strong> 和 <strong>定期过期</strong> 两种策略。</p>
-<h2 id="4-2-设置和取消过期"><a href="#4-2-设置和取消过期" class="headerlink" title="4.2 设置和取消过期"></a>4.2 设置和取消过期</h2><p>EXPIRE</p>
+<h2 id="6-2-设置和取消过期"><a href="#6-2-设置和取消过期" class="headerlink" title="6.2 设置和取消过期"></a>6.2 设置和取消过期</h2><p>EXPIRE</p>
 <p>PERSIST</p>
-<h2 id="4-3-过期机制"><a href="#4-3-过期机制" class="headerlink" title="4.3 过期机制"></a>4.3 过期机制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; flushdb</span><br><span class="line">&gt; keys *</span><br><span class="line">&gt; exists name</span><br><span class="line">&gt; <span class="built_in">set</span> name tom</span><br><span class="line">&gt; ttl name        <span class="comment"># -1, 永不过期</span></span><br><span class="line">&gt; expire name 5   <span class="comment"># 5s后过期</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="built_in">set</span> age 20</span><br><span class="line">&gt; expireat age 1555506769</span><br></pre></td></tr></table></figure>
+<h2 id="6-3-过期机制"><a href="#6-3-过期机制" class="headerlink" title="6.3 过期机制"></a>6.3 过期机制</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; flushdb</span><br><span class="line">&gt; keys *</span><br><span class="line">&gt; exists name</span><br><span class="line">&gt; <span class="built_in">set</span> name tom</span><br><span class="line">&gt; ttl name        <span class="comment"># -1, 永不过期</span></span><br><span class="line">&gt; expire name 5   <span class="comment"># 5s后过期</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="built_in">set</span> age 20</span><br><span class="line">&gt; expireat age 1555506769</span><br></pre></td></tr></table></figure>
 
 <p>过期机制：redis采用 Lazy Expriation 方式，即在访问key时判断是否过期，如果过期，则进行过期处理。其次，每秒对volation keys进行抽样测试，如果有过期键，那对所有过期key处理。</p>
-<h1 id="5-内存淘汰策略"><a href="#5-内存淘汰策略" class="headerlink" title="5. 内存淘汰策略"></a>5. 内存淘汰策略</h1><p>MySQL中2000w数据，redis中只存20w数据，如何保证redis中的数据都是热数据？</p>
+<h1 id="7-内存淘汰策略"><a href="#7-内存淘汰策略" class="headerlink" title="7. 内存淘汰策略"></a>7. 内存淘汰策略</h1><p>MySQL中2000w数据，redis中只存20w数据，如何保证redis中的数据都是热数据？</p>
 <ul>
 <li>全局键空间选择性移除：<ul>
 <li>noeviction：内存不足，写入新数据，报错</li>
@@ -549,22 +691,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="6-环境部署"><a href="#6-环境部署" class="headerlink" title="6. 环境部署"></a>6. 环境部署</h1><h2 id="6-1-Redis部署"><a href="#6-1-Redis部署" class="headerlink" title="6.1 Redis部署"></a>6.1 Redis部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line">redis-benchmark	   <span class="comment"># 测试Redis在当前系统、当前配置下的性能</span></span><br><span class="line">redis-check-aof    <span class="comment"># 检查更新日志appendonly.aof</span></span><br><span class="line">redis-check-dump   <span class="comment"># 检查本地数据库rdb文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-2-Redis启动"><a href="#6-2-Redis启动" class="headerlink" title="6.2 Redis启动"></a>6.2 Redis启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br><span class="line">redis-server --port 6479</span><br><span class="line">redis-server --port 6479 --slaveof 127.0.0.1 6579</span><br><span class="line"></span><br><span class="line">redis-server /etc/redis/redis.conf</span><br><span class="line">redis-server /etc/redis/redis.conf --loglevel verbose</span><br><span class="line">redis-server /etc/redis/redis.conf --sentinel</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-3-客户端操作"><a href="#6-3-客户端操作" class="headerlink" title="6.3 客户端操作"></a>6.3 客户端操作</h2><p>redis库(select 0~15)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.1.100 6379</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;set name abc&quot;</span> | nc 127.0.0.1 6379</span><br><span class="line"></span><br><span class="line">redis-cli -h 192.168.1.100 -p 6379 -n 5</span><br><span class="line">&gt; <span class="built_in">help</span> <span class="built_in">set</span></span><br><span class="line">&gt; <span class="built_in">help</span> @string    <span class="comment"># 字符串操作相关的所有命令</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-4-设置连接密码"><a href="#6-4-设置连接密码" class="headerlink" title="6.4 设置连接密码"></a>6.4 设置连接密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/redis/redis.conf</span><br><span class="line">requirepass New_Pass</span><br><span class="line"></span><br><span class="line">redis-cli shutdown</span><br><span class="line">redis-server /etc/redis/redis.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line">redis-cli</span><br><span class="line">&gt; auth New_Pass</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">redis-cli -a New_Pass</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-5-屏蔽不安全命令"><a href="#6-5-屏蔽不安全命令" class="headerlink" title="6.5 屏蔽不安全命令"></a>6.5 屏蔽不安全命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/redis/redis.conf</span><br><span class="line">rename-command keys <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-6-配置文件说明"><a href="#6-6-配置文件说明" class="headerlink" title="6.6 配置文件说明"></a>6.6 配置文件说明</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">daemonize</span> <span class="literal">no</span></span><br><span class="line"></span><br><span class="line">pidfile /var/run/redis.pid</span><br><span class="line"></span><br><span class="line">port <span class="number">6379</span></span><br><span class="line"></span><br><span class="line">bind <span class="number">127.0.0.1</span></span><br><span class="line"></span><br><span class="line">timeout <span class="number">0</span>   <span class="comment"># 0 client永不超时</span></span><br><span class="line"></span><br><span class="line">loglevel <span class="literal">notice</span>    </span><br><span class="line"></span><br><span class="line">logfile <span class="string">&quot;/var/log/redis.log&quot;</span></span><br><span class="line"></span><br><span class="line">databases <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># snapchat</span></span><br><span class="line">save <span class="number">900</span> <span class="number">1</span></span><br><span class="line">save <span class="number">300</span> <span class="number">10</span></span><br><span class="line">save <span class="number">60</span> <span class="number">10000</span>   <span class="comment"># after 60 sec if at least 10000 keys changed</span></span><br><span class="line"></span><br><span class="line">save <span class="string">&quot;&quot;</span>   <span class="comment"># 读写频繁时，不使用Snapchat</span></span><br><span class="line"></span><br><span class="line">rdbchecksum <span class="literal">yes</span></span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"></span><br><span class="line">maxmemory bytes?</span><br><span class="line"></span><br><span class="line">appendonly <span class="literal">no</span></span><br><span class="line">appendfilename <span class="string">&quot;appendonly.aof&quot;</span></span><br><span class="line">appendfsync everysec</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="7-集群方案"><a href="#7-集群方案" class="headerlink" title="7. 集群方案"></a>7. 集群方案</h1><h2 id="7-1-主从模式"><a href="#7-1-主从模式" class="headerlink" title="7.1 主从模式"></a>7.1 主从模式</h2><p>主从同步特点:</p>
+<h1 id="8-集群方案"><a href="#8-集群方案" class="headerlink" title="8. 集群方案"></a>8. 集群方案</h1><h2 id="8-1-主从模式"><a href="#8-1-主从模式" class="headerlink" title="8.1 主从模式"></a>8.1 主从模式</h2><p>主从同步特点:</p>
 <ul>
 <li>一个master可拥有多个slave</li>
 <li>master可读写，并将变化的数据sync给slave</li>
@@ -578,7 +705,7 @@
 
 
 
-<h2 id="7-2-Sentinel-模式"><a href="#7-2-Sentinel-模式" class="headerlink" title="7.2 Sentinel 模式"></a>7.2 Sentinel 模式</h2><ul>
+<h2 id="8-2-Sentinel-模式"><a href="#8-2-Sentinel-模式" class="headerlink" title="8.2 Sentinel 模式"></a>8.2 Sentinel 模式</h2><ul>
 <li><p>哨兵模式建立在主从模式之上</p>
 </li>
 <li><p>当master挂掉，sentinel会在salve中选择一个作为master，并修改它们的配置文件，其他slave节点的配置文件也会同步修改</p>
@@ -596,15 +723,13 @@
 
 
 
-<h2 id="7-3-Cluster模式"><a href="#7-3-Cluster模式" class="headerlink" title="7.3 Cluster模式"></a>7.3 Cluster模式</h2><ul>
-<li><p>多个主从模式节点网络互联，数据共享</p>
-</li>
-<li><p>客户端可连接任意一个master节点进行读写</p>
-</li>
-<li><p>不支持同时处理多个key (MSET/MGET), 因为redis需要把key均匀分布在各个节点上，高并发下同时创建key-value会降低性能并导致不可预测行为</p>
-</li>
-<li><p>支持在线增加、删除节点</p>
-</li>
+<h2 id="8-3-Cluster模式"><a href="#8-3-Cluster模式" class="headerlink" title="8.3 Cluster模式"></a>8.3 Cluster模式</h2><ul>
+<li>多个主从模式节点网络互联，数据共享</li>
+<li>客户端可连接任意一个master节点进行读写</li>
+<li>不支持同时处理多个key (MSET/MGET), 因为redis需要把key均匀分布在各个节点上，高并发下同时创建key-value会降低性能并导致不可预测行为</li>
+<li>支持在线增加、删除节点</li>
+<li>Redis 集群没有使用一致性hash，而是引入额哈希槽的概念。Redis集群有16384（2^14）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。</li>
+<li>数据库无法选择，都在0上</li>
 </ul>
 <p>配置：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file node_6379.conf</span><br><span class="line">cluster-node-timeout 15000</span><br></pre></td></tr></table></figure>
@@ -612,63 +737,40 @@
 <p>集群命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加节点</span></span><br><span class="line">&gt; CLUSTER MEET 192.168.1.201 6380</span><br><span class="line">&gt; CLUSTER NODES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改节点身份, 节点改为slave</span></span><br><span class="line">&gt; CLUSTER REPLICATE a8fdc205a9f19cc1c7507a60c4f01b13d11d7fd0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除节点</span></span><br><span class="line">&gt; CLUSTER FORGET 40bd001563085fc35165329ea1ff5c5ecbdbbeef</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存配置</span></span><br><span class="line">&gt; CLUSTER SAVECONFIG</span><br></pre></td></tr></table></figure>
 
-<h2 id="7-4-哈希槽"><a href="#7-4-哈希槽" class="headerlink" title="7.4 哈希槽"></a>7.4 哈希槽</h2><p>Redis 集群没有使用一致性hash，而是引入额哈希槽的概念。Redis集群有16384（2^14）个哈希槽，每个key通过CRC16校验后对16384取模来决定放置在哪个槽，集群的每个节点负责一部分hash槽。</p>
-<h2 id="7-5-集群选择数据库"><a href="#7-5-集群选择数据库" class="headerlink" title="7.5 集群选择数据库"></a>7.5 集群选择数据库</h2><p>无法选择，都在0上</p>
-<h1 id="8-分区"><a href="#8-分区" class="headerlink" title="8. 分区"></a>8. 分区</h1><p>分区目的：为了Redis管理更大的内存</p>
-<p>分区方案：</p>
-<ul>
-<li>客户端分区：在客户端决定数据会被存储到哪个redis节点上，或从哪个节点读取。</li>
-<li>代理分区：客户端请求发给代理，由代理决定去哪个节点读写数据</li>
-<li>查询路由：客户端随机请求任意一个redis实例，由redis将请求转发到正确的redis上。</li>
-</ul>
-<p>分区缺点：</p>
-<ul>
-<li><p>涉及多个key的操作，通常不支持</p>
-</li>
-<li><p>同时操作多个key，不能使用事务</p>
-</li>
-<li><p>分区的粒度是key，不能使用一个非常长的排序key存储一个数据集</p>
-</li>
-<li><p>分区扩容或缩容可能非常复杂</p>
-</li>
-</ul>
-<h1 id="9-缓存异常"><a href="#9-缓存异常" class="headerlink" title="9. 缓存异常"></a>9. 缓存异常</h1><h2 id="9-1-雪崩-缓存失效"><a href="#9-1-雪崩-缓存失效" class="headerlink" title="9.1 雪崩 (缓存失效)"></a>9.1 雪崩 (缓存失效)</h2><p>场景：服务器重启或大量缓存同一时期失效时，大量的流量会冲击到数据库上，数据库kennel会因承受不了而当机。即缓存层出现了错误，所有数据请求到达存储层，导则存储层无法响应</p>
+
+
+<h1 id="9-缓存异常"><a href="#9-缓存异常" class="headerlink" title="9. 缓存异常"></a>9. 缓存异常</h1><h2 id="9-1-雪崩-大量key集中过期"><a href="#9-1-雪崩-大量key集中过期" class="headerlink" title="9.1 雪崩 (大量key集中过期)"></a>9.1 雪崩 (大量key集中过期)</h2><p>场景：服务器重启或<strong>大量缓存同一时期失效</strong>时，大量的流量会冲击到数据库上，数据库会因承受不了而当机。即缓存层出现了错误，所有数据请求到达存储层，导则存储层无法响应</p>
 <p>解决方案：</p>
 <ul>
-<li><p>均匀分布：失效时间均匀分布，保持失效时间的随机性</p>
-</li>
-<li><p>熔断机制：</p>
-</li>
-<li><p>隔离机制：</p>
-</li>
-<li><p>限流机制：</p>
-</li>
-<li><p>双缓存</p>
-</li>
-<li><p>高可用性集群</p>
-</li>
+<li>构建多级缓存架构：nginx缓存 + redis缓存 + 其他缓存</li>
+<li>使用锁或队列：可保证问题不出现，但不适合高并发情况</li>
+<li><strong>设置过期标志更新缓存</strong>：记录缓存数据是否过期（设置提前量），如果过期会触发通知另外的线程去后台更新实际key的缓存</li>
+<li><strong>将缓存失效时间分散开</strong>：可通过随机数生成随机时间，这样保证key不在同一时间内过期。</li>
 </ul>
-<h2 id="9-2-穿透-缓存空值"><a href="#9-2-穿透-缓存空值" class="headerlink" title="9.2 穿透 (缓存空值)"></a>9.2 穿透 (缓存空值)</h2><p>场景：用户查询某条数据，但redis中每天，即缓存未命中；继续向持久层数据库查询，还是没有，即本次查询失败。当大量查询失败时，导则持久层数据库压力过大，即为缓存穿透</p>
+<h2 id="9-2-穿透-缓存空值"><a href="#9-2-穿透-缓存空值" class="headerlink" title="9.2 穿透 (缓存空值)"></a>9.2 穿透 (缓存空值)</h2><p>场景：用户查询某条数据，但redis中没有，即缓存未命中；继续向持久层数据库查询，还是没有，即本次查询失败。当大量查询失败时，导则持久层数据库压力过大，即为缓存穿透</p>
 <p>解决方案：</p>
 <ul>
-<li>缓存空值：即数据不存在，依旧设置一个默认值到缓存中，但该key的过期时间较短</li>
+<li><strong>缓存空值</strong>：即数据不存在，依旧设置一个默认值到缓存中，但该key的过期时间较短。简单应急方案</li>
+<li><strong>设置白名单</strong>：使用bitmaps定义一个可访问的名单，名单id作为bitmaps的偏移量，每次访问和bitmaps中的id进行比较，如果id不存在，则不允许访问。每次访问都要查询，效率不高</li>
+<li><strong>布隆过滤器(Bloom Filter)</strong>：是一个二进制向量(位图)和一系列随机映射函数(哈希函数)。布隆过滤器科研检测一个元素是否在一个集合中，其优点是空间效率和查询时间远超过一般的算法，缺点是有一定的错误识别率和删除困难。实现：将所有可能存在的数据哈希到以恶搞足够大的bitmaps中，一个一定不存在的数据会被这个bitmaps拦截掉，从而避免了对底层存储系统的查询压力。</li>
+<li>实时监控：当发现Redis的命中率开始急速降低，需要排查访问对象和访问的数据，和运维人员配合，设置黑名单限制访问。</li>
 </ul>
-<h2 id="9-3-击穿-高并发key失效"><a href="#9-3-击穿-高并发key失效" class="headerlink" title="9.3 击穿 (高并发key失效)"></a>9.3 击穿 (高并发key失效)</h2><p>场景：某个key非常热点，高并发访问它时，该key瞬间失效，导则高并发请求直接访问持久数据库，就像在屏障上凿了一个洞</p>
+<h2 id="9-3-击穿-热门key过期"><a href="#9-3-击穿-热门key过期" class="headerlink" title="9.3 击穿 (热门key过期)"></a>9.3 击穿 (热门key过期)</h2><p>场景：某个key非常热点，高并发访问它时，该key突然失效，导则高并发请求直接访问持久数据库，就像在屏障上凿了一个洞</p>
 <p>解决方案：</p>
 <ul>
-<li>使用互斥锁 mutex key：setnx</li>
+<li><p><strong>预先设置热门数据</strong>：在redis高峰访问前，把一些热门数据提前存入redis中，并加大这些热门数据key的过期时长</p>
+</li>
+<li><p>实时调整：现场监控哪些热门数据，实时调整可以的过期时长</p>
+</li>
+<li><p>使用互斥锁：缓存失效时，不立即查询数据库，先获取锁setnx mutex lock，成功后，查询数据库并设置缓存，删除mutex锁。缺点：访问效率会被降低</p>
+</li>
 </ul>
-<h1 id="10-管理命令"><a href="#10-管理命令" class="headerlink" title="10. 管理命令"></a>10. 管理命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">&gt; auth PASS</span><br><span class="line">&gt; config get appendonly</span><br><span class="line">&gt; config <span class="built_in">set</span> appendonly yes    <span class="comment"># 临时改参数</span></span><br><span class="line">&gt; config get *</span><br><span class="line">&gt; config reset</span><br><span class="line">&gt; info</span><br><span class="line">&gt; flushall</span><br><span class="line">&gt; monitor</span><br><span class="line">&gt; shutdown</span><br></pre></td></tr></table></figure>
-
-<p>Redis-benchmark: 服务器性能测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100个并发，100000次</span></span><br><span class="line">redis-benchmark -h localhost -p 6379 -c 100 -n 100000</span><br></pre></td></tr></table></figure>
+<h1 id="10-Redis优化"><a href="#10-Redis优化" class="headerlink" title="10. Redis优化"></a>10. Redis优化</h1><h2 id="10-1-内存管理"><a href="#10-1-内存管理" class="headerlink" title="10.1 内存管理"></a>10.1 内存管理</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HashMap成员数量，小于配置，按紧凑格式存储，内存开销少，任意一个超过，就使用真实的HashMap存储，内存占用大</span></span><br><span class="line">hash-max-zipmap-entries 64   <span class="comment"># 成员数量少</span></span><br><span class="line">hash-max-zipmap-value 512    <span class="comment"># 成员长度小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List</span></span><br><span class="line">list-max-ziplist-value 64</span><br><span class="line">list-max-ziplist-entries 512</span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="11-Redis优化"><a href="#11-Redis优化" class="headerlink" title="11. Redis优化"></a>11. Redis优化</h1><h2 id="11-1-内存管理"><a href="#11-1-内存管理" class="headerlink" title="11.1 内存管理"></a>11.1 内存管理</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HashMap成员数量，小于配置，按紧凑格式存储，内存开销少，任意一个超过，就使用真实的HashMap存储，内存占用大</span></span><br><span class="line">hash-max-zipmap-entries 64   <span class="comment"># 成员数量少</span></span><br><span class="line">hash-max-zipmap-value 512    <span class="comment"># 成员长度小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List</span></span><br><span class="line">list-max-ziplist-value 64</span><br><span class="line">list-max-ziplist-entries 512</span><br></pre></td></tr></table></figure>
-
-<h2 id="11-2-持久化"><a href="#11-2-持久化" class="headerlink" title="11.2 持久化"></a>11.2 持久化</h2><p>选择aof，每个实例不要超过2G</p>
-<h1 id="12-经验总结"><a href="#12-经验总结" class="headerlink" title="12. 经验总结"></a>12. 经验总结</h1><ul>
+<h2 id="10-2-持久化"><a href="#10-2-持久化" class="headerlink" title="10.2 持久化"></a>10.2 持久化</h2><p>选择aof，每个实例不要超过2G</p>
+<h2 id="10-3-优化方向"><a href="#10-3-优化方向" class="headerlink" title="10.3 优化方向"></a>10.3 优化方向</h2><ul>
 <li>进行master-slave主从同步配置，在出现服务故障时可切换</li>
 <li>在master禁用数据持久化，在slave上配置数据持久化</li>
 <li>Memory+swap不足。此时dump会挂死，最终会导致机器挡掉。64-128GB内存， SSD硬盘。</li>
@@ -683,8 +785,6 @@
 
 
 
-<p>跳表：一种随机化的数据结构，实质就是一种可以进行二分查找的有序链表。Redis中的set类型低层使用跳表实现。</p>
-
       </div>
       
         <br>
@@ -695,10 +795,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-13T10:41:23+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-15T16:00:32+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2021年7月13日</p>
+    <p>更新于 2021年10月15日</p>
   </a>
 </div>
 
@@ -877,7 +977,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFRedis"><span class="toc-text">1.1 什么是Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">1.2 优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2. 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%BA%94%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.1 五种类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2.2 应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BA%8B%E5%8A%A1"><span class="toc-text">2.3 事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85"><span class="toc-text">2.4 发布和订阅</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">3. 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-RDB-snapshot"><span class="toc-text">3.1 RDB (snapshot)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-AOF-append-only-file"><span class="toc-text">3.2 AOF (append only file)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%96%B9%E6%A1%88%E9%80%89%E6%8B%A9"><span class="toc-text">3.3 方案选择</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5"><span class="toc-text">4. 过期策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E8%BF%87%E6%9C%9F%E9%94%AE%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="toc-text">4.1 过期键删除策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%8F%96%E6%B6%88%E8%BF%87%E6%9C%9F"><span class="toc-text">4.2 设置和取消过期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E8%BF%87%E6%9C%9F%E6%9C%BA%E5%88%B6"><span class="toc-text">4.3 过期机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="toc-text">5. 内存淘汰策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2"><span class="toc-text">6. 环境部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Redis%E9%83%A8%E7%BD%B2"><span class="toc-text">6.1 Redis部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-Redis%E5%90%AF%E5%8A%A8"><span class="toc-text">6.2 Redis启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">6.3 客户端操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E8%AE%BE%E7%BD%AE%E8%BF%9E%E6%8E%A5%E5%AF%86%E7%A0%81"><span class="toc-text">6.4 设置连接密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-%E5%B1%8F%E8%94%BD%E4%B8%8D%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">6.5 屏蔽不安全命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="toc-text">6.6 配置文件说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88"><span class="toc-text">7. 集群方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">7.1 主从模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-Sentinel-%E6%A8%A1%E5%BC%8F"><span class="toc-text">7.2 Sentinel 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-Cluster%E6%A8%A1%E5%BC%8F"><span class="toc-text">7.3 Cluster模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E5%93%88%E5%B8%8C%E6%A7%BD"><span class="toc-text">7.4 哈希槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-%E9%9B%86%E7%BE%A4%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">7.5 集群选择数据库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%88%86%E5%8C%BA"><span class="toc-text">8. 分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E7%BC%93%E5%AD%98%E5%BC%82%E5%B8%B8"><span class="toc-text">9. 缓存异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E9%9B%AA%E5%B4%A9-%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88"><span class="toc-text">9.1 雪崩 (缓存失效)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E7%A9%BA%E5%80%BC"><span class="toc-text">9.2 穿透 (缓存空值)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E5%87%BB%E7%A9%BF-%E9%AB%98%E5%B9%B6%E5%8F%91key%E5%A4%B1%E6%95%88"><span class="toc-text">9.3 击穿 (高并发key失效)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">10. 管理命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-Redis%E4%BC%98%E5%8C%96"><span class="toc-text">11. Redis优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">11.1 内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">11.2 持久化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-text">12. 经验总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1.1 应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%AE%89%E8%A3%85"><span class="toc-text">1.2 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-text">1.3 相关知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">1.4 管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">1.5 优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2. 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.1 基础类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-String"><span class="toc-text">2.1.1 String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-List"><span class="toc-text">2.1.2 List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-Set"><span class="toc-text">2.1.3 Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-4-Hash"><span class="toc-text">2.1.4 Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-5-ZSet"><span class="toc-text">2.1.5 ZSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">2.1.6 数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-6-1-hashTable"><span class="toc-text">2.1.6.1 hashTable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-6-2-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="toc-text">2.1.6.2 跳跃表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85"><span class="toc-text">2.2 发布订阅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%96%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.3 新类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-Bitmaps"><span class="toc-text">2.3.1 Bitmaps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-HyperLogLog-%E5%9F%BA%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="toc-text">2.3.2 HyperLogLog (基数统计)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-Geospatial"><span class="toc-text">2.3.3 Geospatial</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81"><span class="toc-text">3. 事务和锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%BA%8B%E5%8A%A1"><span class="toc-text">3.1 事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E9%94%81"><span class="toc-text">3.2 锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Lua"><span class="toc-text">3.3 Lua</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">4. 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-RDB-Redis-Database"><span class="toc-text">4.1 RDB (Redis Database)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-AOF-append-only-file"><span class="toc-text">4.2 AOF (append only file)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E6%96%B9%E6%A1%88%E9%80%89%E6%8B%A9"><span class="toc-text">4.3 方案选择</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-text">5. 分布式锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5"><span class="toc-text">6. 过期策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E8%BF%87%E6%9C%9F%E9%94%AE%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5"><span class="toc-text">6.1 过期键删除策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%8F%96%E6%B6%88%E8%BF%87%E6%9C%9F"><span class="toc-text">6.2 设置和取消过期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E8%BF%87%E6%9C%9F%E6%9C%BA%E5%88%B6"><span class="toc-text">6.3 过期机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%86%85%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="toc-text">7. 内存淘汰策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88"><span class="toc-text">8. 集群方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">8.1 主从模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-Sentinel-%E6%A8%A1%E5%BC%8F"><span class="toc-text">8.2 Sentinel 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-Cluster%E6%A8%A1%E5%BC%8F"><span class="toc-text">8.3 Cluster模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E7%BC%93%E5%AD%98%E5%BC%82%E5%B8%B8"><span class="toc-text">9. 缓存异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E9%9B%AA%E5%B4%A9-%E5%A4%A7%E9%87%8Fkey%E9%9B%86%E4%B8%AD%E8%BF%87%E6%9C%9F"><span class="toc-text">9.1 雪崩 (大量key集中过期)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E7%A9%BA%E5%80%BC"><span class="toc-text">9.2 穿透 (缓存空值)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E5%87%BB%E7%A9%BF-%E7%83%AD%E9%97%A8key%E8%BF%87%E6%9C%9F"><span class="toc-text">9.3 击穿 (热门key过期)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-Redis%E4%BC%98%E5%8C%96"><span class="toc-text">10. Redis优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">10.1 内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">10.2 持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-text">10.3 优化方向</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -946,7 +1046,7 @@
         
           <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(40)</div></a></li>
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(39)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
         
@@ -1012,7 +1112,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 17.33px; color: #828282">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 14px; color: #999">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
     </div>
   </section>
 

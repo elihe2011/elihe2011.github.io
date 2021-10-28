@@ -388,8 +388,7 @@
 </ul>
 <span id="more"></span>
 
-<h2 id="1-1-名称空间级别资源"><a href="#1-1-名称空间级别资源" class="headerlink" title="1.1 名称空间级别资源"></a>1.1 名称空间级别资源</h2><p>仅在此名称空间下有效：kubeadm k8s kube-system, kubectl get pod -n default</p>
-<h3 id="1-1-1-工作负载型资源-workload"><a href="#1-1-1-工作负载型资源-workload" class="headerlink" title="1.1.1 工作负载型资源 (workload)"></a>1.1.1 工作负载型资源 (workload)</h3><ul>
+<h2 id="1-1-工作负载-workload"><a href="#1-1-工作负载-workload" class="headerlink" title="1.1 工作负载 (workload)"></a>1.1 工作负载 (workload)</h2><ul>
 <li>Pod: 最小资源，共享网络栈、存储卷等</li>
 <li>ReplicaSet：调度器，管理Pod的创建，通过标签的选择去控制Pod的副本数</li>
 <li>Deployment: 控制器，通过控制RS的创建，去创建Pod</li>
@@ -397,22 +396,24 @@
 <li>DaemonSet：可在每个节点都运行一个Pod组件</li>
 <li>Job: 批量工作</li>
 <li>CronJob: 定时或轮训工作</li>
-<li>ReplicationController：v1.11后被废弃</li>
 </ul>
-<h3 id="1-1-2-服务发现及负载均衡资源-ServiceDiscovery-LoadBalance"><a href="#1-1-2-服务发现及负载均衡资源-ServiceDiscovery-LoadBalance" class="headerlink" title="1.1.2 服务发现及负载均衡资源 (ServiceDiscovery, LoadBalance)"></a>1.1.2 服务发现及负载均衡资源 (ServiceDiscovery, LoadBalance)</h3><ul>
-<li>Service: svc</li>
-<li>Ingress: </li>
+<h2 id="1-2-服务发现及负载均衡"><a href="#1-2-服务发现及负载均衡" class="headerlink" title="1.2 服务发现及负载均衡"></a>1.2 服务发现及负载均衡</h2><ul>
+<li>Service</li>
+<li>Ingress</li>
 </ul>
-<h3 id="1-1-3-配置与存储型资源"><a href="#1-1-3-配置与存储型资源" class="headerlink" title="1.1.3 配置与存储型资源"></a>1.1.3 配置与存储型资源</h3><ul>
-<li>Volume: 存储卷</li>
-<li>CSI: 容器存储接口，可扩展第三方存储设备</li>
+<h2 id="1-3-配置与存储"><a href="#1-3-配置与存储" class="headerlink" title="1.3 配置与存储"></a>1.3 配置与存储</h2><ul>
+<li><p>Volume: 存储卷</p>
+</li>
+<li><p>CSI: 容器存储接口，可扩展第三方存储设备</p>
+</li>
+<li><p>ConfigMap: 配置中心</p>
+</li>
+<li><p>Secret: 敏感数据保存</p>
+</li>
+<li><p>DownwardAPI: 外部环境中的信息输出给容器</p>
+</li>
 </ul>
-<h3 id="1-1-4-特殊类型的存储卷"><a href="#1-1-4-特殊类型的存储卷" class="headerlink" title="1.1.4 特殊类型的存储卷"></a>1.1.4 特殊类型的存储卷</h3><ul>
-<li>ConfigMap: 配置中心</li>
-<li>Secret: 敏感数据保存</li>
-<li>DownwardAPI: 外部环境中的信息输出给容器</li>
-</ul>
-<h2 id="1-2-集群级别资源"><a href="#1-2-集群级别资源" class="headerlink" title="1.2 集群级别资源"></a>1.2 集群级别资源</h2><p>不指定名称空间，所有节点均能访问：role</p>
+<h2 id="1-4-集群"><a href="#1-4-集群" class="headerlink" title="1.4 集群"></a>1.4 集群</h2><p>不指定名称空间，所有节点均能访问：role</p>
 <ul>
 <li>Namespace</li>
 <li>Node</li>
@@ -421,276 +422,65 @@
 <li>RoleBinding</li>
 <li>ClusterRoleBinding</li>
 </ul>
-<h2 id="1-3-元数据型资源"><a href="#1-3-元数据型资源" class="headerlink" title="1.3 元数据型资源"></a>1.3 元数据型资源</h2><p>通过指标进行操作：HPA</p>
-<ul>
+<h2 id="1-5-元数据"><a href="#1-5-元数据" class="headerlink" title="1.5 元数据"></a>1.5 元数据</h2><ul>
 <li>HPA</li>
 <li>PodTemplate</li>
 <li>LimitRange</li>
 </ul>
-<h1 id="2-资源清单"><a href="#2-资源清单" class="headerlink" title="2. 资源清单"></a>2. 资源清单</h1><h2 id="2-1-必须存储的属性"><a href="#2-1-必须存储的属性" class="headerlink" title="2.1 必须存储的属性"></a>2.1 必须存储的属性</h2><table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>字段类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>apiVersion</td>
-<td>String</td>
-<td>k8s API版本，可用<code>kubectl api-versions</code>查询</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>String</td>
-<td>yaml文件定义的资源类型和角色，比如：Pod</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>Object</td>
-<td>元数据对象</td>
-</tr>
-<tr>
-<td>metadata.name</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata.namespace</td>
-<td>String</td>
-<td>默认为default</td>
-</tr>
-<tr>
-<td>spec</td>
-<td>Object</td>
-<td>详细定义对象</td>
-</tr>
-<tr>
-<td>spec.containers[]</td>
-<td>List</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].name</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].image</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].imagePullPolicy</td>
-<td>String</td>
-<td>1. Always: 默认，每次都尝试重新拉取镜像; 2. Never: 仅使用本地镜像; 3. IfNotPresent: 优先本地镜像</td>
-</tr>
-<tr>
-<td>spec.containers[].command[]</td>
-<td>List</td>
-<td>容器启动命令。不指定则使用镜像打包时使用的启动命令</td>
-</tr>
-<tr>
-<td>spec.containers[].args[]</td>
-<td>List</td>
-<td>容器启动命令参数</td>
-</tr>
-<tr>
-<td>spec.containers[].workingDir</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].volumeMounts[]</td>
-<td>List</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].volumeMounts[].name</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].volumeMounts[].mountPath</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].volumeMounts[].readOnly</td>
-<td>String</td>
-<td>默认false，可读写</td>
-</tr>
-<tr>
-<td>spec.containers[].ports[]</td>
-<td>List</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].ports[].name</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].ports[].containerPort</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].ports[].hostPort</td>
-<td>String</td>
-<td>主机上需要监听的端口号，默认与containerPort相同</td>
-</tr>
-<tr>
-<td>spec.containers[].ports[].protocol</td>
-<td>String</td>
-<td>默认TCP</td>
-</tr>
-<tr>
-<td>spec.containers[].env[]</td>
-<td>List</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].env[].name</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].env[].value</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].resources</td>
-<td>Object</td>
-<td>资源</td>
-</tr>
-<tr>
-<td>spec.containers[].resources.limits</td>
-<td>Object</td>
-<td>容器运行时的资源上限</td>
-</tr>
-<tr>
-<td>spec.containers[].resources.limits.cpu</td>
-<td>String</td>
-<td>单位core数，将用于<code>docker run --cpu-shares</code></td>
-</tr>
-<tr>
-<td>spec.containers[].resources.limits.memory</td>
-<td>String</td>
-<td>单位MIB、GiB</td>
-</tr>
-<tr>
-<td>spec.containers[].resources.requests</td>
-<td>Object</td>
-<td>容器启动和调度时的资源上限</td>
-</tr>
-<tr>
-<td>spec.containers[].resources.requests.cpu</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>spec.containers[].resources.request.memory</td>
-<td>String</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="2-2-额外的参数项"><a href="#2-2-额外的参数项" class="headerlink" title="2.2 额外的参数项"></a>2.2 额外的参数项</h2><table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>字段类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>spec.restartPolicy</td>
-<td>String</td>
-<td>1. Always: 默认，Pod一旦停止，无论容器是否已终止，kubelet服务都将重启它; 2. OnFailure: 只有Pod以非0退出码终止时，kubelet将重启它; 3. Never: Pod终止后，kubelet将推出码上报Master，但不会重启Pod</td>
-</tr>
-<tr>
-<td>spec.nodeSelector</td>
-<td>Object</td>
-<td>定义Node的Label过滤标签，以key: value格式指定</td>
-</tr>
-<tr>
-<td>spec.imagePullSecrets</td>
-<td>Object</td>
-<td>定义pull镜像时使用secret名称，以name: secretKey格式指定</td>
-</tr>
-<tr>
-<td>spec.hostNetwork</td>
-<td>Boolean</td>
-<td>使用使用主机网络。默认false。为true时，将不使用docker网桥，直接使用宿主机网络，但同时，也无法启动第二个副本</td>
-</tr>
-</tbody></table>
-<h2 id="2-3-使用命令查询参数"><a href="#2-3-使用命令查询参数" class="headerlink" title="2.3 使用命令查询参数"></a>2.3 使用命令查询参数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl explain pod</span><br><span class="line"></span><br><span class="line">kubectl explain pod.spec</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-用法查询"><a href="#1-6-用法查询" class="headerlink" title="1.6 用法查询"></a>1.6 用法查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl explain pod</span><br><span class="line"></span><br><span class="line">kubectl explain pod.spec</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="2-4-示例：Pod模板"><a href="#2-4-示例：Pod模板" class="headerlink" title="2.4 示例：Pod模板"></a>2.4 示例：Pod模板</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">myapp</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">default</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">myapp</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">app1</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/nginx:v1</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl apply -f pod.yaml</span><br><span class="line"></span><br><span class="line">$ kubectl get pod</span><br><span class="line">NAME    READY   STATUS    RESTARTS   AGE</span><br><span class="line">myapp   1/1     Running   0          6s</span><br><span class="line"></span><br><span class="line">$ kubectl describe pod myapp</span><br><span class="line">Name:         myapp</span><br><span class="line">Namespace:    default</span><br><span class="line">Priority:     0</span><br><span class="line">Node:         k8s-node02/192.168.31.42</span><br><span class="line">Start Time:   Mon, 28 Sep 2020 21:41:25 +0800</span><br><span class="line">Labels:       app=myapp</span><br><span class="line">              version=v1</span><br><span class="line">Annotations:  &lt;none&gt;</span><br><span class="line">Status:       Running</span><br><span class="line">IP:           10.244.2.5</span><br><span class="line">IPs:</span><br><span class="line">  IP:  10.244.2.5</span><br><span class="line">Containers:</span><br><span class="line">  app1:</span><br><span class="line">    Container ID:   docker://dad5e86a4d90a7275e7a15833801d57c87356e1c7ce723fde113b18ef960213c</span><br><span class="line">    Image:          hub.elihe.io/<span class="built_in">test</span>/nginx:v1</span><br><span class="line">...</span><br><span class="line">Events:</span><br><span class="line">  Type    Reason     Age   From                 Message</span><br><span class="line">  ----    ------     ----  ----                 -------</span><br><span class="line">  Normal  Scheduled  61s   default-scheduler    Successfully assigned default/myapp to k8s-node02</span><br><span class="line">  Normal  Pulled     60s   kubelet, k8s-node02  Container image <span class="string">&quot;hub.elihe.io/test/nginx:v1&quot;</span> already present on machine</span><br><span class="line">  Normal  Created    60s   kubelet, k8s-node02  Created container app1</span><br><span class="line">  Normal  Started    60s   kubelet, k8s-node02  Started container app1</span><br><span class="line"></span><br><span class="line">$ kubectl logs myapp -c app1</span><br><span class="line">/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration</span><br><span class="line">/docker-entrypoint.sh: Looking <span class="keyword">for</span> shell scripts <span class="keyword">in</span> /docker-entrypoint.d/</span><br><span class="line">/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh</span><br><span class="line">10-listen-on-ipv6-by-default.sh: error: IPv6 listen already enabled</span><br><span class="line">/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh</span><br><span class="line">/docker-entrypoint.sh: Configuration complete; ready <span class="keyword">for</span> start up</span><br><span class="line"></span><br><span class="line">$ kubectl <span class="built_in">exec</span> myapp -it -- /bin/bash</span><br></pre></td></tr></table></figure>
 
 
-
-<h1 id="3-容器的生命周期"><a href="#3-容器的生命周期" class="headerlink" title="3. 容器的生命周期"></a>3. 容器的生命周期</h1><p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/k8s/pod_life_cycle.jpg" alt="pod_life_cycle"></p>
+<h1 id="2-Pod-生命周期"><a href="#2-Pod-生命周期" class="headerlink" title="2. Pod 生命周期"></a>2. Pod 生命周期</h1><p><img src="https://raw.githubusercontent.com/elihe2011/bedgraph/master/kubernetes/k8s-pod-lifecycle.png" alt="img"></p>
 <p>1）kubectl –&gt; apiserver –&gt; CRI –&gt; kubelet  环境初始化</p>
 <p>2）启动Pause容器: 初始化网络和数据卷</p>
 <p>3）init C初始化。多个initC时，必须串行执行，且每个必须执行成功才向下走</p>
 <p>4）Main C，开始运行时，启动Start命令/脚本；结束时，执行Stop命令(做哪些清理操作等)</p>
-<p>5）Readiness 就绪检测：若干秒后，进行是否就绪的探测。只有当Readiness成功后，Pod才会显示Running状态</p>
+<p>5）Readiness 就绪检测：若干秒后，进行是否就绪的探测。只有当Readiness成功后，Pod才会显示Ready状态</p>
 <p>6）Liveness 生存检测：探测Main C中的进程是否正常，不正常则执行重启、删除等命令</p>
-<h2 id="3-1-Init-C-容器"><a href="#3-1-Init-C-容器" class="headerlink" title="3.1 Init C 容器"></a>3.1 Init C 容器</h2><p>应用容器启动的容器，称为Init C容器</p>
-<p>Init 容器与普通容器非常像，除下列两点：</p>
+<h2 id="2-1-InitC-容器"><a href="#2-1-InitC-容器" class="headerlink" title="2.1 InitC 容器"></a>2.1 InitC 容器</h2><p>即 Infra 容器，其镜像是一个用汇编写成，永远处于“pause”状态的容器，解压后大小100~200KB，运行时占用极小的资源</p>
+<p><strong>作用</strong>：</p>
 <ul>
-<li>每个 Init 容器必须在下一个 Init 容器启动前成功完成</li>
-<li>Init 容器总是在运行成功后自动销毁</li>
+<li><p>initC 容器可作为 Pod 中其他容器的初始化工具</p>
+</li>
+<li><p>出于安全考虑，将应用容器中的某些实用工具（python, awk等）单独拆开放入initC容器</p>
+</li>
+<li><p>应用容器的启动是并行的，而 initC 容器可阻塞应用容器的启动，直到满足一些先决条件</p>
+</li>
 </ul>
-<p>如果Init容器启动失败，k8s 会不停重启Pod，直到Init 容器成功为止。然而如果Pod的restartPolicy为Never，它则不会重启</p>
-<p>Init 容器的作用：</p>
-<blockquote>
-<ul>
-<li>可以包含并运行实用工具。但出于安全考虑，不建议在应用程序容器镜像中包含这些工具。（主容器启动前，文件创建、数据初始化等）</li>
-<li>可以包含使用工具和定制化代码来安装，但不能出现在应用程序镜像中。例如，创建镜像没必要FROM另一个镜像，只需在安装过程中使用sed, awk, python等命令</li>
-<li>应用程序镜像可以分离出创建和部署角色，而没有必要联合它们构建一个单独的镜像</li>
-<li>Init容器使用Linux Namespace，所以相对应用程序来说具有不同的文件系统视图。因此它能够具有访问Secret的权限，而应用程序容器则不能。简言之，InitC可以把MainC无法取得的Secret权限，先取得，以便MainC使用。</li>
-<li>Init容器必须在运用程序启动之前完成，而应用程序是并行运行的，所以Init容器能够提供一种简单的阻塞或延迟应用程序启动的方法，直到满足一组先决条件。</li>
-</ul>
-</blockquote>
-<p>init 模板：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init-pod.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">init-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">init-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">app</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/busybox:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo &#x27;The app is running!&#x27; &amp;&amp; sleep 3600&quot;</span>]</span><br><span class="line">  <span class="attr">initContainers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">init-myservice</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/busybox:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;until nslookup myservice; do echo waiting for myservice; sleep 2; done&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">init-mydb</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/busybox:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;until nslookup mydb; do echo waiting for mydb; sleep 2; done&quot;</span>]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># myservice.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">myservice</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">9001</span></span><br><span class="line">      </span><br><span class="line"><span class="comment"># mydb.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">mydb</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">9002</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f init-pod.yaml </span><br><span class="line">$ kubectl get pod</span><br><span class="line">NAME       READY   STATUS     RESTARTS   AGE</span><br><span class="line">init-pod   0/1     Init:0/2   0          26s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建svc</span></span><br><span class="line">$ kubectl create -f myservice.yaml  </span><br><span class="line">$ kubectl create -f mydb.yaml</span><br><span class="line">$ kubectl get svc</span><br><span class="line">NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">mydb         ClusterIP   10.100.88.255    &lt;none&gt;        80/TCP    3m58s</span><br><span class="line">myservice    ClusterIP   10.110.141.175   &lt;none&gt;        80/TCP    6m20s</span><br><span class="line"></span><br><span class="line">$ kubectl get pod</span><br><span class="line">NAME            READY   STATUS     RESTARTS   AGE</span><br><span class="line">init-pod        1/1     Running           0          6m42s</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test-initc</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">myapp</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">initContainers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">init-myservice</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox:1.28.4</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>,<span class="string">&#x27;until nslookup myservice;do echo waiting for myservice;sleep 2; done;&#x27;</span>] </span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">init-mydb</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox:1.28.4</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>,<span class="string">&#x27;until nslookup mydb;do echo waiting for mydb;sleep 2;done;&#x27;</span>]</span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mypod</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox:1.28.4</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;-c&#x27;</span>,<span class="string">&#x27;echo The app is running!&amp;&amp; sleep 3600&#x27;</span>] </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">myservice</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">9001</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">mydb</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">9002</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="4-容器探针"><a href="#4-容器探针" class="headerlink" title="4. 容器探针"></a>4. 容器探针</h1><h2 id="4-1-什么是探针"><a href="#4-1-什么是探针" class="headerlink" title="4.1 什么是探针"></a>4.1 什么是探针</h2><p>探针：是由kubelet对容器执行的定期诊断。要执行诊断，kubelet调用有容器实现的Handler，有三种类型的处理程序：</p>
+<h2 id="2-2-容器探针"><a href="#2-2-容器探针" class="headerlink" title="2.2 容器探针"></a>2.2 容器探针</h2><p>健康状态探针：</p>
 <ul>
-<li>ExecAction: 在容器内执行指定命令，返回码为0表示成功</li>
-<li>TCPSocketAction: 在指定IP进行TCP检查，如果端口打开，则诊断成功</li>
-<li>HTTPGetAction: 对指定的<a href="http://ip:port/path地址执行HTTP">http://ip:port/path地址执行HTTP</a> Get操作，如果响应的状态码大于等于200且小于400，则诊断成功</li>
+<li>ReadinessProbe: 判断容器服务是否可用，成功显示ready， 失败不触发重启</li>
+<li>LivenessProbe: 判断容器是否存活，如果探测到不健康，将触发重启策略。如果未配置该探针，则永远返回成功.</li>
 </ul>
-<p>每次探测都获得以下三种结果：</p>
+<p>探针的三种实现方式：</p>
 <ul>
-<li>成功：诊断通过</li>
-<li>失败：诊断未通过</li>
-<li>未知：诊断失败，但不采取任何行动</li>
+<li>ExecAction: 容器内执行命令，返回码等于0则认为成功</li>
+<li>TCPSocketAction: 在指定端口上的容器IP地址进行TCP检查，如果端口打开，则认为成功</li>
+<li>HTTPGetAction: 在指定端口和路径的容器IP地址执行HTTP GET请求，状态码在 [200, 399] 表示成功</li>
 </ul>
-<h2 id="4-2-探测方式"><a href="#4-2-探测方式" class="headerlink" title="4.2 探测方式"></a>4.2 探测方式</h2><ul>
-<li>livenessProbe: 指示容器是否正在运行。如果存活探测失败，kubelet会杀死容器，并且容器将受其“restartPolicy”的影响。如果容器不提供存活探针，则默认状态为Success</li>
-<li>readinessProbe: 指示容器是否准备好服务请求。如果就绪探测失败，端点控制器将从与Pod匹配的所有Service的端点中删除该Pod的IP地址。初始延迟之前的就绪状态默认为Failure。如果容器不提供就绪探针，则默认状态为Success</li>
+<p>探测结果：</p>
+<ul>
+<li>success</li>
+<li>failed：失败，按策略处理</li>
+<li>unknown：诊断失败，但不会采取任何行动</li>
 </ul>
-<h3 id="4-2-1-就绪检测"><a href="#4-2-1-就绪检测" class="headerlink" title="4.2.1 就绪检测"></a>4.2.1 就绪检测</h3><p>检测失败，状态非Ready，但不会重启容器</p>
+<h3 id="2-2-1-就绪检测"><a href="#2-2-1-就绪检测" class="headerlink" title="2.2.1 就绪检测"></a>2.2.1 就绪检测</h3><p>检测失败，状态非Ready，但不会重启容器</p>
 <p><strong>spec.containers[].readinessProbe.httpGet</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># readiness-probe-httpget.yaml </span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">readiness-httpget-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">readiness-httpget-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/nginx:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">readinessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index1.html</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># readiness-probe-httpget.yaml </span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">readiness-httpget-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">readiness-httpget-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">readinessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index1.html</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f readiness-probe-httpget.yaml </span><br><span class="line"></span><br><span class="line">$ kubectl get pod</span><br><span class="line">NAME                    READY   STATUS    RESTARTS   AGE</span><br><span class="line">readiness-httpget-pod   0/1     Running   0          9s</span><br><span class="line"></span><br><span class="line">$ kubectl describe pod readiness-httpget-pod</span><br><span class="line">Warning  Unhealthy  1s (x3 over 7s)  kubelet, k8s-node01  Readiness probe failed: HTTP probe failed with statuscode: 404</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">$ kubectl <span class="built_in">exec</span> readiness-httpget-pod -it -- /bin/sh</span><br><span class="line"><span class="comment"># cd /usr/share/nginx/html</span></span><br><span class="line"><span class="comment"># ls -al</span></span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x 2 root root  40 Aug 14 00:36 .</span><br><span class="line">drwxr-xr-x 3 root root  18 Aug 14 00:36 ..</span><br><span class="line">-rw-r--r-- 1 root root 494 Aug 11 14:50 50x.html</span><br><span class="line">-rw-r--r-- 1 root root 612 Aug 11 14:50 index.html</span><br><span class="line"><span class="comment"># echo &quot;hello, i&#x27;am index1.html&quot; &gt; index1.html</span></span><br><span class="line"><span class="comment"># logout</span></span><br><span class="line"></span><br><span class="line">$ kubectl get pod</span><br><span class="line">NAME                    READY   STATUS    RESTARTS   AGE</span><br><span class="line">readiness-httpget-pod   1/1     Running   0          2m57s</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="4-2-2-存活检测"><a href="#4-2-2-存活检测" class="headerlink" title="4.2.2 存活检测"></a>4.2.2 存活检测</h3><p>检测失败，直接重启Pod</p>
+<h3 id="2-2-2-存活检测"><a href="#2-2-2-存活检测" class="headerlink" title="2.2.2 存活检测"></a>2.2.2 存活检测</h3><p>检测失败，直接重启Pod</p>
 <p><strong>spec.containers[].livenessProbe.exec</strong></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># liveness-prob-exec.yaml </span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">liveness-exec-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">liveness-exec-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;touch /tmp/abc.txt; sleep 60; rm -f /tmp/abc.txt; sleep 3600&quot;</span>]</span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">exec:</span></span><br><span class="line">        <span class="attr">command:</span> [<span class="string">&quot;test&quot;</span>, <span class="string">&quot;-e&quot;</span>, <span class="string">&quot;/tmp/abc.txt&quot;</span>]</span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
 
@@ -699,27 +489,108 @@
 
 
 <p><strong>spec.containers[].livenessProbe.httpGet</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">liveness-httpget-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">liveness-httpget</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/nginx:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index.html</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">timeoutSeconds:</span> <span class="number">10</span>  <span class="comment"># 超时处理</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">liveness-httpget-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">liveness-httpget</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index.html</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">timeoutSeconds:</span> <span class="number">10</span>  <span class="comment"># 超时处理</span></span><br></pre></td></tr></table></figure>
 
 
 
 <p><strong>spec.containers[].livenessProbe.tcpSocket</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">liveness-tcp-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">liveness-tcp</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">hub.elihe.io/test/nginx:v1</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">tcpSocket:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">timeoutSeconds:</span> <span class="number">10</span>  <span class="comment"># 超时处理</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tcpsocket-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">tcpSocket:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">timeoutSeconds:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="4-3-启动-amp-退出"><a href="#4-3-启动-amp-退出" class="headerlink" title="4.3 启动 &amp; 退出"></a>4.3 启动 &amp; 退出</h2><p><strong>spec.containers[].lifecycle.postStart|preStop</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">lifecycle-demo</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">lifecycle-demo-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">lifecycle:</span></span><br><span class="line">      <span class="attr">postStart:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo Hello form the postStart handler &gt; /usr/share/mesage&quot;</span>]</span><br><span class="line">      <span class="attr">preStop:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;/usr/sbin/nginx&quot;</span>, <span class="string">&quot;-s&quot;</span>, <span class="string">&quot;quit&quot;</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-启动-amp-退出"><a href="#2-3-启动-amp-退出" class="headerlink" title="2.3 启动 &amp; 退出"></a>2.3 启动 &amp; 退出</h2><p><strong>spec.containers[].lifecycle.postStart|preStop</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">lifecycle-demo</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">lifecycle-demo-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">lifecycle:</span></span><br><span class="line">      <span class="attr">postStart:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo Hello postStart &gt; /tmp/hello.txt&quot;</span>]</span><br><span class="line">      <span class="attr">preStop:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;/usr/sbin/nginx&quot;</span>, <span class="string">&quot;-s&quot;</span>, <span class="string">&quot;quit&quot;</span>]</span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="5-Pod-状态值"><a href="#5-Pod-状态值" class="headerlink" title="5. Pod 状态值"></a>5. Pod 状态值</h1><ul>
+<h2 id="2-4-Pod-状态值"><a href="#2-4-Pod-状态值" class="headerlink" title="2.4 Pod 状态值"></a>2.4 Pod 状态值</h2><ul>
 <li>Pending：Pod已被k8s系统接受，但有一个或多个镜像容器尚未创建。等待时间包括调度Pod的时间和通过网络下载镜像的时间。</li>
 <li>Running: Pod已经绑定到一个节点上了，Pod中的所有容器已被创建</li>
 <li>Succeeded: Pod中的所有容器都被成功终止，且不会再重启</li>
 <li>Failed: Pod中的所有容器都已终止，但至少有一个容器以非0返回值退出</li>
 <li>Unknown: 未知原因无法获取Pod状态，通常是因为与Pod所在主机的通信失败</li>
 </ul>
+<h1 id="3-注入卷"><a href="#3-注入卷" class="headerlink" title="3. 注入卷"></a>3. 注入卷</h1><p>Projected Volume: 不是为了存放容器里的数据，也不是用于容器和宿主机之间的数据交换，而是为了给容器提供预先定义好的数据</p>
+<p>常见的 Projected Volume:</p>
+<ul>
+<li>Secret</li>
+<li>ConfigMap</li>
+<li>Downward API</li>
+<li>ServiceAccountToken</li>
+</ul>
+<h2 id="3-1-Secret"><a href="#3-1-Secret" class="headerlink" title="3.1 Secret"></a>3.1 Secret</h2><p>作用：把 Pod 想要访问的加密数据放入 etcd 中</p>
+<p>类型：</p>
+<table>
+<thead>
+<tr>
+<th>内置类型</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Opaque</code></td>
+<td>用户定义的任意数据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/service-account-token</code></td>
+<td>服务账号令牌</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/dockercfg</code></td>
+<td><code>~/.dockercfg</code> 文件的序列化形式</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/dockerconfigjson</code></td>
+<td><code>~/.docker/config.json</code> 文件的序列化形式</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/basic-auth</code></td>
+<td>用于基本身份认证的凭据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/ssh-auth</code></td>
+<td>用于 SSH 身份认证的凭据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/tls</code></td>
+<td>用于 TLS 客户端或者服务器端的数据</td>
+</tr>
+<tr>
+<td><code>bootstrap.kubernetes.io/token</code></td>
+<td>启动引导令牌数据</td>
+</tr>
+</tbody></table>
+<h3 id="3-1-1-Opaque"><a href="#3-1-1-Opaque" class="headerlink" title="3.1.1 Opaque"></a>3.1.1 Opaque</h3><p>创建 secret：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1：</span></span><br><span class="line">$ kubectl apply -f - &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">apiVersion: v1</span></span><br><span class="line"><span class="string">kind: Secret</span></span><br><span class="line"><span class="string">metadata:</span></span><br><span class="line"><span class="string">  name: mysecret</span></span><br><span class="line"><span class="string">type: Opaque</span></span><br><span class="line"><span class="string">stringData:</span></span><br><span class="line"><span class="string">  user: root</span></span><br><span class="line"><span class="string">  pass: &quot;123456&quot;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：</span></span><br><span class="line">$ kubectl create secret generic my-secret --from-literal=user=root --from-literal=pass=123456</span><br></pre></td></tr></table></figure>
+
+<p>使用 secret：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-secret-volume</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">secret-volume</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">args:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">sleep</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;86400&quot;</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mysql-cred</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">&quot;/projected-volume&quot;</span></span><br><span class="line">      <span class="attr">readOnly:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mysql-cred</span></span><br><span class="line">    <span class="attr">secret:</span></span><br><span class="line">      <span class="attr">secretName:</span> <span class="string">mysecret</span></span><br><span class="line">      <span class="attr">items:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">user</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">cred/user</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">pass</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">cred/pass</span></span><br></pre></td></tr></table></figure>
+
+<p>检查数据挂载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl <span class="built_in">exec</span> -it pod-secret-volume -- cat /projected-volume/cred/pass</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-1-2-TLS"><a href="#3-1-2-TLS" class="headerlink" title="3.1.2 TLS"></a>3.1.2 TLS</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Secret</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">secret-tls</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">kubernetes.io/tls</span></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">tls.crt:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        MIIC2DCCAcCgAwIBAgIBATANBgkqh ...</span></span><br><span class="line"><span class="string"></span>  <span class="attr">tls.key:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ</span> <span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-2-ConfigMap"><a href="#3-2-ConfigMap" class="headerlink" title="3.2 ConfigMap"></a>3.2 ConfigMap</h2><p>作用：保存无需加密的，应用所需的配置信息</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">special-config</span></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">special.how:</span> <span class="string">very</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ConfigMap</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">env-config</span></span><br><span class="line"><span class="attr">data:</span></span><br><span class="line">  <span class="attr">log_level:</span> <span class="string">INFO</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-configmap</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">cm-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;env&quot;</span>]</span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SPECIAL_LEVEL_KEY</span></span><br><span class="line">      <span class="attr">valueFrom:</span></span><br><span class="line">        <span class="attr">configMapKeyRef:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">special-config</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">special.how</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">LOG_LEVEL</span></span><br><span class="line">      <span class="attr">valueFrom:</span></span><br><span class="line">        <span class="attr">configMapKeyRef:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">env-config</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">log_level</span></span><br><span class="line">  <span class="attr">restartPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-3-DownwardAPI"><a href="#3-3-DownwardAPI" class="headerlink" title="3.3 DownwardAPI"></a>3.3 DownwardAPI</h2><p>作用：让 Pod 中的容器，能够直接获取该 Pod API 对象本身的信息</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">downward-api-volume</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">zone:</span> <span class="string">china-standard-time</span></span><br><span class="line">    <span class="attr">cluster:</span> <span class="string">taos-1</span></span><br><span class="line">    <span class="attr">rack:</span> <span class="string">rack-22</span></span><br><span class="line">  <span class="attr">annotations:</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">&quot;1.2&quot;</span></span><br><span class="line">    <span class="attr">builder:</span> <span class="string">gopher</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>]</span><br><span class="line">    <span class="attr">args:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">while</span> <span class="literal">true</span><span class="string">;</span> <span class="string">do</span></span><br><span class="line">        <span class="string">if</span> [[ <span class="string">-e</span> <span class="string">/etc/podinfo/labels</span> ]]<span class="string">;</span> <span class="string">then</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">-en</span> <span class="string">&#x27;\n\n&#x27;</span><span class="string">;</span> <span class="string">cat</span> <span class="string">/etc/podinfo/labels;</span> <span class="string">fi;</span></span><br><span class="line">        <span class="string">if</span> [[ <span class="string">-e</span> <span class="string">/etc/podinfo/annotations</span> ]]<span class="string">;</span> <span class="string">then</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">-en</span> <span class="string">&#x27;\n\n&#x27;</span><span class="string">;</span> <span class="string">cat</span> <span class="string">/etc/podinfo/annotations;</span> <span class="string">fi;</span></span><br><span class="line">        <span class="string">sleep</span> <span class="number">5</span><span class="string">;</span></span><br><span class="line">      <span class="string">done;</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">podinfo</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/etc/podinfo</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">podinfo</span></span><br><span class="line">    <span class="attr">downwardAPI:</span></span><br><span class="line">      <span class="attr">items:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">&quot;labels&quot;</span></span><br><span class="line">        <span class="attr">fieldRef:</span></span><br><span class="line">          <span class="attr">fieldPath:</span> <span class="string">metadata.labels</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">&quot;annotations&quot;</span></span><br><span class="line">        <span class="attr">fieldRef:</span></span><br><span class="line">          <span class="attr">fieldPath:</span> <span class="string">metadata.annotations</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>环境变量方式</strong>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">downward-api-env</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;env&quot;</span>]</span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">POD_NAME</span></span><br><span class="line">      <span class="attr">valueFrom:</span></span><br><span class="line">        <span class="attr">fieldRef:</span></span><br><span class="line">          <span class="attr">fieldPath:</span> <span class="string">metadata.name</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">POD_IP</span></span><br><span class="line">      <span class="attr">valueFrom:</span></span><br><span class="line">        <span class="attr">fieldRef:</span></span><br><span class="line">          <span class="attr">fieldPath:</span> <span class="string">status.podIP</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-4-ServiceAccountToken"><a href="#3-4-ServiceAccountToken" class="headerlink" title="3.4 ServiceAccountToken"></a>3.4 ServiceAccountToken</h2><p>Service Account 是 k8s 的一种内置”服务账户“，它绑定了一个特殊的 Secret，即 ServiceAccountToken, 保存了授权信息等内容。任何在 k8s 集群上运行的应用，都必须使用 ServiceAccountToken 中的授权信息，才能合法访问 API Server.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl describe pod nginx</span><br><span class="line">Containers:</span><br><span class="line">  nginx:</span><br><span class="line">    ...</span><br><span class="line">    Mounts:</span><br><span class="line">      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-stqtv (ro)</span><br><span class="line">Volumes:</span><br><span class="line">  kube-api-access-stqtv:</span><br><span class="line">    Type:                    Projected (a volume that contains injected data from multiple sources)</span><br><span class="line">    TokenExpirationSeconds:  3607</span><br><span class="line">    ConfigMapName:           kube-root-ca.crt</span><br><span class="line">    ConfigMapOptional:       &lt;nil&gt;</span><br><span class="line">    DownwardAPI:             <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">$ kubectl <span class="built_in">exec</span> -it nginx -- ls /run/secrets/kubernetes.io/serviceaccount</span><br><span class="line">ca.crt  namespace  token</span><br></pre></td></tr></table></figure>
+
 
       </div>
       
@@ -731,10 +602,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-22T18:50:49+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-27T19:14:09+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2021年6月22日</p>
+    <p>更新于 2021年10月27日</p>
   </a>
 </div>
 
@@ -910,7 +781,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-K8S-%E8%B5%84%E6%BA%90"><span class="toc-text">1. K8S 资源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E7%BA%A7%E5%88%AB%E8%B5%84%E6%BA%90"><span class="toc-text">1.1 名称空间级别资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD%E5%9E%8B%E8%B5%84%E6%BA%90-workload"><span class="toc-text">1.1.1 工作负载型资源 (workload)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E5%8F%8A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%B5%84%E6%BA%90-ServiceDiscovery-LoadBalance"><span class="toc-text">1.1.2 服务发现及负载均衡资源 (ServiceDiscovery, LoadBalance)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AD%98%E5%82%A8%E5%9E%8B%E8%B5%84%E6%BA%90"><span class="toc-text">1.1.3 配置与存储型资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%98%E5%82%A8%E5%8D%B7"><span class="toc-text">1.1.4 特殊类型的存储卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E9%9B%86%E7%BE%A4%E7%BA%A7%E5%88%AB%E8%B5%84%E6%BA%90"><span class="toc-text">1.2 集群级别资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%85%83%E6%95%B0%E6%8D%AE%E5%9E%8B%E8%B5%84%E6%BA%90"><span class="toc-text">1.3 元数据型资源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95"><span class="toc-text">2. 资源清单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BF%85%E9%A1%BB%E5%AD%98%E5%82%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">2.1 必须存储的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E9%A2%9D%E5%A4%96%E7%9A%84%E5%8F%82%E6%95%B0%E9%A1%B9"><span class="toc-text">2.2 额外的参数项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="toc-text">2.3 使用命令查询参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E7%A4%BA%E4%BE%8B%EF%BC%9APod%E6%A8%A1%E6%9D%BF"><span class="toc-text">2.4 示例：Pod模板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">3. 容器的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Init-C-%E5%AE%B9%E5%99%A8"><span class="toc-text">3.1 Init C 容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AE%B9%E5%99%A8%E6%8E%A2%E9%92%88"><span class="toc-text">4. 容器探针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A2%E9%92%88"><span class="toc-text">4.1 什么是探针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%8E%A2%E6%B5%8B%E6%96%B9%E5%BC%8F"><span class="toc-text">4.2 探测方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E5%B0%B1%E7%BB%AA%E6%A3%80%E6%B5%8B"><span class="toc-text">4.2.1 就绪检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E5%AD%98%E6%B4%BB%E6%A3%80%E6%B5%8B"><span class="toc-text">4.2.2 存活检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%90%AF%E5%8A%A8-amp-%E9%80%80%E5%87%BA"><span class="toc-text">4.3 启动 &amp; 退出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Pod-%E7%8A%B6%E6%80%81%E5%80%BC"><span class="toc-text">5. Pod 状态值</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-K8S-%E8%B5%84%E6%BA%90"><span class="toc-text">1. K8S 资源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD-workload"><span class="toc-text">1.1 工作负载 (workload)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E5%8F%8A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">1.2 服务发现及负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AD%98%E5%82%A8"><span class="toc-text">1.3 配置与存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E9%9B%86%E7%BE%A4"><span class="toc-text">1.4 集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">1.5 元数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E7%94%A8%E6%B3%95%E6%9F%A5%E8%AF%A2"><span class="toc-text">1.6 用法查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Pod-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">2. Pod 生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-InitC-%E5%AE%B9%E5%99%A8"><span class="toc-text">2.1 InitC 容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%B9%E5%99%A8%E6%8E%A2%E9%92%88"><span class="toc-text">2.2 容器探针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E5%B0%B1%E7%BB%AA%E6%A3%80%E6%B5%8B"><span class="toc-text">2.2.1 就绪检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E5%AD%98%E6%B4%BB%E6%A3%80%E6%B5%8B"><span class="toc-text">2.2.2 存活检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%90%AF%E5%8A%A8-amp-%E9%80%80%E5%87%BA"><span class="toc-text">2.3 启动 &amp; 退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Pod-%E7%8A%B6%E6%80%81%E5%80%BC"><span class="toc-text">2.4 Pod 状态值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%B3%A8%E5%85%A5%E5%8D%B7"><span class="toc-text">3. 注入卷</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Secret"><span class="toc-text">3.1 Secret</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Opaque"><span class="toc-text">3.1.1 Opaque</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-TLS"><span class="toc-text">3.1.2 TLS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-ConfigMap"><span class="toc-text">3.2 ConfigMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-DownwardAPI"><span class="toc-text">3.3 DownwardAPI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-ServiceAccountToken"><span class="toc-text">3.4 ServiceAccountToken</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -993,7 +864,7 @@
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
         

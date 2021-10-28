@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Fiber 框架学习 | Eli&#39;s Blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Eli's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Eli's Blog
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;示例
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" target="_blank" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow noopener"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2021/10/24/Fiber%20%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
+        Fiber 框架学习
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-10-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/golang/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>golang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-入门"><a href="#1-入门" class="headerlink" title="1. 入门"></a>1. 入门</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gofiber/fiber/v2</span><br></pre></td></tr></table></figure>
+
+<p>编写主函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app.Listen(<span class="string">&quot;:3000&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h1 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New(fiber.Config&#123;</span><br><span class="line">		AppName:      <span class="string">&quot;It&#x27;s a go fiber web frame&quot;</span>,</span><br><span class="line">		ServerHeader: <span class="string">&quot;gofiber.io&quot;</span>, <span class="comment">// Response.Header.Server</span></span><br><span class="line">		ReadTimeout:  <span class="number">5</span> * time.Second,</span><br><span class="line">		WriteTimeout: <span class="number">5</span> * time.Second,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;OK&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatalln(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-路由"><a href="#3-路由" class="headerlink" title="3. 路由"></a>3. 路由</h1><h2 id="3-1-参数"><a href="#3-1-参数" class="headerlink" title="3.1 参数"></a>3.1 参数</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/about&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;about&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ?: 允许username不输入</span></span><br><span class="line">	app.Get(<span class="string">&quot;/hello/:username?&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		msg := fmt.Sprintf(<span class="string">&quot;hello %s&quot;</span>, c.Params(<span class="string">&quot;username&quot;</span>))</span><br><span class="line">		<span class="keyword">return</span> c.SendString(msg)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 复杂路由</span></span><br><span class="line">	app.Get(<span class="string">&quot;/fights/:from-:to&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		fmt.Fprintf(c, <span class="string">&quot;%s-%s\n&quot;</span>, c.Params(<span class="string">&quot;from&quot;</span>), c.Params(<span class="string">&quot;to&quot;</span>))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 路由注册信息</span></span><br><span class="line">	data, _ := json.MarshalIndent(app.Stack(), <span class="string">&quot;&quot;</span>, <span class="string">&quot;  &quot;</span>)</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(data))</span><br><span class="line"></span><br><span class="line">	log.Fatalln(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-2-Add-amp-All"><a href="#3-2-Add-amp-All" class="headerlink" title="3.2 Add &amp; All"></a>3.2 Add &amp; All</h2><p>Fiber 路由支持额外的方法：</p>
+<ul>
+<li><p>Add：所有 HTTP Method 对应的底层实现</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Fiber 自动添加 Head 方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(app *App)</span> <span class="title">Get</span><span class="params">(path <span class="keyword">string</span>, handlers ...Handler)</span> <span class="title">Router</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> app.Add(MethodHead, path, handlers...).Add(MethodGet, path, handlers...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>All：支持任意的 HTTP Method 请求</p>
+</li>
+</ul>
+<h2 id="3-3-Mount-amp-Group"><a href="#3-3-Mount-amp-Group" class="headerlink" title="3.3 Mount &amp; Group"></a>3.3 Mount &amp; Group</h2><p><strong>Mount</strong>: 可以将一个 Fiber 实例挂载到另一个实例</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	micro := fiber.New()</span><br><span class="line">	micro.Get(<span class="string">&quot;/micro&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;micro&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app := fiber.New()</span><br><span class="line">	app.Mount(<span class="string">&quot;/app&quot;</span>, micro)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Group</strong>: 路由分组</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calc</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	c.Next()</span><br><span class="line">	elapse := time.Since(start)</span><br><span class="line">	log.Printf(<span class="string">&quot;it takes %.2f seconds\n&quot;</span>, elapse.Seconds())</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	api := app.Group(<span class="string">&quot;/api&quot;</span>)</span><br><span class="line"></span><br><span class="line">	v1 := api.Group(<span class="string">&quot;/v1&quot;</span>)</span><br><span class="line">	v1.Get(<span class="string">&quot;/about&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;hello 1&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	v2 := api.Group(<span class="string">&quot;/v2&quot;</span>, calc)</span><br><span class="line">	v2.Get(<span class="string">&quot;/about&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		time.Sleep(<span class="number">3</span> * time.Second)</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;hello 2&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="4-静态资源"><a href="#4-静态资源" class="headerlink" title="4. 静态资源"></a>4. 静态资源</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.Static(<span class="string">&quot;/images&quot;</span>, <span class="string">`/data/images`</span>, fiber.Static&#123;Browse: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="5-使用模板"><a href="#5-使用模板" class="headerlink" title="5. 使用模板"></a>5. 使用模板</h1><p><strong>pug 模板</strong>: index.pug</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line">    head</span><br><span class="line">        title #&#123;.Title&#125;</span><br><span class="line">    body</span><br><span class="line">        p #&#123;.Message&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解析：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 初始化 pug 模板引擎</span></span><br><span class="line">	engine := pug.New(<span class="string">&quot;./views&quot;</span>, <span class="string">&quot;.pug&quot;</span>)</span><br><span class="line"></span><br><span class="line">	app := fiber.New(fiber.Config&#123;</span><br><span class="line">		Views: engine,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.Render(<span class="string">&quot;index&quot;</span>, fiber.Map&#123;</span><br><span class="line">			<span class="string">&quot;Title&quot;</span>:   <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">			<span class="string">&quot;Message&quot;</span>: <span class="string">&quot;This is the index pug template&quot;</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app.Listen(<span class="string">&quot;:3000&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="6-fiber-Ctx-方法"><a href="#6-fiber-Ctx-方法" class="headerlink" title="6. fiber.Ctx 方法"></a>6. <code>fiber.Ctx</code> 方法</h1><h2 id="6-1-c-BodyParser"><a href="#6-1-c-BodyParser" class="headerlink" title="6.1 c.BodyParser"></a>6.1 <code>c.BodyParser</code></h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="keyword">string</span> <span class="string">`json:&quot;name&quot; xml:&quot;name&quot; form:&quot;name&quot;`</span></span><br><span class="line">	Pass <span class="keyword">string</span> <span class="string">`json:&quot;pass&quot; xml:&quot;pass&quot; form:&quot;pass&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	app.Post(<span class="string">&quot;/login&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		user := <span class="built_in">new</span>(User)</span><br><span class="line"></span><br><span class="line">		err := c.BodyParser(user)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		log.Printf(<span class="string">&quot;name %s, pass: %s\n&quot;</span>, user.Name, user.Pass)</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;OK&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -H <span class="string">&quot;Content-Type: application/json&quot;</span> --data <span class="string">&quot;&#123;\&quot;name\&quot;:\&quot;john\&quot;,\&quot;pass\&quot;:\&quot;doe\&quot;&#125;&quot;</span> localhost:3000/login</span><br><span class="line"></span><br><span class="line">curl -X POST -H <span class="string">&quot;Content-Type: application/xml&quot;</span> --data <span class="string">&quot;&lt;login&gt;&lt;name&gt;john&lt;/name&gt;&lt;pass&gt;doe&lt;/pass&gt;&lt;/login&gt;&quot;</span> localhost:3000/login</span><br><span class="line"></span><br><span class="line">curl -X POST -H <span class="string">&quot;Content-Type: application/x-www-form-urlencoded&quot;</span> --data <span class="string">&quot;name=john&amp;pass=doe&quot;</span> localhost:3000/login</span><br><span class="line"></span><br><span class="line">curl -X POST -F name=john -F pass=doe http://localhost:3000/login</span><br><span class="line"></span><br><span class="line">curl -X POST <span class="string">&quot;http://localhost:3000/login?name=john&amp;pass=doe&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-2-c-Query"><a href="#6-2-c-Query" class="headerlink" title="6.2 c.Query()"></a>6.2 <code>c.Query()</code></h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/users&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		pageIndex := c.Query(<span class="string">&quot;page_index&quot;</span>)</span><br><span class="line">		pageSize := c.Query(<span class="string">&quot;page_size&quot;</span>)</span><br><span class="line"></span><br><span class="line">		body := fmt.Sprintf(<span class="string">&quot;page index: %s\npage size: %s&quot;</span>, pageIndex, pageSize)</span><br><span class="line">		<span class="keyword">return</span> c.SendString(body)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="7-中间件"><a href="#7-中间件" class="headerlink" title="7. 中间件"></a>7. 中间件</h1><h2 id="7-1-自定义"><a href="#7-1-自定义" class="headerlink" title="7.1 自定义"></a>7.1 自定义</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.Use(<span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	c.Next()</span><br><span class="line"></span><br><span class="line">	elapse := time.Since(start)</span><br><span class="line">	log.Printf(<span class="string">&quot;it takes %.2f seconds\n&quot;</span>, elapse.Seconds())</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-2-内置中间件"><a href="#7-2-内置中间件" class="headerlink" title="7.2 内置中间件"></a>7.2 内置中间件</h2><p><a target="_blank" rel="noopener" href="https://docs.gofiber.io/api/middleware">https://docs.gofiber.io/api/middleware</a></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用内置中间件</span></span><br><span class="line">	app.Use(<span class="built_in">recover</span>.New())</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;I&#x27;m an error&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-2-1-签名"><a href="#7-2-1-签名" class="headerlink" title="7.2.1 签名"></a>7.2.1 签名</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(config ...Config)</span> <span class="title">fiber</span>.<span class="title">Handler</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-2-配置"><a href="#7-2-2-配置" class="headerlink" title="7.2.2 配置"></a>7.2.2 配置</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Config <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// Next defines a function to skip this middleware when returned true.</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Optional. Default: nil</span></span><br><span class="line">	Next <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">bool</span></span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// EnableStackTrace enables handling stack trace</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Optional. Default: false</span></span><br><span class="line">	EnableStackTrace <span class="keyword">bool</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// StackTraceHandler defines a function to handle stack trace</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Optional. Default: defaultStackTraceHandler</span></span><br><span class="line">	StackTraceHandler <span class="function"><span class="keyword">func</span><span class="params">(e <span class="keyword">interface</span>&#123;&#125;)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ConfigDefault = Config&#123;</span><br><span class="line">	Next:              <span class="literal">nil</span>,</span><br><span class="line">	EnableStackTrace:  <span class="literal">false</span>,</span><br><span class="line">	StackTraceHandler: defaultStackTraceHandler,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-3-自建中间件"><a href="#7-3-自建中间件" class="headerlink" title="7.3 自建中间件"></a>7.3 自建中间件</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 响应headers中设置如下参数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Security</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	c.Set(<span class="string">&quot;X-XSS-Protection&quot;</span>, <span class="string">&quot;1; mode=block&quot;</span>)</span><br><span class="line">	c.Set(<span class="string">&quot;X-Content-Type-Options&quot;</span>, <span class="string">&quot;nosniff&quot;</span>)</span><br><span class="line">	c.Set(<span class="string">&quot;X-Download-Options&quot;</span>, <span class="string">&quot;noopen&quot;</span>)</span><br><span class="line">	c.Set(<span class="string">&quot;Strict-Transport-Security&quot;</span>, <span class="string">&quot;max-age=5184000&quot;</span>)</span><br><span class="line">	c.Set(<span class="string">&quot;X-Frame-Options&quot;</span>, <span class="string">&quot;SAMEORIGIN&quot;</span>)</span><br><span class="line">	c.Set(<span class="string">&quot;X-DNS-Prefetch-Control&quot;</span>, <span class="string">&quot;off&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> c.Next()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用内置中间件</span></span><br><span class="line">	app.Use(Security)</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.JSON(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;ok&quot;</span>&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="8-单元测试"><a href="#8-单元测试" class="headerlink" title="8. 单元测试"></a>8. 单元测试</h1><p>Fiber 提供专门的测试方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test is used for internal debugging by passing a *http.Request.</span></span><br><span class="line"><span class="comment">// Timeout is optional and defaults to 1s, -1 will disable it completely.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(app *App)</span> <span class="title">Test</span><span class="params">(req *http.Request, msTimeout ...<span class="keyword">int</span>)</span> <span class="params">(resp *http.Response, err error)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>待测试程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setupRouters</span><span class="params">(app *fiber.App)</span></span> &#123;</span><br><span class="line">	app.Get(<span class="string">&quot;/hello&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	setupRouters(app)</span><br><span class="line"></span><br><span class="line">	log.Fatal(app.Listen(<span class="string">&quot;:3000&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestHelloRoute</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line">	setupRouters(app)</span><br><span class="line"></span><br><span class="line">	cases := []<span class="keyword">struct</span> &#123;</span><br><span class="line">		description  <span class="keyword">string</span></span><br><span class="line">		route        <span class="keyword">string</span></span><br><span class="line">		expectedCode <span class="keyword">int</span></span><br><span class="line">	&#125;&#123;</span><br><span class="line">		&#123;</span><br><span class="line">			description:  <span class="string">&quot;get HTTP status 200&quot;</span>,</span><br><span class="line">			route:        <span class="string">&quot;/hello&quot;</span>,</span><br><span class="line">			expectedCode: <span class="number">200</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			description:  <span class="string">&quot;get HTTP status 404&quot;</span>,</span><br><span class="line">			route:        <span class="string">&quot;/notfound&quot;</span>,</span><br><span class="line">			expectedCode: <span class="number">404</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, c := <span class="keyword">range</span> cases &#123;</span><br><span class="line">		req := httptest.NewRequest(<span class="string">&quot;GET&quot;</span>, c.route, <span class="literal">nil</span>)</span><br><span class="line">		resp, _ := app.Test(req, <span class="number">1</span>)</span><br><span class="line">		assert.Equalf(t, c.expectedCode, resp.StatusCode, c.description)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-28T20:36:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2021年10月28日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2021/10/09/Golang%20%E5%8A%A0%E5%AF%86%E5%92%8C%E7%AD%BE%E5%90%8D.md/" rel="prev" title="Golang 加密和签名">
+                                  
+                                      Golang 加密和签名
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Fiber 框架学习',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:eli.he@outlook.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/elihe2011"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=282243842"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%85%A5%E9%97%A8"><span class="toc-text">1. 入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="toc-text">2. 配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%B7%AF%E7%94%B1"><span class="toc-text">3. 路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%8F%82%E6%95%B0"><span class="toc-text">3.1 参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Add-amp-All"><span class="toc-text">3.2 Add &amp; All</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Mount-amp-Group"><span class="toc-text">3.3 Mount &amp; Group</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">4. 静态资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-text">5. 使用模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-fiber-Ctx-%E6%96%B9%E6%B3%95"><span class="toc-text">6. fiber.Ctx 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-c-BodyParser"><span class="toc-text">6.1 c.BodyParser</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-c-Query"><span class="toc-text">6.2 c.Query()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">7. 中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-text">7.1 自定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E5%86%85%E7%BD%AE%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">7.2 内置中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-1-%E7%AD%BE%E5%90%8D"><span class="toc-text">7.2.1 签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-2-%E9%85%8D%E7%BD%AE"><span class="toc-text">7.2.2 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E8%87%AA%E5%BB%BA%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">7.3 自建中间件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">8. 单元测试</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/CentOS/" href="/categories/CentOS/"><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Docker/" href="/categories/Docker/"><div class='name'>Docker</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Golang/" href="/categories/Golang/"><div class='name'>Golang</div><div class='badge'>(39)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class='name'>Linux</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MySQL/" href="/categories/MySQL/"><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nginx/" href="/categories/Nginx/"><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/kubernetes/" href="/categories/kubernetes/"><div class='name'>kubernetes</div><div class='badge'>(3)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 14px; color: #999">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:eli.he@outlook.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/elihe2011"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=282243842"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/background/Fremont-Peak.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

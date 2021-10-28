@@ -382,7 +382,7 @@
         <h1 id="1-存储格式"><a href="#1-存储格式" class="headerlink" title="1. 存储格式"></a>1. 存储格式</h1><p>密钥、密文、签名字符串的存储格式</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hex：转为十六进制字符串表示</span></span><br><span class="line">hex.EncodeToString(src []<span class="keyword">byte</span>) <span class="keyword">string</span></span><br><span class="line">hex.DecodeString(s <span class="keyword">string</span>) ([]<span class="keyword">byte</span>, error)</span><br><span class="line"></span><br><span class="line"><span class="comment">// base64</span></span><br><span class="line">base64.StdEncoding.EncodeToString(src []<span class="keyword">byte</span>) <span class="keyword">string</span></span><br><span class="line">base64.StdEncoding.DecodeString(s <span class="keyword">string</span>) ([]<span class="keyword">byte</span>, error)</span><br><span class="line"></span><br><span class="line"><span class="comment">// pem: 密钥解析</span></span><br><span class="line">pem.Decode(data []<span class="keyword">byte</span>) (p *Block, rest []<span class="keyword">byte</span>)</span><br></pre></td></tr></table></figure>
 
-
+<span id="more"></span>
 
 <h1 id="2-生成密钥"><a href="#2-生成密钥" class="headerlink" title="2. 生成密钥"></a>2. 生成密钥</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 私钥</span></span><br><span class="line">openssl genrsa -out rsa_private_key.pem 2048</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公钥</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> rsa_private_key.pem -pubout -out rsa_public_key.pem</span><br></pre></td></tr></table></figure>
 
@@ -428,10 +428,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-09T19:05:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-28T20:36:18+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2021年10月9日</p>
+    <p>更新于 2021年10月28日</p>
   </a>
 </div>
 
@@ -454,6 +454,20 @@
       
       
           <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2021/10/24/Fiber%20%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" rel="prev" title="Fiber 框架学习">
+                                
+                                    Fiber 框架学习
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
               
               
                   <section class="next">
@@ -676,7 +690,7 @@
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
         

@@ -299,9 +299,109 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2021/10/24/Fiber%20%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
+      Fiber 框架学习
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://elihe2011.github.io" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/avatar/avatar.png">
+        
+        <p>Eli He</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2021-10-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/golang/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>golang</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="1-入门"><a href="#1-入门" class="headerlink" title="1. 入门"></a>1. 入门</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gofiber/fiber/v2</span><br></pre></td></tr></table></figure>
+
+<p>编写主函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	app := fiber.New()</span><br><span class="line"></span><br><span class="line">	app.Get(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *fiber.Ctx)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">		<span class="keyword">return</span> c.SendString(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	app.Listen(<span class="string">&quot;:3000&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2021/10/24/Fiber%20%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -381,7 +481,8 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h1 id="1-存储格式"><a href="#1-存储格式" class="headerlink" title="1. 存储格式"></a>1. 存储格式</h1><p>密钥、密文、签名字符串的存储格式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hex：转为十六进制字符串表示</span></span><br><span class="line">hex.EncodeToString(src []<span class="keyword">byte</span>) <span class="keyword">string</span></span><br><span class="line">hex.DecodeString(s <span class="keyword">string</span>) ([]<span class="keyword">byte</span>, error)</span><br><span class="line"></span><br><span class="line"><span class="comment">// base64</span></span><br><span class="line">base64.StdEncoding.EncodeToString(src []<span class="keyword">byte</span>) <span class="keyword">string</span></span><br><span class="line">base64.StdEncoding.DecodeString(s <span class="keyword">string</span>) ([]<span class="keyword">byte</span>, error)</span><br><span class="line"></span><br><span class="line"><span class="comment">// pem: 密钥解析</span></span><br><span class="line">pem.Decode(data []<span class="keyword">byte</span>) (p *Block, rest []<span class="keyword">byte</span>)</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
           <a href="/2021/10/09/Golang%20%E5%8A%A0%E5%AF%86%E5%92%8C%E7%AD%BE%E5%90%8D.md/" class="flat-box">
@@ -1137,7 +1238,7 @@
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
         

@@ -794,10 +794,14 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="1-Service-的概念"><a href="#1-Service-的概念" class="headerlink" title="1. Service 的概念"></a>1. Service 的概念</h1><p>SVC：服务发现</p>
-<p>Service 定义了这样一种抽象：一个 Pod 的逻辑分组，一种可以访问它们的策略 – 通常称为微服务。这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector</p>
-<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/k8s/k8s_svc.png" alt="svc"></p>
-<p>Service 能够提供负载均衡能力，但只提供了 4 层，而没有 7 层。当需要更多的匹配规则来转发请求时，不支持。</p>
+      <h1 id="1-Service-概念"><a href="#1-Service-概念" class="headerlink" title="1. Service 概念"></a>1. Service 概念</h1><p>通过创建 Service， 可以为一组功能相同的容器提供一个统一的入口，并将请求均衡负载发送到后端的各个容器上</p>
+<ul>
+<li>通过 <code>Label Selector</code> ，实现 SVC 与容器组关联</li>
+<li>负载均衡算法默认使用 RR （Round-Robin 轮询调度）</li>
+<li>亲和性：通过<code>service.spec.sessionAffinity = ClientIP</code> 来启用 <code>SessionAffinity</code> 策略</li>
+<li>只提供 4 层负载均衡能力 (基于 <code>IP:PORT</code> 转发)，没有7层功能 (通过主机名或域名负载均衡)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/elihe2011/bedgraph@master/kubernetes/k8s-svc.png" alt="svc"></p>
       
         <div class="readmore">
           <a href="/2018/07/05/Kubernetes%20Service/" class="flat-box">
@@ -1392,13 +1396,15 @@
         
           <li><a class="flat-box" title="/categories/NoSQL/" href="/categories/NoSQL/"><div class='name'>NoSQL</div><div class='badge'>(2)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/Programing/" href="/categories/Programing/"><div class='name'>Programing</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/RabbitMQ/" href="/categories/RabbitMQ/"><div class='name'>RabbitMQ</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/Tools/" href="/categories/Tools/"><div class='name'>Tools</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/golang/" href="/categories/golang/"><div class='name'>golang</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(9)</div></a></li>
+          <li><a class="flat-box" title="/categories/k8s/" href="/categories/k8s/"><div class='name'>k8s</div><div class='badge'>(10)</div></a></li>
         
           <li><a class="flat-box" title="/categories/kubernetes/" href="/categories/kubernetes/"><div class='name'>kubernetes</div><div class='badge'>(3)</div></a></li>
         
@@ -1448,7 +1454,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/rabbitmq/" style="font-size: 14px; color: #999">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
+      <a href="/tags/algorithm/" style="font-size: 17.33px; color: #828282">algorithm</a> <a href="/tags/elasticsearch/" style="font-size: 14px; color: #999">elasticsearch</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/go/" style="font-size: 24px; color: #555">go</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/nginx/" style="font-size: 14px; color: #999">nginx</a> <a href="/tags/orm/" style="font-size: 14px; color: #999">orm</a> <a href="/tags/programing/" style="font-size: 14px; color: #999">programing</a> <a href="/tags/rabbitmq/" style="font-size: 14px; color: #999">rabbitmq</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/rpc/" style="font-size: 20.67px; color: #6c6c6c">rpc</a> <a href="/tags/supervisor/" style="font-size: 14px; color: #999">supervisor</a> <a href="/tags/websocket/" style="font-size: 14px; color: #999">websocket</a>
     </div>
   </section>
 
